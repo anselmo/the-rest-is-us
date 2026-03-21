@@ -2,7 +2,12 @@
 
 ## Context
 
-Build a fully automated daily podcast that surfaces AI stories from Hacker News, enriches them with web context, generates a two-host conversational script via Claude, renders audio via ElevenLabs, and publishes via GitHub Releases + Pages RSS. Episodes maintain continuity by referencing prior episodes.
+Build a fully automated daily podcast that surfaces AI stories from Hacker News, enriches them with web context, generates a 20VC-style Host + Analyst interview script via Claude, renders audio via ElevenLabs, and publishes via GitHub Releases + Pages RSS. Episodes maintain continuity by referencing prior episodes.
+
+The show features three hosts in a panel format:
+- **Alex Green** (Host/Moderator): Drives the conversation, directs questions to panelists, steers clashes to resolution
+- **Nick Salt** (Bold Analyst): Delivers opinionated takes with conviction, makes predictions, defends positions when challenged
+- **Mia Thorn** (Skeptical Pragmatist): Grounds claims in business models, adoption friction, and regulatory risk; pressure-tests bold predictions
 
 ## Architecture
 
@@ -45,8 +50,9 @@ python-dotenv
 ```
 ANTHROPIC_API_KEY=         # Required — Claude API
 ELEVENLABS_API_KEY=        # Required — TTS
-ELEVENLABS_VOICE_ID_ALEX=  # Required — pre-created voice
-ELEVENLABS_VOICE_ID_SAM=   # Required — pre-created voice
+ELEVENLABS_VOICE_ID_ALEX=  # Required — pre-created voice for Alex Green
+ELEVENLABS_VOICE_ID_NICK=  # Required — pre-created voice for Nick Salt
+ELEVENLABS_VOICE_ID_MIA=   # Required — pre-created voice for Mia Thorn
 TAVILY_API_KEY=            # Optional — enrichment skipped without it
 GITHUB_TOKEN=              # Required — release creation
 GITHUB_REPO=owner/repo     # Required — releases + pages
@@ -87,18 +93,17 @@ PODCAST_AUTHOR=HN Signal
 - `extract_episode_summary(script: str, stories: list[dict]) -> dict`
 
 ### Script generation
-- Single Claude API call, model `claude-sonnet-4-5`
-- System prompt with additional continuity block:
-  ```
-  Here is context from recent episodes for continuity:
-  {history_json}
-
-  When relevant, reference previous episodes naturally (e.g., "as we discussed
-  yesterday...", "following up on that story from last week..."). Only reference
-  when it adds value — don't force callbacks.
-  ```
+- Single Claude API call, model `claude-sonnet-4-5`, max_tokens 6144
+- System prompt defines a 3-person panel format (see `script.py` SYSTEM_PROMPT for full text):
+  - Alex Green as moderator: frames stories, directs questions to panelists, steers clashes
+  - Nick Salt as bold analyst: predictions, conviction-driven takes
+  - Mia Thorn as skeptical pragmatist: reality-checks, business model scrutiny, adoption friction
+  - Pattern per story: SETUP → DEVELOP → CLASH/DEEPEN → RESOLVE
+  - Covers 2-3 stories with depth (not 4-6 at surface level)
+  - Target: 1200-1500 words (8-12 minutes)
+- Continuity block appended when episode history exists (unchanged)
 - User message: enriched story list as JSON
-- Output: raw script as `ALEX: ... \n SAM: ...` lines
+- Output: raw script as `ALEX: ... \n NICK: ... \n MIA: ...` lines
 
 ### Summary extraction
 - Second Claude API call (using `claude-haiku-4-5` to minimize cost) with the generated script as input
@@ -112,7 +117,7 @@ PODCAST_AUTHOR=HN Signal
 
 Returns `(mp3_path, duration_seconds)`.
 
-- Parse script: split on `^ALEX:` / `^SAM:` line prefixes (regex `r'^(ALEX|SAM):\s*'`)
+- Parse script: split on `^ALEX:` / `^NICK:` / `^MIA:` line prefixes (regex `r'^(ALEX|NICK|MIA):\s*'`)
 - If no valid turns found (malformed output), abort with error
 - Cap at 30 turns (log warning if truncated)
 - For each turn: ElevenLabs SDK `generate()` with appropriate voice ID, model `eleven_multilingual_v2`
@@ -211,7 +216,7 @@ def main():
 
 ## One-Time Manual Steps
 
-1. Create ElevenLabs voices for Alex and Sam → copy IDs to .env
+1. Create ElevenLabs voices for Alex Green, Nick Salt, and Mia Thorn → copy IDs to .env
 2. Create podcast cover art (3000x3000px JPG) → upload to repo root or GH Pages
 3. Enable GitHub Pages on the repo (source: main branch or gh-pages)
 4. Submit RSS feed URL to podcastsconnect.apple.com after first episode

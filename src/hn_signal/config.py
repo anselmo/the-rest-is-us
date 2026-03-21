@@ -23,7 +23,8 @@ def _require(key: str) -> str:
 ANTHROPIC_API_KEY = _require("ANTHROPIC_API_KEY")
 ELEVENLABS_API_KEY = _require("ELEVENLABS_API_KEY")
 ELEVENLABS_VOICE_ID_ALEX = _require("ELEVENLABS_VOICE_ID_ALEX")
-ELEVENLABS_VOICE_ID_SAM = _require("ELEVENLABS_VOICE_ID_SAM")
+ELEVENLABS_VOICE_ID_NICK = _require("ELEVENLABS_VOICE_ID_NICK")
+ELEVENLABS_VOICE_ID_MIA = _require("ELEVENLABS_VOICE_ID_MIA")
 GITHUB_TOKEN = _require("GITHUB_TOKEN")
 GITHUB_REPO = _require("GITHUB_REPO")
 PODCAST_BASE_URL = _require("PODCAST_BASE_URL")
@@ -41,33 +42,112 @@ PODCAST_AUTHOR = os.getenv("PODCAST_AUTHOR", "HN Signal")
 
 # AI keyword list for filtering HN stories
 AI_KEYWORDS = [
+    # Core terms
     "AI",
     "LLM",
     "GPT",
-    "Claude",
-    "Gemini",
-    "OpenAI",
-    "Anthropic",
-    "model",
+    "NLP",
+    "AGI",
+    "ASI",
+    "GenAI",
+    "generative AI",
+    "artificial intelligence",
+    "deep learning",
+    "machine learning",
     "neural",
     "transformer",
+    "diffusion",
+    "multimodal",
+    "embeddings",
     "inference",
     "fine-tun",
     "RAG",
+    "prompt",
+    "token",
+    "hallucin",
+    "reasoning model",
+    "foundation model",
+    "large language",
+    "small language",
+    "text-to-",
+    "speech-to-",
+    "image generation",
+    "voice cloning",
+    "synthetic data",
+    # Agents & tools
     "agent",
-    "multimodal",
-    "diffusion",
-    "embeddings",
+    "agentic",
+    "copilot",
+    "chatbot",
+    "chat bot",
+    "AI coding",
+    "code generation",
+    "coding agent",
+    "vibe coding",
+    "MCP",
+    "tool use",
+    "function calling",
+    "AI assistant",
+    # Companies & products
+    "OpenAI",
+    "Anthropic",
+    "Claude",
+    "Gemini",
     "Mistral",
     "Llama",
     "Grok",
-    "deep learning",
-    "machine learning",
+    "DeepSeek",
+    "Perplexity",
+    "Midjourney",
+    "Stability AI",
+    "Cohere",
+    "Hugging Face",
+    "HuggingFace",
+    "Meta AI",
+    "Google AI",
+    "Microsoft AI",
+    "Amazon Bedrock",
+    "Azure AI",
+    "Vertex AI",
+    "ElevenLabs",
+    "Runway",
+    "Suno",
+    "Cursor",
+    "Windsurf",
+    "Replit",
+    "GitHub Copilot",
+    "ChatGPT",
+    "DALL-E",
+    "Sora",
+    "Whisper",
+    "NVIDIA",
+    "xAI",
+    # Techniques & concepts
+    "RLHF",
+    "reinforcement learning",
+    "computer vision",
+    "object detection",
+    "image recognition",
+    "natural language",
+    "speech recognition",
+    "text to speech",
+    "autonomous",
+    "self-driving",
+    "robotics",
+    "neural network",
+    "GPU",
+    "TPU",
+    "vector database",
+    "semantic search",
+    "knowledge graph",
+    "AI safety",
+    "alignment",
+    "benchmark",
 ]
 
 # Models
-SCRIPT_MODEL = "claude-sonnet-4-5-20250514"
-SUMMARY_MODEL = "claude-haiku-4-5-20241022"
+SCRIPT_MODEL = "claude-sonnet-4-6"
+SUMMARY_MODEL = "claude-haiku-4-5-20251001"
 
 # Logging
 logging.basicConfig(

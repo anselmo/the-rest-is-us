@@ -18,8 +18,8 @@ def main() -> None:
 
     # Stage 1: Collect
     stories = collect_stories()
-    if len(stories) < 3:
-        log.error("Only %d AI stories found, need at least 3. Aborting.", len(stories))
+    if len(stories) < 2:
+        log.error("Only %d AI stories found, need at least 2. Aborting.", len(stories))
         sys.exit(1)
 
     # Stage 2: Enrich
@@ -30,8 +30,11 @@ def main() -> None:
     script = generate_script(stories, history)
     summary = extract_episode_summary(script, stories)
 
-    # Stage 4: Audio
-    mp3_path = EPISODES_DIR / f"{today}.mp3"
+    # Stage 4: Audio — versioned filename (v1, v2, ...) for multiple runs per day
+    version = 1
+    while (EPISODES_DIR / f"{today}-v{version}.mp3").exists():
+        version += 1
+    mp3_path = EPISODES_DIR / f"{today}-v{version}.mp3"
     mp3_path, duration = generate_audio(script, mp3_path)
 
     # Stage 5: Publish
