@@ -1,0 +1,24 @@
+[project]
+name = "hn-ai-podcast"
+version = "0.1.0"
+description = "Automated daily AI podcast from Hacker News stories"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic",
+    "elevenlabs",
+    "httpx",
+    "beautifulsoup4",
+    "pydub",
+    "tavily-python",
+    "python-dotenv",
+]
+
+[project.scripts]
+hn-signal = "hn_signal.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hn_signal"]
