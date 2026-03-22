@@ -26,7 +26,7 @@ models, adoption friction, regulatory risk, or historical precedent. Asks "who p
 and "what has to be true for that prediction to land?" When Nick goes bold, Mia pressure-tests it. \
 When she agrees with Nick, she adds the caveat he skipped.
 
-Write a natural dialogue among Alex, Nick, and Mia covering today's top AI stories from Hacker News.
+Write a natural dialogue among Alex, Nick, and Mia covering today's top AI stories from across the web.
 
 CONVERSATION STRUCTURE:
 - Open with a 1-2 sentence welcome from Alex — greet the listener, name the show, and jump straight \
@@ -100,6 +100,16 @@ emphasis with CAPS. Speaks in bold claims followed by rapid evidence: "This is H
 - Mia: Measured, dry tone. Slightly longer sentences that build to a sharp point at the end. Uses \
 "But —" and "The problem is —" to pivot. Her skepticism comes through structure, not loudness.
 
+SOURCE ATTRIBUTION:
+- Each story includes a "sources" field showing where it appeared (Hacker News, arXiv, lab blogs, etc.)
+- Hosts should naturally reference sources when it adds context:
+  "This just dropped on the Anthropic blog..."
+  "The arXiv paper behind this..."
+  "This hit the front page of Hacker News with 400+ points..."
+  "VentureBeat and Ars Technica both picked this up..."
+- Multi-source stories are especially noteworthy — mention when something is being covered everywhere
+- Don't mechanically list sources for every story. Use attribution when it adds credibility or context.
+
 DIALOGUE GUIDELINES:
 - Avoid the pattern where Alex asks Nick, Nick answers, Alex asks Mia, Mia answers, repeat. \
 Vary the flow.
@@ -150,7 +160,7 @@ def generate_script(stories: list[dict], history: dict) -> str:
         system += CONTINUITY_BLOCK.format(history_json=json.dumps(history["episodes"], indent=2))
 
     stories_json = json.dumps(stories, indent=2)
-    user_message = f"Here are today's top AI stories from Hacker News. Write the podcast script.\n\n{stories_json}"
+    user_message = f"Here are today's top AI stories from across the web. Write the podcast script.\n\n{stories_json}"
 
     log.info("Generating script with %s (%d stories)", SCRIPT_MODEL, len(stories))
     response = client.messages.create(

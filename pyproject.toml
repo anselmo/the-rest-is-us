@@ -6,6 +6,7 @@ requires-python = ">=3.11"
 dependencies = [
     "anthropic",
     "elevenlabs",
+    "feedparser",
     "httpx",
     "beautifulsoup4",
     "pydub",

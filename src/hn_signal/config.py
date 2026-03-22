@@ -36,7 +36,7 @@ TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "").strip() or None
 PODCAST_TITLE = os.getenv("PODCAST_TITLE", "HN Signal")
 PODCAST_DESCRIPTION = os.getenv(
     "PODCAST_DESCRIPTION",
-    "Daily AI stories from Hacker News, discussed in plain language.",
+    "Daily AI stories from across the web, discussed in plain language.",
 )
 PODCAST_AUTHOR = os.getenv("PODCAST_AUTHOR", "HN Signal")
 
@@ -144,6 +144,25 @@ AI_KEYWORDS = [
     "alignment",
     "benchmark",
 ]
+
+# Source RSS feeds
+ARXIV_FEEDS = [
+    "http://export.arxiv.org/rss/cs.AI",
+    "http://export.arxiv.org/rss/cs.LG",
+]
+
+LAB_BLOG_FEEDS = {
+    # "anthropic_blog": no public RSS feed — add scraper-based source later
+    "openai_blog": "https://openai.com/blog/rss.xml",
+    "google_ai_blog": "https://blog.google/technology/ai/rss/",
+    "huggingface_blog": "https://huggingface.co/blog/feed.xml",
+}
+
+VENTUREBEAT_AI_FEED = "https://venturebeat.com/category/ai/feed/"
+ARSTECHNICA_AI_FEED = "https://arstechnica.com/ai/feed/"
+
+# Ranking
+MAX_FINAL_STORIES = 10
 
 # Models
 SCRIPT_MODEL = "claude-sonnet-4-6"

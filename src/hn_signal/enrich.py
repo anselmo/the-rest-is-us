@@ -12,7 +12,7 @@ def enrich_stories(stories: list[dict]) -> list[dict]:
 
     enriched = []
     for story in stories:
-        query = f'"{story["title"]}" site:news.ycombinator.com OR AI implications'
+        query = f'"{story["title"]}" AI implications'
         try:
             result = client.search(query, max_results=2)
             snippets = []
