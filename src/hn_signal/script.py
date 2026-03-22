@@ -68,7 +68,19 @@ moderate ("But Mia, how do you explain—", "Nick, are you seriously saying—")
 - Alex can get interrupted too — when a panelist has a strong reaction, they don't wait for permission
 - Scatter short interjections through longer turns: "Right.", "Exactly.", "See, that's the thing—", \
 "No no no—", "Hold on—", "Wait—"
-- Aim for 2-3 genuine interruptions per episode. Not every turn — just enough to feel alive.
+- Aim for 3-5 genuine interruptions per episode. Not every turn — just enough to feel alive.
+- Use more incomplete sentences: speakers get cut off mid-thought, trail off, restart. \
+"The thing about scaling is—" / "Yeah but that's EXACTLY why—" / "Wait, let me just—"
+
+VOCAL FILLERS & REACTIONS (make it sound human, not scripted):
+- Hesitation sounds at the start of turns: "Uh,", "Uhh,", "Hmm.", "Hm,", "Mm.", "Ah,"
+- Reaction sounds when hearing something surprising: "Oh!", "Ooh.", "Huh.", "Whoa.", "Wow."
+- Thinking-aloud starters: "I mean—", "Like—", "You know what—", "So basically—", "Okay so—"
+- Agreement/disagreement grunts: "Mm-hm.", "Nah.", "Yeah.", "Yep.", "Nope.", "Sure, but—"
+- Scatter these naturally — 1-2 per host per story segment. They should feel involuntary, \
+not performed. Nick uses more "Nah" and "Look—"; Mia uses more "Hmm." and "I mean—"; \
+Alex uses "Right" and "Okay so—"
+- These fillers work best at turn boundaries and before pivots, not mid-sentence.
 
 TEMPO:
 - Keep turns SHORT. Most lines should be 1-3 sentences, not paragraphs.
@@ -129,6 +141,68 @@ When relevant, reference previous episodes naturally (e.g., "as we discussed yes
 "following up on that story from last week..."). Only reference when it adds value — don't force \
 callbacks."""
 
+REFINEMENT_PROMPT = """\
+You are a podcast script doctor. Your job is to take a draft podcast script and make it sound like \
+a TOP-TIER podcast — specifically inspired by the energy and style of 20VC (Twenty Minute VC) with \
+Harry Stebbings.
+
+You will receive a complete draft script for "HN Signal", a 3-host AI news panel (Alex, Nick, Mia). \
+The draft has good content and structure. Your job is to REWRITE THE DELIVERY — not the facts.
+
+REWRITE WITH THESE 20VC QUALITIES:
+
+RAPID-FIRE FOLLOW-UPS:
+- The host (Alex) never lets a surface answer slide. He digs in IMMEDIATELY: \
+"But WHY though?", "Give me the specific number.", "What does that ACTUALLY mean in practice?", \
+"Break that down for me.", "Hold on — who is paying for this?"
+- When Nick or Mia make a claim, Alex (or the other panelist) should pounce on it within ONE line
+- No comfortable pauses after big statements — someone always jumps on it
+
+PERSONAL CONVICTION:
+- Hosts share STRONG personal opinions, not hedged analysis
+- "I genuinely believe this is the most important thing happening in AI right now"
+- "I'm going to say something controversial — I think this is completely overhyped"
+- "This is the thing that keeps me up at night"
+- Nick especially should sound like he's putting his reputation on the line with every take
+
+EMOTIONAL ENERGY ESCALATION:
+- Excitement builds audibly: "This is INSANE.", "I love that.", "That blows my mind."
+- Frustration when something is wrong: "This drives me crazy.", "How is nobody talking about this?"
+- Genuine surprise: "Wait, WHAT?", "No way.", "Are you serious right now?"
+- Energy should ramp up through the episode — start warm, end electric
+
+SPECIFICITY PRESSURE:
+- Push for concrete details: timelines, dollar amounts, company names, user numbers
+- "Don't give me 'soon' — give me a quarter.", "Name the company.", \
+"What's the actual revenue number?"
+- Vague claims get challenged: "Everyone says that. What makes THIS different?"
+
+CONVERSATIONAL SPEED:
+- Tighter exchanges — cut any setup that takes more than 2 sentences
+- More crosstalk and overlapping reactions
+- Quick-fire segments where hosts trade 1-sentence takes
+- Remove any line that restates what was just said
+
+AUTHENTIC REACTIONS:
+- Real surprise: "No way.", "Come on.", "You can't be serious.", "Shut up."
+- Laughter cues: "Ha!", "That's hilarious.", "I mean, you have to laugh."
+- Genuine agreement that sounds excited: "YES. That's exactly it.", "A hundred percent."
+- Disagreement that sounds personal: "I couldn't disagree more.", "Nick, that's insane."
+
+STORYTELLING MOMENTS:
+- At least once per story, a host should have a "let me tell you why this matters" moment
+- Use vivid analogies: "This is like giving every developer a senior engineer sitting next to them"
+- Connect to real human impact: "Think about what this means for a startup founder in Lagos right now"
+
+RULES:
+- Keep the EXACT same format: ALEX: / NICK: / MIA: followed by dialogue
+- Keep the same stories and facts — change the DELIVERY, not the content
+- Keep approximately the same length (1500-2200 words)
+- Do not add stage directions, sound cues, or [BREAK] markers
+- Do not add preamble or commentary — output the rewritten script only
+- Maintain all the speech-writing techniques from the original (em dashes, ellipses, CAPS emphasis, \
+vocal fillers, interruptions) but make them hit HARDER"""
+
 SUMMARY_PROMPT = """\
 Extract from this podcast script:
 1) story titles covered (as a list of strings)
@@ -174,8 +248,30 @@ def generate_script(stories: list[dict], history: dict) -> str:
         log.warning("Script generation hit max_tokens — output may be truncated")
 
     script = response.content[0].text
-    log.info("Script generated (%d chars, stop_reason=%s)", len(script), response.stop_reason)
+    log.info("Draft script generated (%d chars, stop_reason=%s)", len(script), response.stop_reason)
+
+    script = refine_script(script)
     return script
+
+
+def refine_script(draft: str) -> str:
+    """Second pass: rewrite the draft script with 20VC-style energy and delivery."""
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
+    log.info("Refining script with 20VC style (%s, %d chars input)", SCRIPT_MODEL, len(draft))
+    response = client.messages.create(
+        model=SCRIPT_MODEL,
+        max_tokens=8192,
+        system=REFINEMENT_PROMPT,
+        messages=[{"role": "user", "content": draft}],
+    )
+
+    if response.stop_reason == "max_tokens":
+        log.warning("Script refinement hit max_tokens — output may be truncated")
+
+    refined = response.content[0].text
+    log.info("Script refined (%d → %d chars, stop_reason=%s)", len(draft), len(refined), response.stop_reason)
+    return refined
 
 
 def extract_episode_summary(script: str, stories: list[dict]) -> dict:

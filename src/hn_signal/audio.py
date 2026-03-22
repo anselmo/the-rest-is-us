@@ -22,6 +22,13 @@ VOICE_SETTINGS = {
     "MIA": VoiceSettings(stability=0.35, similarity_boost=0.75, style=0.50, use_speaker_boost=True),
 }
 
+# Per-speaker TTS speed multiplier (1.0 = default)
+VOICE_SPEED = {
+    "ALEX": 1.05,   # Slightly up — warm but not draggy
+    "NICK": 1.15,   # Fastest — punchy, energetic delivery
+    "MIA": 1.05,    # Slightly up — measured but not slow
+}
+
 
 def _parse_turns(script: str) -> list[tuple[str, str]]:
     """Parse script into [(speaker, text), ...] turns."""
@@ -67,6 +74,13 @@ def generate_audio(script: str, output_path: Path) -> tuple[Path, int]:
             # Collect all chunks from the iterator
             audio_bytes = b"".join(audio_iter)
             segment = AudioSegment.from_mp3(io.BytesIO(audio_bytes))
+            # Speed up via frame rate manipulation (preserves pitch better than speedup())
+            speed = VOICE_SPEED[speaker]
+            if speed != 1.0:
+                segment = segment._spawn(
+                    segment.raw_data,
+                    overrides={"frame_rate": int(segment.frame_rate * speed)},
+                ).set_frame_rate(segment.frame_rate)
             segments.append(segment)
             log.info("Turn %d/%d (%s): %d chars → %.1fs", i + 1, len(turns), speaker, len(text), len(segment) / 1000)
         except Exception as e:
@@ -82,17 +96,17 @@ def generate_audio(script: str, output_path: Path) -> tuple[Path, int]:
         curr_speaker, curr_text = turns[idx]
 
         if curr_speaker == prev_speaker:
-            gap_ms = 150
+            gap_ms = 100
         elif len(curr_text) < 30:
             # Quick interjection — near-immediate, feels like an interruption
-            gap_ms = 50
+            gap_ms = 0
         elif len(curr_text) < 80:
-            gap_ms = 150
+            gap_ms = 80
         elif prev_speaker == "ALEX" and len(prev_text) > 150:
             # After a longer ALEX setup, give a beat before panelist responds
-            gap_ms = 500
+            gap_ms = 300
         else:
-            gap_ms = 350
+            gap_ms = 200
 
         combined += AudioSegment.silent(duration=gap_ms) + seg
 
