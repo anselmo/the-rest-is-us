@@ -46,26 +46,37 @@ GEMINI_SAMPLE_RATE = 24_000
 
 # Director's notes prepended to the dialogue for Gemini TTS voice styling
 GEMINI_DIRECTOR_NOTES = """\
-Audio direction — this is a real conversation between two people who know each other well:
+DIRECTOR'S NOTES — read the entire transcript before performing.
 
-Kit: Measured and clear, but WARM — she's talking to a friend, not giving a presentation. \
-Laughs when something is absurd. Asks sharp questions with genuine curiosity. When she \
-disagrees, her tone is direct but never cold. Occasionally drops a devastating quiet \
-observation — let those lines land with a slight pause before them.
+VOICES:
+Kit: Clear, warm, measured. A designer who thinks before she speaks. Her default pace is \
+moderate — she speeds up slightly when excited, slows down for emphasis. Her sharp lines \
+("The demo was beautiful. The product is unusable.") should land with a beat of silence \
+before them. Pitch drops on devastating observations. Laughs are quiet and genuine — an \
+amused exhale, not a performance.
 
-Dean: Warm, energetic, conversational. Talks like a smart friend at a dinner party — fast \
-when excited, deliberate when making a point. Laughs easily. Interrupts when he can't \
-help himself. Uses "Look —" and "Here's the thing —" as verbal tics. His warmth and his \
-impatience coexist naturally.
+Dean: Warm, energetic, slightly faster default pace. A venture capitalist who's comfortable \
+with conviction. Speeds up when pattern-matching ("Look — this is exactly what happened \
+with—"). Slows down and drops pitch when naming specific numbers or making predictions. \
+Laughs more openly than Kit. His "Look —" and "Here's the thing —" are verbal tics — \
+deliver them quickly, not dramatically.
 
-Critical performance notes:
-- This is a CONVERSATION, not alternating monologues. They react to each other in real time.
-- When one host asks a question, the other's response should sound like they're actually \
-answering THAT question, not delivering a prepared statement.
-- Laughter should sound genuine and brief — a quick "ha!" or amused exhale, not a performance.
-- Interruptions should feel natural — the interrupter is excited or can't wait, not rude.
-- Energy builds through the episode. Start warm and conversational, end with conviction.
-- Quick reactions ("Right.", "Exactly.", "Hmm.") should be fast and natural, not dramatic.
+PERFORMANCE RULES:
+1. PACING: Most turns are SHORT (1-2 sentences). Deliver them at conversational speed — \
+not radio announcer speed. One-word reactions ("Right.", "Ha!", "Hmm.") should be quick \
+and throwaway, not emphasized.
+2. QUESTIONS: When a host asks a question, pitch should rise naturally. The other host's \
+answer should sound like they're THINKING, not reciting — a slight pause, then the response.
+3. INTERRUPTIONS: Lines that end with "—" are interrupted. Cut them off mid-word if \
+possible. The interrupting host should come in with energy — they couldn't WAIT to respond.
+4. DISCOVERY MOMENTS: When a host says "Wait, really?" or "I did not know that" — these \
+must sound GENUINE. Slight pause before, pitch shift, real surprise in the voice.
+5. ENERGY ARC: Start warm and relaxed. Build energy through the middle. The close should \
+feel like winding down a real conversation — slightly slower, more reflective.
+6. LAUGHTER: Brief and genuine. "Ha!" is one syllable. "Oh come on" is amused, not angry. \
+Never hold a laugh — keep it short and move on.
+7. SILENCE: Don't rush to fill every pause. A half-beat of silence before a sharp \
+observation makes it land harder.
 
 Transcript:
 """

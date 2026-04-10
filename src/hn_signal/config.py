@@ -175,6 +175,7 @@ MAX_FINAL_STORIES = 10
 
 # Models
 SCRIPT_MODEL = "claude-sonnet-4-6"
+BEAT_SHEET_MODEL = "claude-sonnet-4-6"
 SUMMARY_MODEL = "claude-haiku-4-5-20251001"
 
 # Logging

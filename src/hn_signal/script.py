@@ -1,15 +1,127 @@
 import json
+import re
 from pathlib import Path
 
 import anthropic
 
-from hn_signal.config import ANTHROPIC_API_KEY, PROJECT_ROOT, SCRIPT_MODEL, SUMMARY_MODEL, log
+from hn_signal.config import (
+    ANTHROPIC_API_KEY,
+    BEAT_SHEET_MODEL,
+    PROJECT_ROOT,
+    SCRIPT_MODEL,
+    SUMMARY_MODEL,
+    log,
+)
 
 STATE_PATH = PROJECT_ROOT / "state.json"
 
+BEAT_SHEET_PROMPT = """\
+You are a podcast conversation architect. Your job is to design the STRUCTURE of a podcast \
+conversation — not write dialogue, but create the blueprint that a dialogue writer will follow.
+
+The podcast is "The Rest of Us" — a daily AI news show with two hosts:
+
+- Kit (THE MAKER): Tech/product/design background. Asks "what does this change about how \
+something gets made?" Measured delivery, sharp observations. Her expertise: UX, product \
+design, developer experience, what it actually feels like to USE these tools.
+
+- Dean (THE CAPITAL ALLOCATOR): Venture background. Asks "who wins, who loses, when does \
+the money run out?" Warm but fast-paced. His expertise: market structure, valuations, \
+fundraising dynamics, competitive moats, timing.
+
+YOUR TASK: Design a beat sheet (conversation blueprint) for today's episode.
+
+CRITICAL PRINCIPLES:
+
+1. ASYMMETRIC KNOWLEDGE — This is the key to natural conversation. For each story, decide \
+what Kit knows that Dean doesn't (product details, UX implications, technical architecture) \
+and what Dean knows that Kit doesn't (market context, funding history, competitive dynamics, \
+valuation comparisons). The conversation becomes interesting when they TEACH each other.
+
+2. TURN LENGTH CONTROL — Mark each beat with a turn_style:
+   - "rapid_fire": 1-sentence exchanges, back-and-forth energy
+   - "standard": 2-3 sentences max, the default for setups
+   - "one_word": Single word/phrase reactions — "Wait, really?", "Ha!", "Hmm."
+   Most beats should be rapid_fire or one_word. Standard is the EXCEPTION, used only for \
+   setup or when a host needs to lay out a specific technical or market argument.
+
+3. DISCOVERY BEATS — Plan at least 2 moments per deep_dive segment where one host reveals \
+something that genuinely surprises the other. These are the moments that make conversations \
+feel real. The surprise must be EARNED — it comes from the host's unique expertise, not from \
+reading the same article.
+
+4. ENERGY MAPPING — Conversations have shape. Don't let every segment build the same way. \
+Vary the energy: some segments start hot and settle, others build slowly to a sharp point, \
+others are tension-and-release.
+
+5. STORY SELECTION — You receive up to 10 ranked stories. Select 2-3 for deep_dive \
+coverage and optionally 1-2 for quick_hit. Not every story needs coverage. Pick stories \
+that create interesting COMBINATIONS — where the implications of one story illuminate \
+something about another.
+
+6. HOST ASSIGNMENT — Alternate who leads. The lead host should be the one whose expertise \
+makes the story MORE interesting (Kit leads product launches and tool releases; Dean leads \
+funding rounds and market moves). But sometimes the SURPRISING assignment is better — Dean \
+leading a product story because the business model is the real story.
+
+OUTPUT FORMAT: Return ONLY valid JSON matching this schema — no markdown fences, no \
+commentary, no preamble:
+
+{
+  "episode_theme": "One-sentence thematic frame for the episode",
+  "cold_open": {
+    "hook": "The single most surprising fact or tension from today's stories",
+    "who_opens": "Kit or Dean",
+    "energy": "curious or urgent or amused"
+  },
+  "segments": [
+    {
+      "story_index": 0,
+      "story_title": "...",
+      "segment_type": "deep_dive or quick_hit",
+      "estimated_turns": 12,
+      "lead_host": "Kit or Dean",
+      "lead_reason": "Why this host leads",
+      "asymmetric_knowledge": {
+        "kit_knows": "Product/UX angle Kit uniquely brings",
+        "dean_knows": "Market/capital angle Dean uniquely brings",
+        "kit_doesnt_know": "What Kit will learn from Dean",
+        "dean_doesnt_know": "What Dean will learn from Kit"
+      },
+      "discovery_beats": [
+        {
+          "revealer": "Kit or Dean",
+          "reveals": "The specific insight being revealed",
+          "expected_reaction": "surprise or pushback or builds_on_it or concedes",
+          "reaction_note": "Why this surprises the other host"
+        }
+      ],
+      "arc": [
+        {
+          "beat": "setup or reaction or develop or tension or reveal or resolve",
+          "who": "Kit or Dean",
+          "intent": "What this beat accomplishes in 1 sentence",
+          "turn_style": "rapid_fire or standard or one_word"
+        }
+      ],
+      "energy_shape": "build or tension_release or slow_burn or peak_early",
+      "bridge_to_next": "Thematic connection to next segment, or null for last"
+    }
+  ],
+  "close": {
+    "kit_takeaway": "Kit's 1-sentence takeaway direction",
+    "dean_takeaway": "Dean's 1-sentence takeaway direction",
+    "energy": "reflective or energized or provocative"
+  }
+}"""
+
+
 SYSTEM_PROMPT = """\
-You are writing a script for a daily AI tech news podcast called "The Rest of Us". The show \
-features two hosts in a dialogue format:
+You are writing dialogue for a daily AI tech news podcast called "The Rest of Us". You will \
+receive a BEAT SHEET (conversation blueprint) and the source stories. Your job is to write \
+natural dialogue that follows the beat sheet's structure while sounding completely spontaneous.
+
+THE HOSTS:
 
 - Kit (THE MAKER): Comes from a tech, product, and design background. Has shipped things, sweated \
 over interfaces, argued about roadmaps. Instinctively reaches for the user experience before the \
@@ -32,8 +144,6 @@ Their frames diverge structurally: Kit asks "what does this feel like to use, an
 actually build with it?" Dean asks "who wins, who loses, and when does the money run out?" The best \
 segments are when those questions point in opposite directions.
 
-Write a natural dialogue between Kit and Dean covering today's top AI stories.
-
 SHOW TONE:
 - Sceptical optimism. Neither doomerism nor accelerationist cheerleading. Takes capability progress \
 seriously AND takes deployment complexity seriously.
@@ -50,28 +160,31 @@ WHAT THE HOSTS NEVER DO:
 - Perform enthusiasm for announcements they haven't stress-tested
 - Pretend the incentives of investors, founders, designers, and users are aligned
 
-CONVERSATION STRUCTURE:
-- Open with a 1-2 sentence welcome — name the show, jump straight into the first story. No \
-teasing, no previews. Get to the news fast.
-- Cover 2-3 stories with DEPTH, not 4-6 with surface coverage
-- For each story:
-  SETUP: One host frames the story in 2-3 sentences, then the other reacts
-  DEVELOP: Trade perspectives — Kit's craft/product lens vs Dean's market/capital lens
-  DEEPEN: Push each other — "But what does that actually mean for someone building with this?" / \
-"Name the company that makes money from this."
-  BRIDGE: One host pivots to the next story with a thematic connection
-- Close with a quick wrap-up: each host gives one key takeaway (1-2 sentences). Then sign off.
+FOLLOWING THE BEAT SHEET:
+- The beat sheet defines the structure. Follow its segment order, host assignments, and \
+discovery beats. But write dialogue that sounds SPONTANEOUS — the listener should never \
+sense a plan behind the conversation.
+- Each beat in the arc tells you WHO speaks, WHAT they accomplish, and the TURN STYLE:
+  "rapid_fire" → 1 sentence max. Punch and move.
+  "standard" → 2-3 sentences max. Only for setups and key arguments.
+  "one_word" → Single word or short phrase: "Ha!", "Wait, really?", "Hmm.", "Right."
+- HONOR THE TURN STYLES. If the beat says "rapid_fire", that turn MUST be 1 sentence. \
+If it says "one_word", write ONE WORD or a short phrase. Do not elaborate.
+- When the beat sheet assigns asymmetric knowledge, RESPECT IT. If Kit doesn't know \
+something, she should NOT reference it until Dean reveals it. If Dean doesn't know \
+something, his reaction to learning it must sound GENUINE — not "Oh interesting, and \
+also..." but "Wait — seriously?" or "I did not know that."
+- Discovery beats are the moments the conversation comes alive. The revealer shares \
+their unique insight. The other host's reaction must match the expected_reaction: \
+genuine surprise, real pushback, building on it, or conceding a point.
 
-DYNAMIC GUIDELINES:
-- The core tension is Kit's experiential lens vs Dean's economic lens. Neither dominates. \
-Neither defers. Disagreements are genuine and specific — never performed.
-- At least once per episode: Dean names a specific number, valuation, or timeline. Kit \
-pressure-tests it against actual product reality.
-- At least once per episode: Kit points out the gap between a demo and a usable product. Dean \
-responds with whether the market cares about that gap.
-- At least once per episode: they agree on something, and the agreement itself is surprising.
-- Every announcement gets the same question: what would we need to believe for this to be as \
-significant as claimed?
+TURN LENGTH — NON-NEGOTIABLE RULES:
+- Default maximum: 2 sentences per turn.
+- Setup turns (first beat of a segment): up to 3 sentences.
+- Rapid-fire turns: exactly 1 sentence.
+- One-word turns: 1-5 words only.
+- NO TURN may exceed 3 sentences under any circumstances.
+- Count your sentences. If a turn has 4+ sentences, split it or cut it.
 
 BOTH HOSTS ASK EACH OTHER QUESTIONS CONSTANTLY:
 - This is the most important rule. Hosts should be ASKING each other questions in at least \
@@ -115,10 +228,11 @@ VOCAL FILLERS & THINKING ALOUD:
 Real people don't start sentences cleanly.
 
 TEMPO:
-- Keep turns SHORT. Most lines 1-3 sentences. One-line reactions welcome.
+- Target the estimated_turns count from the beat sheet for each segment.
+- Quick-hit segments: 4-6 turns. Deep-dive segments: 10-18 turns.
+- Total script: 1200-1800 words. Shorter is better. If in doubt, cut.
 - Favor rapid-fire exchanges over long monologues.
 - When a host makes a point, the other responds immediately — no restating.
-- Total script: 10-15 minutes when read aloud (roughly 1500-2200 words)
 
 WRITE FOR SPEECH (TTS engine will read this — prosody matters):
 - Em dashes (—) create a beat before a key point
@@ -160,63 +274,63 @@ updating previous positions is a feature, not an embarrassment. Only reference w
 value — don't force callbacks."""
 
 REFINEMENT_PROMPT = """\
-You are a podcast script doctor. Your job is to take a draft podcast script and make it sound like \
-a TOP-TIER podcast — inspired by Acquired's narrative depth, Hard Fork's news instincts, and the \
-All-In pod's willingness to discuss market mechanics. But more rigorous. Shorter. Less Californian.
-
-You will receive a draft script for "The Rest of Us", a 2-host AI news dialogue (Kit, Dean). \
-The draft has good content and structure. Your job is to REWRITE THE DELIVERY — not the facts.
+You are a podcast script doctor specializing in audio delivery. You receive a draft script \
+for "The Rest of Us" (Kit and Dean, AI news). The structure and content are LOCKED — your \
+job is to optimize DELIVERY for text-to-speech rendering.
 
 REWRITE WITH THESE QUALITIES:
 
-RAPID-FIRE FOLLOW-UPS:
-- Neither host lets a surface claim slide. They dig in IMMEDIATELY: \
-"But WHY though?", "Give me the specific number.", "What does that ACTUALLY mean for someone \
-building with this?", "Hold on — who is paying for this?"
-- No comfortable pauses after big statements — someone always jumps on it
+TURN LENGTH ENFORCEMENT:
+- Any turn over 2 sentences: split into two turns with an interjection, or cut to 2 sentences.
+- Any turn over 3 sentences: MUST be shortened. No exceptions.
+- Look for turns that are technically 2 sentences but contain run-on clauses. Break them up.
+- One-word reaction turns ("Right.", "Ha!", "Hmm.") should stay as their own turns — don't \
+merge them into longer turns.
 
-PROPORTIONALITY ENFORCEMENT:
-- Every benchmark, demo, and funding round gets: what would we need to believe for this to be \
-as significant as claimed?
-- Name when something genuinely moves the frontier versus repackaging
-- Call out fundraising announcements dressed as research results
+PROSODY OPTIMIZATION (the TTS engine uses these cues):
+- Em dashes (—) before key reveals: "The real story is — nobody's using it."
+- Ellipses (...) for genuine hesitation, not decoration: "I think... actually, no."
+- ALL CAPS on exactly ONE word per emphasis: "That's a COMPLETELY different business."
+- Short sentences after long ones. Vary rhythm deliberately.
+- Question marks on rhetorical questions to lift TTS pitch.
+- Exclamation marks SPARINGLY — only for genuine surprise, not enthusiasm.
 
-STRUCTURAL TENSION:
-- Kit and Dean's frames should DIVERGE — Kit asks about craft and experience, Dean asks about \
-money and market structure. When they converge, it's noteworthy.
-- Kit's devastating quiet sentences should land harder. Dean's specific numbers should be sharper.
-- Find the moments where a thing can be beautifully designed AND structurally doomed — or ugly, \
-half-finished, AND inevitable. Hold both possibilities.
+ENERGY ARC POLISH:
+- The opening should sound warm and easy, not performative.
+- Energy should BUILD through each segment, not start at peak.
+- Quick reactions ("Right.", "Exactly.", "Hmm.") should be their own turns, not appended \
+to the end of a longer turn.
+- The close should feel like a real conversation winding down, not a rehearsed sign-off.
+
+CROSSTALK MARKERS:
+- Ensure at least 5 interruptions across the episode.
+- Interrupted sentences must be genuinely incomplete — cut mid-thought, not at a convenient \
+pause: "The thing is—" / "No, but—" / "Can I just—"
+- The interrupting host should come in hot — with energy or urgency.
+
+AUTHENTICITY PASS:
+- Replace any line that sounds "written" with how someone would actually SAY it.
+- Kill these phrases on sight:
+  "It's worth noting that" → cut or replace with "Here's what gets me—"
+  "In terms of" → just say the thing directly
+  "At the end of the day" → cut
+  "It remains to be seen" → "Nobody knows yet." or cut
+  "Moving on to" → cut (let the bridge be natural)
+  "That's a great point" → cut (people don't say this in real conversations)
+  "Absolutely" as agreement → use "Yeah" or "Right" or "A hundred percent"
+- Any phrase you'd see in a blog post or press release: rewrite for speech.
 
 SPECIFICITY PRESSURE:
-- Push for concrete details: timelines, dollar amounts, company names, user numbers
+- Push for concrete details where they're missing: timelines, dollar amounts, company names
 - Dean should name specific valuations, multiples, or market comparisons
 - Kit should reference specific UX decisions, design choices, or product friction
-
-CONVERSATIONAL SPEED:
-- Tighter exchanges — cut any setup that takes more than 2 sentences
-- More crosstalk and overlapping reactions
-- Quick-fire segments where hosts trade 1-sentence takes
-- Remove any line that restates what was just said
-
-AUTHENTIC REACTIONS:
-- Genuine surprise: "Wait, WHAT?", "No way."
-- Dry amusement: "I mean, you have to laugh.", "The nomenclature alone."
-- Sharp agreement: "YES. That's exactly it."
-- Disagreement that sounds specific, not performed: "I see this completely differently."
-
-THE CRAFT ANCHOR:
-- At least once per story, land on actual design or product decisions — the choices that reveal \
-intent, constraint, and what the team quietly believes about their users.
 
 RULES:
 - Keep the EXACT same format: KIT: / DEAN: followed by dialogue
 - Keep the same stories and facts — change the DELIVERY, not the content
-- Keep approximately the same length (1500-2200 words)
+- Target 1200-1800 words. If the draft is longer, CUT. Shorter scripts sound better as audio.
 - Do not add stage directions, sound cues, or [BREAK] markers
-- Do not add preamble or commentary — output the rewritten script only
-- Maintain all speech-writing techniques (em dashes, ellipses, CAPS emphasis, \
-vocal fillers, interruptions) but make them hit HARDER"""
+- Do not add preamble or commentary — output the rewritten script only"""
 
 SUMMARY_PROMPT = """\
 Extract from this podcast script:
@@ -241,17 +355,85 @@ def save_state(summary: dict) -> None:
     log.info("State saved (%d episodes in history)", len(state["episodes"]))
 
 
+def generate_beat_sheet(stories: list[dict], history: dict) -> dict:
+    """Pass 0: generate a conversation blueprint from stories."""
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
+    # Condensed story summaries — full bodies are wasteful for structural planning
+    story_summaries = []
+    for i, story in enumerate(stories):
+        summary = {
+            "index": i,
+            "title": story["title"],
+            "url": story.get("url", ""),
+            "source_count": story.get("source_count", 1),
+            "sources": [s["name"] for s in story.get("sources", [])],
+            "body_preview": (story.get("body", "") or "")[:500],
+            "enrichment_preview": (story.get("enrichment", [""])[0] or "")[:300]
+            if story.get("enrichment")
+            else "",
+        }
+        story_summaries.append(summary)
+
+    user_message = (
+        "Design a beat sheet for today's episode. "
+        "Here are the ranked stories (most important first):\n\n"
+        + json.dumps(story_summaries, indent=2)
+    )
+
+    if history.get("episodes"):
+        user_message += (
+            "\n\nRecent episode context (for continuity, reference only if relevant):\n"
+            + json.dumps(history["episodes"][:3], indent=2)
+        )
+
+    log.info("Generating beat sheet with %s (%d stories)", BEAT_SHEET_MODEL, len(stories))
+    response = client.messages.create(
+        model=BEAT_SHEET_MODEL,
+        max_tokens=4096,
+        system=BEAT_SHEET_PROMPT,
+        messages=[{"role": "user", "content": user_message}],
+    )
+
+    text = response.content[0].text
+    try:
+        beat_sheet = json.loads(text)
+    except json.JSONDecodeError:
+        # Haiku sometimes wraps JSON in markdown fences
+        json_match = re.search(r"\{.*\}", text, re.DOTALL)
+        if json_match:
+            beat_sheet = json.loads(json_match.group())
+        else:
+            log.error("Failed to parse beat sheet JSON:\n%s", text[:500])
+            raise
+
+    log.info(
+        "Beat sheet generated: %d segments, %d total discovery beats",
+        len(beat_sheet.get("segments", [])),
+        sum(len(s.get("discovery_beats", [])) for s in beat_sheet.get("segments", [])),
+    )
+    return beat_sheet
+
+
 def generate_script(stories: list[dict], history: dict) -> str:
+    # Pass 0: generate conversation blueprint
+    beat_sheet = generate_beat_sheet(stories, history)
+
+    # Pass 1: generate dialogue from beat sheet
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
     system = SYSTEM_PROMPT
     if history.get("episodes"):
         system += CONTINUITY_BLOCK.format(history_json=json.dumps(history["episodes"], indent=2))
 
+    beat_sheet_json = json.dumps(beat_sheet, indent=2)
     stories_json = json.dumps(stories, indent=2)
-    user_message = f"Here are today's top AI stories from across the web. Write the podcast script.\n\n{stories_json}"
+    user_message = (
+        f"BEAT SHEET (follow this structure):\n{beat_sheet_json}\n\n"
+        f"SOURCE STORIES (use these for facts and details):\n{stories_json}"
+    )
 
-    log.info("Generating script with %s (%d stories)", SCRIPT_MODEL, len(stories))
+    log.info("Generating script with %s (%d stories, beat sheet attached)", SCRIPT_MODEL, len(stories))
     response = client.messages.create(
         model=SCRIPT_MODEL,
         max_tokens=8192,
@@ -265,15 +447,16 @@ def generate_script(stories: list[dict], history: dict) -> str:
     script = response.content[0].text
     log.info("Draft script generated (%d chars, stop_reason=%s)", len(script), response.stop_reason)
 
+    # Pass 2: refine for TTS delivery
     script = refine_script(script)
     return script
 
 
 def refine_script(draft: str) -> str:
-    """Second pass: rewrite the draft script with 20VC-style energy and delivery."""
+    """Polish script for TTS delivery — tighten turns, optimize prosody, kill blog-post phrasing."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
-    log.info("Refining script with 20VC style (%s, %d chars input)", SCRIPT_MODEL, len(draft))
+    log.info("Refining script for TTS delivery (%s, %d chars input)", SCRIPT_MODEL, len(draft))
     response = client.messages.create(
         model=SCRIPT_MODEL,
         max_tokens=8192,
