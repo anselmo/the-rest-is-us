@@ -1,6 +1,6 @@
-# HN Signal
+# The Rest of Us
 
-Automated daily AI podcast pipeline. Aggregates top AI stories from multiple sources (Hacker News, arXiv, lab blogs, tech journalism), cross-references and ranks them, generates a 3-person panel discussion script via Claude, renders audio via ElevenLabs TTS, and publishes as a GitHub Release with RSS feed.
+Automated daily AI podcast pipeline. Aggregates top AI stories from multiple sources (Hacker News, arXiv, lab blogs, tech journalism), cross-references and ranks them, generates a 2-host dialogue script via Claude, renders audio via Gemini TTS, and publishes as a GitHub Release with RSS feed.
 
 ## Quick Start
 
@@ -29,8 +29,8 @@ uv run python -m hn_signal.sources.arstechnica
 |-------|--------|-------------|----------|
 | 1. Collect | `src/hn_signal/collect.py` | Aggregate stories from all sources, deduplicate, rank by cross-source appearance + score | Multiple (see Sources) |
 | 2. Enrich | `src/hn_signal/enrich.py` | Add web search context per story | Tavily (optional) |
-| 3. Script | `src/hn_signal/script.py` | Generate 3-host panel discussion + episode summary | Claude Sonnet + Haiku |
-| 4. Audio | `src/hn_signal/audio.py` | TTS for each dialogue turn, concatenate into MP3 | ElevenLabs |
+| 3. Script | `src/hn_signal/script.py` | Generate 2-host dialogue + episode summary | Claude Sonnet + Haiku |
+| 4. Audio | `src/hn_signal/audio.py` | TTS via Gemini (single-pass 2-speaker) or ElevenLabs fallback | Gemini TTS / ElevenLabs |
 | 5. Publish | `src/hn_signal/publish.py` | Create GitHub Release, upload MP3, update RSS, commit & push | GitHub API |
 
 ## Sources
@@ -65,9 +65,11 @@ Stories are deduplicated by URL (normalized) and fuzzy title matching, then rank
 
 Configured in `.env` (see `.env.example`):
 
-**Required:** `ANTHROPIC_API_KEY`, `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID_ALEX`, `ELEVENLABS_VOICE_ID_NICK`, `ELEVENLABS_VOICE_ID_MIA`, `GITHUB_TOKEN`, `GITHUB_REPO`, `PODCAST_BASE_URL`
+**Required:** `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `GITHUB_TOKEN`, `GITHUB_REPO`, `PODCAST_BASE_URL`
 
-**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`
+**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `TTS_BACKEND` (default: `gemini`), `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`, `GEMINI_VOICE_KIT`, `GEMINI_VOICE_DEAN`
+
+**ElevenLabs fallback:** Set `TTS_BACKEND=elevenlabs` and provide `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID_KIT`, `ELEVENLABS_VOICE_ID_DEAN`
 
 ## Key Constants
 
@@ -76,14 +78,14 @@ Configured in `.env` (see `.env.example`):
 - Max final stories after ranking: `config.py:MAX_FINAL_STORIES` (10)
 - Script model: `claude-sonnet-4-6` (max 8,192 tokens)
 - Summary model: `claude-haiku-4-5-20251001`
-- TTS model: `eleven_multilingual_v2`, format `mp3_44100_128`
+- TTS: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker), fallback ElevenLabs
+- Gemini voices: Kit → Zephyr (bright, clear), Dean → Gacrux (gravelly, experienced)
 - Max 30 RSS episodes
 
 ## Hosts
 
-- **Alex Green** — Moderator: frames stories, directs conversation
-- **Nick Salt** — Bold Analyst: conviction-driven takes and predictions
-- **Mia Thorn** — Skeptical Pragmatist: reality-checks claims, tests business models
+- **Kit** — The Maker: tech/product/design background, asks "what does this change about how something gets made?", measured delivery
+- **Dean** — The Capital Allocator: venture background, asks "who wins, who loses, when does the money run out?", warm but fast-paced
 
 ## Output
 

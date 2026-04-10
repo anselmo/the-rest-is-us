@@ -5,14 +5,17 @@ description = "Automated daily AI podcast from Hacker News stories"
 requires-python = ">=3.11"
 dependencies = [
     "anthropic",
-    "elevenlabs",
     "feedparser",
+    "google-genai",
     "httpx",
     "beautifulsoup4",
     "pydub",
     "tavily-python",
     "python-dotenv",
 ]
+
+[project.optional-dependencies]
+elevenlabs = ["elevenlabs"]
 
 [project.scripts]
 hn-signal = "hn_signal.main:main"

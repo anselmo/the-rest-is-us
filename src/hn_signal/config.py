@@ -21,24 +21,33 @@ def _require(key: str) -> str:
 
 # Required keys
 ANTHROPIC_API_KEY = _require("ANTHROPIC_API_KEY")
-ELEVENLABS_API_KEY = _require("ELEVENLABS_API_KEY")
-ELEVENLABS_VOICE_ID_ALEX = _require("ELEVENLABS_VOICE_ID_ALEX")
-ELEVENLABS_VOICE_ID_NICK = _require("ELEVENLABS_VOICE_ID_NICK")
-ELEVENLABS_VOICE_ID_MIA = _require("ELEVENLABS_VOICE_ID_MIA")
 GITHUB_TOKEN = _require("GITHUB_TOKEN")
 GITHUB_REPO = _require("GITHUB_REPO")
 PODCAST_BASE_URL = _require("PODCAST_BASE_URL")
+
+# TTS backend: "gemini" (default) or "elevenlabs"
+TTS_BACKEND = os.getenv("TTS_BACKEND", "gemini").strip()
+
+# Gemini TTS (required when TTS_BACKEND=gemini)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip() or None
+GEMINI_VOICE_KIT = os.getenv("GEMINI_VOICE_KIT", "Zephyr")      # bright, clear, energetic
+GEMINI_VOICE_DEAN = os.getenv("GEMINI_VOICE_DEAN", "Orus")      # firm, decisive, commanding — clearly male
+
+# ElevenLabs (required when TTS_BACKEND=elevenlabs)
+ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "").strip() or None
+ELEVENLABS_VOICE_ID_KIT = os.getenv("ELEVENLABS_VOICE_ID_KIT", "").strip() or None
+ELEVENLABS_VOICE_ID_DEAN = os.getenv("ELEVENLABS_VOICE_ID_DEAN", "").strip() or None
 
 # Optional keys
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "").strip() or None
 
 # Podcast metadata
-PODCAST_TITLE = os.getenv("PODCAST_TITLE", "HN Signal")
+PODCAST_TITLE = os.getenv("PODCAST_TITLE", "The Rest of Us")
 PODCAST_DESCRIPTION = os.getenv(
     "PODCAST_DESCRIPTION",
-    "Daily AI stories from across the web, discussed in plain language.",
+    "AI tech news for the technically literate. Two hosts, sceptical optimism, no cheerleading.",
 )
-PODCAST_AUTHOR = os.getenv("PODCAST_AUTHOR", "HN Signal")
+PODCAST_AUTHOR = os.getenv("PODCAST_AUTHOR", "The Rest of Us")
 
 # AI keyword list for filtering HN stories
 AI_KEYWORDS = [
