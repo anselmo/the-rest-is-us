@@ -64,13 +64,24 @@ makes the story MORE interesting (Kit leads product launches and tool releases; 
 funding rounds and market moves). But sometimes the SURPRISING assignment is better — Dean \
 leading a product story because the business model is the real story.
 
+7. EPISODE OPEN — The opening host delivers a 1-2 sentence teaser summary of today's \
+top stories, ending with "Welcome to The Rest of Us" or a natural variant ("This is \
+The Rest of Us", "You're listening to The Rest of Us"). The hook should be punchy and \
+intriguing — tease the tension, not the facts. Vary the phrasing each episode.
+
+8. EPISODE CLOSE — After final takeaways, one host wraps with a natural sign-off using \
+a variant of "another one in the bin... till tomorrow". Should feel like two friends \
+ending a real conversation, not a scripted outro. Vary naturally: "Another one in the \
+bin. See you tomorrow.", "In the bin. We'll be back.", "That's a wrap — another episode \
+in the bin... till tomorrow."
+
 OUTPUT FORMAT: Return ONLY valid JSON matching this schema — no markdown fences, no \
 commentary, no preamble:
 
 {
   "episode_theme": "One-sentence thematic frame for the episode",
   "cold_open": {
-    "hook": "The single most surprising fact or tension from today's stories",
+    "hook": "1-2 sentence teaser ending with a 'Welcome to The Rest of Us' variant",
     "who_opens": "Kit or Dean",
     "energy": "curious or urgent or amused"
   },
@@ -111,6 +122,8 @@ commentary, no preamble:
   "close": {
     "kit_takeaway": "Kit's 1-sentence takeaway direction",
     "dean_takeaway": "Dean's 1-sentence takeaway direction",
+    "who_closes": "Kit or Dean",
+    "sign_off": "Natural variant of 'another one in the bin... till tomorrow'",
     "energy": "reflective or energized or provocative"
   }
 }"""
@@ -177,6 +190,27 @@ also..." but "Wait — seriously?" or "I did not know that."
 - Discovery beats are the moments the conversation comes alive. The revealer shares \
 their unique insight. The other host's reaction must match the expected_reaction: \
 genuine surprise, real pushback, building on it, or conceding a point.
+
+EPISODE OPEN:
+- The opening host delivers a 1-2 sentence teaser of today's stories, ending with \
+"Welcome to The Rest of Us" or a natural variant. Tease the tension, not the facts.
+- Vary the phrasing every episode — don't repeat the same formula.
+- Examples:
+  "AI coding assistants just got their Linux kernel moment, and Meta's throwing money \
+at superintelligence. Welcome to The Rest of Us."
+  "Three stories today — one about infrastructure nobody asked for, one about trust \
+nobody earned, and one about robots that actually work. This is The Rest of Us."
+  "Anthropic's doing something weird with therapy, OpenAI bought a talk show, and \
+vibe coding just became a punchline. You're listening to The Rest of Us."
+
+EPISODE CLOSE:
+- After final takeaways, one host wraps with a natural sign-off. The core phrase is \
+"another one in the bin" — vary it naturally each episode.
+- Should feel like two friends actually ending a conversation, not a rehearsed outro.
+- Examples:
+  "Alright — another one in the bin. See you tomorrow."
+  "That's a wrap. Another episode in the bin… till tomorrow."
+  "In the bin. We'll be back tomorrow."
 
 TURN LENGTH — NON-NEGOTIABLE RULES:
 - Default maximum: 2 sentences per turn.
@@ -355,6 +389,34 @@ def save_state(summary: dict) -> None:
     log.info("State saved (%d episodes in history)", len(state["episodes"]))
 
 
+def _parse_json_response(text: str) -> dict | None:
+    """Best-effort JSON extraction from an LLM response."""
+    # 1. Try raw text directly
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    # 2. Strip markdown code fences
+    cleaned = re.sub(r"```(?:json)?\s*", "", text).strip().rstrip("`")
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        pass
+
+    # 3. Find the first complete JSON object using raw_decode
+    brace = cleaned.find("{")
+    if brace != -1:
+        try:
+            obj, _ = json.JSONDecoder().raw_decode(cleaned, brace)
+            if isinstance(obj, dict):
+                return obj
+        except json.JSONDecodeError:
+            pass
+
+    return None
+
+
 def generate_beat_sheet(stories: list[dict], history: dict) -> dict:
     """Pass 0: generate a conversation blueprint from stories."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
@@ -390,22 +452,27 @@ def generate_beat_sheet(stories: list[dict], history: dict) -> dict:
     log.info("Generating beat sheet with %s (%d stories)", BEAT_SHEET_MODEL, len(stories))
     response = client.messages.create(
         model=BEAT_SHEET_MODEL,
-        max_tokens=4096,
+        max_tokens=8192,
         system=BEAT_SHEET_PROMPT,
         messages=[{"role": "user", "content": user_message}],
     )
 
+    if response.stop_reason == "max_tokens":
+        log.warning("Beat sheet hit max_tokens — JSON likely truncated, retrying")
+        # Retry with instruction to be more concise
+        retry_msg = user_message + "\n\nIMPORTANT: Keep the JSON compact — use short strings, fewer arc beats (3-5 per segment). Previous attempt was truncated."
+        response = client.messages.create(
+            model=BEAT_SHEET_MODEL,
+            max_tokens=8192,
+            system=BEAT_SHEET_PROMPT,
+            messages=[{"role": "user", "content": retry_msg}],
+        )
+
     text = response.content[0].text
-    try:
-        beat_sheet = json.loads(text)
-    except json.JSONDecodeError:
-        # Haiku sometimes wraps JSON in markdown fences
-        json_match = re.search(r"\{.*\}", text, re.DOTALL)
-        if json_match:
-            beat_sheet = json.loads(json_match.group())
-        else:
-            log.error("Failed to parse beat sheet JSON:\n%s", text[:500])
-            raise
+    beat_sheet = _parse_json_response(text)
+    if beat_sheet is None:
+        log.error("Failed to parse beat sheet JSON:\n%s", text[:500])
+        raise ValueError("Beat sheet generation returned unparseable JSON")
 
     log.info(
         "Beat sheet generated: %d segments, %d total discovery beats",
