@@ -47,19 +47,19 @@ makes the story MORE interesting (Kit leads product launches and tool releases; 
 funding rounds and market moves). But sometimes the SURPRISING assignment is better — Dean \
 leading a product story because the business model is the real story.
 
-7. EPISODE OPEN — The opening host leads with the date and episode number, then a 1-2 \
-sentence teaser, ending with "Welcome to The Rest of Us" or a variant. The number and \
-date should feel natural — spoken conversationally, not announced. The episode number, \
-date, and time of day are provided in the user message. If a time of day is provided \
+7. EPISODE OPEN — The opening host leads with the date, then a 1-2 \
+sentence teaser, ending with "Welcome to The Rest of Us" or a variant. The \
+date should feel natural — spoken conversationally, not announced. The \
+date and time of day are provided in the user message. If a time of day is provided \
 (e.g., "morning"), weave a natural greeting into the opening — it should feel spontaneous, \
 not formulaic. Do NOT use a standalone "Good morning!" — integrate it into the flow. \
-Example (morning): "Good morning. April eleventh, episode forty-seven. Linux just told \
+Example (morning): "Good morning. April eleventh. Linux just told \
 AI coders exactly how to behave, and Meta's throwing money at superintelligence. Welcome \
 to The Rest of Us." \
-Example (morning, alternate): "Morning. Episode twelve, March twenty-second. Three \
+Example (morning, alternate): "Morning. March twenty-second. Three \
 stories today — one about infrastructure nobody asked for and one about robots that \
 actually work. This is The Rest of Us." \
-Example (no explicit greeting): "May first, episode sixty. Anthropic's doing something \
+Example (no explicit greeting): "May first. Anthropic's doing something \
 weird with therapy. You're listening to The Rest of Us."
 
 8. EPISODE CLOSE — After final takeaways, one host wraps with a natural sign-off using \
@@ -74,7 +74,7 @@ commentary, no preamble:
 {
   "episode_theme": "One-sentence thematic frame for the episode",
   "cold_open": {
-    "hook": "Date + episode number + 1-2 sentence teaser ending with show name variant",
+    "hook": "Date + 1-2 sentence teaser ending with show name variant",
     "who_opens": "Kit or Dean",
     "energy": "curious or urgent or amused"
   },
@@ -185,19 +185,19 @@ their unique insight. The other host's reaction must match the expected_reaction
 genuine surprise, real pushback, building on it, or conceding a point.
 
 EPISODE OPEN:
-- The opening host leads with the date and episode number (provided in the EPISODE INFO \
+- The opening host leads with the date (provided in the EPISODE INFO \
 section), then a 1-2 sentence teaser, ending with "Welcome to The Rest of Us" or a variant.
-- Write the episode number and date as WORDS, not digits — for natural TTS rendering.
+- Write the date as WORDS, not digits — for natural TTS rendering.
 - If a time of day is provided in EPISODE INFO, weave a natural greeting into the opening. \
 It should feel like how a real host greets listeners — casual, not performative. Vary \
 placement each episode: sometimes it opens, sometimes after the date, sometimes implicit.
 - Examples:
-  "Good morning. April eleventh, episode forty-seven. Linux just told AI coders exactly \
+  "Good morning. April eleventh. Linux just told AI coders exactly \
 how to behave, and Meta's throwing money at superintelligence. Welcome to The Rest of Us."
-  "Episode twelve. March twenty-second — morning, everyone. Three stories today — one \
+  "March twenty-second — morning, everyone. Three stories today — one \
 about infrastructure nobody asked for, one about trust nobody earned, and one about \
 robots that actually work. This is The Rest of Us."
-  "May first, episode sixty. Anthropic's doing something weird with therapy, OpenAI bought \
+  "May first. Anthropic's doing something weird with therapy, OpenAI bought \
 a talk show, and vibe coding just became a punchline. You're listening to The Rest of Us."
 
 EPISODE CLOSE:
@@ -208,6 +208,12 @@ EPISODE CLOSE:
   "Alright — another one in the bin. See you tomorrow."
   "That's a wrap. Another episode in the bin… till tomorrow."
   "In the bin. We'll be back tomorrow."
+
+STORY BREAKS:
+- Place [BREAK] on its own line between story segments — after the last turn of one story \
+and before the first turn of the next.
+- Do NOT place [BREAK] before the first story or after the last story.
+- Do NOT place [BREAK] within a story segment — only between segments.
 
 TURN LENGTH — NON-NEGOTIABLE RULES:
 - Default maximum: 2 sentences per turn.
@@ -291,7 +297,7 @@ SOURCE ATTRIBUTION:
 
 FORMAT:
 - Format each line as KIT: or DEAN: followed by the dialogue
-- Do not use stage directions, sound cues, or [BREAK] markers
+- Do not use stage directions or sound cues. The ONLY structural marker allowed is [BREAK] between story segments.
 - Output the script only — no preamble, no commentary"""
 
 CONTINUITY_BLOCK = """
@@ -301,10 +307,9 @@ specific positions on stories, any predictions made, and whether they agreed or 
 {history_json}
 
 When relevant, reference previous episodes naturally:
-- Check predictions: "Dean, you called this three weeks ago — episode thirty-two."
-- Update positions: "I've changed my mind since episode forty — here's why."
+- Check predictions: "Dean, you called this three weeks ago."
+- Update positions: "I've changed my mind since last time — here's why."
 - Note patterns: "This is the third week in a row we've seen this."
-- Reference by episode number when naming a specific past episode.
 Publicly updating previous positions is a feature, not an embarrassment. \
 Only reference when it adds value — don't force callbacks."""
 
@@ -364,7 +369,8 @@ RULES:
 - Keep the EXACT same format: KIT: / DEAN: followed by dialogue
 - Keep the same stories and facts — change the DELIVERY, not the content
 - Target 1200-1800 words. If the draft is longer, CUT. Shorter scripts sound better as audio.
-- Do not add stage directions, sound cues, or [BREAK] markers
+- Do not add stage directions or sound cues. Preserve existing [BREAK] markers.
+- Preserve all [BREAK] markers exactly as they appear. Do not move, add, or remove them.
 - Do not add preamble or commentary — output the rewritten script only"""
 
 SUMMARY_PROMPT = """\

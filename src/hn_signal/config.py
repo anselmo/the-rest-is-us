@@ -42,6 +42,13 @@ INTRO_CROSSFADE_MS = 2000    # crossfade duration from intro into dialogue
 OUTRO_FADE_IN_MS = 3000      # how early outro music begins before dialogue ends
 MUSIC_VOLUME_DB = -6          # volume reduction for music relative to dialogue
 
+# Breaker clips (story separators)
+BREAKER_DIR = PROJECT_ROOT / "assets"
+BREAKER_PATTERN = "breaker-*.mp3"
+BREAKER_CROSSFADE_MS = 1500
+MAX_BREAKERS_PER_EPISODE = 3
+BREAKER_VOLUME_DB = -3
+
 # ElevenLabs (required when TTS_BACKEND=elevenlabs)
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "").strip() or None
 ELEVENLABS_VOICE_ID_KIT = os.getenv("ELEVENLABS_VOICE_ID_KIT", "").strip() or None
