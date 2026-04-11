@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.therestofus.podcast</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/arodriguesdasilva/dev/the-rest-of-us/scripts/run-daily.sh</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>6</integer>
+        <key>Minute</key>
+        <integer>35</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/arodriguesdasilva/dev/the-rest-of-us/logs/launchd-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/arodriguesdasilva/dev/the-rest-of-us/logs/launchd-stderr.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/arodriguesdasilva/dev/the-rest-of-us</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/arodriguesdasilva</string>
+    </dict>
+</dict>
+</plist>

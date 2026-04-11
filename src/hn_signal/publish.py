@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import format_datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 import httpx
@@ -13,6 +14,8 @@ from hn_signal.config import (
     PODCAST_DESCRIPTION,
     PODCAST_TITLE,
     PROJECT_ROOT,
+    PUBLISH_HOUR,
+    PUBLISH_TIMEZONE,
     log,
 )
 
@@ -125,7 +128,8 @@ def _add_episode(rss: ET.Element, date: str, mp3_url: str, mp3_size: int, durati
     ET.SubElement(item, "enclosure", url=mp3_url, length=str(mp3_size), type="audio/mpeg")
     ET.SubElement(item, "{%s}duration" % ITUNES_NS).text = str(duration_seconds)
 
-    pub_date = datetime.strptime(date, "%Y-%m-%d").replace(hour=6, tzinfo=timezone.utc)
+    tz = ZoneInfo(PUBLISH_TIMEZONE)
+    pub_date = datetime.strptime(date, "%Y-%m-%d").replace(hour=PUBLISH_HOUR, tzinfo=tz)
     ET.SubElement(item, "pubDate").text = format_datetime(pub_date)
     ET.SubElement(item, "guid", isPermaLink="true").text = mp3_url
 

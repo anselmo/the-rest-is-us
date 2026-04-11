@@ -57,6 +57,21 @@ PODCAST_DESCRIPTION = os.getenv(
 )
 PODCAST_AUTHOR = os.getenv("PODCAST_AUTHOR", "The Rest of Us")
 
+# Schedule / greeting
+PUBLISH_HOUR = int(os.getenv("PUBLISH_HOUR", "7"))
+PUBLISH_TIMEZONE = os.getenv("PUBLISH_TIMEZONE", "Europe/London").strip()
+
+
+def time_of_day_label(hour: int) -> str:
+    """Map hour (0-23) to greeting-friendly label."""
+    if 5 <= hour < 12:
+        return "morning"
+    elif 12 <= hour < 18:
+        return "afternoon"
+    else:
+        return "evening"
+
+
 # AI keyword list for filtering HN stories
 AI_KEYWORDS = [
     # Core terms

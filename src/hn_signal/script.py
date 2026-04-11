@@ -5,9 +5,11 @@ import anthropic
 from hn_signal.config import (
     ANTHROPIC_API_KEY,
     BEAT_SHEET_MODEL,
+    PUBLISH_HOUR,
     SCRIPT_MODEL,
     SUMMARY_MODEL,
     log,
+    time_of_day_label,
 )
 from hn_signal.models import EpisodeSummary, PipelineState, Story, StoryTake
 from hn_signal.prompts import (
@@ -27,7 +29,7 @@ from hn_signal.state import (
 )
 
 
-def generate_beat_sheet(stories: list[Story], history: PipelineState, episode_number: int, date_spoken: str) -> dict:
+def generate_beat_sheet(stories: list[Story], history: PipelineState, episode_number: int, date_spoken: str, time_of_day: str = "") -> dict:
     """Pass 0: generate a conversation blueprint from stories."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
@@ -51,8 +53,12 @@ def generate_beat_sheet(stories: list[Story], history: PipelineState, episode_nu
     user_message = (
         f"Design a beat sheet for today's episode. "
         f"This is Episode {episode_number} (say \"episode {ep_word}\"), "
-        f"airing {date_spoken}.\n\n"
-        f"Here are the ranked stories (most important first):\n\n"
+        f"airing {date_spoken}."
+    )
+    if time_of_day:
+        user_message += f" This is a {time_of_day} episode."
+    user_message += (
+        "\n\nHere are the ranked stories (most important first):\n\n"
         + json.dumps(story_summaries, indent=2)
     )
 
@@ -102,9 +108,10 @@ def generate_script(stories: list[Story], history: PipelineState) -> str:
     today = date.today().isoformat()
     date_spoken = _format_date_spoken(today)
     ep_word = _number_to_words(episode_number)
+    time_of_day = time_of_day_label(PUBLISH_HOUR)
 
     # Pass 0: generate conversation blueprint
-    beat_sheet = generate_beat_sheet(stories, history, episode_number, date_spoken)
+    beat_sheet = generate_beat_sheet(stories, history, episode_number, date_spoken, time_of_day)
 
     # Pass 1: generate dialogue from beat sheet
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
@@ -118,7 +125,8 @@ def generate_script(stories: list[Story], history: PipelineState) -> str:
     beat_sheet_json = json.dumps(beat_sheet, indent=2)
     stories_json = json.dumps([s.to_dict() for s in stories], indent=2)
     user_message = (
-        f"EPISODE INFO: Episode {episode_number} (say \"episode {ep_word}\"), {date_spoken}.\n\n"
+        f"EPISODE INFO: Episode {episode_number} (say \"episode {ep_word}\"), {date_spoken}."
+        f" Time of day: {time_of_day}.\n\n"
         f"BEAT SHEET (follow this structure):\n{beat_sheet_json}\n\n"
         f"SOURCE STORIES (use these for facts and details):\n{stories_json}"
     )

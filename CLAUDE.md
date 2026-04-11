@@ -72,7 +72,7 @@ Configured in `.env` (see `.env.example`):
 
 **Required:** `ANTHROPIC_API_KEY`, `GITHUB_TOKEN`, `GITHUB_REPO`, `PODCAST_BASE_URL`
 
-**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `TTS_BACKEND` (default: `gemini`), `GEMINI_API_KEY` (required when `TTS_BACKEND=gemini`), `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`, `GEMINI_VOICE_KIT`, `GEMINI_VOICE_DEAN`
+**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `TTS_BACKEND` (default: `gemini`), `GEMINI_API_KEY` (required when `TTS_BACKEND=gemini`), `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`, `GEMINI_VOICE_KIT`, `GEMINI_VOICE_DEAN`, `PUBLISH_HOUR` (default: `7`), `PUBLISH_TIMEZONE` (default: `Europe/London`)
 
 **ElevenLabs fallback:** Set `TTS_BACKEND=elevenlabs` and provide `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID_KIT`, `ELEVENLABS_VOICE_ID_DEAN`
 
@@ -98,6 +98,31 @@ Configured in `.env` (see `.env.example`):
 - `episodes/YYYY-MM-DD.mp3` — generated audio
 - `state.json` — last 7 episode summaries (for continuity)
 - `feed.xml` — podcast RSS feed
+
+## Scheduling
+
+Daily automated runs via macOS launchd. The pipeline starts at 6:35am London time so episodes are ready by 7am.
+
+```bash
+make install-schedule    # install & load the launchd job
+make uninstall-schedule  # remove it
+launchctl list com.therestofus.podcast  # check job status
+```
+
+- **Wrapper script**: `scripts/run-daily.sh` — runs `make run`, retries once after 10 minutes on failure, sends macOS notifications (Glass on success, Basso on failure)
+- **Logs**: `logs/YYYY-MM-DD.log` (pipeline output), `logs/launchd-stdout.log` / `logs/launchd-stderr.log` (launchd output)
+- **Timezone**: `StartCalendarInterval` uses system local time — assumes machine is set to Europe/London
+- **Sleep handling**: launchd runs missed jobs on wake, so the episode will still generate if the machine was asleep at 6:35am
+
+## Distribution via GitHub Pages
+
+The podcast RSS feed is served via GitHub Pages from `feed.xml` in the repo root.
+
+### Setup (one-time, manual):
+1. Make the repo public: GitHub > Settings > General > Danger Zone > Change visibility
+2. Enable Pages: GitHub > Settings > Pages > Source: Deploy from branch `main` / `/ (root)`
+3. Set `PODCAST_BASE_URL` in `.env` to `https://<owner>.github.io/<repo>`
+4. Subscribe in Apple Podcasts: Library > Add a Show by URL > `https://<owner>.github.io/<repo>/feed.xml`
 
 ## Gotchas
 

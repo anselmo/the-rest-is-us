@@ -90,6 +90,24 @@ clean: ## Remove generated episodes and cached state
 	rm -rf episodes/*.mp3
 	@echo "Cleaned episodes/"
 
+# ── Scheduling ──────────────────────────────────────────────────────
+PLIST_SRC := com.therestofus.podcast.plist
+PLIST_DST := $(HOME)/Library/LaunchAgents/com.therestofus.podcast.plist
+
+.PHONY: install-schedule
+install-schedule: ## Install daily 6:35am launchd job (episode ready by 7am)
+	@cp $(PLIST_SRC) $(PLIST_DST)
+	@chmod 644 $(PLIST_DST)
+	@launchctl bootout gui/$$(id -u) $(PLIST_DST) 2>/dev/null || true
+	@launchctl bootstrap gui/$$(id -u) $(PLIST_DST)
+	@echo "Installed and loaded $(PLIST_DST)"
+
+.PHONY: uninstall-schedule
+uninstall-schedule: ## Remove daily launchd job
+	@launchctl bootout gui/$$(id -u) $(PLIST_DST) 2>/dev/null || true
+	@rm -f $(PLIST_DST)
+	@echo "Unloaded and removed $(PLIST_DST)"
+
 # ── Help ─────────────────────────────────────────────────────────────
 .PHONY: help
 help: ## Show this help message

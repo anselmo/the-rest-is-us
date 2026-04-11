@@ -49,10 +49,18 @@ leading a product story because the business model is the real story.
 
 7. EPISODE OPEN — The opening host leads with the date and episode number, then a 1-2 \
 sentence teaser, ending with "Welcome to The Rest of Us" or a variant. The number and \
-date should feel natural — spoken conversationally, not announced. The episode number \
-and date are provided in the user message. \
-Example: "April eleventh, episode forty-seven. Linux just told AI coders exactly how \
-to behave, and Meta's throwing money at superintelligence. Welcome to The Rest of Us."
+date should feel natural — spoken conversationally, not announced. The episode number, \
+date, and time of day are provided in the user message. If a time of day is provided \
+(e.g., "morning"), weave a natural greeting into the opening — it should feel spontaneous, \
+not formulaic. Do NOT use a standalone "Good morning!" — integrate it into the flow. \
+Example (morning): "Good morning. April eleventh, episode forty-seven. Linux just told \
+AI coders exactly how to behave, and Meta's throwing money at superintelligence. Welcome \
+to The Rest of Us." \
+Example (morning, alternate): "Morning. Episode twelve, March twenty-second. Three \
+stories today — one about infrastructure nobody asked for and one about robots that \
+actually work. This is The Rest of Us." \
+Example (no explicit greeting): "May first, episode sixty. Anthropic's doing something \
+weird with therapy. You're listening to The Rest of Us."
 
 8. EPISODE CLOSE — After final takeaways, one host wraps with a natural sign-off using \
 a variant of "another one in the bin... till tomorrow". Should feel like two friends \
@@ -180,13 +188,15 @@ EPISODE OPEN:
 - The opening host leads with the date and episode number (provided in the EPISODE INFO \
 section), then a 1-2 sentence teaser, ending with "Welcome to The Rest of Us" or a variant.
 - Write the episode number and date as WORDS, not digits — for natural TTS rendering.
-- The number and date should feel conversational, not announced. Vary each episode.
+- If a time of day is provided in EPISODE INFO, weave a natural greeting into the opening. \
+It should feel like how a real host greets listeners — casual, not performative. Vary \
+placement each episode: sometimes it opens, sometimes after the date, sometimes implicit.
 - Examples:
-  "April eleventh, episode forty-seven. Linux just told AI coders exactly how to behave, \
-and Meta's throwing money at superintelligence. Welcome to The Rest of Us."
-  "Episode twelve. March twenty-second. Three stories today — one about infrastructure \
-nobody asked for, one about trust nobody earned, and one about robots that actually work. \
-This is The Rest of Us."
+  "Good morning. April eleventh, episode forty-seven. Linux just told AI coders exactly \
+how to behave, and Meta's throwing money at superintelligence. Welcome to The Rest of Us."
+  "Episode twelve. March twenty-second — morning, everyone. Three stories today — one \
+about infrastructure nobody asked for, one about trust nobody earned, and one about \
+robots that actually work. This is The Rest of Us."
   "May first, episode sixty. Anthropic's doing something weird with therapy, OpenAI bought \
 a talk show, and vibe coding just became a punchline. You're listening to The Rest of Us."
 
