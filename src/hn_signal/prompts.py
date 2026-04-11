@@ -59,6 +59,12 @@ to The Rest of Us." \
 Example (morning, alternate): "Morning. March twenty-second. Three \
 stories today — one about infrastructure nobody asked for and one about robots that \
 actually work. This is The Rest of Us." \
+Example (afternoon): "Good afternoon. July fourteenth. Google just \
+open-sourced something nobody expected, and a startup is suing OpenAI. \
+Welcome to The Rest of Us." \
+Example (evening): "Evening. September third. The EU just dropped new \
+AI rules, and nobody in Silicon Valley is sleeping tonight. This is \
+The Rest of Us." \
 Example (no explicit greeting): "May first. Anthropic's doing something \
 weird with therapy. You're listening to The Rest of Us."
 
@@ -199,6 +205,10 @@ about infrastructure nobody asked for, one about trust nobody earned, and one ab
 robots that actually work. This is The Rest of Us."
   "May first. Anthropic's doing something weird with therapy, OpenAI bought \
 a talk show, and vibe coding just became a punchline. You're listening to The Rest of Us."
+  "Good afternoon. July fourteenth. Google just open-sourced something \
+nobody expected, and a startup is suing OpenAI. Welcome to The Rest of Us."
+  "Evening. September third. The EU just dropped new AI rules, and \
+nobody in Silicon Valley is sleeping tonight. This is The Rest of Us."
 
 EPISODE CLOSE:
 - After final takeaways, one host wraps with a natural sign-off. The core phrase is \

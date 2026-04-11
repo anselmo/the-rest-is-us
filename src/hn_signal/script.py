@@ -5,7 +5,7 @@ import anthropic
 from hn_signal.config import (
     ANTHROPIC_API_KEY,
     BEAT_SHEET_MODEL,
-    PUBLISH_HOUR,
+    PUBLISH_TIMEZONE,
     SCRIPT_MODEL,
     SUMMARY_MODEL,
     log,
@@ -97,11 +97,13 @@ def generate_beat_sheet(stories: list[Story], history: PipelineState, date_spoke
 
 
 def generate_script(stories: list[Story], history: PipelineState) -> str:
-    from datetime import date
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
 
-    today = date.today().isoformat()
+    now = datetime.now(ZoneInfo(PUBLISH_TIMEZONE))
+    today = now.date().isoformat()
     date_spoken = _format_date_spoken(today)
-    time_of_day = time_of_day_label(PUBLISH_HOUR)
+    time_of_day = time_of_day_label(now.hour)
 
     # Pass 0: generate conversation blueprint
     beat_sheet = generate_beat_sheet(stories, history, date_spoken, time_of_day)
