@@ -1,5 +1,5 @@
 docs/
-episodes/
+episodes/*-script.txt
 logs/
 .env
 __pycache__/

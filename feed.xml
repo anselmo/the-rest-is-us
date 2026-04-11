@@ -11,19 +11,5 @@
     <itunes:category text="Technology">
       <itunes:category text="Tech News" />
     </itunes:category>
-    <item>
-      <title>The Rest of Us — #2 — 2026-04-11</title>
-      <enclosure url="https://github.com/anselmo/the-rest-is-us/releases/download/episode-2026-04-11/2026-04-11-v9.mp3" length="8406038" type="audio/mpeg" />
-      <itunes:duration>350</itunes:duration>
-      <pubDate>Sat, 11 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://github.com/anselmo/the-rest-is-us/releases/download/episode-2026-04-11/2026-04-11-v9.mp3</guid>
-    </item>
-    <item>
-      <title>The Rest of Us — #1 — 2026-04-11</title>
-      <enclosure url="https://github.com/anselmo/the-rest-is-us/releases/download/episode-2026-04-11/2026-04-11-v8.mp3" length="9143318" type="audio/mpeg" />
-      <itunes:duration>380</itunes:duration>
-      <pubDate>Sat, 11 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://github.com/anselmo/the-rest-is-us/releases/download/episode-2026-04-11/2026-04-11-v8.mp3</guid>
-    </item>
   </channel>
 </rss>
