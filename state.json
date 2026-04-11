@@ -1,4 +1,40 @@
 {
-  "episode_count": 0,
-  "episodes": []
+  "episode_count": 1,
+  "episodes": [
+    {
+      "date": "2026-04-11",
+      "episode_number": 1,
+      "stories": [
+        {
+          "title": "OpenAI acquires Cirrus Labs",
+          "kit_take": "This is agent infrastructure acquisition \u2014 OpenAI needs Cirrus's proven ephemeral execution environments and sandboxed primitives that took 9 years to perfect, not talent or tooling.",
+          "dean_take": "OpenAI is assembling the full coding stack quietly, piece by piece, and Cirrus is the latest brick in that infrastructure.",
+          "agreed": true
+        },
+        {
+          "title": "Linux kernel adds AI coding assistant documentation",
+          "kit_take": "The kernel's policy is the most pragmatic AI acceptance framework written this year \u2014 tool as assistant, human as author, with zero exceptions and full accountability.",
+          "dean_take": "This conservative codebase just wrote the most pragmatic AI policy, and when Linux documents something, enterprise open source policies will cite it within a year.",
+          "agreed": true
+        },
+        {
+          "title": "OpenAI Academy launches training guides",
+          "kit_take": "This is enterprise land-and-expand strategy, and the guides are thin SEO content, but the stranger signal is brands telling copywriters to avoid em dashes and metaphors to not look AI-written.",
+          "dean_take": "OpenAI is late to this training layer that Microsoft and Google have been executing for months \u2014 free content to create organizational dependency then convert at company level.",
+          "agreed": false
+        }
+      ],
+      "predictions": [
+        "Dean: Enterprise open source policies will be citing Linux's AI documentation within a year"
+      ],
+      "key_themes": [
+        "AI infrastructure assembly by OpenAI",
+        "Human accountability vs. tool capability gap",
+        "AI reshaping human writing habits and stylistic choices",
+        "Pragmatic vs. restrictive approaches to AI integration",
+        "Enterprise land-and-expand as OpenAI strategy"
+      ],
+      "story_to_watch": "OpenAI's quiet assembly of the full autonomous coding stack and how Linux kernel standards become the template for enterprise AI adoption"
+    }
+  ]
 }
