@@ -18,35 +18,40 @@ GEMINI_MODEL = "gemini-2.5-flash-preview-tts"
 GEMINI_DIRECTOR_NOTES = """\
 DIRECTOR'S NOTES — read the entire transcript before performing.
 
+SCENE: Two hosts across a small table in a warm studio. Morning light, coffee nearby. \
+The energy is NPR meets a late-night tech conversation between old friends who genuinely \
+enjoy arguing. You should hear the grin in the audio — the soft palate stays raised to \
+keep the tone bright, sunny, and explicitly inviting.
+
 VOICES:
 Kit: Clear, warm, measured. A designer who thinks before she speaks. Her default pace is \
 moderate — she speeds up slightly when excited, slows down for emphasis. Her sharp lines \
-("The demo was beautiful. The product is unusable.") should land with a beat of silence \
-before them. Pitch drops on devastating observations. Laughs are quiet and genuine — an \
-amused exhale, not a performance.
+should land with a beat of silence before them. Pitch drops on devastating observations. \
+Laughs are quiet and genuine — an amused exhale, not a performance.
 
 Dean: Warm, energetic, slightly faster default pace. A venture capitalist who's comfortable \
-with conviction. Speeds up when pattern-matching ("Look — this is exactly what happened \
-with—"). Slows down and drops pitch when naming specific numbers or making predictions. \
-Laughs more openly than Kit. His "Look —" and "Here's the thing —" are verbal tics — \
-deliver them quickly, not dramatically.
+with conviction. Speeds up when pattern-matching. Slows down and drops pitch when naming \
+specific numbers or making predictions. Laughs more openly than Kit. His "Look —" and \
+"Here's the thing —" are verbal tics — deliver them quickly, not dramatically.
 
 PERFORMANCE RULES:
-1. PACING: Most turns are SHORT (1-2 sentences). Deliver them at conversational speed — \
-not radio announcer speed. One-word reactions ("Right.", "Ha!", "Hmm.") should be quick \
-and throwaway, not emphasized.
-2. QUESTIONS: When a host asks a question, pitch should rise naturally. The other host's \
-answer should sound like they're THINKING, not reciting — a slight pause, then the response.
-3. INTERRUPTIONS: Lines that end with "—" are interrupted. Cut them off mid-word if \
-possible. The interrupting host should come in with energy — they couldn't WAIT to respond.
-4. DISCOVERY MOMENTS: When a host says "Wait, really?" or "I did not know that" — these \
-must sound GENUINE. Slight pause before, pitch shift, real surprise in the voice.
-5. ENERGY ARC: Start warm and relaxed. Build energy through the middle. The close should \
-feel like winding down a real conversation — slightly slower, more reflective.
-6. LAUGHTER: Brief and genuine. "Ha!" is one syllable. "Oh come on" is amused, not angry. \
-Never hold a laugh — keep it short and move on.
-7. SILENCE: Don't rush to fill every pause. A half-beat of silence before a sharp \
-observation makes it land harder.
+1. PACING: Keep it BRISK. Most turns are SHORT (1-2 sentences). Deliver at natural \
+conversational speed — two friends who are excited about what they're discussing, not \
+radio announcers. Gaps between turns should be MINIMAL — hosts jump in quickly. \
+One-word reactions ("Right.", "Ha!", "Hmm.") are throwaway — quick, almost overlapping.
+2. QUESTIONS: Pitch rises naturally. Answers come without long pauses — the host was \
+already thinking while the other was talking.
+3. INTERRUPTIONS: Lines ending with "—" are cut off. The interrupting host comes in \
+with energy and SPEED — they couldn't wait.
+4. DISCOVERY MOMENTS: "Wait, really?" must sound GENUINE but quick — surprise is a \
+reflex, not a dramatic beat.
+5. ENERGY ARC: Start warm. Build momentum through the middle — the pace should \
+ACCELERATE as hosts get excited. Wind down only at the very end.
+6. LAUGHTER: Brief. "Ha!" is one syllable. Never hold a laugh.
+7. MOMENTUM: Don't let energy drop between turns. This conversation has FORWARD MOTION.
+
+REACTIONS ARE INVOLUNTARY: "Wait — seriously?" escapes before the speaker can stop it. \
+"Oh. THAT's interesting." is a real-time cognitive shift. Quick and reflexive, not performed.
 
 Transcript:
 """

@@ -375,11 +375,25 @@ SPECIFICITY PRESSURE:
 - Dean should name specific valuations, multiples, or market comparisons
 - Kit should reference specific UX decisions, design choices, or product friction
 
+TTS MARKUP TAGS — INSERT THESE FOR THE TTS ENGINE:
+The TTS engine (Gemini) understands inline bracket tags. Insert them BEFORE the text they \
+modify. Use them sparingly — only at moments where the emotional shift matters:
+- [surprised] — before genuine surprise reactions: "[surprised] Wait — seriously?"
+- [excited] — before energetic reveals or when a host builds momentum
+- [thoughtful] — before measured, analytical observations
+- [laughing] — before lines delivered with genuine amusement
+- [amused] — before wry or dry humor (lighter than laughing)
+- [speaking quickly] — before rapid-fire technical explanations or excited pattern-matching
+- [speaking slowly] — before deliberate, emphatic points
+Do NOT use [pause] or [short pause] tags — let the punctuation handle pacing. \
+Do NOT tag every turn — most turns need no tag. Target 8-12 tags per episode, placed at \
+the moments with the strongest emotional shifts.
+
 RULES:
 - Keep the EXACT same format: KIT: / DEAN: followed by dialogue
 - Keep the same stories and facts — change the DELIVERY, not the content
 - Target 1200-1800 words. If the draft is longer, CUT. Shorter scripts sound better as audio.
-- Do not add stage directions or sound cues. Preserve existing [BREAK] markers.
+- Do not add stage directions or sound cues (except the TTS markup tags above). Preserve existing [BREAK] markers.
 - Preserve all [BREAK] markers exactly as they appear. Do not move, add, or remove them.
 - Do not add preamble or commentary — output the rewritten script only"""
 
