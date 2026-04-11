@@ -91,10 +91,7 @@ def _upload_to_github(mp3_path: Path, tag: str) -> str:
 
 def _create_feed() -> ET.Element:
     """Create a new RSS feed with channel metadata."""
-    rss = ET.Element("rss", {
-        "version": "2.0",
-        "xmlns:itunes": ITUNES_NS,
-    })
+    rss = ET.Element("rss", {"version": "2.0"})
     channel = ET.SubElement(rss, "channel")
 
     ET.SubElement(channel, "title").text = PODCAST_TITLE
