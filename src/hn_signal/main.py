@@ -9,7 +9,7 @@ EPISODES_DIR = PROJECT_ROOT / "episodes"
 def main() -> None:
     from hn_signal.collect import collect_stories
     from hn_signal.enrich import enrich_stories
-    from hn_signal.script import extract_episode_summary, generate_script, load_state, save_state
+    from hn_signal.script import extract_episode_summary, generate_script, load_state, next_episode_number, save_state
     from hn_signal.audio import generate_audio
     from hn_signal.publish import publish_episode
 
@@ -27,6 +27,8 @@ def main() -> None:
 
     # Stage 3: Script
     history = load_state()
+    episode_number = next_episode_number()
+    log.info("Generating episode #%d", episode_number)
     script = generate_script(stories, history)
     summary = extract_episode_summary(script, stories)
 
@@ -34,12 +36,19 @@ def main() -> None:
     version = 1
     while (EPISODES_DIR / f"{today}-v{version}.mp3").exists():
         version += 1
+
+    # Save script for re-generation (make audio)
+    script_path = EPISODES_DIR / f"{today}-v{version}-script.txt"
+    EPISODES_DIR.mkdir(parents=True, exist_ok=True)
+    script_path.write_text(script)
+    log.info("Script saved: %s", script_path)
+
     mp3_path = EPISODES_DIR / f"{today}-v{version}.mp3"
     mp3_path, duration = generate_audio(script, mp3_path)
 
     # Stage 5: Publish
     try:
-        url = publish_episode(mp3_path, today, duration)
+        url = publish_episode(mp3_path, today, duration, episode_number)
     except Exception as e:
         log.error("Publish failed: %s", e)
         log.error("Local MP3 preserved at: %s", mp3_path)

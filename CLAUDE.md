@@ -12,6 +12,11 @@ brew install ffmpeg          # required by pydub for audio export
 # Run full pipeline (all 5 stages)
 uv run hn-signal
 
+# Or use Make targets (run `make help` for all targets)
+make run              # full pipeline
+make collect          # stage 1 only
+make check-env        # verify .env is set up
+
 # Test story collection only (free, no API costs)
 uv run python -m hn_signal.collect
 
@@ -29,7 +34,7 @@ uv run python -m hn_signal.sources.arstechnica
 |-------|--------|-------------|----------|
 | 1. Collect | `src/hn_signal/collect.py` | Aggregate stories from all sources, deduplicate, rank by cross-source appearance + score | Multiple (see Sources) |
 | 2. Enrich | `src/hn_signal/enrich.py` | Add web search context per story | Tavily (optional) |
-| 3. Script | `src/hn_signal/script.py` | Generate 2-host dialogue + episode summary | Claude Sonnet + Haiku |
+| 3. Script | `src/hn_signal/script.py` | 3-pass pipeline: beat sheet → dialogue → TTS refinement, then summary extraction | Claude Sonnet (×3) + Haiku |
 | 4. Audio | `src/hn_signal/audio.py` | TTS via Gemini (single-pass 2-speaker) or ElevenLabs fallback | Gemini TTS / ElevenLabs |
 | 5. Publish | `src/hn_signal/publish.py` | Create GitHub Release, upload MP3, update RSS, commit & push | GitHub API |
 
@@ -65,9 +70,9 @@ Stories are deduplicated by URL (normalized) and fuzzy title matching, then rank
 
 Configured in `.env` (see `.env.example`):
 
-**Required:** `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `GITHUB_TOKEN`, `GITHUB_REPO`, `PODCAST_BASE_URL`
+**Required:** `ANTHROPIC_API_KEY`, `GITHUB_TOKEN`, `GITHUB_REPO`, `PODCAST_BASE_URL`
 
-**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `TTS_BACKEND` (default: `gemini`), `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`, `GEMINI_VOICE_KIT`, `GEMINI_VOICE_DEAN`
+**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `TTS_BACKEND` (default: `gemini`), `GEMINI_API_KEY` (required when `TTS_BACKEND=gemini`), `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`, `GEMINI_VOICE_KIT`, `GEMINI_VOICE_DEAN`
 
 **ElevenLabs fallback:** Set `TTS_BACKEND=elevenlabs` and provide `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID_KIT`, `ELEVENLABS_VOICE_ID_DEAN`
 
@@ -76,10 +81,11 @@ Configured in `.env` (see `.env.example`):
 - AI keyword filter list: `config.py:AI_KEYWORDS`
 - RSS feed URLs: `config.py:ARXIV_FEEDS`, `LAB_BLOG_FEEDS`, `VENTUREBEAT_AI_FEED`, `ARSTECHNICA_AI_FEED`
 - Max final stories after ranking: `config.py:MAX_FINAL_STORIES` (10)
-- Script model: `claude-sonnet-4-6` (max 8,192 tokens)
+- Script model: `claude-sonnet-4-6` (max 8,192 tokens) — used for beat sheet, dialogue, and TTS refinement passes
+- Beat sheet model: `claude-sonnet-4-6`
 - Summary model: `claude-haiku-4-5-20251001`
 - TTS: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker), fallback ElevenLabs
-- Gemini voices: Kit → Zephyr (bright, clear), Dean → Gacrux (gravelly, experienced)
+- Gemini voices: Kit → Zephyr (bright, clear, energetic), Dean → Orus (firm, decisive, commanding)
 - Max 30 RSS episodes
 
 ## Hosts
@@ -92,3 +98,11 @@ Configured in `.env` (see `.env.example`):
 - `episodes/YYYY-MM-DD.mp3` — generated audio
 - `state.json` — last 7 episode summaries (for continuity)
 - `feed.xml` — podcast RSS feed
+
+## Gotchas
+
+- `ffmpeg` must be installed at runtime (pydub needs it for audio export), not just at install time
+- `config.py` loads `.env` at **module import time** — the `.env` file must exist before importing any `hn_signal` module
+- Script generation uses `max_tokens=8192`; if the model hits this limit, the dialogue is silently truncated (logged as a warning)
+- No automated tests exist — validate changes by running individual stages (`make collect`, etc.)
+- `.env.example` comments may lag behind `config.py` defaults (e.g., voice names) — trust `config.py` as source of truth

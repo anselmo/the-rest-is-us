@@ -1,7 +1,7 @@
 [project]
-name = "hn-ai-podcast"
+name = "the-rest-of-us"
 version = "0.1.0"
-description = "Automated daily AI podcast from Hacker News stories"
+description = "Automated daily AI tech news podcast — two hosts, sceptical optimism, no cheerleading"
 requires-python = ">=3.11"
 dependencies = [
     "anthropic",

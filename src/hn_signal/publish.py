@@ -114,11 +114,14 @@ def _load_feed() -> ET.Element:
     return _create_feed()
 
 
-def _add_episode(rss: ET.Element, date: str, mp3_url: str, mp3_size: int, duration_seconds: int) -> None:
+def _add_episode(rss: ET.Element, date: str, mp3_url: str, mp3_size: int, duration_seconds: int, episode_number: int | None = None) -> None:
     channel = rss.find("channel")
     item = ET.Element("item")
 
-    ET.SubElement(item, "title").text = f"{PODCAST_TITLE} — {date}"
+    if episode_number:
+        ET.SubElement(item, "title").text = f"{PODCAST_TITLE} — #{episode_number} — {date}"
+    else:
+        ET.SubElement(item, "title").text = f"{PODCAST_TITLE} — {date}"
     ET.SubElement(item, "enclosure", url=mp3_url, length=str(mp3_size), type="audio/mpeg")
     ET.SubElement(item, "{%s}duration" % ITUNES_NS).text = str(duration_seconds)
 
@@ -171,13 +174,13 @@ def _commit_and_push() -> None:
         ) from e
 
 
-def publish_episode(mp3_path: Path, date: str, duration_seconds: int) -> str:
+def publish_episode(mp3_path: Path, date: str, duration_seconds: int, episode_number: int | None = None) -> str:
     tag = f"episode-{date}"
     mp3_url = _upload_to_github(mp3_path, tag)
     mp3_size = mp3_path.stat().st_size
 
     rss = _load_feed()
-    _add_episode(rss, date, mp3_url, mp3_size, duration_seconds)
+    _add_episode(rss, date, mp3_url, mp3_size, duration_seconds, episode_number)
     _save_feed(rss)
     _commit_and_push()
 

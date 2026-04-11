@@ -32,6 +32,14 @@ TTS_BACKEND = os.getenv("TTS_BACKEND", "gemini").strip()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip() or None
 GEMINI_VOICE_KIT = os.getenv("GEMINI_VOICE_KIT", "Zephyr")      # bright, clear, energetic
 GEMINI_VOICE_DEAN = os.getenv("GEMINI_VOICE_DEAN", "Orus")      # firm, decisive, commanding — clearly male
+GEMINI_SAMPLE_RATE = 24_000
+
+# Intro/outro music
+INTRO_MUSIC_PATH = PROJECT_ROOT / "assets" / "intro.mp3"
+OUTRO_MUSIC_PATH = PROJECT_ROOT / "assets" / "outro.mp3"
+INTRO_CROSSFADE_MS = 2000    # crossfade duration from intro into dialogue
+OUTRO_FADE_IN_MS = 3000      # how early outro music begins before dialogue ends
+MUSIC_VOLUME_DB = -6          # volume reduction for music relative to dialogue
 
 # ElevenLabs (required when TTS_BACKEND=elevenlabs)
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "").strip() or None

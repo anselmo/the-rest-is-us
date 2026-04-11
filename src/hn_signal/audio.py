@@ -11,8 +11,14 @@ from hn_signal.config import (
     ELEVENLABS_VOICE_ID_DEAN,
     ELEVENLABS_VOICE_ID_KIT,
     GEMINI_API_KEY,
+    GEMINI_SAMPLE_RATE,
     GEMINI_VOICE_DEAN,
     GEMINI_VOICE_KIT,
+    INTRO_CROSSFADE_MS,
+    INTRO_MUSIC_PATH,
+    MUSIC_VOLUME_DB,
+    OUTRO_FADE_IN_MS,
+    OUTRO_MUSIC_PATH,
     TTS_BACKEND,
     log,
 )
@@ -37,12 +43,25 @@ def _parse_turns(script: str) -> list[tuple[str, str]]:
     return turns
 
 
+def _find_cold_open_end(turns: list[tuple[str, str]]) -> int:
+    """Find the turn index where the cold open ends (after the 'Rest of Us' mention)."""
+    for i, (_speaker, text) in enumerate(turns):
+        if "rest of us" in text.lower():
+            return i + 1
+    # Fallback: assume first 2 turns are the cold open
+    return min(2, len(turns))
+
+
+def _turns_to_script(turns: list[tuple[str, str]]) -> str:
+    """Convert a list of (speaker, text) turns back to script format."""
+    return "\n".join(f"{speaker}: {text}" for speaker, text in turns)
+
+
 # ---------------------------------------------------------------------------
 # Gemini TTS backend (single-pass 2-speaker generation)
 # ---------------------------------------------------------------------------
 
 GEMINI_MODEL = "gemini-2.5-flash-preview-tts"
-GEMINI_SAMPLE_RATE = 24_000
 
 # Director's notes prepended to the dialogue for Gemini TTS voice styling
 GEMINI_DIRECTOR_NOTES = """\
@@ -82,8 +101,8 @@ Transcript:
 """
 
 
-def _generate_audio_gemini(script: str, output_path: Path) -> tuple[Path, int]:
-    """Generate audio using Gemini 2.5 Flash TTS with 2-speaker single-pass."""
+def _generate_audio_gemini(script: str) -> AudioSegment:
+    """Generate dialogue audio using Gemini 2.5 Flash TTS with 2-speaker single-pass."""
     from google import genai
     from google.genai import types
 
@@ -149,29 +168,26 @@ def _generate_audio_gemini(script: str, output_path: Path) -> tuple[Path, int]:
     audio_data = response.candidates[0].content.parts[0].inline_data.data
     duration_seconds = len(audio_data) // (GEMINI_SAMPLE_RATE * 2)
 
-    # Save as WAV then export to MP3
-    wav_tmp = output_path.with_suffix(".wav")
-    with wave.open(str(wav_tmp), "wb") as wf:
+    # Convert raw PCM to AudioSegment via temporary WAV
+    wav_buf = io.BytesIO()
+    with wave.open(wav_buf, "wb") as wf:
         wf.setnchannels(1)
         wf.setsampwidth(2)
         wf.setframerate(GEMINI_SAMPLE_RATE)
         wf.writeframes(audio_data)
+    wav_buf.seek(0)
+    segment = AudioSegment.from_wav(wav_buf)
 
-    segment = AudioSegment.from_wav(str(wav_tmp))
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    segment.export(str(output_path), format="mp3", bitrate="192k")
-    wav_tmp.unlink()
-
-    log.info("Audio exported: %s (%d seconds)", output_path, duration_seconds)
-    return output_path, duration_seconds
+    log.info("Gemini TTS generated: %d seconds", duration_seconds)
+    return segment
 
 
 # ---------------------------------------------------------------------------
 # ElevenLabs TTS backend (per-turn generation, kept as fallback)
 # ---------------------------------------------------------------------------
 
-def _generate_audio_elevenlabs(script: str, output_path: Path) -> tuple[Path, int]:
-    """Generate audio using ElevenLabs TTS with per-turn generation."""
+def _generate_audio_elevenlabs(script: str) -> AudioSegment:
+    """Generate dialogue audio using ElevenLabs TTS with per-turn generation."""
     from elevenlabs import ElevenLabs, VoiceSettings
 
     if not ELEVENLABS_API_KEY:
@@ -233,12 +249,40 @@ def _generate_audio_elevenlabs(script: str, output_path: Path) -> tuple[Path, in
 
         combined += AudioSegment.silent(duration=gap_ms) + seg
 
-    duration_seconds = len(combined) // 1000
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    combined.export(str(output_path), format="mp3", bitrate="128k")
-    log.info("Audio exported: %s (%d seconds)", output_path, duration_seconds)
+    log.info("ElevenLabs TTS generated: %d seconds", len(combined) // 1000)
+    return combined
 
-    return output_path, duration_seconds
+
+# ---------------------------------------------------------------------------
+# Intro/outro music
+# ---------------------------------------------------------------------------
+
+def _add_music(cold_open: AudioSegment, conversation: AudioSegment) -> AudioSegment:
+    """Assemble final audio: cold_open + intro music + conversation + outro music."""
+    # Intro music sits between cold open and conversation
+    if INTRO_MUSIC_PATH.exists():
+        intro = AudioSegment.from_mp3(str(INTRO_MUSIC_PATH)) + MUSIC_VOLUME_DB
+        result = cold_open.append(intro, crossfade=INTRO_CROSSFADE_MS)
+        result = result.append(conversation, crossfade=INTRO_CROSSFADE_MS)
+        log.info("Intro music added between cold open and conversation (%.1fs, %dms crossfade)", len(intro) / 1000, INTRO_CROSSFADE_MS)
+    else:
+        log.warning("No intro music found at %s, skipping", INTRO_MUSIC_PATH)
+        result = cold_open + conversation
+
+    # Outro music fades in under the final lines
+    if OUTRO_MUSIC_PATH.exists():
+        outro = AudioSegment.from_mp3(str(OUTRO_MUSIC_PATH)) + MUSIC_VOLUME_DB
+        fade_ms = min(OUTRO_FADE_IN_MS, len(outro), len(result))
+        outro = outro.fade_in(fade_ms)
+        overlap_pos = len(result) - fade_ms
+        tail_ms = max(0, len(outro) - fade_ms)
+        result = result + AudioSegment.silent(duration=tail_ms)
+        result = result.overlay(outro, position=overlap_pos)
+        log.info("Outro music added (%.1fs, %dms fade-in under dialogue)", len(outro) / 1000, fade_ms)
+    else:
+        log.warning("No outro music found at %s, skipping", OUTRO_MUSIC_PATH)
+
+    return result
 
 
 # ---------------------------------------------------------------------------
@@ -246,9 +290,27 @@ def _generate_audio_elevenlabs(script: str, output_path: Path) -> tuple[Path, in
 # ---------------------------------------------------------------------------
 
 def generate_audio(script: str, output_path: Path) -> tuple[Path, int]:
+    turns = _parse_turns(script)
+    split = _find_cold_open_end(turns)
+    cold_open_script = _turns_to_script(turns[:split])
+    conversation_script = _turns_to_script(turns[split:])
+    log.info("Script split: %d cold-open turns, %d conversation turns", split, len(turns) - split)
+
     if TTS_BACKEND == "gemini":
-        return _generate_audio_gemini(script, output_path)
+        cold_open = _generate_audio_gemini(cold_open_script)
+        conversation = _generate_audio_gemini(conversation_script)
+        bitrate = "192k"
     elif TTS_BACKEND == "elevenlabs":
-        return _generate_audio_elevenlabs(script, output_path)
+        cold_open = _generate_audio_elevenlabs(cold_open_script)
+        conversation = _generate_audio_elevenlabs(conversation_script)
+        bitrate = "128k"
     else:
         raise ValueError(f"Unknown TTS_BACKEND: {TTS_BACKEND!r} (expected 'gemini' or 'elevenlabs')")
+
+    final = _add_music(cold_open, conversation)
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    final.export(str(output_path), format="mp3", bitrate=bitrate)
+    duration_seconds = len(final) // 1000
+    log.info("Audio exported: %s (%d seconds)", output_path, duration_seconds)
+    return output_path, duration_seconds

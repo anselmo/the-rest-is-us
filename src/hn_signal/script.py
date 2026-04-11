@@ -64,10 +64,12 @@ makes the story MORE interesting (Kit leads product launches and tool releases; 
 funding rounds and market moves). But sometimes the SURPRISING assignment is better — Dean \
 leading a product story because the business model is the real story.
 
-7. EPISODE OPEN — The opening host delivers a 1-2 sentence teaser summary of today's \
-top stories, ending with "Welcome to The Rest of Us" or a natural variant ("This is \
-The Rest of Us", "You're listening to The Rest of Us"). The hook should be punchy and \
-intriguing — tease the tension, not the facts. Vary the phrasing each episode.
+7. EPISODE OPEN — The opening host leads with the date and episode number, then a 1-2 \
+sentence teaser, ending with "Welcome to The Rest of Us" or a variant. The number and \
+date should feel natural — spoken conversationally, not announced. The episode number \
+and date are provided in the user message. \
+Example: "April eleventh, episode forty-seven. Linux just told AI coders exactly how \
+to behave, and Meta's throwing money at superintelligence. Welcome to The Rest of Us."
 
 8. EPISODE CLOSE — After final takeaways, one host wraps with a natural sign-off using \
 a variant of "another one in the bin... till tomorrow". Should feel like two friends \
@@ -81,7 +83,7 @@ commentary, no preamble:
 {
   "episode_theme": "One-sentence thematic frame for the episode",
   "cold_open": {
-    "hook": "1-2 sentence teaser ending with a 'Welcome to The Rest of Us' variant",
+    "hook": "Date + episode number + 1-2 sentence teaser ending with show name variant",
     "who_opens": "Kit or Dean",
     "energy": "curious or urgent or amused"
   },
@@ -192,16 +194,18 @@ their unique insight. The other host's reaction must match the expected_reaction
 genuine surprise, real pushback, building on it, or conceding a point.
 
 EPISODE OPEN:
-- The opening host delivers a 1-2 sentence teaser of today's stories, ending with \
-"Welcome to The Rest of Us" or a natural variant. Tease the tension, not the facts.
-- Vary the phrasing every episode — don't repeat the same formula.
+- The opening host leads with the date and episode number (provided in the EPISODE INFO \
+section), then a 1-2 sentence teaser, ending with "Welcome to The Rest of Us" or a variant.
+- Write the episode number and date as WORDS, not digits — for natural TTS rendering.
+- The number and date should feel conversational, not announced. Vary each episode.
 - Examples:
-  "AI coding assistants just got their Linux kernel moment, and Meta's throwing money \
-at superintelligence. Welcome to The Rest of Us."
-  "Three stories today — one about infrastructure nobody asked for, one about trust \
-nobody earned, and one about robots that actually work. This is The Rest of Us."
-  "Anthropic's doing something weird with therapy, OpenAI bought a talk show, and \
-vibe coding just became a punchline. You're listening to The Rest of Us."
+  "April eleventh, episode forty-seven. Linux just told AI coders exactly how to behave, \
+and Meta's throwing money at superintelligence. Welcome to The Rest of Us."
+  "Episode twelve. March twenty-second. Three stories today — one about infrastructure \
+nobody asked for, one about trust nobody earned, and one about robots that actually work. \
+This is The Rest of Us."
+  "May first, episode sixty. Anthropic's doing something weird with therapy, OpenAI bought \
+a talk show, and vibe coding just became a punchline. You're listening to The Rest of Us."
 
 EPISODE CLOSE:
 - After final takeaways, one host wraps with a natural sign-off. The core phrase is \
@@ -299,13 +303,17 @@ FORMAT:
 
 CONTINUITY_BLOCK = """
 
-Here is context from recent episodes for continuity:
+Here is context from recent episodes for continuity. Each episode includes the hosts' \
+specific positions on stories, any predictions made, and whether they agreed or disagreed:
 {history_json}
 
-When relevant, reference previous episodes naturally (e.g., "we said X three months ago — here's \
-why we'd say it differently now", "following up on that story from last week..."). Publicly \
-updating previous positions is a feature, not an embarrassment. Only reference when it adds \
-value — don't force callbacks."""
+When relevant, reference previous episodes naturally:
+- Check predictions: "Dean, you called this three weeks ago — episode thirty-two."
+- Update positions: "I've changed my mind since episode forty — here's why."
+- Note patterns: "This is the third week in a row we've seen this."
+- Reference by episode number when naming a specific past episode.
+Publicly updating previous positions is a feature, not an embarrassment. \
+Only reference when it adds value — don't force callbacks."""
 
 REFINEMENT_PROMPT = """\
 You are a podcast script doctor specializing in audio delivery. You receive a draft script \
@@ -367,26 +375,92 @@ RULES:
 - Do not add preamble or commentary — output the rewritten script only"""
 
 SUMMARY_PROMPT = """\
-Extract from this podcast script:
-1) story titles covered (as a list of strings)
-2) key themes (1-3 words each, as a list)
-3) the "story to watch" mentioned at the end (single string)
+Extract a rich summary from this podcast script for episode memory. \
+Return ONLY valid JSON matching this structure:
 
-Return ONLY valid JSON with keys: stories_covered, key_themes, story_to_watch"""
+{
+  "stories": [
+    {
+      "title": "Story headline",
+      "kit_take": "Kit's key position in 1 sentence",
+      "dean_take": "Dean's key position in 1 sentence",
+      "agreed": true
+    }
+  ],
+  "predictions": ["Host: specific prediction made"],
+  "key_themes": ["theme1", "theme2"],
+  "story_to_watch": "story mentioned as worth following"
+}
+
+Rules:
+- Capture each host's SPECIFIC take — not generic summaries, but their actual position
+- Include any explicit predictions with the host's name
+- "agreed" = true when both hosts reached the same conclusion on a story
+- If no predictions were made, use an empty array []
+- Keep story titles short and recognizable"""
 
 
 def load_state() -> dict:
     if STATE_PATH.exists():
         return json.loads(STATE_PATH.read_text())
-    return {"episodes": []}
+    return {"episode_count": 0, "episodes": []}
+
+
+def next_episode_number() -> int:
+    state = load_state()
+    return state.get("episode_count", 0) + 1
 
 
 def save_state(summary: dict) -> None:
     state = load_state()
+    state["episode_count"] = state.get("episode_count", 0) + 1
+    summary["episode_number"] = state["episode_count"]
     state["episodes"].insert(0, summary)
-    state["episodes"] = state["episodes"][:7]
+    state["episodes"] = state["episodes"][:30]
     STATE_PATH.write_text(json.dumps(state, indent=2))
-    log.info("State saved (%d episodes in history)", len(state["episodes"]))
+    log.info("State saved (episode #%d, %d in history)", state["episode_count"], len(state["episodes"]))
+
+
+_ORDINALS = {
+    1: "first", 2: "second", 3: "third", 4: "fourth", 5: "fifth",
+    6: "sixth", 7: "seventh", 8: "eighth", 9: "ninth", 10: "tenth",
+    11: "eleventh", 12: "twelfth", 13: "thirteenth", 14: "fourteenth",
+    15: "fifteenth", 16: "sixteenth", 17: "seventeenth", 18: "eighteenth",
+    19: "nineteenth", 20: "twentieth", 21: "twenty-first", 22: "twenty-second",
+    23: "twenty-third", 24: "twenty-fourth", 25: "twenty-fifth",
+    26: "twenty-sixth", 27: "twenty-seventh", 28: "twenty-eighth",
+    29: "twenty-ninth", 30: "thirtieth", 31: "thirty-first",
+}
+
+
+def _format_date_spoken(iso_date: str) -> str:
+    """Format '2026-04-11' as 'April eleventh' for natural TTS."""
+    from datetime import date as _date
+
+    d = _date.fromisoformat(iso_date)
+    month_name = d.strftime("%B")
+    ordinal = _ORDINALS.get(d.day, f"{d.day}th")
+    return f"{month_name} {ordinal}"
+
+
+def _number_to_words(n: int) -> str:
+    """Convert an integer to spoken English for TTS (e.g. 47 → 'forty-seven')."""
+    if n <= 0:
+        return str(n)
+    ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+            "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+            "seventeen", "eighteen", "nineteen"]
+    tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+
+    if n < 20:
+        return ones[n]
+    if n < 100:
+        return tens[n // 10] + ("-" + ones[n % 10] if n % 10 else "")
+    if n < 1000:
+        remainder = n % 100
+        rest = _number_to_words(remainder) if remainder else ""
+        return ones[n // 100] + " hundred" + (" " + rest if rest else "")
+    return str(n)
 
 
 def _parse_json_response(text: str) -> dict | None:
@@ -417,7 +491,7 @@ def _parse_json_response(text: str) -> dict | None:
     return None
 
 
-def generate_beat_sheet(stories: list[dict], history: dict) -> dict:
+def generate_beat_sheet(stories: list[dict], history: dict, episode_number: int, date_spoken: str) -> dict:
     """Pass 0: generate a conversation blueprint from stories."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
@@ -437,9 +511,12 @@ def generate_beat_sheet(stories: list[dict], history: dict) -> dict:
         }
         story_summaries.append(summary)
 
+    ep_word = _number_to_words(episode_number)
     user_message = (
-        "Design a beat sheet for today's episode. "
-        "Here are the ranked stories (most important first):\n\n"
+        f"Design a beat sheet for today's episode. "
+        f"This is Episode {episode_number} (say \"episode {ep_word}\"), "
+        f"airing {date_spoken}.\n\n"
+        f"Here are the ranked stories (most important first):\n\n"
         + json.dumps(story_summaries, indent=2)
     )
 
@@ -483,8 +560,15 @@ def generate_beat_sheet(stories: list[dict], history: dict) -> dict:
 
 
 def generate_script(stories: list[dict], history: dict) -> str:
+    from datetime import date
+
+    episode_number = next_episode_number()
+    today = date.today().isoformat()
+    date_spoken = _format_date_spoken(today)
+    ep_word = _number_to_words(episode_number)
+
     # Pass 0: generate conversation blueprint
-    beat_sheet = generate_beat_sheet(stories, history)
+    beat_sheet = generate_beat_sheet(stories, history, episode_number, date_spoken)
 
     # Pass 1: generate dialogue from beat sheet
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
@@ -496,6 +580,7 @@ def generate_script(stories: list[dict], history: dict) -> str:
     beat_sheet_json = json.dumps(beat_sheet, indent=2)
     stories_json = json.dumps(stories, indent=2)
     user_message = (
+        f"EPISODE INFO: Episode {episode_number} (say \"episode {ep_word}\"), {date_spoken}.\n\n"
         f"BEAT SHEET (follow this structure):\n{beat_sheet_json}\n\n"
         f"SOURCE STORIES (use these for facts and details):\n{stories_json}"
     )
@@ -545,7 +630,7 @@ def extract_episode_summary(script: str, stories: list[dict]) -> dict:
     log.info("Extracting episode summary with %s", SUMMARY_MODEL)
     response = client.messages.create(
         model=SUMMARY_MODEL,
-        max_tokens=1024,
+        max_tokens=2048,
         system=SUMMARY_PROMPT,
         messages=[{"role": "user", "content": script}],
     )
@@ -554,12 +639,12 @@ def extract_episode_summary(script: str, stories: list[dict]) -> dict:
         log.warning("Summary extraction hit max_tokens — JSON may be malformed")
 
     text = response.content[0].text
-    try:
-        summary = json.loads(text)
-    except json.JSONDecodeError:
+    summary = _parse_json_response(text)
+    if summary is None:
         log.warning("Failed to parse summary JSON, using fallback")
         summary = {
-            "stories_covered": [s["title"] for s in stories[:6]],
+            "stories": [{"title": s["title"], "kit_take": "", "dean_take": "", "agreed": True} for s in stories[:3]],
+            "predictions": [],
             "key_themes": [],
             "story_to_watch": "",
         }
