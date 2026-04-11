@@ -32,11 +32,31 @@ uv run python -m hn_signal.sources.arstechnica
 
 | Stage | Module | What it does | API used |
 |-------|--------|-------------|----------|
-| 1. Collect | `src/hn_signal/collect.py` | Aggregate stories from all sources, deduplicate, rank by cross-source appearance + score | Multiple (see Sources) |
-| 2. Enrich | `src/hn_signal/enrich.py` | Add web search context per story | Tavily (optional) |
-| 3. Script | `src/hn_signal/script.py` | 3-pass pipeline: beat sheet → dialogue → TTS refinement, then summary extraction | Claude Sonnet (×3) + Haiku |
-| 4. Audio | `src/hn_signal/audio.py` | TTS via Gemini (single-pass 2-speaker) or ElevenLabs fallback | Gemini TTS / ElevenLabs |
-| 5. Publish | `src/hn_signal/publish.py` | Create GitHub Release, upload MP3, update RSS, commit & push | GitHub API |
+| 1. Collect | `collect.py` | Aggregate stories from all sources, deduplicate, rank by cross-source appearance + score | Multiple (see Sources) |
+| 2. Enrich | `enrich.py` | Add web search context per story | Tavily (optional) |
+| 3. Script | `script.py` | 3-pass pipeline: beat sheet → dialogue → TTS refinement, then summary extraction | Claude Sonnet (×3) + Haiku |
+| 4. Audio | `audio.py` | Route to TTS backend, parse turns, add intro/outro music, export MP3 | Gemini TTS / ElevenLabs |
+| 5. Publish | `publish.py` | Create GitHub Release, upload MP3, update RSS, commit & push | GitHub API |
+
+## Module Architecture
+
+All modules live in `src/hn_signal/`. The refactored structure:
+
+| Module | Role |
+|--------|------|
+| `main.py` | Orchestrator — coordinates all 5 stages |
+| `config.py` | All env vars, constants, keyword lists, voice settings |
+| `models.py` | Typed dataclasses: `Story`, `StorySource`, `EpisodeSummary`, `PipelineState` |
+| `prompts.py` | All LLM prompt templates: beat sheet, dialogue system, refinement, summary |
+| `script.py` | 3-pass script generation (uses prompts.py for templates, state.py for history) |
+| `state.py` | `state.json` load/save, episode numbering, date/number-to-words helpers |
+| `audio.py` | Turn parsing, cold-open detection, music layering, TTS backend routing |
+| `tts_gemini.py` | Gemini 2.5 Flash TTS backend (single-pass 2-speaker with director's notes) |
+| `tts_elevenlabs.py` | ElevenLabs TTS fallback (per-turn generation) |
+| `collect.py` | Story aggregation, deduplication (URL + fuzzy title), ranking |
+| `enrich.py` | Optional Tavily web search enrichment |
+| `publish.py` | GitHub Release upload, RSS feed generation, git commit & push |
+| `sources/` | Pluggable story sources (see Sources section) |
 
 ## Sources
 
@@ -87,6 +107,8 @@ Configured in `.env` (see `.env.example`):
 - TTS: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker), fallback ElevenLabs
 - Gemini voices: Kit → Zephyr (bright, clear, energetic), Dean → Orus (firm, decisive, commanding)
 - Max 30 RSS episodes
+- Publish schedule: `PUBLISH_HOUR` (default: 7), `PUBLISH_TIMEZONE` (default: Europe/London)
+- Time-of-day greeting derived from `PUBLISH_HOUR` via `config.time_of_day_label()`
 
 ## Hosts
 
@@ -95,9 +117,13 @@ Configured in `.env` (see `.env.example`):
 
 ## Output
 
-- `episodes/YYYY-MM-DD.mp3` — generated audio
-- `state.json` — last 7 episode summaries (for continuity)
+- `episodes/YYYY-MM-DD-vN.mp3` — generated audio (versioned for multiple runs per day)
+- `episodes/YYYY-MM-DD-vN-script.txt` — corresponding dialogue script
+- `state.json` — last 30 episode summaries (for continuity)
 - `feed.xml` — podcast RSS feed
+- `logs/pipeline.log` — rotating Python log (5 MB × 5 backups), written by all pipeline runs
+- `logs/YYYY-MM-DD.log` — daily shell-level log (created by `run-daily.sh` for scheduled runs)
+- `logs/launchd-stdout.log` / `logs/launchd-stderr.log` — launchd capture
 
 ## Scheduling
 

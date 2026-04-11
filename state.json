@@ -1,0 +1,40 @@
+{
+  "episode_count": 1,
+  "episodes": [
+    {
+      "date": "2026-04-11",
+      "episode_number": 1,
+      "stories": [
+        {
+          "title": "Linux Kernel Adopts Official AI Contributor Guidelines",
+          "kit_take": "This is a training data problem, not a policy problem\u2014AI fails because it can't learn decades of unwritten cultural conventions and implicit contracts that live only in maintainer memory.",
+          "dean_take": "This is both community hygiene and a response to cloud vendor pressure, with major AWS/Google/Azure teams already using AI tools to patch kernel modules and pushing for clearer rules.",
+          "agreed": false
+        },
+        {
+          "title": "OpenAI Launches Academy for Structured AI Training",
+          "kit_take": "OpenAI is organizing education by job function rather than features to build user identity loyalty\u2014making it harder for enterprises to swap out ChatGPT for cheaper alternatives even when IT wants to switch.",
+          "dean_take": "This is a direct distribution play because OpenAI can't sit inside tools like Office or Workspace where competitors already live, so they're teaching people to come to them instead.",
+          "agreed": true
+        },
+        {
+          "title": "AI Models Fail at Premier League Gambling",
+          "kit_take": "AI's gambling failure on soccer proves the real gap isn't capability but context\u2014these models excel at pattern-matching but structurally fail at integrating noisy, time-varying real-world signals over long horizons.",
+          "dean_take": "Grok's catastrophic underperformance (went bankrupt, didn't complete attempts) versus other models reveals a real gap between Musk's claims about Grok's reasoning ability and actual results.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Kit: OpenAI Academy's success will only be proven by whether retention numbers move",
+        "Dean: Enterprises buying AI for forecasting and financial analysis should read the KellyBench study carefully before deploying"
+      ],
+      "key_themes": [
+        "AI training data cannot capture cultural context and unwritten conventions",
+        "Education as a distribution strategy to build user loyalty",
+        "AI's structural limitations on real-world forecasting and time-dependent problems",
+        "Enterprise adoption driven by workflow integration, not capability alone"
+      ],
+      "story_to_watch": "Whether OpenAI Academy's job-function-based pedagogy moves retention numbers and builds procurement loyalty against Microsoft and Google's embedded workflow advantages"
+    }
+  ]
+}

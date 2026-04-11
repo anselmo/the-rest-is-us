@@ -1,4 +1,5 @@
 import logging
+import logging.handlers
 import os
 import sys
 from pathlib import Path
@@ -202,8 +203,24 @@ BEAT_SHEET_MODEL = "claude-sonnet-4-6"
 SUMMARY_MODEL = "claude-haiku-4-5-20251001"
 
 # Logging
-logging.basicConfig(
-    format="%(asctime)s %(levelname)s %(message)s",
-    level=logging.INFO,
+_LOG_DIR = PROJECT_ROOT / "logs"
+_LOG_DIR.mkdir(exist_ok=True)
+
+_log_fmt = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
+
+# Console handler (existing behavior)
+_console = logging.StreamHandler()
+_console.setFormatter(_log_fmt)
+
+# Rotating file handler: 5 MB per file, keep last 5 files (≈25 MB total)
+_file = logging.handlers.RotatingFileHandler(
+    _LOG_DIR / "pipeline.log",
+    maxBytes=5 * 1024 * 1024,
+    backupCount=5,
 )
+_file.setFormatter(_log_fmt)
+
 log = logging.getLogger("hn-ai-podcast")
+log.setLevel(logging.INFO)
+log.addHandler(_console)
+log.addHandler(_file)

@@ -19,7 +19,14 @@ notify_success() {
 run_pipeline() {
     cd "$REPO_DIR"
     export PATH="/Users/arodriguesdasilva/Library/Python/3.9/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
-    make run >> "$LOG_FILE" 2>&1
+    local rc=0
+    make run >> "$LOG_FILE" 2>&1 || rc=$?
+    if [ $rc -ne 0 ]; then
+        log "Pipeline exited with code $rc"
+        log "Last 20 lines from pipeline.log:"
+        tail -20 "${LOG_DIR}/pipeline.log" >> "$LOG_FILE" 2>/dev/null || true
+    fi
+    return $rc
 }
 
 mkdir -p "$LOG_DIR"
