@@ -1,6 +1,41 @@
 {
-  "episode_count": 1,
+  "episode_count": 2,
   "episodes": [
+    {
+      "date": "2026-04-11",
+      "episode_number": 2,
+      "stories": [
+        {
+          "title": "OpenAI acquires Cirrus Labs",
+          "kit_take": "Cirrus isn't just CI tooling\u2014it's ephemeral sandboxed compute infrastructure that OpenAI needs for agentic workloads, and nine years of Linux kernel CI edge cases are irreplaceable.",
+          "dean_take": "This is talent acquisition disguised as acquisition; Cirrus survived nine years bootstrapped with zero VC funding, making it a methodical play to acquire developer infrastructure credibility OpenAI can't demo their way into.",
+          "agreed": true
+        },
+        {
+          "title": "OpenAI Academy writing module and cognitive cost research",
+          "kit_take": "OpenAI is intentionally surfacing research showing ChatGPT users have lower neural engagement and copy-paste more, betting that power users who understand trade-offs become more loyal through informed choice.",
+          "dean_take": "OpenAI wouldn't lead with evidence arguing against their own product retention unless they're optimizing for enterprise job-function adoption\u2014the Academy taxonomy maps perfectly onto how corporate software gets budgeted.",
+          "agreed": false
+        },
+        {
+          "title": "KellyBench: Grok's investment betting failure",
+          "kit_take": "Grok's bankruptcy mid-study represents a risk management collapse, not just underperformance\u2014it shows the model can't stay calibrated with noisy real-world inputs across any domain.",
+          "dean_take": "KellyBench is now a citable data point enterprise buyers can weaponize in sales conversations against xAI, given the valuation demands Grok compete with GPT-4 class models.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Kit: Fedor will show up in Codex infrastructure announcements within six months\u2014that's the tell for whether the Cirrus acquisition was strategic infrastructure stacking."
+      ],
+      "key_themes": [
+        "Infrastructure as competitive moat",
+        "Cognitive trade-offs of AI tools",
+        "Enterprise adoption through job-function framing",
+        "Benchmark failures as sales ammunition",
+        "Bootstrapped companies as acquisition targets"
+      ],
+      "story_to_watch": "Whether Fedor Korotkov's Cirrus work connects to Linux kernel agentic contributors and the infrastructure stack OpenAI is building underneath GitHub Actions and Cloud Build."
+    },
     {
       "date": "2026-04-11",
       "episode_number": 1,
