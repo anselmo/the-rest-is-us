@@ -231,3 +231,21 @@ log = logging.getLogger("hn-ai-podcast")
 log.setLevel(logging.INFO)
 log.addHandler(_console)
 log.addHandler(_file)
+
+# Fetch-failure log — dedicated file for reviewing broken sources
+_fail_fmt = logging.Formatter("%(asctime)s | %(message)s")
+_fail_file = logging.handlers.RotatingFileHandler(
+    _LOG_DIR / "fetch-failures.log",
+    maxBytes=2 * 1024 * 1024,
+    backupCount=3,
+)
+_fail_file.setFormatter(_fail_fmt)
+_fetch_fail_log = logging.getLogger("hn-ai-podcast.fetch-failures")
+_fetch_fail_log.setLevel(logging.WARNING)
+_fetch_fail_log.addHandler(_fail_file)
+_fetch_fail_log.propagate = False  # don't duplicate into main pipeline.log
+
+
+def log_fetch_failure(source: str, url: str, error: object) -> None:
+    """Record a fetch failure to logs/fetch-failures.log."""
+    _fetch_fail_log.warning("%s | %s | %s", source, url, error)

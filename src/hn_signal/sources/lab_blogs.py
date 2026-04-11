@@ -1,4 +1,4 @@
-from hn_signal.config import LAB_BLOG_FEEDS, log
+from hn_signal.config import LAB_BLOG_FEEDS, log, log_fetch_failure
 from hn_signal.models import Story
 from hn_signal.sources._rss import fetch_rss_stories
 
@@ -15,6 +15,7 @@ def collect() -> list[Story]:
             all_stories.extend(stories)
         except Exception as e:
             log.warning("Lab blog %s failed: %s", source_name, e)
+            log_fetch_failure(source_name, feed_url, e)
 
     log.info("Lab blogs: %d posts collected", len(all_stories))
     return all_stories

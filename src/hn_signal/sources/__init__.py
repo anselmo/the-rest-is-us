@@ -1,4 +1,4 @@
-from hn_signal.config import log
+from hn_signal.config import log, log_fetch_failure
 from hn_signal.models import Story
 from hn_signal.sources import arstechnica, arxiv, hn, lab_blogs, venturebeat
 
@@ -14,5 +14,6 @@ def collect_all_sources() -> list[Story]:
             all_stories.extend(stories)
         except Exception as e:
             log.warning("Source %s failed, skipping: %s", source.__name__, e)
+            log_fetch_failure(source.__name__, "(entire source)", e)
     log.info("Total raw stories from all sources: %d", len(all_stories))
     return all_stories

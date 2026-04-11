@@ -3,7 +3,7 @@ import re
 import httpx
 from bs4 import BeautifulSoup
 
-from hn_signal.config import AI_KEYWORDS, log
+from hn_signal.config import AI_KEYWORDS, log, log_fetch_failure
 
 MAX_BODY_CHARS = 6000
 
@@ -59,4 +59,5 @@ def fetch_article_body(url: str) -> str:
         return extract_body(resp.text)
     except Exception as e:
         log.warning("Failed to fetch article %s: %s", url, e)
+        log_fetch_failure("article_body", url, e)
         return ""

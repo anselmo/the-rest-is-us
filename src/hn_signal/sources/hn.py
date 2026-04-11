@@ -1,6 +1,6 @@
 import httpx
 
-from hn_signal.config import log
+from hn_signal.config import log, log_fetch_failure
 from hn_signal.models import Story, StorySource
 from hn_signal.sources._util import fetch_article_body, matches_keywords
 
@@ -24,6 +24,7 @@ def collect() -> list[Story]:
             item = item_resp.json()
         except Exception as e:
             log.warning("Failed to fetch item %s: %s", story_id, e)
+            log_fetch_failure("hackernews", HN_ITEM.format(story_id), e)
             continue
 
         title = item.get("title", "")

@@ -2,7 +2,7 @@ from datetime import datetime
 
 import feedparser
 
-from hn_signal.config import log
+from hn_signal.config import log, log_fetch_failure
 from hn_signal.models import Story, StorySource
 from hn_signal.sources._util import fetch_article_body, matches_keywords
 
@@ -19,6 +19,7 @@ def fetch_rss_stories(
 
     if feed.bozo and not feed.entries:
         log.warning("RSS feed error for %s: %s", feed_url, feed.bozo_exception)
+        log_fetch_failure(source_name, feed_url, feed.bozo_exception)
         return []
 
     stories = []
