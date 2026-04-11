@@ -1,8 +1,8 @@
 from hn_signal.config import log, log_fetch_failure
 from hn_signal.models import Story
-from hn_signal.sources import arstechnica, arxiv, hn, lab_blogs, venturebeat
+from hn_signal.sources import arstechnica, arxiv, hn, lab_blogs, techcrunch, venturebeat
 
-SOURCES = [hn, arxiv, lab_blogs, venturebeat, arstechnica]
+SOURCES = [hn, arxiv, lab_blogs, venturebeat, arstechnica, techcrunch]
 
 
 def collect_all_sources() -> list[Story]:
