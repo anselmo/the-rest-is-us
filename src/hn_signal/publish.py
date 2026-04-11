@@ -34,7 +34,7 @@ def _create_feed() -> ET.Element:
     ET.SubElement(channel, "language").text = "en"
     ET.SubElement(channel, "{%s}author" % ITUNES_NS).text = PODCAST_AUTHOR
     ET.SubElement(channel, "{%s}explicit" % ITUNES_NS).text = "no"
-    ET.SubElement(channel, "{%s}image" % ITUNES_NS, href=f"{PODCAST_BASE_URL}/cover.jpg")
+    ET.SubElement(channel, "{%s}image" % ITUNES_NS, href=f"{PODCAST_BASE_URL}/assets/cover/cover-3000.png")
 
     category = ET.SubElement(channel, "{%s}category" % ITUNES_NS, text="Technology")
     ET.SubElement(category, "{%s}category" % ITUNES_NS, text="Tech News")

@@ -1,6 +1,6 @@
 # The Rest of Us
 
-![The Rest of Us](cover.jpg)
+![The Rest of Us](assets/cover/cover-500.png)
 
 A fully automated daily AI podcast. Aggregates the top AI stories from Hacker News, arXiv, lab blogs, and tech journalism, generates a natural two-host dialogue via Claude, renders audio with Gemini TTS, and publishes to Apple Podcasts via GitHub Releases + Pages.
 
