@@ -3,6 +3,7 @@ from datetime import datetime
 import feedparser
 
 from hn_signal.config import log
+from hn_signal.models import Story, StorySource
 from hn_signal.sources._util import fetch_article_body, matches_keywords
 
 
@@ -12,7 +13,7 @@ def fetch_rss_stories(
     needs_keyword_filter: bool = True,
     max_items: int = 25,
     fetch_body: bool = True,
-) -> list[dict]:
+) -> list[Story]:
     log.info("Fetching RSS feed: %s", feed_url)
     feed = feedparser.parse(feed_url)
 
@@ -49,22 +50,15 @@ def fetch_rss_stories(
             body = BeautifulSoup(summary, "html.parser").get_text(strip=True)[:6000]
 
         stories.append(
-            {
-                "id": entry.get("id", link),
-                "title": title,
-                "url": link,
-                "body": body,
-                "sources": [
-                    {
-                        "name": source_name,
-                        "score": None,
-                        "comments": None,
-                        "published": published,
-                    }
-                ],
-                "source_count": 1,
-                "rank_score": 0.0,
-            }
+            Story(
+                id=entry.get("id", link),
+                title=title,
+                url=link,
+                body=body,
+                sources=[StorySource(name=source_name, published=published)],
+                source_count=1,
+                rank_score=0.0,
+            )
         )
 
     log.info("RSS %s: %d stories collected", source_name, len(stories))

@@ -1,10 +1,11 @@
 from hn_signal.config import log
+from hn_signal.models import Story
 from hn_signal.sources import arstechnica, arxiv, hn, lab_blogs, venturebeat
 
 SOURCES = [hn, arxiv, lab_blogs, venturebeat, arstechnica]
 
 
-def collect_all_sources() -> list[dict]:
+def collect_all_sources() -> list[Story]:
     all_stories = []
     for source in SOURCES:
         try:

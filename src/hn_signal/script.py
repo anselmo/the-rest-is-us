@@ -9,6 +9,7 @@ from hn_signal.config import (
     SUMMARY_MODEL,
     log,
 )
+from hn_signal.models import EpisodeSummary, PipelineState, Story, StoryTake
 from hn_signal.prompts import (
     BEAT_SHEET_PROMPT,
     CONTINUITY_BLOCK,
@@ -26,7 +27,7 @@ from hn_signal.state import (
 )
 
 
-def generate_beat_sheet(stories: list[dict], history: dict, episode_number: int, date_spoken: str) -> dict:
+def generate_beat_sheet(stories: list[Story], history: PipelineState, episode_number: int, date_spoken: str) -> dict:
     """Pass 0: generate a conversation blueprint from stories."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
@@ -35,13 +36,13 @@ def generate_beat_sheet(stories: list[dict], history: dict, episode_number: int,
     for i, story in enumerate(stories):
         summary = {
             "index": i,
-            "title": story["title"],
-            "url": story.get("url", ""),
-            "source_count": story.get("source_count", 1),
-            "sources": [s["name"] for s in story.get("sources", [])],
-            "body_preview": (story.get("body", "") or "")[:500],
-            "enrichment_preview": (story.get("enrichment", [""])[0] or "")[:300]
-            if story.get("enrichment")
+            "title": story.title,
+            "url": story.url,
+            "source_count": story.source_count,
+            "sources": [s.name for s in story.sources],
+            "body_preview": (story.body or "")[:500],
+            "enrichment_preview": (story.enrichment[0] or "")[:300]
+            if story.enrichment
             else "",
         }
         story_summaries.append(summary)
@@ -55,10 +56,10 @@ def generate_beat_sheet(stories: list[dict], history: dict, episode_number: int,
         + json.dumps(story_summaries, indent=2)
     )
 
-    if history.get("episodes"):
+    if history.episodes:
         user_message += (
             "\n\nRecent episode context (for continuity, reference only if relevant):\n"
-            + json.dumps(history["episodes"][:3], indent=2)
+            + json.dumps([ep.to_dict() for ep in history.episodes[:3]], indent=2)
         )
 
     log.info("Generating beat sheet with %s (%d stories)", BEAT_SHEET_MODEL, len(stories))
@@ -94,7 +95,7 @@ def generate_beat_sheet(stories: list[dict], history: dict, episode_number: int,
     return beat_sheet
 
 
-def generate_script(stories: list[dict], history: dict) -> str:
+def generate_script(stories: list[Story], history: PipelineState) -> str:
     from datetime import date
 
     episode_number = next_episode_number()
@@ -109,11 +110,13 @@ def generate_script(stories: list[dict], history: dict) -> str:
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
     system = SYSTEM_PROMPT
-    if history.get("episodes"):
-        system += CONTINUITY_BLOCK.format(history_json=json.dumps(history["episodes"], indent=2))
+    if history.episodes:
+        system += CONTINUITY_BLOCK.format(
+            history_json=json.dumps([ep.to_dict() for ep in history.episodes], indent=2)
+        )
 
     beat_sheet_json = json.dumps(beat_sheet, indent=2)
-    stories_json = json.dumps(stories, indent=2)
+    stories_json = json.dumps([s.to_dict() for s in stories], indent=2)
     user_message = (
         f"EPISODE INFO: Episode {episode_number} (say \"episode {ep_word}\"), {date_spoken}.\n\n"
         f"BEAT SHEET (follow this structure):\n{beat_sheet_json}\n\n"
@@ -159,7 +162,7 @@ def refine_script(draft: str) -> str:
     return refined
 
 
-def extract_episode_summary(script: str, stories: list[dict]) -> dict:
+def extract_episode_summary(script: str, stories: list[Story]) -> EpisodeSummary:
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
     log.info("Extracting episode summary with %s", SUMMARY_MODEL)
@@ -174,20 +177,21 @@ def extract_episode_summary(script: str, stories: list[dict]) -> dict:
         log.warning("Summary extraction hit max_tokens — JSON may be malformed")
 
     text = response.content[0].text
-    summary = _parse_json_response(text)
-    if summary is None:
-        log.warning("Failed to parse summary JSON, using fallback")
-        summary = {
-            "stories": [{"title": s["title"], "kit_take": "", "dean_take": "", "agreed": True} for s in stories[:3]],
-            "predictions": [],
-            "key_themes": [],
-            "story_to_watch": "",
-        }
+    parsed = _parse_json_response(text)
 
     from datetime import date
 
-    summary["date"] = date.today().isoformat()
-    return summary
+    today = date.today().isoformat()
+
+    if parsed is None:
+        log.warning("Failed to parse summary JSON, using fallback")
+        return EpisodeSummary(
+            date=today,
+            stories=[StoryTake(title=s.title) for s in stories[:3]],
+        )
+
+    parsed["date"] = today
+    return EpisodeSummary.from_dict(parsed)
 
 
 # Re-export state functions for backward compatibility

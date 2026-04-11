@@ -2,29 +2,30 @@ import json
 import re
 
 from hn_signal.config import PROJECT_ROOT, log
+from hn_signal.models import EpisodeSummary, PipelineState
 
 STATE_PATH = PROJECT_ROOT / "state.json"
 
 
-def load_state() -> dict:
+def load_state() -> PipelineState:
     if STATE_PATH.exists():
-        return json.loads(STATE_PATH.read_text())
-    return {"episode_count": 0, "episodes": []}
+        return PipelineState.from_dict(json.loads(STATE_PATH.read_text()))
+    return PipelineState()
 
 
 def next_episode_number() -> int:
     state = load_state()
-    return state.get("episode_count", 0) + 1
+    return state.episode_count + 1
 
 
-def save_state(summary: dict) -> None:
+def save_state(summary: EpisodeSummary) -> None:
     state = load_state()
-    state["episode_count"] = state.get("episode_count", 0) + 1
-    summary["episode_number"] = state["episode_count"]
-    state["episodes"].insert(0, summary)
-    state["episodes"] = state["episodes"][:30]
-    STATE_PATH.write_text(json.dumps(state, indent=2))
-    log.info("State saved (episode #%d, %d in history)", state["episode_count"], len(state["episodes"]))
+    state.episode_count += 1
+    summary.episode_number = state.episode_count
+    state.episodes.insert(0, summary)
+    state.episodes = state.episodes[:30]
+    STATE_PATH.write_text(json.dumps(state.to_dict(), indent=2))
+    log.info("State saved (episode #%d, %d in history)", state.episode_count, len(state.episodes))
 
 
 _ORDINALS = {
