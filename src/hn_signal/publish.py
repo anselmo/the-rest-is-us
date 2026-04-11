@@ -48,14 +48,16 @@ def _load_feed() -> ET.Element:
     return _create_feed()
 
 
-def _add_episode(rss: ET.Element, date: str, mp3_url: str, mp3_size: int, duration_seconds: int, episode_number: int | None = None) -> None:
+def _add_episode(rss: ET.Element, date: str, mp3_url: str, mp3_size: int, duration_seconds: int, episode_number: int | None = None, title: str = "") -> None:
     channel = rss.find("channel")
     item = ET.Element("item")
 
-    if episode_number:
-        ET.SubElement(item, "title").text = f"{PODCAST_TITLE} — #{episode_number} — {date}"
+    if title:
+        ET.SubElement(item, "title").text = title
     else:
         ET.SubElement(item, "title").text = f"{PODCAST_TITLE} — {date}"
+    if episode_number:
+        ET.SubElement(item, "{%s}episode" % ITUNES_NS).text = str(episode_number)
     ET.SubElement(item, "enclosure", url=mp3_url, length=str(mp3_size), type="audio/mpeg")
     ET.SubElement(item, "{%s}duration" % ITUNES_NS).text = str(duration_seconds)
 
@@ -85,7 +87,7 @@ def _save_feed(rss: ET.Element) -> None:
     log.info("Feed saved to %s", FEED_PATH)
 
 
-def _commit_and_push(mp3_path: Path | None = None) -> None:
+def _commit_and_push(mp3_path: Path | None = None, title: str = "") -> None:
     """Commit feed.xml, state.json, and optionally the MP3, then push."""
     import subprocess
 
@@ -98,8 +100,9 @@ def _commit_and_push(mp3_path: Path | None = None) -> None:
 
     try:
         subprocess.run(["git", "add"] + files_to_commit, check=True, capture_output=True)
+        msg = f"Publish: {title}" if title else "Update feed.xml and state.json"
         subprocess.run(
-            ["git", "commit", "-m", "Update feed.xml and state.json"],
+            ["git", "commit", "-m", msg],
             check=True,
             capture_output=True,
         )
@@ -111,13 +114,13 @@ def _commit_and_push(mp3_path: Path | None = None) -> None:
         ) from e
 
 
-def publish_episode(mp3_path: Path, date: str, duration_seconds: int, episode_number: int | None = None) -> str:
+def publish_episode(mp3_path: Path, date: str, duration_seconds: int, episode_number: int | None = None, title: str = "") -> str:
     mp3_size = mp3_path.stat().st_size
     mp3_url = f"{PODCAST_BASE_URL}/episodes/{mp3_path.name}"
 
     rss = _load_feed()
-    _add_episode(rss, date, mp3_url, mp3_size, duration_seconds, episode_number)
+    _add_episode(rss, date, mp3_url, mp3_size, duration_seconds, episode_number, title)
     _save_feed(rss)
-    _commit_and_push(mp3_path)
+    _commit_and_push(mp3_path, title)
 
     return mp3_url

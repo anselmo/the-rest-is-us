@@ -42,7 +42,7 @@ def main() -> None:
 
     # Stage 5: Publish
     try:
-        url = publish_episode(mp3_path, today, duration)
+        url = publish_episode(mp3_path, today, duration, title=summary.title)
     except Exception as e:
         log.error("Publish failed: %s", e)
         log.error("Local MP3 preserved at: %s", mp3_path)

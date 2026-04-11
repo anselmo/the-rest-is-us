@@ -192,6 +192,7 @@ def extract_episode_summary(script: str, stories: list[Story]) -> EpisodeSummary
         )
 
     parsed["date"] = today
+    parsed["title"] = parsed.get("title", "").strip("\"'")
     return EpisodeSummary.from_dict(parsed)
 
 

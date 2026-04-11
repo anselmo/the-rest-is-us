@@ -378,6 +378,7 @@ Extract a rich summary from this podcast script for episode memory. \
 Return ONLY valid JSON matching this structure:
 
 {
+  "title": "Evocative 3-7 word episode title",
   "stories": [
     {
       "title": "Story headline",
@@ -396,4 +397,5 @@ Rules:
 - Include any explicit predictions with the host's name
 - "agreed" = true when both hosts reached the same conclusion on a story
 - If no predictions were made, use an empty array []
-- Keep story titles short and recognizable"""
+- Keep story titles short and recognizable
+- "title" is a 3-7 word evocative episode title drawn from the dominant theme or most interesting angle — think magazine cover line, not literal description. No quotes around the title."""

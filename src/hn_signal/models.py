@@ -44,6 +44,7 @@ class EpisodeSummary:
     predictions: list[str] = field(default_factory=list)
     key_themes: list[str] = field(default_factory=list)
     story_to_watch: str = ""
+    title: str = ""
 
     def to_dict(self) -> dict:
         return dataclasses.asdict(self)
@@ -69,6 +70,7 @@ class EpisodeSummary:
             predictions=data.get("predictions", []),
             key_themes=data.get("key_themes", []),
             story_to_watch=data.get("story_to_watch", ""),
+            title=data.get("title", ""),
         )
 
 
