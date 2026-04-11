@@ -1,5 +1,7 @@
 # The Rest of Us
 
+![The Rest of Us](cover.jpg)
+
 A fully automated daily AI podcast. Aggregates the top AI stories from Hacker News, arXiv, lab blogs, and tech journalism, generates a natural two-host dialogue via Claude, renders audio with Gemini TTS, and publishes to Apple Podcasts via GitHub Releases + Pages.
 
 **No human intervention required.** A launchd job runs the pipeline each morning and the episode is waiting in your podcast app by 7am.
@@ -92,7 +94,7 @@ The source architecture is pluggable. To add a new source:
 - **Summary extraction**: Claude Haiku
 - **Audio**: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker) with ElevenLabs fallback
 - **Sources**: Hacker News API, arXiv RSS, lab blog RSS, VentureBeat, Ars Technica
-- **Distribution**: GitHub Releases (MP3 hosting) + GitHub Pages (RSS feed)
+- **Distribution**: GitHub Pages (MP3 hosting + RSS feed)
 - **Runtime**: Python 3.12, uv, ffmpeg
 
 ## License
