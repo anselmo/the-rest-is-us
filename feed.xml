@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>When Humans Bend to Fit the Machine</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-11.mp3" length="9113852" type="audio/mpeg" />
+      <itunes:duration>379</itunes:duration>
+      <pubDate>Sat, 11 Apr 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-11.mp3</guid>
+    </item>
+    <item>
       <title>The Rest of Us — 2026-04-11</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-11.mp3" length="8095703" type="audio/mpeg" />
       <itunes:duration>337</itunes:duration>
