@@ -147,6 +147,71 @@ The podcast RSS feed is served via GitHub Pages from `feed.xml` in the repo root
 3. Set `PODCAST_BASE_URL` in `.env` to `https://<owner>.github.io/<repo>`
 4. Subscribe in Apple Podcasts: Library > Add a Show by URL > `https://<owner>.github.io/<repo>/feed.xml`
 
+## Code Style
+
+### Imports
+
+Standard library first, third-party second, local third. Alphabetical within each group.
+
+```python
+import logging
+import os
+from pathlib import Path
+
+import httpx
+from bs4 import BeautifulSoup
+
+from hn_signal.config import PROJECT_ROOT, log
+```
+
+Avoid circular imports — use late imports inside functions when needed (see `enrich.py` and `publish.py`).
+
+### Types and naming
+
+- Type hints on all function signatures; use built-in types (`dict`, `list`, not `Dict`, `List`)
+- Functions/variables: `snake_case`; constants: `UPPER_SNAKE_CASE`; private helpers: `_leading_underscore`
+- Classes: `PascalCase` (rarely used)
+
+### Logging
+
+Use the shared logger from `config.py` with `%s` format strings (not f-strings) to avoid interpolation when the log level is above DEBUG:
+
+```python
+from hn_signal.config import log
+
+log.info("Collected %d AI stories", len(stories))
+log.warning("Failed to fetch article %s: %s", url, e)
+```
+
+### Error handling
+
+- **Recoverable**: `log.warning(...)` + `continue`
+- **Fatal**: `log.error(...)` + `sys.exit(1)`
+- Prefer specific exception types (`httpx.HTTPStatusError`, `subprocess.CalledProcessError`)
+
+### API clients
+
+Initialize inside functions, not at module level, to avoid import-time side effects:
+
+```python
+def generate_script(stories, history):
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+```
+
+### Paths and env vars
+
+- Use `pathlib.Path` for all file paths
+- Use `_require()` for required env vars (raises `SystemExit`), `os.getenv()` with defaults for optional ones
+
+### Script format
+
+Dialogue scripts use `KIT:` / `DEAN:` turn prefixes, one per line:
+
+```
+KIT: Dialogue here.
+DEAN: Response here.
+```
+
 ## Gotchas
 
 - `ffmpeg` must be installed at runtime (pydub needs it for audio export), not just at install time
