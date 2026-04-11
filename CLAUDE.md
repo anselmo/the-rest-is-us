@@ -35,7 +35,7 @@ uv run python -m hn_signal.sources.arstechnica
 | 1. Collect | `collect.py` | Aggregate stories from all sources, deduplicate, rank by cross-source appearance + score | Multiple (see Sources) |
 | 2. Enrich | `enrich.py` | Add web search context per story | Tavily (optional) |
 | 3. Script | `script.py` | 3-pass pipeline: beat sheet → dialogue → TTS refinement, then summary extraction | Claude Sonnet (×3) + Haiku |
-| 4. Audio | `audio.py` | Route to TTS backend, parse turns, add intro/outro music, export MP3 | Gemini TTS / ElevenLabs |
+| 4. Audio | `audio.py` | Parse turns, add intro/outro music, export MP3 | Gemini TTS |
 | 5. Publish | `publish.py` | Create GitHub Release, upload MP3, update RSS, commit & push | GitHub API |
 
 ## Module Architecture
@@ -50,9 +50,8 @@ All modules live in `src/hn_signal/`. The refactored structure:
 | `prompts.py` | All LLM prompt templates: beat sheet, dialogue system, refinement, summary |
 | `script.py` | 3-pass script generation (uses prompts.py for templates, state.py for history) |
 | `state.py` | `state.json` load/save, episode numbering, date/number-to-words helpers |
-| `audio.py` | Turn parsing, cold-open detection, music layering, TTS backend routing |
+| `audio.py` | Turn parsing, cold-open detection, music layering |
 | `tts_gemini.py` | Gemini 2.5 Flash TTS backend (single-pass 2-speaker with director's notes) |
-| `tts_elevenlabs.py` | ElevenLabs TTS fallback (per-turn generation) |
 | `collect.py` | Story aggregation, deduplication (URL + fuzzy title), ranking |
 | `enrich.py` | Optional Tavily web search enrichment |
 | `publish.py` | GitHub Release upload, RSS feed generation, git commit & push |
@@ -92,9 +91,7 @@ Configured in `.env` (see `.env.example`):
 
 **Required:** `ANTHROPIC_API_KEY`, `GITHUB_TOKEN`, `GITHUB_REPO`, `PODCAST_BASE_URL`
 
-**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `TTS_BACKEND` (default: `gemini`), `GEMINI_API_KEY` (required when `TTS_BACKEND=gemini`), `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`, `GEMINI_VOICE_KIT`, `GEMINI_VOICE_DEAN`, `PUBLISH_HOUR` (default: `7`), `PUBLISH_TIMEZONE` (default: `Europe/London`)
-
-**ElevenLabs fallback:** Set `TTS_BACKEND=elevenlabs` and provide `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID_KIT`, `ELEVENLABS_VOICE_ID_DEAN`
+**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `GEMINI_API_KEY`, `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`, `GEMINI_VOICE_KIT`, `GEMINI_VOICE_DEAN`, `PUBLISH_HOUR` (default: `7`), `PUBLISH_TIMEZONE` (default: `Europe/London`)
 
 ## Key Constants
 
@@ -104,7 +101,7 @@ Configured in `.env` (see `.env.example`):
 - Script model: `claude-sonnet-4-6` (max 8,192 tokens) — used for beat sheet, dialogue, and TTS refinement passes
 - Beat sheet model: `claude-sonnet-4-6`
 - Summary model: `claude-haiku-4-5-20251001`
-- TTS: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker), fallback ElevenLabs
+- TTS: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker)
 - Gemini voices: Kit → Zephyr (bright, clear, energetic), Dean → Orus (firm, decisive, commanding)
 - Max 30 RSS episodes
 - Publish schedule: `PUBLISH_HOUR` (default: 7), `PUBLISH_TIMEZONE` (default: Europe/London)

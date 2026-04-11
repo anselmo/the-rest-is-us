@@ -26,10 +26,7 @@ GITHUB_TOKEN = _require("GITHUB_TOKEN")
 GITHUB_REPO = _require("GITHUB_REPO")
 PODCAST_BASE_URL = _require("PODCAST_BASE_URL")
 
-# TTS backend: "gemini" (default) or "elevenlabs"
-TTS_BACKEND = os.getenv("TTS_BACKEND", "gemini").strip()
-
-# Gemini TTS (required when TTS_BACKEND=gemini)
+# Gemini TTS
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip() or None
 GEMINI_VOICE_KIT = os.getenv("GEMINI_VOICE_KIT", "Zephyr")      # bright, clear, energetic
 GEMINI_VOICE_DEAN = os.getenv("GEMINI_VOICE_DEAN", "Orus")      # firm, decisive, commanding — clearly male
@@ -48,11 +45,6 @@ BREAKER_PATTERN = "breaker-*.mp3"
 BREAKER_CROSSFADE_MS = 1500
 MAX_BREAKERS_PER_EPISODE = 3
 BREAKER_VOLUME_DB = -3
-
-# ElevenLabs (required when TTS_BACKEND=elevenlabs)
-ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "").strip() or None
-ELEVENLABS_VOICE_ID_KIT = os.getenv("ELEVENLABS_VOICE_ID_KIT", "").strip() or None
-ELEVENLABS_VOICE_ID_DEAN = os.getenv("ELEVENLABS_VOICE_ID_DEAN", "").strip() or None
 
 # Optional keys
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "").strip() or None

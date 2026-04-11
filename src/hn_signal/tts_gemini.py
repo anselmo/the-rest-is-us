@@ -65,7 +65,7 @@ def _generate_audio_gemini(script: str) -> AudioSegment:
     from hn_signal.audio import _parse_turns
 
     if not GEMINI_API_KEY:
-        raise RuntimeError("GEMINI_API_KEY is required when TTS_BACKEND=gemini")
+        raise RuntimeError("GEMINI_API_KEY is required for TTS audio generation")
 
     turns = _parse_turns(script)
     if not turns:

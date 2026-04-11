@@ -92,7 +92,7 @@ The source architecture is pluggable. To add a new source:
 
 - **Script generation**: Claude Sonnet (3-pass: beat sheet, dialogue, TTS refinement)
 - **Summary extraction**: Claude Haiku
-- **Audio**: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker) with ElevenLabs fallback
+- **Audio**: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker)
 - **Sources**: Hacker News API, arXiv RSS, lab blog RSS, VentureBeat, Ars Technica
 - **Distribution**: GitHub Pages (MP3 hosting + RSS feed)
 - **Runtime**: Python 3.12, uv, ffmpeg

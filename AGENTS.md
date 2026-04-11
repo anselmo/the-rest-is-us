@@ -4,11 +4,11 @@ This file contains instructions for agentic coding agents working in this reposi
 
 ## Project Overview
 
-HN Signal is an automated daily AI podcast pipeline. It scrapes top AI stories from Hacker News, generates a 3-person panel discussion script via Claude, renders audio via ElevenLabs TTS, and publishes as a GitHub Release with RSS feed.
+HN Signal is an automated daily AI podcast pipeline. It scrapes top AI stories from Hacker News, generates a 2-host dialogue script via Claude, renders audio via Gemini TTS, and publishes as a GitHub Release with RSS feed.
 
 **Python version:** >=3.11  
 **Package manager:** uv  
-**Key dependencies:** anthropic, elevenlabs, httpx, beautifulsoup4, pydub, tavily-python
+**Key dependencies:** anthropic, google-genai, httpx, beautifulsoup4, pydub, tavily-python
 
 ---
 
@@ -207,8 +207,7 @@ ET.register_namespace("itunes", ITUNES_NS)
 
 Required environment variables (see `.env.example`):
 - `ANTHROPIC_API_KEY` — Claude API for script generation
-- `ELEVENLABS_API_KEY` — TTS audio generation
-- `ELEVENLABS_VOICE_ID_ALEX`, `ELEVENLABS_VOICE_ID_NICK`, `ELEVENLABS_VOICE_ID_MIA` — Voice IDs
+- `GEMINI_API_KEY` — TTS audio generation (Gemini 2.5 Flash)
 - `GITHUB_TOKEN` — Creating releases and committing feed
 - `GITHUB_REPO` — Repository for releases (format: `owner/repo`)
 - `PODCAST_BASE_URL` — Base URL for podcast files

@@ -14,9 +14,6 @@ dependencies = [
     "python-dotenv",
 ]
 
-[project.optional-dependencies]
-elevenlabs = ["elevenlabs"]
-
 [project.scripts]
 hn-signal = "hn_signal.main:main"
 

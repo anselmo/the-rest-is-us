@@ -15,9 +15,9 @@ from hn_signal.config import (
     MUSIC_VOLUME_DB,
     OUTRO_FADE_IN_MS,
     OUTRO_MUSIC_PATH,
-    TTS_BACKEND,
     log,
 )
+from hn_signal.tts_gemini import _generate_audio_gemini
 
 TURN_PATTERN = re.compile(r"^(KIT|DEAN):\s*", re.MULTILINE)
 BREAK_MARKER = re.compile(r"^\[BREAK\]$", re.MULTILINE)
@@ -146,23 +146,11 @@ def generate_audio(script: str, output_path: Path) -> tuple[Path, int]:
     else:
         log.info("Found %d segments separated by %d [BREAK] markers", len(segments), len(segments) - 1)
 
-    # Route to TTS backend
-    if TTS_BACKEND == "gemini":
-        from hn_signal.tts_gemini import _generate_audio_gemini
-        tts_fn = _generate_audio_gemini
-        bitrate = "192k"
-    elif TTS_BACKEND == "elevenlabs":
-        from hn_signal.tts_elevenlabs import _generate_audio_elevenlabs
-        tts_fn = _generate_audio_elevenlabs
-        bitrate = "128k"
-    else:
-        raise ValueError(f"Unknown TTS_BACKEND: {TTS_BACKEND!r} (expected 'gemini' or 'elevenlabs')")
-
-    cold_open = tts_fn(cold_open_script)
+    cold_open = _generate_audio_gemini(cold_open_script)
     segment_audios = []
     for i, seg_script in enumerate(segments):
         log.info("Generating TTS for segment %d/%d (%d chars)", i + 1, len(segments), len(seg_script))
-        segment_audios.append(tts_fn(seg_script))
+        segment_audios.append(_generate_audio_gemini(seg_script))
 
     # Assemble conversation with breaker clips between segments
     if len(segment_audios) > 1:
@@ -193,7 +181,7 @@ def generate_audio(script: str, output_path: Path) -> tuple[Path, int]:
     final = _add_music(cold_open, conversation)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    final.export(str(output_path), format="mp3", bitrate=bitrate)
+    final.export(str(output_path), format="mp3", bitrate="192k")
     duration_seconds = len(final) // 1000
     log.info("Audio exported: %s (%d seconds)", output_path, duration_seconds)
     return output_path, duration_seconds
