@@ -1,5 +1,4 @@
 import io
-import time
 import wave
 
 from pydub import AudioSegment
@@ -11,6 +10,7 @@ from hn_signal.config import (
     GEMINI_VOICE_KIT,
     log,
 )
+from hn_signal.retry import RATE_LIMIT, retry
 
 GEMINI_MODEL = "gemini-2.5-flash-preview-tts"
 
@@ -77,46 +77,39 @@ def _generate_audio_gemini(script: str) -> AudioSegment:
 
     client = genai.Client(api_key=GEMINI_API_KEY)
 
-    # Retry loop for rate limits
-    for attempt in range(6):
-        try:
-            response = client.models.generate_content(
-                model=GEMINI_MODEL,
-                contents=dialogue_text,
-                config=types.GenerateContentConfig(
-                    response_modalities=["AUDIO"],
-                    speech_config=types.SpeechConfig(
-                        multi_speaker_voice_config=types.MultiSpeakerVoiceConfig(
-                            speaker_voice_configs=[
-                                types.SpeakerVoiceConfig(
-                                    speaker="Kit",
-                                    voice_config=types.VoiceConfig(
-                                        prebuilt_voice_config=types.PrebuiltVoiceConfig(
-                                            voice_name=GEMINI_VOICE_KIT,
-                                        )
-                                    ),
+    response = retry(
+        lambda: client.models.generate_content(
+            model=GEMINI_MODEL,
+            contents=dialogue_text,
+            config=types.GenerateContentConfig(
+                response_modalities=["AUDIO"],
+                speech_config=types.SpeechConfig(
+                    multi_speaker_voice_config=types.MultiSpeakerVoiceConfig(
+                        speaker_voice_configs=[
+                            types.SpeakerVoiceConfig(
+                                speaker="Kit",
+                                voice_config=types.VoiceConfig(
+                                    prebuilt_voice_config=types.PrebuiltVoiceConfig(
+                                        voice_name=GEMINI_VOICE_KIT,
+                                    )
                                 ),
-                                types.SpeakerVoiceConfig(
-                                    speaker="Dean",
-                                    voice_config=types.VoiceConfig(
-                                        prebuilt_voice_config=types.PrebuiltVoiceConfig(
-                                            voice_name=GEMINI_VOICE_DEAN,
-                                        )
-                                    ),
+                            ),
+                            types.SpeakerVoiceConfig(
+                                speaker="Dean",
+                                voice_config=types.VoiceConfig(
+                                    prebuilt_voice_config=types.PrebuiltVoiceConfig(
+                                        voice_name=GEMINI_VOICE_DEAN,
+                                    )
                                 ),
-                            ]
-                        )
-                    ),
+                            ),
+                        ]
+                    )
                 ),
-            )
-            break
-        except Exception as e:
-            if ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)) and attempt < 5:
-                wait = 65
-                log.warning("Rate limited, waiting %ds (attempt %d/6)", wait, attempt + 1)
-                time.sleep(wait)
-            else:
-                raise
+            ),
+        ),
+        RATE_LIMIT,
+        "Gemini TTS",
+    )
 
     audio_data = response.candidates[0].content.parts[0].inline_data.data
     duration_seconds = len(audio_data) // (GEMINI_SAMPLE_RATE * 2)
