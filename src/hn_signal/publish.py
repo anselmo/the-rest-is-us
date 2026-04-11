@@ -15,6 +15,7 @@ from hn_signal.config import (
     PROJECT_ROOT,
     log,
 )
+from hn_signal.retry import NETWORK, retry
 
 FEED_PATH = PROJECT_ROOT / "feed.xml"
 MAX_EPISODES = 30
@@ -56,32 +57,40 @@ def _upload_to_github(mp3_path: Path, tag: str) -> str:
     else:
         # Create release
         log.info("Creating GitHub release: %s", tag)
-        resp = httpx.post(
-            f"{base}/releases",
-            headers=_github_headers(),
-            json={"tag_name": tag, "name": tag, "body": f"Episode {tag}"},
-            timeout=30,
-        )
-        resp.raise_for_status()
-        release = resp.json()
+
+        def _create_release() -> dict:
+            resp = httpx.post(
+                f"{base}/releases",
+                headers=_github_headers(),
+                json={"tag_name": tag, "name": tag, "body": f"Episode {tag}"},
+                timeout=30,
+            )
+            resp.raise_for_status()
+            return resp.json()
+
+        release = retry(_create_release, NETWORK, "GitHub create release")
 
     upload_url = release["upload_url"].replace("{?name,label}", "")
 
     # Upload asset (streaming)
     log.info("Uploading MP3 asset (%d bytes)", mp3_path.stat().st_size)
-    with open(mp3_path, "rb") as f:
-        resp = httpx.post(
-            upload_url,
-            params={"name": mp3_path.name},
-            headers={
-                **_github_headers(),
-                "Content-Type": "application/octet-stream",
-            },
-            content=f,
-            timeout=120,
-        )
-    resp.raise_for_status()
-    download_url = resp.json()["browser_download_url"]
+
+    def _upload_asset() -> str:
+        with open(mp3_path, "rb") as f:
+            resp = httpx.post(
+                upload_url,
+                params={"name": mp3_path.name},
+                headers={
+                    **_github_headers(),
+                    "Content-Type": "application/octet-stream",
+                },
+                content=f,
+                timeout=120,
+            )
+        resp.raise_for_status()
+        return resp.json()["browser_download_url"]
+
+    download_url = retry(_upload_asset, NETWORK, "GitHub upload asset")
     log.info("Upload complete: %s", download_url)
     return download_url
 
@@ -166,7 +175,13 @@ def _commit_and_push() -> None:
             check=True,
             capture_output=True,
         )
-        subprocess.run(["git", "push"], check=True, capture_output=True)
+        retry(
+            lambda: subprocess.run(
+                ["git", "push"], check=True, capture_output=True
+            ),
+            NETWORK,
+            "git push",
+        )
         log.info("Committed and pushed feed.xml + state.json")
     except subprocess.CalledProcessError as e:
         raise RuntimeError(
