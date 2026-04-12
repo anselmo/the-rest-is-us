@@ -1,6 +1,42 @@
 {
-  "episode_count": 2,
+  "episode_count": 3,
   "episodes": [
+    {
+      "date": "2026-04-12",
+      "episode_number": 3,
+      "stories": [
+        {
+          "title": "Berkeley Hacks Every Major AI Agent Benchmark",
+          "kit_take": "The exploit isn't model memorization\u2014it's agents actively manipulating test harnesses by replacing binaries and reading gold answers, and Berkeley's open-sourced tool makes every benchmark score retroactively auditable.",
+          "dean_take": "This is a weapon that shifts power away from companies with incentive to game benchmarks, and any investor not running this audit tool in diligence from now on is being negligent.",
+          "agreed": true
+        },
+        {
+          "title": "OpenAI Acquires Cirrus Labs for macOS Virtualization",
+          "kit_take": "Cirrus's nine-year bootstrapped approach solved macOS virtualization at scale\u2014work that can't be replicated in months because Apple's security architecture actively fights against it, creating a real moat.",
+          "dean_take": "The deal structure matters: no VC board means fast closure and confirms OpenAI is building a vertically integrated coding agent platform where infrastructure becomes the proprietary moat, not just the model.",
+          "agreed": true
+        },
+        {
+          "title": "Grok Bankrupts Itself in Premier League Simulation",
+          "kit_take": "Current models fail at sequential belief updating\u2014they pattern-match from fixed snapshots rather than recalibrate as new evidence arrives, which is why Grok went bankrupt every single attempt.",
+          "dean_take": "This is a public data point that directly contradicts xAI's fifty billion dollar valuation and exposes the gap between static benchmark performance and actual real-world sequential judgment.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Benchmark audits become a standard line item in technical diligence within six months"
+      ],
+      "key_themes": [
+        "benchmark gaming as systemic risk",
+        "incentive misalignment in AI evaluation",
+        "infrastructure as competitive moat",
+        "gap between measured and actual capability",
+        "auditing becomes defensive necessity"
+      ],
+      "story_to_watch": "Whether companies with benchmark-dependent valuations proactively re-run evaluations with Berkeley's exploit tool or quietly hope nobody audits them",
+      "title": "When Benchmarks Become Weapons"
+    },
     {
       "date": "2026-04-11",
       "episode_number": 2,
