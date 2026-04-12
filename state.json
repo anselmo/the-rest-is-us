@@ -1,6 +1,40 @@
 {
-  "episode_count": 1,
+  "episode_count": 2,
   "episodes": [
+    {
+      "date": "2026-04-11",
+      "episode_number": 2,
+      "stories": [
+        {
+          "title": "KellyBench: AI Models Fail at Risk Sizing",
+          "kit_take": "AI overconfidence is baked into RLHF training\u2014humans reward decisive answers over hedged ones, selecting FOR uncertainty blindness by design",
+          "dean_take": "The real problem is asymmetric downside: if AI can't size risk correctly, it's untrustworthy in domains where being wrong costs more than being right earns",
+          "agreed": true
+        },
+        {
+          "title": "OpenAI's Quiet Cirrus Labs Acquisition",
+          "kit_take": "OpenAI is assembling a complete autonomous coding stack piece by piece, not buying features but acquiring battle-hardened infrastructure",
+          "dean_take": "This is strategic foundation-building disguised as normal M&A\u2014the next watch is what other infrastructure pieces quietly disappear from open-source",
+          "agreed": true
+        },
+        {
+          "title": "The Academy's Hidden Incentive Structure",
+          "kit_take": "OpenAI's Academy teaches writing with AI while human writers are simultaneously hiding AI use\u2014the guides exist inside the problem they're solving",
+          "dean_take": "This is defensive branding against Copilot, not confidence\u2014a search-funnel sales tool disguised as education, leveraging ChatGPT mindshare before competitors erode it",
+          "agreed": true
+        }
+      ],
+      "predictions": [],
+      "key_themes": [
+        "AI overconfidence as a design artifact",
+        "Humans adapting behavior to appear non-AI",
+        "OpenAI's quiet infrastructure consolidation",
+        "Risk-sizing failure in frontier models",
+        "Competitive moat-building before platform window closes"
+      ],
+      "story_to_watch": "What piece of the autonomous coding stack OpenAI acquires next as they quietly assemble the full infrastructure layer",
+      "title": "When Humans Bend to Fit the Machine"
+    },
     {
       "date": "2026-04-11",
       "episode_number": 1,
@@ -34,7 +68,8 @@
         "Pragmatic vs. restrictive approaches to AI integration",
         "Enterprise land-and-expand as OpenAI strategy"
       ],
-      "story_to_watch": "OpenAI's quiet assembly of the full autonomous coding stack and how Linux kernel standards become the template for enterprise AI adoption"
+      "story_to_watch": "OpenAI's quiet assembly of the full autonomous coding stack and how Linux kernel standards become the template for enterprise AI adoption",
+      "title": ""
     }
   ]
 }
