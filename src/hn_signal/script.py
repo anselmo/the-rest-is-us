@@ -5,6 +5,8 @@ import anthropic
 from hn_signal.config import (
     ANTHROPIC_API_KEY,
     BEAT_SHEET_MODEL,
+    HOST1,
+    HOST2,
     PUBLISH_TIMEZONE,
     SCRIPT_MODEL,
     SUMMARY_MODEL,
@@ -18,6 +20,7 @@ from hn_signal.prompts import (
     REFINEMENT_PROMPT,
     SUMMARY_PROMPT,
     SYSTEM_PROMPT,
+    format_prompt,
 )
 from hn_signal.state import (
     _format_date_spoken,
@@ -63,11 +66,13 @@ def generate_beat_sheet(stories: list[Story], history: PipelineState, date_spoke
             + json.dumps([ep.to_dict() for ep in history.episodes[:3]], indent=2)
         )
 
+    formatted_beat_sheet_prompt = format_prompt(BEAT_SHEET_PROMPT, HOST1, HOST2)
+
     log.info("Generating beat sheet with %s (%d stories)", BEAT_SHEET_MODEL, len(stories))
     response = client.messages.create(
         model=BEAT_SHEET_MODEL,
         max_tokens=8192,
-        system=BEAT_SHEET_PROMPT,
+        system=formatted_beat_sheet_prompt,
         messages=[{"role": "user", "content": user_message}],
     )
 
@@ -78,7 +83,7 @@ def generate_beat_sheet(stories: list[Story], history: PipelineState, date_spoke
         response = client.messages.create(
             model=BEAT_SHEET_MODEL,
             max_tokens=8192,
-            system=BEAT_SHEET_PROMPT,
+            system=formatted_beat_sheet_prompt,
             messages=[{"role": "user", "content": retry_msg}],
         )
 
@@ -111,7 +116,7 @@ def generate_script(stories: list[Story], history: PipelineState) -> str:
     # Pass 1: generate dialogue from beat sheet
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
-    system = SYSTEM_PROMPT
+    system = format_prompt(SYSTEM_PROMPT, HOST1, HOST2)
     if history.episodes:
         system += CONTINUITY_BLOCK.format(
             history_json=json.dumps([ep.to_dict() for ep in history.episodes], indent=2)
@@ -129,7 +134,7 @@ def generate_script(stories: list[Story], history: PipelineState) -> str:
     log.info("Generating script with %s (%d stories, beat sheet attached)", SCRIPT_MODEL, len(stories))
     response = client.messages.create(
         model=SCRIPT_MODEL,
-        max_tokens=8192,
+        max_tokens=12288,
         system=system,
         messages=[{"role": "user", "content": user_message}],
     )
@@ -149,11 +154,13 @@ def refine_script(draft: str) -> str:
     """Polish script for TTS delivery — tighten turns, optimize prosody, kill blog-post phrasing."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
+    formatted_refinement_prompt = format_prompt(REFINEMENT_PROMPT, HOST1, HOST2)
+
     log.info("Refining script for TTS delivery (%s, %d chars input)", SCRIPT_MODEL, len(draft))
     response = client.messages.create(
         model=SCRIPT_MODEL,
-        max_tokens=8192,
-        system=REFINEMENT_PROMPT,
+        max_tokens=12288,
+        system=formatted_refinement_prompt,
         messages=[{"role": "user", "content": draft}],
     )
 
@@ -168,11 +175,13 @@ def refine_script(draft: str) -> str:
 def extract_episode_summary(script: str, stories: list[Story]) -> EpisodeSummary:
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
+    formatted_summary_prompt = format_prompt(SUMMARY_PROMPT, HOST1, HOST2)
+
     log.info("Extracting episode summary with %s", SUMMARY_MODEL)
     response = client.messages.create(
         model=SUMMARY_MODEL,
         max_tokens=2048,
-        system=SUMMARY_PROMPT,
+        system=formatted_summary_prompt,
         messages=[{"role": "user", "content": script}],
     )
 

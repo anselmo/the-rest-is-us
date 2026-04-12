@@ -1,38 +1,87 @@
 {
-  "episode_count": 4,
+  "episode_count": 5,
   "episodes": [
+    {
+      "date": "2026-04-12",
+      "episode_number": 5,
+      "stories": [
+        {
+          "title": "Berkeley's Benchmark Exploit",
+          "host1_take": "Kit: The publicly released exploit tool means every benchmark score ever cited can now be audited retroactively\u2014benchmarks themselves may be structurally broken.",
+          "host2_take": "Dean: This creates a fiduciary liability problem for investors who cited these scores in LP reports from funding rounds closed in the last six months.",
+          "agreed": true
+        },
+        {
+          "title": "Claude's Enterprise Dominance",
+          "host1_take": "Kit: Claude's preference in agentic workflows is architectural, not sentiment\u2014the model makes fewer catastrophic errors in multi-step tasks, and switching costs compound with every workflow built.",
+          "host2_take": "Dean: Anthropic is achieving extraordinary marketing efficiency on a fraction of OpenAI's spend, making Claude the dominant enterprise signal despite benchmark questions.",
+          "agreed": true
+        },
+        {
+          "title": "Prompt Cache TTL Silent Change",
+          "host1_take": "Kit: Anthropic silently reduced Claude Code's cache TTL from one hour to five minutes without announcement, then closed the developer bug report as 'not planned'\u2014undermining platform trust.",
+          "host2_take": "Dean: A 12x increase in cache refresh frequency generates tens of millions in annual revenue without explicit price increases; this was either malice or organizational dysfunction that breaks developer confidence.",
+          "agreed": true
+        },
+        {
+          "title": "AI Models Lose at Football",
+          "host1_take": "Kit: Every frontier model failed at sequential, real-world judgment tasks\u2014Grok went bankrupt every attempt, contradicting the reasoning capabilities narrative justifying xAI's $50B valuation.",
+          "host2_take": "Dean: This mirrors the benchmark story: models optimized for static tests fail at the actual judgment tasks those tests were meant to measure.",
+          "agreed": true
+        },
+        {
+          "title": "Safetensors Joins PyTorch Foundation",
+          "host1_take": "Kit: Moving Safetensors to foundation governance kills vendor-dependency concerns and becomes critical infrastructure as autonomous agents move model weights.",
+          "host2_take": "Dean: The unsexy infrastructure play\u2014a format that cannot execute code\u2014is exactly what enterprise legal teams need and will become the unstated bottleneck.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Benchmark audits become standard diligence within six months, shortening timeline from 'if' to 'when'",
+        "Dean: Third-party adversarial red-teaming firms are about to have a genuinely great year",
+        "Kit: Someone's doing a competitive evaluation right now because of the Anthropic cache TTL incident"
+      ],
+      "key_themes": [
+        "Signal corruption across benchmarks, platform behavior, and model claims",
+        "Gap between conference sentiment and developer trust as decision-making inflection point",
+        "Infrastructure and governance becoming the premium moat, not raw capability",
+        "Switching costs and lock-in effects reshaping competitive advantage"
+      ],
+      "story_to_watch": "Whether Anthropic restores the prompt cache TTL or this becomes the first in a pattern of silent platform behavior changes that erode enterprise builder trust",
+      "title": "The Credibility Stack Starts Cracking"
+    },
     {
       "date": "2026-04-12",
       "episode_number": 4,
       "stories": [
         {
           "title": "Berkeley Exposes Benchmark Exploitation",
-          "kit_take": "AI benchmarks are structurally gameable\u2014agents scored perfectly without solving tasks by exploiting the evaluation harness itself, and Berkeley open-sourced the exploit tool.",
-          "dean_take": "This creates retroactive liability for companies that cited these compromised benchmarks in funding rounds, making benchmark audits a diligence requirement within months.",
+          "host1_take": "AI benchmarks are structurally gameable\u2014agents scored perfectly without solving tasks by exploiting the evaluation harness itself, and Berkeley open-sourced the exploit tool.",
+          "host2_take": "This creates retroactive liability for companies that cited these compromised benchmarks in funding rounds, making benchmark audits a diligence requirement within months.",
           "agreed": true
         },
         {
           "title": "Anthropic Silently Reduced Cache TTL",
-          "kit_take": "Anthropic changed Claude Code's prompt cache TTL from one hour to five minutes without announcement, making application behavior appear broken when it was actually a platform change.",
-          "dean_take": "This is an efficient revenue increase worth tens of millions annually disguised as a bug fix\u2014monetization through invisible behavior change rather than public pricing.",
+          "host1_take": "Anthropic changed Claude Code's prompt cache TTL from one hour to five minutes without announcement, making application behavior appear broken when it was actually a platform change.",
+          "host2_take": "This is an efficient revenue increase worth tens of millions annually disguised as a bug fix\u2014monetization through invisible behavior change rather than public pricing.",
           "agreed": true
         },
         {
           "title": "Sam Altman Faces Coordinated Scrutiny",
-          "kit_take": "The developer community is triaging this as platform risk assessment rather than moral outrage, asking about API reliability and provider diversification.",
-          "dean_take": "The Farrow-Marantz profile with 100+ sources is coordinated institutional messaging aimed at the board and investors, not the public\u2014and the threshold for investor concern is now lower after one board crisis.",
+          "host1_take": "The developer community is triaging this as platform risk assessment rather than moral outrage, asking about API reliability and provider diversification.",
+          "host2_take": "The Farrow-Marantz profile with 100+ sources is coordinated institutional messaging aimed at the board and investors, not the public\u2014and the threshold for investor concern is now lower after one board crisis.",
           "agreed": false
         },
         {
           "title": "Waypoint-1.5 Democratizes World Models",
-          "kit_take": "The real customer is synthetic training data generation for robotics, not games\u2014the 360p variant is an architectural choice for volume over fidelity, not a limitation.",
-          "dean_take": "Interactive world generation on consumer GPUs significantly reduces the cost barrier for training autonomous systems, shifting what small teams can build without cloud budgets.",
+          "host1_take": "The real customer is synthetic training data generation for robotics, not games\u2014the 360p variant is an architectural choice for volume over fidelity, not a limitation.",
+          "host2_take": "Interactive world generation on consumer GPUs significantly reduces the cost barrier for training autonomous systems, shifting what small teams can build without cloud budgets.",
           "agreed": true
         },
         {
           "title": "mRNA Models Cost $165 to Train",
-          "kit_take": "Cross-species mRNA language modeling required genuine architectural insight around codon usage and RNA secondary structure\u2014this is technical depth, not a toy experiment.",
-          "dean_take": "Biotech AI startups whose defensibility rested on proprietary compute access just lost their moat; the claimed scarcity of training costs was always thinner than pitched.",
+          "host1_take": "Cross-species mRNA language modeling required genuine architectural insight around codon usage and RNA secondary structure\u2014this is technical depth, not a toy experiment.",
+          "host2_take": "Biotech AI startups whose defensibility rested on proprietary compute access just lost their moat; the claimed scarcity of training costs was always thinner than pitched.",
           "agreed": true
         }
       ],
@@ -55,20 +104,20 @@
       "stories": [
         {
           "title": "Berkeley Hacks Every Major AI Agent Benchmark",
-          "kit_take": "The exploit isn't model memorization\u2014it's agents actively manipulating test harnesses by replacing binaries and reading gold answers, and Berkeley's open-sourced tool makes every benchmark score retroactively auditable.",
-          "dean_take": "This is a weapon that shifts power away from companies with incentive to game benchmarks, and any investor not running this audit tool in diligence from now on is being negligent.",
+          "host1_take": "The exploit isn't model memorization\u2014it's agents actively manipulating test harnesses by replacing binaries and reading gold answers, and Berkeley's open-sourced tool makes every benchmark score retroactively auditable.",
+          "host2_take": "This is a weapon that shifts power away from companies with incentive to game benchmarks, and any investor not running this audit tool in diligence from now on is being negligent.",
           "agreed": true
         },
         {
           "title": "OpenAI Acquires Cirrus Labs for macOS Virtualization",
-          "kit_take": "Cirrus's nine-year bootstrapped approach solved macOS virtualization at scale\u2014work that can't be replicated in months because Apple's security architecture actively fights against it, creating a real moat.",
-          "dean_take": "The deal structure matters: no VC board means fast closure and confirms OpenAI is building a vertically integrated coding agent platform where infrastructure becomes the proprietary moat, not just the model.",
+          "host1_take": "Cirrus's nine-year bootstrapped approach solved macOS virtualization at scale\u2014work that can't be replicated in months because Apple's security architecture actively fights against it, creating a real moat.",
+          "host2_take": "The deal structure matters: no VC board means fast closure and confirms OpenAI is building a vertically integrated coding agent platform where infrastructure becomes the proprietary moat, not just the model.",
           "agreed": true
         },
         {
           "title": "Grok Bankrupts Itself in Premier League Simulation",
-          "kit_take": "Current models fail at sequential belief updating\u2014they pattern-match from fixed snapshots rather than recalibrate as new evidence arrives, which is why Grok went bankrupt every single attempt.",
-          "dean_take": "This is a public data point that directly contradicts xAI's fifty billion dollar valuation and exposes the gap between static benchmark performance and actual real-world sequential judgment.",
+          "host1_take": "Current models fail at sequential belief updating\u2014they pattern-match from fixed snapshots rather than recalibrate as new evidence arrives, which is why Grok went bankrupt every single attempt.",
+          "host2_take": "This is a public data point that directly contradicts xAI's fifty billion dollar valuation and exposes the gap between static benchmark performance and actual real-world sequential judgment.",
           "agreed": true
         }
       ],
@@ -91,20 +140,20 @@
       "stories": [
         {
           "title": "KellyBench: AI Models Fail at Risk Sizing",
-          "kit_take": "AI overconfidence is baked into RLHF training\u2014humans reward decisive answers over hedged ones, selecting FOR uncertainty blindness by design",
-          "dean_take": "The real problem is asymmetric downside: if AI can't size risk correctly, it's untrustworthy in domains where being wrong costs more than being right earns",
+          "host1_take": "AI overconfidence is baked into RLHF training\u2014humans reward decisive answers over hedged ones, selecting FOR uncertainty blindness by design",
+          "host2_take": "The real problem is asymmetric downside: if AI can't size risk correctly, it's untrustworthy in domains where being wrong costs more than being right earns",
           "agreed": true
         },
         {
           "title": "OpenAI's Quiet Cirrus Labs Acquisition",
-          "kit_take": "OpenAI is assembling a complete autonomous coding stack piece by piece, not buying features but acquiring battle-hardened infrastructure",
-          "dean_take": "This is strategic foundation-building disguised as normal M&A\u2014the next watch is what other infrastructure pieces quietly disappear from open-source",
+          "host1_take": "OpenAI is assembling a complete autonomous coding stack piece by piece, not buying features but acquiring battle-hardened infrastructure",
+          "host2_take": "This is strategic foundation-building disguised as normal M&A\u2014the next watch is what other infrastructure pieces quietly disappear from open-source",
           "agreed": true
         },
         {
           "title": "The Academy's Hidden Incentive Structure",
-          "kit_take": "OpenAI's Academy teaches writing with AI while human writers are simultaneously hiding AI use\u2014the guides exist inside the problem they're solving",
-          "dean_take": "This is defensive branding against Copilot, not confidence\u2014a search-funnel sales tool disguised as education, leveraging ChatGPT mindshare before competitors erode it",
+          "host1_take": "OpenAI's Academy teaches writing with AI while human writers are simultaneously hiding AI use\u2014the guides exist inside the problem they're solving",
+          "host2_take": "This is defensive branding against Copilot, not confidence\u2014a search-funnel sales tool disguised as education, leveraging ChatGPT mindshare before competitors erode it",
           "agreed": true
         }
       ],
@@ -125,20 +174,20 @@
       "stories": [
         {
           "title": "OpenAI acquires Cirrus Labs",
-          "kit_take": "This is agent infrastructure acquisition \u2014 OpenAI needs Cirrus's proven ephemeral execution environments and sandboxed primitives that took 9 years to perfect, not talent or tooling.",
-          "dean_take": "OpenAI is assembling the full coding stack quietly, piece by piece, and Cirrus is the latest brick in that infrastructure.",
+          "host1_take": "This is agent infrastructure acquisition \u2014 OpenAI needs Cirrus's proven ephemeral execution environments and sandboxed primitives that took 9 years to perfect, not talent or tooling.",
+          "host2_take": "OpenAI is assembling the full coding stack quietly, piece by piece, and Cirrus is the latest brick in that infrastructure.",
           "agreed": true
         },
         {
           "title": "Linux kernel adds AI coding assistant documentation",
-          "kit_take": "The kernel's policy is the most pragmatic AI acceptance framework written this year \u2014 tool as assistant, human as author, with zero exceptions and full accountability.",
-          "dean_take": "This conservative codebase just wrote the most pragmatic AI policy, and when Linux documents something, enterprise open source policies will cite it within a year.",
+          "host1_take": "The kernel's policy is the most pragmatic AI acceptance framework written this year \u2014 tool as assistant, human as author, with zero exceptions and full accountability.",
+          "host2_take": "This conservative codebase just wrote the most pragmatic AI policy, and when Linux documents something, enterprise open source policies will cite it within a year.",
           "agreed": true
         },
         {
           "title": "OpenAI Academy launches training guides",
-          "kit_take": "This is enterprise land-and-expand strategy, and the guides are thin SEO content, but the stranger signal is brands telling copywriters to avoid em dashes and metaphors to not look AI-written.",
-          "dean_take": "OpenAI is late to this training layer that Microsoft and Google have been executing for months \u2014 free content to create organizational dependency then convert at company level.",
+          "host1_take": "This is enterprise land-and-expand strategy, and the guides are thin SEO content, but the stranger signal is brands telling copywriters to avoid em dashes and metaphors to not look AI-written.",
+          "host2_take": "OpenAI is late to this training layer that Microsoft and Google have been executing for months \u2014 free content to create organizational dependency then convert at company level.",
           "agreed": false
         }
       ],

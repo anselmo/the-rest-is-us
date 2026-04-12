@@ -1,5 +1,5 @@
 import sys
-from datetime import date
+from datetime import date, datetime
 
 from hn_signal.config import PROJECT_ROOT, log
 
@@ -13,8 +13,12 @@ def main() -> None:
     from hn_signal.audio import generate_audio
     from hn_signal.publish import publish_episode
 
+    skip_publish = "--no-publish" in sys.argv
+
     today = date.today().isoformat()
-    log.info("=== HN Signal pipeline starting for %s ===", today)
+    now = datetime.now()
+    episode_tag = f"{today}-{now.hour:02d}{now.minute:02d}"
+    log.info("=== HN Signal pipeline starting for %s ===", episode_tag)
 
     # Stage 1: Collect
     stories = collect_stories()
@@ -33,12 +37,17 @@ def main() -> None:
     # Stage 4: Audio
     EPISODES_DIR.mkdir(parents=True, exist_ok=True)
 
-    script_path = EPISODES_DIR / f"{today}-script.txt"
+    script_path = EPISODES_DIR / f"{episode_tag}-script.txt"
     script_path.write_text(script)
     log.info("Script saved: %s", script_path)
 
-    mp3_path = EPISODES_DIR / f"{today}.mp3"
+    mp3_path = EPISODES_DIR / f"{episode_tag}.mp3"
     mp3_path, duration = generate_audio(script, mp3_path)
+
+    if skip_publish:
+        log.info("=== Skipping publish (--no-publish) ===")
+        log.info("MP3: %s (%ds)", mp3_path, duration)
+        return
 
     # Stage 5: Publish
     try:

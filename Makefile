@@ -5,6 +5,10 @@
 run: ## Run the full end-to-end pipeline (collect → enrich → script → audio → publish)
 	uv run hn-signal
 
+.PHONY: dry-run
+dry-run: ## Run stages 1–4 (collect → enrich → script → audio) without publishing
+	uv run hn-signal --no-publish
+
 # ── Individual stages ────────────────────────────────────────────────
 .PHONY: collect
 collect: ## Stage 1 — Aggregate stories from all sources (free, no API costs)
@@ -41,6 +45,17 @@ audio: ## Stage 4 — Re-generate audio from latest saved script (or SCRIPT=path
 	exec('while (out / f\"{d}-v{v}.mp3\").exists(): v += 1'); \
 	p, dur = generate_audio(script, out / f'{d}-v{v}.mp3'); \
 	print(f'Audio: {p} ({dur}s)')"
+
+.PHONY: test-audio
+test-audio: ## Generate a short sample MP3 to test audio transitions (TTS only, no LLM)
+	@echo "Generating test audio from scripts/test-audio-sample.txt..."; \
+	uv run python -c "\
+	from pathlib import Path; \
+	from hn_signal.audio import generate_audio; \
+	from hn_signal.config import PROJECT_ROOT; \
+	script = (PROJECT_ROOT / 'scripts' / 'test-audio-sample.txt').read_text(); \
+	p, dur = generate_audio(script, PROJECT_ROOT / 'episodes' / 'tts-test' / 'test-transitions.mp3'); \
+	print(f'Done: {p} ({dur}s)')"
 
 # ── Individual sources ───────────────────────────────────────────────
 .PHONY: source-hn

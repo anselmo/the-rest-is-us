@@ -31,8 +31,8 @@ class Story:
 @dataclass
 class StoryTake:
     title: str
-    kit_take: str = ""
-    dean_take: str = ""
+    host1_take: str = ""
+    host2_take: str = ""
     agreed: bool = True
 
 
@@ -55,8 +55,9 @@ class EpisodeSummary:
         stories = [
             StoryTake(
                 title=s.get("title", ""),
-                kit_take=s.get("kit_take", ""),
-                dean_take=s.get("dean_take", ""),
+                # Backward compatibility: map old kit_take/dean_take to host1_take/host2_take
+                host1_take=s.get("host1_take") or s.get("kit_take", ""),
+                host2_take=s.get("host2_take") or s.get("dean_take", ""),
                 agreed=s.get("agreed", True),
             )
             if isinstance(s, dict)

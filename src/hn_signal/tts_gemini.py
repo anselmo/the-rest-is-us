@@ -7,15 +7,19 @@ from pydub import AudioSegment
 from hn_signal.config import (
     GEMINI_API_KEY,
     GEMINI_SAMPLE_RATE,
-    GEMINI_VOICE_DEAN,
-    GEMINI_VOICE_KIT,
+    HOST1,
+    HOST2,
     log,
 )
 
 GEMINI_MODEL = "gemini-2.5-flash-preview-tts"
 
-# Director's notes prepended to the dialogue for Gemini TTS voice styling
-GEMINI_DIRECTOR_NOTES = """\
+
+def _build_director_notes(host1: dict, host2: dict) -> str:
+    """Build TTS director's notes from active host profiles."""
+    h1 = host1["full_name"].split()[0]
+    h2 = host2["full_name"].split()[0]
+    return f"""\
 DIRECTOR'S NOTES — read the entire transcript before performing.
 
 SCENE: Two hosts across a small table in a warm studio. Morning light, coffee nearby. \
@@ -24,15 +28,9 @@ enjoy arguing. You should hear the grin in the audio — the soft palate stays r
 keep the tone bright, sunny, and explicitly inviting.
 
 VOICES:
-Kit: Clear, warm, measured. A designer who thinks before she speaks. Her default pace is \
-moderate — she speeds up slightly when excited, slows down for emphasis. Her sharp lines \
-should land with a beat of silence before them. Pitch drops on devastating observations. \
-Laughs are quiet and genuine — an amused exhale, not a performance.
+{h1}: {host1["director_note"]}
 
-Dean: Warm, energetic, slightly faster default pace. A venture capitalist who's comfortable \
-with conviction. Speeds up when pattern-matching. Slows down and drops pitch when naming \
-specific numbers or making predictions. Laughs more openly than Kit. His "Look —" and \
-"Here's the thing —" are verbal tics — deliver them quickly, not dramatically.
+{h2}: {host2["director_note"]}
 
 PERFORMANCE RULES:
 1. PACING: Keep it BRISK. Most turns are SHORT (1-2 sentences). Deliver at natural \
@@ -43,15 +41,15 @@ One-word reactions ("Right.", "Ha!", "Hmm.") are throwaway — quick, almost ove
 already thinking while the other was talking.
 3. INTERRUPTIONS: Lines ending with "—" are cut off. The interrupting host comes in \
 with energy and SPEED — they couldn't wait.
-4. DISCOVERY MOMENTS: "Wait, really?" must sound GENUINE but quick — surprise is a \
+4. DISCOVERY MOMENTS: Surprise reactions must sound GENUINE but quick — surprise is a \
 reflex, not a dramatic beat.
 5. ENERGY ARC: Start warm. Build momentum through the middle — the pace should \
 ACCELERATE as hosts get excited. Wind down only at the very end.
-6. LAUGHTER: Brief. "Ha!" is one syllable. Never hold a laugh.
+6. LAUGHTER: Brief. Never hold a laugh.
 7. MOMENTUM: Don't let energy drop between turns. This conversation has FORWARD MOTION.
 
-REACTIONS ARE INVOLUNTARY: "Wait — seriously?" escapes before the speaker can stop it. \
-"Oh. THAT's interesting." is a real-time cognitive shift. Quick and reflexive, not performed.
+REACTIONS ARE INVOLUNTARY: Surprise escapes before the speaker can stop it. \
+Cognitive shifts happen in real time. Quick and reflexive, not performed.
 
 Transcript:
 """
@@ -69,16 +67,26 @@ def _generate_audio_gemini(script: str) -> AudioSegment:
 
     turns = _parse_turns(script)
     if not turns:
-        raise RuntimeError("No valid KIT:/DEAN: turns found in script")
+        h1_name = HOST1["full_name"].split()[0]
+        h2_name = HOST2["full_name"].split()[0]
+        raise RuntimeError(
+            "No valid %s:/%s: turns found in script" % (h1_name.upper(), h2_name.upper())
+        )
 
     log.info("Generating audio for %d turns via Gemini TTS (single-pass)", len(turns))
+
+    # Derive first names for speaker mapping
+    h1_name = HOST1["full_name"].split()[0]
+    h2_name = HOST2["full_name"].split()[0]
 
     # Reformat script with speaker names matching voice config
     formatted_lines = []
     for speaker, text in turns:
-        name = "Kit" if speaker == "KIT" else "Dean"
+        name = h1_name if speaker == h1_name.upper() else h2_name
         formatted_lines.append(f"{name}: {text}")
-    dialogue_text = GEMINI_DIRECTOR_NOTES + "\n".join(formatted_lines)
+
+    director_notes = _build_director_notes(HOST1, HOST2)
+    dialogue_text = director_notes + "\n".join(formatted_lines)
 
     client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -94,18 +102,18 @@ def _generate_audio_gemini(script: str) -> AudioSegment:
                         multi_speaker_voice_config=types.MultiSpeakerVoiceConfig(
                             speaker_voice_configs=[
                                 types.SpeakerVoiceConfig(
-                                    speaker="Kit",
+                                    speaker=h1_name,
                                     voice_config=types.VoiceConfig(
                                         prebuilt_voice_config=types.PrebuiltVoiceConfig(
-                                            voice_name=GEMINI_VOICE_KIT,
+                                            voice_name=HOST1["voice"],
                                         )
                                     ),
                                 ),
                                 types.SpeakerVoiceConfig(
-                                    speaker="Dean",
+                                    speaker=h2_name,
                                     voice_config=types.VoiceConfig(
                                         prebuilt_voice_config=types.PrebuiltVoiceConfig(
-                                            voice_name=GEMINI_VOICE_DEAN,
+                                            voice_name=HOST2["voice"],
                                         )
                                     ),
                                 ),

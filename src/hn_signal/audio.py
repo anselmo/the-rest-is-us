@@ -9,17 +9,28 @@ from hn_signal.config import (
     BREAKER_DIR,
     BREAKER_PATTERN,
     BREAKER_VOLUME_DB,
+    HOST1,
+    HOST2,
     INTRO_CROSSFADE_MS,
     INTRO_MUSIC_PATH,
     MAX_BREAKERS_PER_EPISODE,
     MUSIC_VOLUME_DB,
     OUTRO_FADE_IN_MS,
     OUTRO_MUSIC_PATH,
+    SEGMENT_GAP_MS,
     log,
 )
 from hn_signal.tts_gemini import _generate_audio_gemini
 
-TURN_PATTERN = re.compile(r"^(KIT|DEAN):\s*", re.MULTILINE)
+
+def _build_turn_pattern() -> re.Pattern:
+    """Build turn-parsing regex from active host names."""
+    h1 = HOST1["full_name"].split()[0].upper()
+    h2 = HOST2["full_name"].split()[0].upper()
+    return re.compile(rf"^({h1}|{h2}):\s*", re.MULTILINE)
+
+
+TURN_PATTERN = _build_turn_pattern()
 BREAK_MARKER = re.compile(r"^\[BREAK\]$", re.MULTILINE)
 
 
@@ -167,14 +178,16 @@ def generate_audio(script: str, output_path: Path) -> tuple[Path, int]:
         clip_idx = 0
         for i in range(1, len(segment_audios)):
             if (i - 1) in positions and clip_idx < len(selected):
+                # Breaker transition: dialogue stays clean, music fades in/out
                 breaker = selected[clip_idx]
                 clip_idx += 1
-                cf = min(BREAKER_CROSSFADE_MS, len(conversation) // 2, len(breaker) // 2)
-                conversation = conversation.append(breaker, crossfade=cf)
-                cf2 = min(BREAKER_CROSSFADE_MS, len(conversation) // 2, len(segment_audios[i]) // 2)
-                conversation = conversation.append(segment_audios[i], crossfade=cf2)
+                fade = min(BREAKER_CROSSFADE_MS, len(breaker) // 2)
+                breaker = breaker.fade_in(fade).fade_out(fade)
+                gap = AudioSegment.silent(duration=SEGMENT_GAP_MS)
+                conversation = conversation + gap + breaker + gap + segment_audios[i]
             else:
-                conversation = conversation + segment_audios[i]
+                # Non-breaker: clean silence gap between segments
+                conversation = conversation + AudioSegment.silent(duration=SEGMENT_GAP_MS) + segment_audios[i]
     else:
         conversation = segment_audios[0]
 

@@ -97,8 +97,8 @@ Configured in `.env` (see `.env.example`):
 
 - AI keyword filter list: `config.py:AI_KEYWORDS`
 - RSS feed URLs: `config.py:ARXIV_FEEDS`, `LAB_BLOG_FEEDS`, `VENTUREBEAT_AI_FEED`, `ARSTECHNICA_AI_FEED`
-- Max final stories after ranking: `config.py:MAX_FINAL_STORIES` (10)
-- Script model: `claude-sonnet-4-6` (max 8,192 tokens) — used for beat sheet, dialogue, and TTS refinement passes
+- Max final stories after ranking: `config.py:MAX_FINAL_STORIES` (15)
+- Script model: `claude-sonnet-4-6` (max 12,288 tokens for dialogue/refinement, 8,192 for beat sheet)
 - Beat sheet model: `claude-sonnet-4-6`
 - Summary model: `claude-haiku-4-5-20251001`
 - TTS: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker)
