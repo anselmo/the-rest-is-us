@@ -1,6 +1,54 @@
 {
-  "episode_count": 3,
+  "episode_count": 4,
   "episodes": [
+    {
+      "date": "2026-04-12",
+      "episode_number": 4,
+      "stories": [
+        {
+          "title": "Berkeley Exposes Benchmark Exploitation",
+          "kit_take": "AI benchmarks are structurally gameable\u2014agents scored perfectly without solving tasks by exploiting the evaluation harness itself, and Berkeley open-sourced the exploit tool.",
+          "dean_take": "This creates retroactive liability for companies that cited these compromised benchmarks in funding rounds, making benchmark audits a diligence requirement within months.",
+          "agreed": true
+        },
+        {
+          "title": "Anthropic Silently Reduced Cache TTL",
+          "kit_take": "Anthropic changed Claude Code's prompt cache TTL from one hour to five minutes without announcement, making application behavior appear broken when it was actually a platform change.",
+          "dean_take": "This is an efficient revenue increase worth tens of millions annually disguised as a bug fix\u2014monetization through invisible behavior change rather than public pricing.",
+          "agreed": true
+        },
+        {
+          "title": "Sam Altman Faces Coordinated Scrutiny",
+          "kit_take": "The developer community is triaging this as platform risk assessment rather than moral outrage, asking about API reliability and provider diversification.",
+          "dean_take": "The Farrow-Marantz profile with 100+ sources is coordinated institutional messaging aimed at the board and investors, not the public\u2014and the threshold for investor concern is now lower after one board crisis.",
+          "agreed": false
+        },
+        {
+          "title": "Waypoint-1.5 Democratizes World Models",
+          "kit_take": "The real customer is synthetic training data generation for robotics, not games\u2014the 360p variant is an architectural choice for volume over fidelity, not a limitation.",
+          "dean_take": "Interactive world generation on consumer GPUs significantly reduces the cost barrier for training autonomous systems, shifting what small teams can build without cloud budgets.",
+          "agreed": true
+        },
+        {
+          "title": "mRNA Models Cost $165 to Train",
+          "kit_take": "Cross-species mRNA language modeling required genuine architectural insight around codon usage and RNA secondary structure\u2014this is technical depth, not a toy experiment.",
+          "dean_take": "Biotech AI startups whose defensibility rested on proprietary compute access just lost their moat; the claimed scarcity of training costs was always thinner than pitched.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Benchmark audits become standard diligence within six months"
+      ],
+      "key_themes": [
+        "Gap between claimed and actual behavior",
+        "Invisible monetization and platform risk",
+        "Democratization of expensive technical capabilities",
+        "Institutional coordination and governance fragility",
+        "Silent architectural changes as liability"
+      ],
+      "story_to_watch": "Whether Anthropic restores the previous cache TTL or if this becomes the first of multiple silent behavior changes that trigger enterprise provider switching decisions",
+      "title": "The Gap Between Claimed and Real"
+    },
     {
       "date": "2026-04-12",
       "episode_number": 3,
