@@ -1,6 +1,55 @@
 {
-  "episode_count": 5,
+  "episode_count": 6,
   "episodes": [
+    {
+      "date": "2026-04-16",
+      "episode_number": 6,
+      "stories": [
+        {
+          "title": "Anthropic Opus 4.7 Capabilities",
+          "host1_take": "Kit argues some praised improvements are actually recoveries from 4.6 regressions, and builders should run regression tests before upgrading budgets.",
+          "host2_take": "Dean sees the real move as pricing psychology\u2014same nominal cost but capability repositioning that makes cheaper Sonnet tier feel inadequate for agentic work.",
+          "agreed": false
+        },
+        {
+          "title": "Qwen3.6-35B Open-Weight Model",
+          "host1_take": "Kit emphasizes the benchmark evaluation harnesses have structural vulnerabilities similar to Berkeley's earlier work, so real-world performance is likely materially lower.",
+          "host2_take": "Dean views it as genuine margin compression warfare that changes the calculus for indie builders despite capability discounts, threatening Anthropic's mid-tier.",
+          "agreed": false
+        },
+        {
+          "title": "Science Locked in Local Minima",
+          "host1_take": "Kit argues models can find new combinations within paradigms faster, but the \"escape paradigm\" startup pitch is circular overreach\u2014investors should price it as incremental.",
+          "host2_take": "Dean worries AI-for-science startups are selling paradigm escape while their training data IS the local minimum, making their core value proposition self-defeating.",
+          "agreed": true
+        },
+        {
+          "title": "Sentence Transformers Multimodal Capability",
+          "host1_take": "Kit highlights the buried lead\u2014reranker finetuning lets builders train domain-specific rerankers over a weekend, shrinking the moat for retrieval infrastructure startups.",
+          "host2_take": "Dean notes multimodal retrieval infrastructure was already commoditizing and this library release accelerates it by 6-12 months, catching unprepared founders.",
+          "agreed": true
+        },
+        {
+          "title": "Memory as Metabolism Framework",
+          "host1_take": "Kit argues metabolism-based memory requires structural design constraints around decay and consolidation\u2014you can't retrofit this onto filing cabinet retrieval models.",
+          "host2_take": "Dean predicts 2024-25 wiki-style memory startups have a foundation problem, not a feature gap, and should expect pivots within two quarters.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Kit: Two quarters before pivots appear in wiki-style personal knowledge management startup cohort",
+        "Dean: Enterprise customers will closely scrutinize how they respond to Anthropic's tier compression signal"
+      ],
+      "key_themes": [
+        "Marketing narratives vs. technical reality",
+        "Circular dependencies in AI training data",
+        "Infrastructure commoditization accelerating",
+        "Startup foundation assumptions being invalidated",
+        "Pricing psychology over feature announcements"
+      ],
+      "story_to_watch": "Enterprise customer migration patterns following Anthropic's pricing-tier compression strategy\u2014whether CFOs upgrade from Sonnet to Opus despite flat nominal costs",
+      "title": "Recovery Dressed as Progress"
+    },
     {
       "date": "2026-04-12",
       "episode_number": 5,

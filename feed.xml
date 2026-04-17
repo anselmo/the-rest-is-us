@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>When Laptops Beat Frontier Models</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-17-0635.mp3" length="18326717" type="audio/mpeg" />
+      <itunes:duration>763</itunes:duration>
+      <pubDate>Fri, 17 Apr 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-17-0635.mp3</guid>
+    </item>
+    <item>
       <title>Recovery Dressed as Progress</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-16-2249.mp3" length="15897956" type="audio/mpeg" />
       <itunes:duration>662</itunes:duration>
