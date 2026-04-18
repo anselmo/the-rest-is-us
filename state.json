@@ -1,6 +1,56 @@
 {
-  "episode_count": 6,
+  "episode_count": 7,
   "episodes": [
+    {
+      "date": "2026-04-17",
+      "episode_number": 7,
+      "stories": [
+        {
+          "title": "Anthropic Opus 4.7 Release",
+          "host1_take": "Kit sees the 'previously needed close supervision' language as a tacit admission that Opus 4.6 had limitations they're now fixing, undermining the trust they built with developers.",
+          "host2_take": "Dean frames this as a tier compression play where Anthropic signals Sonnet is no longer the agentic default, forcing a forced upgrade without showing a price increase on invoices.",
+          "agreed": true
+        },
+        {
+          "title": "Qwen 3.6 Draws Better Pelican",
+          "host1_take": "Kit emphasizes the SVG drawing test is genuinely hard to game because it requires actual visual synthesis and compositional reasoning, making it a meaningful benchmark despite its whimsical framing.",
+          "host2_take": "Dean identifies Alibaba's real incentive: open-weight models are a loss leader to commoditize the API economy below them and sell infrastructure, threatening every startup that built an API wrapper as a product.",
+          "agreed": false
+        },
+        {
+          "title": "Sentence Transformers Multimodal Reranker",
+          "host1_take": "Kit corrects the framing to emphasize that trainable multimodal rerankers\u2014not just embeddings\u2014are genuinely new, and a weekend pipeline now achieves what required six-month engineering engagements.",
+          "host2_take": "Dean recognizes this directly threatens startups whose entire valuation was built on 'proprietary multimodal retrieval pipeline' as their moat, and they likely raised at valuations assuming this would stay hard for two more years.",
+          "agreed": true
+        },
+        {
+          "title": "Agent Exploration vs Exploitation Paper",
+          "host1_take": "Kit frames the paper's contribution as enabling measurement of agent failure modes without internal policy access, turning subjective 'the agent feels inconsistent' into actionable diagnostics.",
+          "host2_take": "Dean identifies this as the missing SLA metric that procurement teams have implicitly demanded, and the measurement framework will become a product feature in agentic evaluation tooling within six months.",
+          "agreed": true
+        },
+        {
+          "title": "Numerical Chaos in LLMs",
+          "host1_take": "Kit argues this chaos is unfixable because it's rooted in transformer architecture's finite floating-point precision and rounding errors that amplify in attention layers\u2014not a patchable implementation bug.",
+          "host2_take": "Dean sees the liability exposure: the 'not measurable' defense that protected model providers is now gone, and quantifying chaos creates legal vulnerability even though the underlying problem can't be engineered away.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Agentic evaluation tooling startups should incorporate this agent exploration/exploitation taxonomy into products within six months",
+        "Kit: Infrastructure commodification timeline accelerates to faster than the expected six-to-twelve months for retrieval capabilities"
+      ],
+      "key_themes": [
+        "Frontier model moats eroding faster than expected",
+        "Open-weight inference democratizing capabilities",
+        "Trust erosion from silent behavior changes",
+        "Measurement enabling both reliability and liability exposure",
+        "Tier compression without nominal price increases",
+        "Valuation assumptions misaligned with capability timelines"
+      ],
+      "story_to_watch": "How startups with valuations built on 'proprietary multimodal retrieval' respond to Hugging Face democratizing weekend-timeline reranker training",
+      "title": "When Laptops Beat Frontier Models"
+    },
     {
       "date": "2026-04-16",
       "episode_number": 6,
