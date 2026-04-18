@@ -1,6 +1,56 @@
 {
-  "episode_count": 7,
+  "episode_count": 8,
   "episodes": [
+    {
+      "date": "2026-04-18",
+      "episode_number": 8,
+      "stories": [
+        {
+          "title": "Claude Design Launch",
+          "host1_take": "Kit sees the 'collaboration' framing as liability hedging that may actually undercut user ambition and retention by keeping them in the passenger seat.",
+          "host2_take": "Dean argues the real competitive target isn't Figma or Adobe\u2014it's consolidating the mid-market agency's entire subscription stack, requiring retention metrics design tools optimize for, not chat metrics.",
+          "agreed": false
+        },
+        {
+          "title": "Opus 4.7 Tokenizer Costs",
+          "host1_take": "Kit acknowledges the technical reason for the gap\u2014creative/code inputs have denser tokenization patterns than documentation assumes\u2014but agrees the invoice impact is identical.",
+          "host2_take": "Dean treats this as a pattern of silent Anthropic cost changes (episode 5's cache TTL shift), which triggers retroactive enterprise audits and damages vendor relationships.",
+          "agreed": true
+        },
+        {
+          "title": "Sentence Transformers Multimodal",
+          "host1_take": "Kit emphasizes that fine-tuning the reranker on domain data\u2014not the embeddings\u2014just got democratized, making the weekend vs. six-month build gap dramatically smaller.",
+          "host2_take": "Dean sees this as the third release in three episodes commoditizing the 'proprietary multimodal retrieval' moat that startups raised on, with the surviving differentiator shifting to training data provenance.",
+          "agreed": true
+        },
+        {
+          "title": "Counterfactual Routing in MoE",
+          "host1_take": "Kit notes the mechanism wakes dormant specialist experts without weight changes, though inference overhead creates a priceable cost-accuracy tradeoff at scale.",
+          "host2_take": "Dean frames known overhead as deployable overhead and predicts this enters enterprise MoE deployments within a quarter.",
+          "agreed": true
+        },
+        {
+          "title": "Calibrate-Then-Delegate Safety",
+          "host1_take": "Kit identifies the failure mode: cheap probes escalate based on uncertainty, but uncertainty doesn't correlate with 'would the expert fix this,' causing misdirected escalations.",
+          "host2_take": "Dean treats this as a procurement checkbox, not research, and predicts the CTD architecture phrase appears in enterprise AI vendor RFPs within six months.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Counterfactual Routing will appear in enterprise MoE deployments within a quarter",
+        "Dean: 'Finite-sample guarantees on delegation rate' language will appear in enterprise AI vendor RFPs within six months"
+      ],
+      "key_themes": [
+        "Hidden infrastructure costs in new LLM versions",
+        "Retrieval moat commoditization accelerating",
+        "Pattern of silent Anthropic platform cost changes",
+        "Enterprise procurement risk from tokenizer audits",
+        "Consolidation thesis vs. retention metrics tension",
+        "Data provenance as differentiator replacing model architecture"
+      ],
+      "story_to_watch": "Sentence Transformers multimodal reranking commoditization\u2014three releases in three episodes means the startup category reckoning is now, not in six months; investors need to audit portfolio data provenance immediately",
+      "title": "The Hidden Cost of Claude's New Tokenizer"
+    },
     {
       "date": "2026-04-17",
       "episode_number": 7,
