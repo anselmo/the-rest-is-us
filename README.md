@@ -58,6 +58,7 @@ Copy `.env.example` to `.env` and fill in your API keys:
 | `GITHUB_REPO` | Yes | `owner/repo` for releases + pages |
 | `PODCAST_BASE_URL` | Yes | GitHub Pages URL for RSS feed |
 | `TAVILY_API_KEY` | No | Web search enrichment (skipped without it) |
+| `HF_TOKEN` | No | HuggingFace token — rhythm analysis tool only (see below) |
 
 See `.env.example` for the full list including voice selection, TTS backend, and schedule options.
 
@@ -88,11 +89,31 @@ The source architecture is pluggable. To add a new source:
 2. Return stories in the unified format (see existing sources for examples)
 3. Add the module to `SOURCES` in `sources/__init__.py`
 
+## Rhythm analysis (optional)
+
+A separate tool in `scripts/rhythm/` transcribes reference podcasts and your own episodes, measures pacing across four layers (turn structure, speaking rate, silence gaps, energy envelope), and drafts concrete prompt-patch suggestions via Claude.
+
+```bash
+# One-time setup
+uv sync --extra rhythm                  # heavy deps kept out of the main pipeline
+# Accept HuggingFace user agreements for pyannote/speaker-diarization-3.1,
+# pyannote/segmentation-3.0, and pyannote/speaker-diarization-community-1,
+# then add HF_TOKEN=... to .env
+
+# Run
+uv run python scripts/rhythm_analyze.py \
+    --refs "https://youtube.com/watch?v=..." \
+    --own-dir episodes/ --model base.en
+```
+
+Reports land in `scripts/rhythm_reports/YYYY-MM-DD/` — a markdown diff (`report.md`), machine-readable profile (`profile.json`), Claude-drafted prompt patches (`patches.md`), and annotated reference excerpts (`excerpts.md`). The pacing targets in `prompts.py` and `tts_gemini.py` are calibrated from this tool.
+
 ## Stack
 
-- **Script generation**: Claude Sonnet (3-pass: beat sheet, dialogue, TTS refinement)
-- **Summary extraction**: Claude Haiku
+- **Script generation**: Claude Opus 4.7 (3-pass: beat sheet, dialogue, TTS refinement)
+- **Summary extraction**: Claude Haiku 4.5
 - **Audio**: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker)
+- **Rhythm analysis (optional)**: whisperX (Whisper + pyannote diarization + forced alignment), librosa, yt-dlp
 - **Sources**: Hacker News API, arXiv RSS, lab blog RSS, VentureBeat, Ars Technica
 - **Distribution**: GitHub Pages (MP3 hosting + RSS feed)
 - **Runtime**: Python 3.12, uv, ffmpeg

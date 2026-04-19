@@ -271,8 +271,14 @@ TEMPO:
 - When a host makes a point, the other responds immediately — no restating.
 
 WRITE FOR SPEECH (TTS engine will read this — prosody matters):
-- Em dashes (—) create a beat before a key point
-- Ellipses (…) for breath pauses — more natural than commas for mid-thought hesitation
+- Em dashes (—) create a beat before a key point: "The real issue is — nobody tested it."
+- Ellipses (…) for breath pauses — more natural than commas for mid-thought hesitation. \
+Use them LIBERALLY inside 2-3 sentence turns: any turn of 2+ sentences should contain at \
+least one em-dash or ellipsis mid-sentence so the TTS engine has a pause anchor. Example: \
+"So what they've actually built… and this is the part that surprised me… is a pipeline \
+that bypasses the model entirely."
+- Comma-clusters create natural micro-pauses: "You've got the latency problem, the cost \
+problem, the alignment problem — and none of them are solved."
 - Question marks on rhetorical questions to lift pitch
 - ALL CAPS for the ONE word that carries stress — don't over-capitalize
 - Short sentences punch. Vary length deliberately.
@@ -329,11 +335,19 @@ merge them into longer turns.
 
 PROSODY OPTIMIZATION (the TTS engine uses these cues):
 - Em dashes (—) before key reveals: "The real story is — nobody's using it."
-- Ellipses (...) for genuine hesitation, not decoration: "I think... actually, no."
+- Ellipses (...) for genuine hesitation AND for within-turn breathing. Any turn with 2+ \
+sentences must contain at least one em-dash or ellipsis mid-sentence to give the TTS engine \
+a pause anchor: "The eval methodology… and this is the part that really matters… doesn't \
+control for prompt sensitivity at all."
 - ALL CAPS on exactly ONE word per emphasis: "That's a COMPLETELY different business."
 - Short sentences after long ones. Vary rhythm deliberately.
 - Question marks on rhetorical questions to lift TTS pitch.
 - Exclamation marks SPARINGLY — only for genuine surprise, not enthusiasm.
+
+WITHIN-TURN PAUSE AUDIT:
+- For every turn of 2+ sentences, count the em-dashes and ellipses placed mid-sentence \
+(not at turn start, not at turn end). If there are zero, add one. Long turns (3 sentences) \
+should have at least 2 pause anchors.
 
 ENERGY ARC POLISH:
 - The opening should sound warm and easy, not performative.
@@ -378,6 +392,11 @@ modify. Use them sparingly — only at moments where the emotional shift matters
 Do NOT use [pause] or [short pause] tags — let the punctuation handle pacing. \
 Do NOT tag every turn — most turns need no tag. Target 15-20 tags per episode, placed at \
 the moments with the strongest emotional shifts.
+CRITICAL — AVOID TAG CLUSTERING: Do NOT place mood-shift tags on consecutive turns. Tags \
+cause Gemini to insert variable-length silence before the tagged turn; clustering them \
+produces erratic inter-turn gaps (measured high stdev vs reference podcasts). Rule: place \
+a tag only when the previous 3+ turns were untagged. This keeps a consistent default rhythm \
+punctuated by occasional — and predictable — emotional shifts.
 
 RULES:
 - Keep the EXACT same format: {host1_name_upper}: / {host2_name_upper}: followed by dialogue

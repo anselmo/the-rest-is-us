@@ -9,3 +9,5 @@ __pycache__/
 .claude/
 assets/_*.mp3
 assets/M83*
+scripts/rhythm_cache/
+scripts/rhythm_reports/

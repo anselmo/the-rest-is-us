@@ -33,10 +33,10 @@ VOICES:
 {h2}: {host2["director_note"]}
 
 PERFORMANCE RULES:
-1. PACING: Keep it BRISK. Most turns are SHORT (1-2 sentences). Deliver at natural \
-conversational speed — two friends who are excited about what they're discussing, not \
-radio announcers. Gaps between turns should be MINIMAL — hosts jump in quickly. \
-One-word reactions ("Right.", "Ha!", "Hmm.") are throwaway — quick, almost overlapping.
+1. PACING: Target ~180 words per minute average — two friends excited about what they're \
+discussing, not radio announcers. Most turns are SHORT (1-2 sentences). Gaps between turns \
+should be MINIMAL — aim for ~180 ms between speaker handoffs, not a half-second. One-word \
+reactions ("Right.", "Ha!", "Hmm.") are throwaway — quick, almost overlapping.
 2. QUESTIONS: Pitch rises naturally. Answers come without long pauses — the host was \
 already thinking while the other was talking.
 3. INTERRUPTIONS: Lines ending with "—" are cut off. The interrupting host comes in \

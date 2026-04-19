@@ -91,15 +91,15 @@ Configured in `.env` (see `.env.example`):
 
 **Required:** `ANTHROPIC_API_KEY`, `GITHUB_TOKEN`, `GITHUB_REPO`, `PODCAST_BASE_URL`
 
-**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `GEMINI_API_KEY`, `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`, `GEMINI_VOICE_KIT`, `GEMINI_VOICE_DEAN`, `PUBLISH_HOUR` (default: `7`), `PUBLISH_TIMEZONE` (default: `Europe/London`)
+**Optional:** `TAVILY_API_KEY` (enrichment skipped without it), `GEMINI_API_KEY`, `HF_TOKEN` (rhythm analysis only), `PODCAST_TITLE`, `PODCAST_DESCRIPTION`, `PODCAST_AUTHOR`, `GEMINI_VOICE_KIT`, `GEMINI_VOICE_DEAN`, `PUBLISH_HOUR` (default: `7`), `PUBLISH_TIMEZONE` (default: `Europe/London`)
 
 ## Key Constants
 
 - AI keyword filter list: `config.py:AI_KEYWORDS`
 - RSS feed URLs: `config.py:ARXIV_FEEDS`, `LAB_BLOG_FEEDS`, `VENTUREBEAT_AI_FEED`, `ARSTECHNICA_AI_FEED`
 - Max final stories after ranking: `config.py:MAX_FINAL_STORIES` (15)
-- Script model: `claude-sonnet-4-6` (max 12,288 tokens for dialogue/refinement, 8,192 for beat sheet)
-- Beat sheet model: `claude-sonnet-4-6`
+- Script model: `claude-opus-4-7` (max 12,288 tokens for dialogue/refinement, 8,192 for beat sheet)
+- Beat sheet model: `claude-opus-4-7`
 - Summary model: `claude-haiku-4-5-20251001`
 - TTS: Gemini 2.5 Flash TTS (24kHz, single-pass 2-speaker)
 - Gemini voices: Kit → Zephyr (bright, clear, energetic), Dean → Orus (firm, decisive, commanding)
@@ -136,6 +136,19 @@ launchctl list com.therestofus.podcast  # check job status
 - **Logs**: `logs/YYYY-MM-DD.log` (pipeline output), `logs/launchd-stdout.log` / `logs/launchd-stderr.log` (launchd output)
 - **Timezone**: `StartCalendarInterval` uses system local time — assumes machine is set to Europe/London
 - **Sleep handling**: launchd runs missed jobs on wake, so the episode will still generate if the machine was asleep at 6:35am
+
+## Rhythm analysis
+
+Optional analysis pipeline in `scripts/rhythm/` — compares reference podcasts against own episodes and drafts prompt-patch suggestions via Claude. Not part of the daily pipeline.
+
+- Install: `uv sync --extra rhythm` (adds whisperx, yt-dlp, librosa, numpy, scipy — not in prod dep tree)
+- Prereq: `HF_TOKEN` in `.env` + accept HF agreements for `pyannote/speaker-diarization-3.1`, `pyannote/segmentation-3.0`, AND `pyannote/speaker-diarization-community-1` (3.1 internally pulls from community-1 as of 2026-04)
+- Run: `uv run python scripts/rhythm_analyze.py --refs "URL1" "URL2" "URL3" --own-dir episodes/ --model base.en`
+- Outputs land in `scripts/rhythm_reports/YYYY-MM-DD/` (report.md, profile.json, patches.md, excerpts.md)
+- Audio + whisperx outputs cached in `scripts/rhythm_cache/` (gitignored); re-runs reuse cache
+- Full 2-hour reference transcribes in ~45 min on M-series CPU with base.en
+- Own episodes use forced alignment: whisperx transcribes audio, `difflib.SequenceMatcher` propagates KIT/DEAN labels from canonical script
+- Pacing language in `prompts.py` (WITHIN-TURN PAUSE AUDIT, TTS MARKUP TAGS clustering rule) and `tts_gemini.py` (180 WPM / 180 ms handoff target) is calibrated against this tool — re-run it after changing those prompts
 
 ## Distribution via GitHub Pages
 
@@ -219,3 +232,6 @@ DEAN: Response here.
 - Script generation uses `max_tokens=8192`; if the model hits this limit, the dialogue is silently truncated (logged as a warning)
 - No automated tests exist — validate changes by running individual stages (`make collect`, etc.)
 - `.env.example` comments may lag behind `config.py` defaults (e.g., voice names) — trust `config.py` as source of truth
+- `whisperx` 3.8.5: `DiarizationPipeline` lives at `whisperx.diarize.DiarizationPipeline` (not top-level); init with `token=` (not `use_auth_token=`); pass `model_name="pyannote/speaker-diarization-3.1"` (default is gated `community-1`)
+- On M-series Mac, whisperx runs CPU-only with `compute_type="int8"` — MPS support is incomplete as of 2026-04
+- `zsh` interprets `?` and `=` in YouTube URLs — quote them when passing to CLI (`--refs "https://..."`)

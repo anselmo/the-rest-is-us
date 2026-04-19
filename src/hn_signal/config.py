@@ -332,8 +332,8 @@ TECHCRUNCH_AI_FEED = "https://techcrunch.com/category/artificial-intelligence/fe
 MAX_FINAL_STORIES = 15
 
 # Models
-SCRIPT_MODEL = "claude-sonnet-4-6"
-BEAT_SHEET_MODEL = "claude-sonnet-4-6"
+SCRIPT_MODEL = "claude-opus-4-7"
+BEAT_SHEET_MODEL = "claude-opus-4-7"
 SUMMARY_MODEL = "claude-haiku-4-5-20251001"
 
 # Logging
