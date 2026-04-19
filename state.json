@@ -1,6 +1,54 @@
 {
-  "episode_count": 8,
+  "episode_count": 9,
   "episodes": [
+    {
+      "date": "2026-04-18",
+      "episode_number": 9,
+      "stories": [
+        {
+          "title": "Claude Design bundled into Pro/Max/Team",
+          "host1_take": "Kit believes 'collaborate' signals the model can't finish solo, pushing completion risk onto users and breaking retention by month three.",
+          "host2_take": "Dean argues Anthropic doesn't need to win on design craft\u2014they just need to be good enough to cancel mid-market subscriptions like Canva, targeting the $20-50 seat tier, not Figma.",
+          "agreed": false
+        },
+        {
+          "title": "Tokenizer density vs. documented pricing",
+          "host1_take": "Kit sees the 1.47x measured tokenization as accurate-but-unrepresentative, breaking trust because the number doesn't describe real usage patterns.",
+          "host2_take": "Dean flags this as the third silent cost change in a month and notes enterprise contracts have variance clauses\u2014above 10% deviation triggers legal review, turning this into a contract issue.",
+          "agreed": true
+        },
+        {
+          "title": "Hugging Face democratizes reranker fine-tuning",
+          "host1_take": "Kit recognizes the reranker was the last defensible custom claim before commoditization, and Sentence Transformers just made weekend fine-tuning trivial.",
+          "host2_take": "Dean predicts every 'proprietary multimodal retrieval pipeline' pitch from Q4 2025 now faces board pivots visible in Q3 filings\u2014domain data is a legal moat, not technical, so it won't command Series B valuations.",
+          "agreed": true
+        },
+        {
+          "title": "Counterfactual Routing for dormant MoE experts",
+          "host1_take": "Kit notes the no-weight-change drop-in means zero retraining or revalidation friction.",
+          "host2_take": "Dean predicted enterprise deployments within a quarter but has since heard it's already in two vendor roadmaps informally\u2014quarter may be conservative.",
+          "agreed": true
+        },
+        {
+          "title": "LLMs doing transistor-level topology optimization",
+          "host1_take": "Kit argues TOPCELL is narrow enough that Cadence absorbs it as a feature\u2014not a disruptor, just an acquisition target.",
+          "host2_take": "Dean sees this as a real threat to the 30-year EDA oligopoly moat (Cadence, Synopsys, Siemens) built on proprietary exhaustive-search routines.",
+          "agreed": false
+        }
+      ],
+      "predictions": [
+        "Dean: Counterfactual Routing enterprise deployments already in two vendor roadmaps informally, sooner than one quarter",
+        "Dean: 'Proprietary multimodal retrieval pipeline' pivots visible in Q3 2025 filings due to Sentence Transformers reranker democratization"
+      ],
+      "key_themes": [
+        "Silent pricing and cost changes eroding enterprise trust",
+        "Bundling as margin capture and competitive weapon",
+        "Commoditization of technical moats into legal ones",
+        "Contract clause enforcement reshaping vendor relationships"
+      ],
+      "story_to_watch": "Enterprise procurement teams quietly evaluating alternatives after three silent cost changes\u2014vendor relationship debt compounds into Q3 renewal cycles",
+      "title": "When Collaboration Means Incomplete"
+    },
     {
       "date": "2026-04-18",
       "episode_number": 8,
