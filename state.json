@@ -1,6 +1,68 @@
 {
-  "episode_count": 9,
+  "episode_count": 10,
   "episodes": [
+    {
+      "date": "2026-04-19",
+      "episode_number": 10,
+      "stories": [
+        {
+          "title": "Cerebras Files for IPO",
+          "host1_take": "Kit: The competitive frame has shifted from NVIDIA-killer to fastest-inference positioning against Groq and SambaNova \u2014 smaller comp set entirely.",
+          "host2_take": "Dean: Public markets discount customer concentration regardless of technical differentiation; if G42 was 20%+ of bookings, this reads as single-customer risk.",
+          "agreed": false
+        },
+        {
+          "title": "Safetensors Joins PyTorch Foundation",
+          "host1_take": "Kit: This removes HF vendor surface area while Safetensors becomes the supply-chain security format the Pentagon-Anthropic regime flows through.",
+          "host2_take": "Dean: HF kept the platform and gave away the padlock \u2014 commoditizing dependencies below to compete on hosting, Spaces, and enterprise deals above.",
+          "agreed": true
+        },
+        {
+          "title": "Anthropic Treasury White House Meeting",
+          "host1_take": "Kit: The Pentagon supply-chain label is leverage not a wall; Treasury endorsement of Mythos is technical (only product with deterministic audit-log for banking), not political favor.",
+          "host2_take": "Dean: Treasury and Fed jointly encouraging banks to test a specific vendor is industrial policy unprecedented \u2014 product-market fit that creates industrial policy.",
+          "agreed": true
+        },
+        {
+          "title": "Claude Design vs. Figma",
+          "host1_take": "Kit: Claude Design skips the abstraction layer (components, variables, props) that lets teams scale; if only the original prompter can maintain output, it's a one-designer replacement.",
+          "host2_take": "Dean: Conceded \u2014 Anthropic must ship the systems layer within two quarters or churn thesis dies; maintainability is the real audit.",
+          "agreed": true
+        },
+        {
+          "title": "HoloTab Browser Extension",
+          "host1_take": "Kit: Arc and Dia quietly retreated from describe-what-you-want interfaces because ambiguity causes users to debug half-done actions on live sites.",
+          "host2_take": "Dean: HoloTab is HCompany's retention bet with no retreat option; the real question is whether they've solved the fallback UI for when determinism breaks.",
+          "agreed": true
+        },
+        {
+          "title": "Cornell Typewriter Assignment Defense",
+          "host1_take": "Kit: Constraint beats detection every time \u2014 typewriters eliminate the problem rather than trying to catch the result.",
+          "host2_take": "Dean: The AI-detection startup market ($400M+ raised) just aged badly in a single semester.",
+          "agreed": true
+        },
+        {
+          "title": "App Store Release Volume Surge",
+          "host1_take": "Kit: The supply spike is vibe-coded churn-in-waiting; consolidation is still coming after the flood, and Apple's review queue is where it breaks first.",
+          "host2_take": "Dean: The 'AI kills apps' thesis wasn't wrong \u2014 it was early. The supply numbers mask weak demand fundamentals.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Watch the Cerebras S-1 filing to see whether bankers let them tell the inference-speed story or force the NVIDIA-killer narrative",
+        "Dean: HoloTab retention numbers will reveal whether the industry solved the ambiguous-agent-action problem that killed Arc and Dia"
+      ],
+      "key_themes": [
+        "Defensibility through systems not products",
+        "Supply-chain security as procurement axis",
+        "Industrial policy disguised as product-market fit",
+        "Maintainability as the real moat",
+        "Constraint beats detection",
+        "Customer concentration risk in hardware IPOs"
+      ],
+      "story_to_watch": "Cerebras S-1 filing and whether the competitive positioning matches what their bankers actually sell to public markets",
+      "title": "When Every Moat Gets Thinner"
+    },
     {
       "date": "2026-04-18",
       "episode_number": 9,

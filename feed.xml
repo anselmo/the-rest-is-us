@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>What We Can't Actually See in LLMs</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-20-2135.mp3" length="12367664" type="audio/mpeg" />
+      <itunes:duration>515</itunes:duration>
+      <pubDate>Mon, 20 Apr 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-20-2135.mp3</guid>
+    </item>
+    <item>
       <title>When Every Moat Gets Thinner</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-19-0635.mp3" length="11523177" type="audio/mpeg" />
       <itunes:duration>480</itunes:duration>
