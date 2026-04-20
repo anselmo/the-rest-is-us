@@ -167,20 +167,39 @@ if _host2_key not in HOST_PROFILES:
 HOST1 = HOST_PROFILES[_host1_key]
 HOST2 = HOST_PROFILES[_host2_key]
 
-# Intro/outro music
+# Intro/outro music paths
 INTRO_MUSIC_PATH = PROJECT_ROOT / "assets" / "intro.mp3"
 OUTRO_MUSIC_PATH = PROJECT_ROOT / "assets" / "outro.mp3"
-INTRO_CROSSFADE_MS = 2000    # crossfade duration from intro into dialogue
-OUTRO_FADE_IN_MS = 3000      # how early outro music begins before dialogue ends
-MUSIC_VOLUME_DB = -6          # volume reduction for music relative to dialogue
 
-# Breaker clips (story separators)
+# Breaker clip paths
 BREAKER_DIR = PROJECT_ROOT / "assets"
 BREAKER_PATTERN = "breaker-*.mp3"
-BREAKER_CROSSFADE_MS = 1500
-MAX_BREAKERS_PER_EPISODE = 5
-BREAKER_VOLUME_DB = -3
-SEGMENT_GAP_MS = 2500            # silence between story segments
+
+# Music envelope levels (dB relative to each music file)
+MUSIC_BED_DB = -18            # music volume while under dialogue
+MUSIC_SWELL_DB = -3           # music volume while playing alone
+MUSIC_FADE_IN_MS = 300        # silence → bed ramp at every music entry
+MUSIC_SWELL_RAMP_MS = 800     # bed → swell ramp when dialogue ends
+
+# Intro envelope
+INTRO_BED_DURATION_MS = 5000     # music sits under last 5s of cold open
+INTRO_SWELL_HOLD_MS = 5000       # music holds at swell for 5s after hosts finish
+INTRO_FADE_OUT_MS = 1000         # final fade to silence
+INTRO_POST_SILENCE_MS = 1000     # gap before main conversation starts
+
+# Outro envelope (music plays remainder of file at swell; no explicit hold/fade)
+OUTRO_BED_DURATION_MS = 5000     # music sits under last 5s of dialogue
+
+# Breaker envelope (between story segments, no dialogue overlap)
+BREAK_PRE_SILENCE_MS = 2000      # silence between host end and breaker start
+BREAKER_BED_HOLD_MS = 1000       # breaker plays at bed before swelling
+BREAKER_SWELL_HOLD_MS = 5000     # breaker holds at swell
+BREAKER_FADE_OUT_MS = 800        # breaker fades out
+BREAK_POST_SILENCE_MS = 1000     # silence between breaker end and next segment
+
+# TTS trailing-silence trim
+TTS_TRIM_SILENCE_THRESHOLD_DBFS = -40
+TTS_TRIM_SILENCE_CHUNK_MS = 10
 
 # Optional keys
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "").strip() or None

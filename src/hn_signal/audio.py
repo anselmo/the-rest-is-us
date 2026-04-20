@@ -1,23 +1,34 @@
 import random
 import re
+from itertools import cycle
 from pathlib import Path
 
 from pydub import AudioSegment
+from pydub.silence import detect_leading_silence
 
 from hn_signal.config import (
-    BREAKER_CROSSFADE_MS,
+    BREAK_POST_SILENCE_MS,
+    BREAK_PRE_SILENCE_MS,
+    BREAKER_BED_HOLD_MS,
     BREAKER_DIR,
+    BREAKER_FADE_OUT_MS,
     BREAKER_PATTERN,
-    BREAKER_VOLUME_DB,
+    BREAKER_SWELL_HOLD_MS,
     HOST1,
     HOST2,
-    INTRO_CROSSFADE_MS,
+    INTRO_BED_DURATION_MS,
+    INTRO_FADE_OUT_MS,
     INTRO_MUSIC_PATH,
-    MAX_BREAKERS_PER_EPISODE,
-    MUSIC_VOLUME_DB,
-    OUTRO_FADE_IN_MS,
+    INTRO_POST_SILENCE_MS,
+    INTRO_SWELL_HOLD_MS,
+    MUSIC_BED_DB,
+    MUSIC_FADE_IN_MS,
+    MUSIC_SWELL_DB,
+    MUSIC_SWELL_RAMP_MS,
+    OUTRO_BED_DURATION_MS,
     OUTRO_MUSIC_PATH,
-    SEGMENT_GAP_MS,
+    TTS_TRIM_SILENCE_CHUNK_MS,
+    TTS_TRIM_SILENCE_THRESHOLD_DBFS,
     log,
 )
 from hn_signal.tts_gemini import _generate_audio_gemini
@@ -76,58 +87,147 @@ def _split_at_breaks(script: str) -> list[str]:
 
 
 def _load_breakers() -> list[AudioSegment]:
-    """Load all breaker clips from assets directory."""
+    """Load all breaker clips from assets directory at their native level."""
     paths = sorted(BREAKER_DIR.glob(BREAKER_PATTERN))
     if not paths:
         log.warning("No breaker clips found matching %s in %s", BREAKER_PATTERN, BREAKER_DIR)
         return []
-    breakers = []
-    for p in paths:
-        clip = AudioSegment.from_mp3(str(p)) + BREAKER_VOLUME_DB
-        breakers.append(clip)
+    breakers = [AudioSegment.from_mp3(str(p)) for p in paths]
     log.info("Loaded %d breaker clips from %s", len(breakers), BREAKER_DIR)
     return breakers
 
 
-def _select_break_positions(num_breaks: int, max_breakers: int) -> list[int]:
-    """Pick evenly-spaced break positions when there are more breaks than max."""
-    if num_breaks <= max_breakers:
-        return list(range(num_breaks))
-    step = num_breaks / (max_breakers + 1)
-    positions = [int(round(step * (i + 1))) - 1 for i in range(max_breakers)]
-    return sorted(set(min(p, num_breaks - 1) for p in positions))
+# ---------------------------------------------------------------------------
+# Silence trim + music envelope shaping
+# ---------------------------------------------------------------------------
+
+
+def _trim_trailing_silence(segment: AudioSegment) -> AudioSegment:
+    """Strip trailing silence so music-placement anchors land on real speech end."""
+    trailing_ms = detect_leading_silence(
+        segment.reverse(),
+        silence_threshold=TTS_TRIM_SILENCE_THRESHOLD_DBFS,
+        chunk_size=TTS_TRIM_SILENCE_CHUNK_MS,
+    )
+    if trailing_ms > 0:
+        return segment[: len(segment) - trailing_ms]
+    return segment
+
+
+def _shape_music(
+    music: AudioSegment,
+    bed_ms: int,
+    swell_hold_ms: int | None,
+    fade_out_ms: int,
+) -> AudioSegment:
+    """
+    Build a music segment with a bed → swell → optional fade-out envelope.
+
+    Regions (ms, by offset into the returned segment):
+      [0, MUSIC_FADE_IN_MS)          : silence → bed fade-in
+      [MUSIC_FADE_IN_MS, bed_ms)     : hold at bed
+      [bed_ms, bed_ms + ramp)        : bed → swell linear ramp
+      [ramp end, swell_end)          : hold at swell (swell_hold_ms, or remainder if None)
+      [swell_end, + fade_out_ms)     : swell → silence fade-out
+    """
+    ramp_start = bed_ms
+    ramp_end = bed_ms + MUSIC_SWELL_RAMP_MS
+
+    if swell_hold_ms is None:
+        swell_end = len(music) - fade_out_ms
+    else:
+        swell_end = ramp_end + swell_hold_ms
+
+    if swell_end <= ramp_end:
+        log.warning(
+            "Music file too short for requested envelope (len=%dms, need=%dms); truncating",
+            len(music), ramp_end + fade_out_ms,
+        )
+        swell_end = ramp_end
+
+    fade_in = music[:MUSIC_FADE_IN_MS].apply_gain(MUSIC_BED_DB).fade_in(MUSIC_FADE_IN_MS)
+    bed_hold = music[MUSIC_FADE_IN_MS:ramp_start].apply_gain(MUSIC_BED_DB)
+    ramp = music[ramp_start:ramp_end].fade(
+        from_gain=MUSIC_BED_DB,
+        to_gain=MUSIC_SWELL_DB,
+        start=0,
+        duration=MUSIC_SWELL_RAMP_MS,
+    )
+    swell_hold = music[ramp_end:swell_end].apply_gain(MUSIC_SWELL_DB)
+
+    shaped = fade_in + bed_hold + ramp + swell_hold
+    if fade_out_ms > 0:
+        fade_out = music[swell_end:swell_end + fade_out_ms].apply_gain(MUSIC_SWELL_DB).fade_out(fade_out_ms)
+        shaped = shaped + fade_out
+    return shaped
 
 
 # ---------------------------------------------------------------------------
 # Intro/outro music
 # ---------------------------------------------------------------------------
 
-def _add_music(cold_open: AudioSegment, conversation: AudioSegment) -> AudioSegment:
-    """Assemble final audio: cold_open + intro music + conversation + outro music."""
-    # Intro music sits between cold open and conversation
-    if INTRO_MUSIC_PATH.exists():
-        intro = AudioSegment.from_mp3(str(INTRO_MUSIC_PATH)) + MUSIC_VOLUME_DB
-        result = cold_open.append(intro, crossfade=INTRO_CROSSFADE_MS)
-        result = result.append(conversation, crossfade=INTRO_CROSSFADE_MS)
-        log.info("Intro music added between cold open and conversation (%.1fs, %dms crossfade)", len(intro) / 1000, INTRO_CROSSFADE_MS)
-    else:
+def _add_intro(cold_open: AudioSegment, conversation: AudioSegment) -> AudioSegment:
+    """Bed intro music under the last INTRO_BED_DURATION_MS of the cold open, swell, fade."""
+    cold_open = _trim_trailing_silence(cold_open)
+    if not INTRO_MUSIC_PATH.exists():
         log.warning("No intro music found at %s, skipping", INTRO_MUSIC_PATH)
-        result = cold_open + conversation
+        return cold_open + AudioSegment.silent(duration=INTRO_POST_SILENCE_MS) + conversation
 
-    # Outro music fades in under the final lines
-    if OUTRO_MUSIC_PATH.exists():
-        outro = AudioSegment.from_mp3(str(OUTRO_MUSIC_PATH)) + MUSIC_VOLUME_DB
-        fade_ms = min(OUTRO_FADE_IN_MS, len(outro), len(result))
-        outro = outro.fade_in(fade_ms)
-        overlap_pos = len(result) - fade_ms
-        tail_ms = max(0, len(outro) - fade_ms)
-        result = result + AudioSegment.silent(duration=tail_ms)
-        result = result.overlay(outro, position=overlap_pos)
-        log.info("Outro music added (%.1fs, %dms fade-in under dialogue)", len(outro) / 1000, fade_ms)
-    else:
+    intro_raw = AudioSegment.from_mp3(str(INTRO_MUSIC_PATH))
+    intro_shaped = _shape_music(
+        intro_raw,
+        bed_ms=INTRO_BED_DURATION_MS,
+        swell_hold_ms=INTRO_SWELL_HOLD_MS,
+        fade_out_ms=INTRO_FADE_OUT_MS,
+    )
+    overlap_pos = max(0, len(cold_open) - INTRO_BED_DURATION_MS)
+    tail_ms = max(0, len(intro_shaped) - (len(cold_open) - overlap_pos)) + INTRO_POST_SILENCE_MS
+    extended = cold_open + AudioSegment.silent(duration=tail_ms)
+    result = extended.overlay(intro_shaped, position=overlap_pos)
+    log.info(
+        "Intro music shaped (%.1fs) bed-under-%.1fs, swell %dms, fade %dms",
+        len(intro_shaped) / 1000,
+        INTRO_BED_DURATION_MS / 1000,
+        INTRO_SWELL_HOLD_MS,
+        INTRO_FADE_OUT_MS,
+    )
+    return result + conversation
+
+
+def _add_outro(body: AudioSegment) -> AudioSegment:
+    """Bed outro music under the last OUTRO_BED_DURATION_MS of dialogue, swell to end."""
+    body = _trim_trailing_silence(body)
+    if not OUTRO_MUSIC_PATH.exists():
         log.warning("No outro music found at %s, skipping", OUTRO_MUSIC_PATH)
+        return body
 
+    outro_raw = AudioSegment.from_mp3(str(OUTRO_MUSIC_PATH))
+    outro_shaped = _shape_music(
+        outro_raw,
+        bed_ms=OUTRO_BED_DURATION_MS,
+        swell_hold_ms=None,
+        fade_out_ms=0,
+    )
+    overlap_pos = max(0, len(body) - OUTRO_BED_DURATION_MS)
+    tail_ms = max(0, len(outro_shaped) - (len(body) - overlap_pos))
+    extended = body + AudioSegment.silent(duration=tail_ms)
+    result = extended.overlay(outro_shaped, position=overlap_pos)
+    log.info(
+        "Outro music shaped (%.1fs) bed-under-%.1fs, swell to end",
+        len(outro_shaped) / 1000,
+        OUTRO_BED_DURATION_MS / 1000,
+    )
     return result
+
+
+def _shape_breaker(breaker: AudioSegment) -> AudioSegment:
+    """Envelope a breaker clip: fade-in → bed hold → swell ramp → swell hold → fade-out."""
+    return _shape_music(
+        breaker,
+        bed_ms=BREAKER_BED_HOLD_MS + MUSIC_FADE_IN_MS,
+        swell_hold_ms=BREAKER_SWELL_HOLD_MS,
+        fade_out_ms=BREAKER_FADE_OUT_MS,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -163,35 +263,45 @@ def generate_audio(script: str, output_path: Path) -> tuple[Path, int]:
         log.info("Generating TTS for segment %d/%d (%d chars)", i + 1, len(segments), len(seg_script))
         segment_audios.append(_generate_audio_gemini(seg_script))
 
-    # Assemble conversation with breaker clips between segments
+    # Trim trailing silence from each segment so break timing anchors on real speech end
+    segment_audios = [_trim_trailing_silence(s) for s in segment_audios]
+
+    # Assemble conversation with shaped breaker clips between segments
     if len(segment_audios) > 1:
         all_breakers = _load_breakers()
-        num_breaks = len(segment_audios) - 1
         if all_breakers:
-            positions = _select_break_positions(num_breaks, MAX_BREAKERS_PER_EPISODE)
-            selected = random.sample(all_breakers, min(len(positions), len(all_breakers)))
-            log.info("Inserting %d breakers at positions %s", len(selected), positions)
+            breaker_pool = list(all_breakers)
+            random.shuffle(breaker_pool)
+            breaker_cycle = cycle(breaker_pool)
+            log.info(
+                "Inserting breakers at all %d break positions (shuffled pool of %d, cycling)",
+                len(segment_audios) - 1, len(all_breakers),
+            )
         else:
-            positions, selected = [], []
+            breaker_cycle = None
 
         conversation = segment_audios[0]
-        clip_idx = 0
         for i in range(1, len(segment_audios)):
-            if (i - 1) in positions and clip_idx < len(selected):
-                # Breaker transition: dialogue stays clean, music fades in/out
-                breaker = selected[clip_idx]
-                clip_idx += 1
-                fade = min(BREAKER_CROSSFADE_MS, len(breaker) // 2)
-                breaker = breaker.fade_in(fade).fade_out(fade)
-                gap = AudioSegment.silent(duration=SEGMENT_GAP_MS)
-                conversation = conversation + gap + breaker + gap + segment_audios[i]
+            if breaker_cycle is not None:
+                breaker_shaped = _shape_breaker(next(breaker_cycle))
+                conversation = (
+                    conversation
+                    + AudioSegment.silent(duration=BREAK_PRE_SILENCE_MS)
+                    + breaker_shaped
+                    + AudioSegment.silent(duration=BREAK_POST_SILENCE_MS)
+                    + segment_audios[i]
+                )
             else:
-                # Non-breaker: clean silence gap between segments
-                conversation = conversation + AudioSegment.silent(duration=SEGMENT_GAP_MS) + segment_audios[i]
+                conversation = (
+                    conversation
+                    + AudioSegment.silent(duration=BREAK_PRE_SILENCE_MS + BREAK_POST_SILENCE_MS)
+                    + segment_audios[i]
+                )
     else:
         conversation = segment_audios[0]
 
-    final = _add_music(cold_open, conversation)
+    with_intro = _add_intro(cold_open, conversation)
+    final = _add_outro(with_intro)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     final.export(str(output_path), format="mp3", bitrate="192k")
