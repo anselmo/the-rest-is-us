@@ -59,12 +59,16 @@ coverage and 2-3 for quick_hit. Not every story needs coverage. Pick stories \
 that create interesting COMBINATIONS — where the implications of one story illuminate \
 something about another.
 
-6. HOST ASSIGNMENT — Alternate who leads. The lead host should be the one whose expertise \
+6. TURN BUDGETS — deep_dive segments get 14-22 estimated_turns, quick_hit 4-6. \
+Aim for the upper half of the deep-dive range when the story has strong implications \
+or a natural debate between the hosts.
+
+7. HOST ASSIGNMENT — Alternate who leads. The lead host should be the one whose expertise \
 makes the story MORE interesting ({host1_name} leads product launches and tool releases; {host2_name} leads \
 funding rounds and market moves). But sometimes the SURPRISING assignment is better — {host2_name} \
 leading a product story because the business model is the real story.
 
-7. EPISODE OPEN — The opening host leads with the date and a greeting that includes their \
+8. EPISODE OPEN — The opening host leads with the date and a greeting that includes their \
 FULL NAME. The co-host introduces themselves by FULL NAME in their first turn. \
 After the intro, hosts use FIRST NAMES only. The date should feel natural — spoken \
 conversationally, not announced. The date and time of day are provided in the user message. \
@@ -76,7 +80,7 @@ March twenty-second. Three stories today. This is The Rest of Us." \
 Example (no explicit greeting): "I'm {host1_full_name}. May first. Anthropic's doing \
 something weird with therapy. You're listening to The Rest of Us."
 
-8. EPISODE CLOSE — After final takeaways, one host wraps with a natural sign-off using \
+9. EPISODE CLOSE — After final takeaways, one host wraps with a natural sign-off using \
 a variant of "another one in the bin... till tomorrow". Should feel like two friends \
 ending a real conversation, not a scripted outro. Vary naturally: "Another one in the \
 bin. See you tomorrow.", "In the bin. We'll be back.", "That's a wrap — another episode \
@@ -265,9 +269,12 @@ Real people don't start sentences cleanly.
 
 TEMPO:
 - Target the estimated_turns count from the beat sheet for each segment.
-- Quick-hit segments: 4-6 turns. Deep-dive segments: 10-18 turns.
-- Total script: 2400-3200 words. Shorter is better. If in doubt, cut.
-- Favor rapid-fire exchanges over long monologues.
+- Quick-hit segments: 4-6 turns. Deep-dive segments: 14-22 turns.
+- Total script: 2000-2400 words, HARD FLOOR 1900. Never deliver below the floor — \
+if a draft is short, deepen the strongest deep-dive with one more implication, \
+example, or counter-beat rather than padding every turn.
+- Rapid-fire exchanges and longer setup turns BOTH belong — use rapid-fire in the \
+middle of a deep-dive to land a punchline, not as the default rhythm.
 - When a host makes a point, the other responds immediately — no restating.
 
 WRITE FOR SPEECH (TTS engine will read this — prosody matters):
@@ -401,7 +408,10 @@ punctuated by occasional — and predictable — emotional shifts.
 RULES:
 - Keep the EXACT same format: {host1_name_upper}: / {host2_name_upper}: followed by dialogue
 - Keep the same stories and facts — change the DELIVERY, not the content
-- Target 2400-3200 words. If the draft is longer, CUT. Shorter scripts sound better as audio.
+- Target 2000-2400 words. If the draft is below 1900 words, EXPAND — not by padding, \
+but by picking the 1-2 deep-dive segments with the strongest thesis and adding a concrete \
+example, mechanism, or counter-argument. If the draft exceeds 2400, tighten (not gut) the \
+weakest deep-dive. Never drop below the 1900-word floor.
 - Do not add stage directions or sound cues (except the TTS markup tags above). Preserve existing [BREAK] markers.
 - Preserve all [BREAK] markers exactly as they appear. Do not move, add, or remove them.
 - Do not add preamble or commentary — output the rewritten script only"""
