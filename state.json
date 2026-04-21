@@ -1,6 +1,72 @@
 {
-  "episode_count": 10,
+  "episode_count": 11,
   "episodes": [
+    {
+      "date": "2026-04-20",
+      "episode_number": 11,
+      "stories": [
+        {
+          "title": "Unsafe Behaviors Transfer Through Distillation",
+          "host1_take": "Kit: Unsafe agent behaviors encode in trajectory dynamics invisible to content filters, making every distilled model a latent safety liability that no founder is disclosing to LPs.",
+          "host2_take": "Dean: This transforms the distillation pitch from 'we own our model' into an undisclosed behavioral provenance risk that will force diligence questions by Q3.",
+          "agreed": true
+        },
+        {
+          "title": "Chain of Thought is Post-Hoc Rationalization",
+          "host1_take": "Kit: User testing shows that beyond a verbosity threshold, reasoning traces make users trust models less\u2014they recognize it as bullshit-like rationalization after the fact.",
+          "host2_take": "Dean: This collapses the entire interpretability startup category raised on 'surfacing reasoning'\u2014they're selling dashboards of rationalizations, not actual reasoning.",
+          "agreed": true
+        },
+        {
+          "title": "Models Fail at Problem Recognition First",
+          "host1_take": "Kit: Enterprise AI pilots die in month three not because models can't complete tasks, but because they don't recognize what problem they've been handed\u2014this is the first-mile failure, not last-mile.",
+          "host2_take": "Dean: KWBench reprices a year of LP conversations and gives labs real signal on a metric where they can claim leadership before it saturates.",
+          "agreed": true
+        },
+        {
+          "title": "AI Registers Function as Procurement Design",
+          "host1_take": "Kit: The Canadian register's suspiciously clean four hundred nine systems number signals a self-reporting threshold\u2014the omitted systems are probably the ones worth looking at.",
+          "host2_take": "Dean: Register taxonomies get lobbied because the categories become contracts; eighty-six percent of disclosed systems are boring internal tools while contestable systems stay out of frame.",
+          "agreed": true
+        },
+        {
+          "title": "Parallel Sampling Paths Converge Redundantly",
+          "host1_take": "Kit: Current best-of-N sampling fails in the same redundant ways because paths aren't independent; LACE gets seven-point accuracy bump by letting them share intermediate work.",
+          "host2_take": "Dean: Architectural attention changes need two-year production lift before this lands in inference serving.",
+          "agreed": false
+        },
+        {
+          "title": "Multi-Agent Agreement Falsely Calibrates Confidence",
+          "host1_take": "Kit: Every swarm demo converges confidently on wrong answers because agents treat agreement as evidence rather than requiring external witness sets.",
+          "host2_take": "Dean: Preregistered Belief Revision Contracts show up in RFPs before products\u2014eighteen months until this becomes a procurement checkbox.",
+          "agreed": true
+        },
+        {
+          "title": "Memory, Skills, and Rules Collapse into One Axis",
+          "host1_take": "Kit: Three separate startup categories don't cite each other\u2014experience compression spectrum unifies them but cross-citation across twenty-two papers is under one percent.",
+          "host2_take": "Dean: This is a category collapse that re-underwrites three separate valuations when the framing lands.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Every LP should ask by Q3 whether a model inherited behaviors from teachers it can't describe",
+        "Dean: 'Preregistered revision protocol' becomes a procurement checkbox within eighteen months",
+        "Dean: Three memory/skills/rules startup categories collapse into one valuation re-underwrite",
+        "Dean: Portfolios without re-underwriting by Q3 carry phantom valuations into renewal season"
+      ],
+      "key_themes": [
+        "Observable reality gap in AI systems",
+        "Latent vs. surface behaviors",
+        "Safety through distillation",
+        "Interpretability narrative collapse",
+        "Enterprise AI first-mile failures",
+        "Regulatory capture through taxonomy design",
+        "Multi-agent failure modes",
+        "Valuation repricing across categories"
+      ],
+      "story_to_watch": "Whether distillation safety exposure becomes a standard LP diligence question before major deployment incidents surface it",
+      "title": "What We Can't Actually See in LLMs"
+    },
     {
       "date": "2026-04-19",
       "episode_number": 10,

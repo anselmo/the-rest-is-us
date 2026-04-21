@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>Reasoning Lives in the Latent Exhaust</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-21-0646.mp3" length="10273688" type="audio/mpeg" />
+      <itunes:duration>428</itunes:duration>
+      <pubDate>Tue, 21 Apr 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-21-0646.mp3</guid>
+    </item>
+    <item>
       <title>What We Can't Actually See in LLMs</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-20-2135.mp3" length="12367664" type="audio/mpeg" />
       <itunes:duration>515</itunes:duration>
