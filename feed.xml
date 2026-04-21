@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>Defensibility Moves From Artifacts to Loops</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-21-1109.mp3" length="13471703" type="audio/mpeg" />
+      <itunes:duration>561</itunes:duration>
+      <pubDate>Tue, 21 Apr 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-21-1109.mp3</guid>
+    </item>
+    <item>
       <title>Reasoning Lives in the Latent Exhaust</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-21-0646.mp3" length="10273688" type="audio/mpeg" />
       <itunes:duration>428</itunes:duration>
