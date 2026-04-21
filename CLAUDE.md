@@ -98,6 +98,7 @@ Configured in `.env` (see `.env.example`):
 - AI keyword filter list: `config.py:AI_KEYWORDS`
 - RSS feed URLs: `config.py:ARXIV_FEEDS`, `LAB_BLOG_FEEDS`, `VENTUREBEAT_AI_FEED`, `ARSTECHNICA_AI_FEED`
 - Max final stories after ranking: `config.py:MAX_FINAL_STORIES` (15)
+- Target episode duration: **10-12 min**. Script word-count and turn-count ranges live in `prompts.py` (system prompt + refinement prompt) and drive this; do not edit them without measuring MP3 duration afterward (`afinfo episodes/<latest>.mp3`).
 - Script model: `claude-opus-4-7` (max 12,288 tokens for dialogue/refinement, 8,192 for beat sheet)
 - Beat sheet model: `claude-opus-4-7`
 - Summary model: `claude-haiku-4-5-20251001`
@@ -148,7 +149,7 @@ Optional analysis pipeline in `scripts/rhythm/` — compares reference podcasts 
 - Audio + whisperx outputs cached in `scripts/rhythm_cache/` (gitignored); re-runs reuse cache
 - Full 2-hour reference transcribes in ~45 min on M-series CPU with base.en
 - Own episodes use forced alignment: whisperx transcribes audio, `difflib.SequenceMatcher` propagates KIT/DEAN labels from canonical script
-- Pacing language in `prompts.py` (WITHIN-TURN PAUSE AUDIT, TTS MARKUP TAGS clustering rule) and `tts_gemini.py` (180 WPM / 180 ms handoff target) is calibrated against this tool — re-run it after changing those prompts
+- Pacing and length language in `prompts.py` (WITHIN-TURN PAUSE AUDIT, TTS MARKUP TAGS clustering rule, word-count / estimated_turns targets) and `tts_gemini.py` (180 WPM / 180 ms handoff target) is calibrated against this tool — re-run it after changing those prompts. Asymmetric cut-bias in length rules (e.g. "shorter is better, CUT") can silently shrink episodes by 40% in a week, so verify MP3 duration after prompt changes.
 
 ## Distribution via GitHub Pages
 
