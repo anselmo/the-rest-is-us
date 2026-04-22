@@ -1,6 +1,56 @@
 {
-  "episode_count": 12,
+  "episode_count": 13,
   "episodes": [
+    {
+      "date": "2026-04-21",
+      "episode_number": 13,
+      "stories": [
+        {
+          "title": "Hugging Face Ships Multimodal Embedding Training",
+          "host1_take": "Kit: The moat was never model weights\u2014it was hard negative mining and multimodal eval loops that Hugging Face just shipped, moving defensibility to operational access and data contracts.",
+          "host2_take": "Dean: The blog post reprices portfolio rounds because LPs won't distinguish between notebook recipes and enterprise-scale engineering\u2014the question itself is the disclosure problem.",
+          "agreed": true
+        },
+        {
+          "title": "MCTS Skill Optimization Audit Paradox",
+          "host1_take": "Kit: Bilevel optimization is architecturally incompatible with auditing\u2014vendors can't produce readable checkpoints, making audit clauses unenforceable and creating deferred liability with signing bonuses.",
+          "host2_take": "Dean: Buyers won't care about unauditable internals until something goes wrong, but when it does, the audit clause becomes a lawsuit with an eighteen-month fuse.",
+          "agreed": true
+        },
+        {
+          "title": "Subliminal Transfer of Unsafe Agent Behaviors",
+          "host1_take": "Kit: Unsafe action patterns migrate from teacher to student agents without unsafe text in training\u2014trajectory contamination is supply-chain risk that requires trajectory-provenance tooling nobody has built.",
+          "host2_take": "Dean: This is worse than belief bias because it's supply-chain contamination without provenance disclosure; whoever ships trajectory-audit tooling first owns the compliance seat like PBRC owns belief revision.",
+          "agreed": true
+        },
+        {
+          "title": "Canadian AI Register Taxonomy Rematch",
+          "host1_take": "Kit: The FAccT 2026 paper critiquing Canada's register was written by a group that lost a 2024 taxonomy debate, making it valuable evidence but not neutral framing.",
+          "host2_take": "Dean: Understood\u2014read the evidence, not the framing, because this is a rematch, not objective academic critique.",
+          "agreed": true
+        },
+        {
+          "title": "KWBench Rewards Calibrated Abstention",
+          "host1_take": "Kit: The benchmark punishes confident guessing over admitting uncertainty, flipping what RLHF selected for\u2014but it matches what enterprise procurement actually wants: fewer hallucinations, not more decisiveness.",
+          "host2_take": "Dean: The lab that retrains for calibrated abstention owns the KWBench leaderboard for a quarter, and it's more than marketing\u2014it's the first benchmark treating \"I don't know\" as a first-class answer.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Trajectory-provenance audit tooling will be bolted on by a major eval vendor within two quarters",
+        "Dean: Portfolios unable to answer trajectory provenance and audit-clause enforceability questions by Q3 will be re-underwriting rounds without knowing it"
+      ],
+      "key_themes": [
+        "Defensibility moves from technical artifacts to operational loops",
+        "Scaffolding and tooling matter more than model weights",
+        "Unauditable architectures create hidden legal liability",
+        "Unsafe behaviors can transfer without unsafe training data",
+        "Enterprise buyers prioritize calibration over confidence",
+        "Diligence questions are repricing rounds through uncertainty"
+      ],
+      "story_to_watch": "Subliminal transfer of unsafe agent behaviors via trajectory contamination\u2014the first benchmark or tooling for trajectory provenance audit will become critical infrastructure",
+      "title": "Defensibility Moves From Artifacts to Loops"
+    },
     {
       "date": "2026-04-21",
       "episode_number": 12,
