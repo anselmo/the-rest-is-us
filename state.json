@@ -1,6 +1,57 @@
 {
-  "episode_count": 13,
+  "episode_count": 14,
   "episodes": [
+    {
+      "date": "2026-04-22",
+      "episode_number": 14,
+      "stories": [
+        {
+          "title": "Claude Code Vanishes from Pro Plan",
+          "host1_take": "Kit argues Anthropic didn't model the loss of non-developer wedge users and the upgrade cliff from $20 to $200 will cede that audience back to competitors.",
+          "host2_take": "Dean frames this as the first honest pricing event in agentic AI\u2014flat-rate subscriptions don't survive tool-calling loops, though execution via silent removal was ugly.",
+          "agreed": false
+        },
+        {
+          "title": "GitHub Pauses Copilot Signups",
+          "host1_take": "Kit initially reads this as Microsoft getting religion on margins, but sees brutal retention consequences in how weekly caps interrupt active agent runs.",
+          "host2_take": "Dean reframes this as a capacity problem\u2014Azure doesn't have spare H100s without cannibalizing enterprise contracts paying 5x more.",
+          "agreed": false
+        },
+        {
+          "title": "SpaceX Acquiring Cursor for $60B",
+          "host1_take": "Kit argues forced Grok migration destroys Cursor's actual moat: sub-100ms tab completion tuned across multiple models over a year.",
+          "host2_take": "Dean positions it as compute demand sink strategy\u2014Colossus needs to monetize idle GPU-hours, and $60B for that is cheap; the acquisition floor and ceilings every other coding tool's valuation.",
+          "agreed": false
+        },
+        {
+          "title": "AI Scientists Skip Reasoning Entirely",
+          "host1_take": "Kit highlights the epistemology gap: models ignore evidence (68% of traces) and can't self-correct even with successful reasoning shown to them.",
+          "host2_take": "Dean sees this as a safety story and silent failure risk\u2014quiet markdowns expected by July as enterprise buyers wake up to confidently wrong outputs.",
+          "agreed": true
+        },
+        {
+          "title": "Recovery Clauses Before Prevention",
+          "host1_take": "Kit is surprised legal wants 'undo' buttons for agent failures rather than prevention, and notes the human-in-the-loop UX is still unsolved.",
+          "host2_take": "Dean frames this as liability-driven procurement language entering Fortune 500 RFPs, and notes no shippable product yet exists against that requirement.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Series B coding tools without infrastructure will see quiet valuation markdowns by July as the autonomous research agent narrative breaks",
+        "Dean: AI research fund markdowns expected before enterprise procurement catches up to the arXiv paper",
+        "Kit: Tools should assume costs will be 5-10x higher by year-end as subsidy era ends"
+      ],
+      "key_themes": [
+        "End of AI subsidy era",
+        "Compute vertical integration as moat",
+        "Silent failure in autonomous systems",
+        "Pricing honesty vs. communication execution",
+        "Capacity constraints reshaping product strategy",
+        "Epistemology gap in AI agents"
+      ],
+      "story_to_watch": "Series B coding tool valuations and whether founders without compute infrastructure can survive the floor-and-ceiling pricing set by Anthropic, Microsoft, and SpaceX in one day",
+      "title": "The Subsidy Era Ends in One Day"
+    },
     {
       "date": "2026-04-21",
       "episode_number": 13,
