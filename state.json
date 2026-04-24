@@ -1,6 +1,49 @@
 {
-  "episode_count": 14,
+  "episode_count": 15,
   "episodes": [
+    {
+      "date": "2026-04-23",
+      "episode_number": 15,
+      "stories": [
+        {
+          "title": "LLMs Overuse Tools They Don't Need",
+          "host1_take": "Kit: Tool-overuse is mechanical \u2014 RLHF rewarded visible rigor, and external calls now actively override correct internal answers, making outputs worse.",
+          "host2_take": "Dean: This is both a margin story AND a silent-failure story; the 18-month window for tool-routing middleware exists before native metacognitive gating ships.",
+          "agreed": false
+        },
+        {
+          "title": "Hugging Face Closes Multimodal Moat",
+          "host1_take": "Kit: The defensible asset is data contracts with domain sources, not the model or pipeline \u2014 hard-negative mining requires adversarial data nobody owns.",
+          "host2_take": "Dean: LPs are reading Hugging Face blogs; capital repricing happens in under a week now; the real question flips from 'show me the notebook' to 'show me the data contract.'",
+          "agreed": true
+        },
+        {
+          "title": "Proxy Failure in Professional Services",
+          "host1_take": "Kit: The essay must survive without ChatGPT in the room; process artifacts become first-class, separate from output \u2014 the audit trail IS the defensible asset.",
+          "host2_take": "Dean: This is professional-services liability insurance, not education; a rubric cited in one RFP becomes de facto policy in 3-5 years via procurement momentum.",
+          "agreed": true
+        },
+        {
+          "title": "Precision Quantization Breaks Contracts",
+          "host1_take": "Kit: Same model weights at different precisions produce different products with the same name, including jailbreak divergence \u2014 precision is undisclosed variance.",
+          "host2_take": "Dean: Enterprise SLAs reference 'the model' as singular; contracts break when 'the model' isn't a singular referent; precision-disclosure clauses coming by year-end.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Tool-call-per-correct-answer becomes a procurement metric by Q4 2024",
+        "Dean: Precision-disclosure clauses appear in enterprise contracts by year-end"
+      ],
+      "key_themes": [
+        "Process over artifact",
+        "Evidence trails as defensible assets",
+        "Contract and liability frameworks catching up to AI capability",
+        "Moats are data and licensing, not models",
+        "LPs repricing capital based on public research speed"
+      ],
+      "story_to_watch": "How quickly regulatory RFPs force process-transparency layers into Copilot-for-X products before they hit procurement walls",
+      "title": "The Artifact Is Just The Receipt"
+    },
     {
       "date": "2026-04-22",
       "episode_number": 14,
