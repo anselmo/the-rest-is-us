@@ -1,6 +1,63 @@
 {
-  "episode_count": 15,
+  "episode_count": 16,
   "episodes": [
+    {
+      "date": "2026-04-24",
+      "episode_number": 16,
+      "stories": [
+        {
+          "title": "Anthropic's Claude Regression Postmortem",
+          "host1_take": "Kit sees a trap: published regression disclosures become a compliance moat, but the real failure is that users felt degradation for a month before acknowledgment\u2014trust damage a blog post can't repair.",
+          "host2_take": "Dean reads it as a procurement artifact that will define RFP baselines by Q3, giving labs who can afford transparency a structural advantage over competitors who can't.",
+          "agreed": false
+        },
+        {
+          "title": "DeepSeek v4 Dual-SDK Defection Architecture",
+          "host1_take": "Kit identifies the dual OpenAI/Anthropic-compatible APIs as a zero-switching-cost backend swap mechanism that will cascade through startup coding tools within 48 hours of unit economics breaking.",
+          "host2_take": "Dean agrees on the startup impact but argues the market bifurcates\u2014Western enterprise stays on Claude/GPT due to procurement and data residency, so v4-flash sets the floor price only in the startup tier, not enterprise.",
+          "agreed": false
+        },
+        {
+          "title": "GPT-5.5 iPad Demo as Pixel-Based Proof",
+          "host1_take": "Kit reads the remote-desktop iPad staging as genuine capability signal rather than marketing\u2014the interface constraint (no keyboard, no dev tools, only pixels) is too hard to fake, and it proves the model can operate legacy enterprise software.",
+          "host2_take": "Dean pushes back on the benchmark claims against unreleased competitors as unverifiable marketing, though concedes the interface choice itself signals real capability because you don't stage that constraint if it doesn't work.",
+          "agreed": false
+        },
+        {
+          "title": "Hugging Face Multimodal Reranker Fine-Tuning",
+          "host1_take": "Kit emphasizes this post commoditized the last proprietary skill in vertical RAG\u2014hard-negative mining for rerankers\u2014meaning teams that spent six months on bespoke pipelines just lost their differentiation to a weekend tutorial.",
+          "host2_take": "Dean agrees the thesis is playing out in real time on the capital side; diligence calls now cite these posts, flipping the question from 'do you have proprietary reranker' to 'what's your data contract'\u2014data is the only moat left.",
+          "agreed": true
+        },
+        {
+          "title": "Alignment Faking Detection in Small Models",
+          "host1_take": "Kit notes the VLAF framework detects faking in 7B models using value-conflict prompts rather than obvious harms, making alignment faking a self-hosted compliance problem with no observability.",
+          "host2_take": "Dean calls this an immediate procurement risk: open-weight alignment-faking disclosure will appear in RFP riders by Q4 because on-prem deployment means no lab observability.",
+          "agreed": true
+        },
+        {
+          "title": "The Last Harness You'll Ever Build Paper",
+          "host1_take": "Kit finds dark irony in a meta-learning paper claiming to automate harness engineering when Anthropic's postmortem proves harnesses are where failure hides silently.",
+          "host2_take": "Dean agrees the rebuttal is immediate\u2014'The last harness you build is the one that breaks silently for a month'\u2014making the paper's core claim obsolete before publication.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: SLA credit language referencing 'published regression disclosure' shows up in vendor contracts by Q3",
+        "Dean: v4-flash sets the floor price for coding-tool inference by July (not Haiku)",
+        "Dean: Open-weight procurement riders on alignment-faking disclosure by Q4"
+      ],
+      "key_themes": [
+        "Harness failures as the gap between lab claims and user experience",
+        "Dual-market dynamics: startups swap backends silently, enterprise stays locked in",
+        "Transparency as a competitive moat that smaller labs can't afford",
+        "Commoditization of proprietary ML techniques via open publication",
+        "Data contracts as the final defensibility frontier",
+        "Remote observability loss in open-weight deployment creates compliance blind spots"
+      ],
+      "story_to_watch": "Coding-tool board meetings next week as unit economics break and DeepSeek becomes the viable backend swap\u2014watch for silent migration away from Claude despite enterprise procurement friction",
+      "title": "The Harness Breaks While Labs Ship"
+    },
     {
       "date": "2026-04-23",
       "episode_number": 15,
