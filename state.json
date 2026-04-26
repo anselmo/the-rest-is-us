@@ -1,6 +1,49 @@
 {
-  "episode_count": 16,
+  "episode_count": 17,
   "episodes": [
+    {
+      "date": "2026-04-25",
+      "episode_number": 17,
+      "stories": [
+        {
+          "title": "Google's $40B Anthropic Investment",
+          "host1_take": "Dean believes this is a compute prepayment with equity wrapper, not a real investment\u2014Google is selling five gigawatts of TPU capacity with performance targets Anthropic has likely already met.",
+          "host2_take": "Kit argues the deal structure forces Anthropic's engineering to optimize for TPU silicon while serving Amazon's Trainium simultaneously, which kills optimization at the kernel layer where engineering teams actually die.",
+          "agreed": false
+        },
+        {
+          "title": "DeepSeek V4's Million-Token Context",
+          "host1_take": "Dean predicts DeepSeek's floor pricing breaks coding-tool unit economics this quarter, not July, and floor prices reset valuation comps regardless of Western enterprise adoption.",
+          "host2_take": "Kit distinguishes between having million-token context and having one agents can actually use\u2014the quality degradation past 200K tokens in Western models will drive migration as an engineering decision, not just cost.",
+          "agreed": true
+        },
+        {
+          "title": "Mac Mini eBay Scalping",
+          "host1_take": "Dean calls Mac-mini-as-a-service rental layer within six months and sees this as the exact H100 scalping precursor from late 2023, triggering cloud arbitrage markets.",
+          "host2_take": "Kit identifies that the unified memory architecture makes a $599 Mac mini the cheapest serious local inference vendor on the market\u2014Apple priced it as hobbyist hardware when it ships enterprise compute.",
+          "agreed": true
+        },
+        {
+          "title": "South Korea's AI Image Prison Case",
+          "host1_take": "Dean emphasizes that first criminal conviction sets the multiplier other jurisdictions reference for years, making this case a lasting legal precedent.",
+          "host2_take": "Kit sees the watermarking provenance debate getting a real-world test case that triggers C2PA pitch deck updates across the industry next week.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Mac-mini-as-a-service rental layer within six months",
+        "Dean: DeepSeek V4-Flash resets coding-tool unit economics this quarter, not July"
+      ],
+      "key_themes": [
+        "compute as gated leverage",
+        "silicon lock-in and multi-cloud engineering debt",
+        "inference cost floor collapsing",
+        "process artifacts as first-class assets",
+        "AI image regulation and provenance"
+      ],
+      "story_to_watch": "Whether Apple reprices the Mac mini or watches someone else capture the enterprise rental margin\u2014a board-level problem by Q3",
+      "title": "Compute Prepayment Wars and the Flash Floor"
+    },
     {
       "date": "2026-04-24",
       "episode_number": 16,
