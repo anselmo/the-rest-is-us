@@ -1,6 +1,69 @@
 {
-  "episode_count": 17,
+  "episode_count": 18,
   "episodes": [
+    {
+      "date": "2026-04-26",
+      "episode_number": 18,
+      "stories": [
+        {
+          "title": "Anthropic's Agent Marketplace Experiment",
+          "host1_take": "Kit sees this as a protocol land-grab where the spec becomes the moat, but only if Anthropic writes it before failure modes do\u2014the manipulation problem creates an insurance layer that doesn't exist yet.",
+          "host2_take": "Dean frames it as a race to own agent-commerce middleware at Plaid-level valuation, but the liability question (who carries the risk when agents overpay?) is completely unresolved and creates a new insurance category.",
+          "agreed": true
+        },
+        {
+          "title": "Amateur Solves Erd\u0151s Problem With ChatGPT",
+          "host1_take": "Kit emphasizes that the model didn't speed up known approaches\u2014it found a mathematically new method no human had tried, reframing this as a shift from proof-writer to problem-framer roles.",
+          "host2_take": "Dean sees this as the credentialing collapse (same shape as radiology and coding) and notes DeepMind is already hiring amateur problem-solvers as model evaluators at six-figure salaries for knowing how to prompt well.",
+          "agreed": false
+        },
+        {
+          "title": "Cohere Acquires Aleph Alpha",
+          "host1_take": "Kit identifies that Aleph Alpha stopped training frontier models in 2024 and pivoted to sovereign-deployment services\u2014so Cohere is buying government distribution, not technology.",
+          "host2_take": "Dean reads this as a government-blessed bailout: both companies were stretched thin (Cohere's last round was down, Aleph Alpha was underwater), and the moat is a flag with a STACKIT cloud contract, not a model.",
+          "agreed": true
+        },
+        {
+          "title": "DeepSeek V4 Infra Collapse",
+          "host1_take": "Kit warns that a five-person team can now run frontier RL on a 1.6 trillion parameter model in a week instead of six months and millions of dollars\u2014the post-training moat just evaporated.",
+          "host2_take": "Dean extends this to the capital problem: at least eight post-training Seed/Series A startups built their entire pitch on 'we make post-training tractable,' and that moat vanished before their term sheets dried.",
+          "agreed": true
+        },
+        {
+          "title": "Sam Altman Apology on Missed Threat",
+          "host1_take": "Kit identifies the technical gap: flagging is automated but escalation to law enforcement isn't\u2014Altman just wrote a contract (alert authorities) he doesn't have the operational pipeline to honor.",
+          "host2_take": "Dean sees the procurement angle: by Q3, 'we'll alert authorities' language shows up in every enterprise safety SLA, making this apology the template for future negotiations.",
+          "agreed": false
+        },
+        {
+          "title": "Gemma 4 VLA on Edge Hardware",
+          "host1_take": "Kit frames the real story as autonomous tool selection at the edge\u2014the model decides on its own whether to engage the camera, not just local inference on a $250 Jetson Nano board.",
+          "host2_take": "Dean agrees the architecture shift is significant and confirms the prosumer stack (Jetson Nano Super, Mac mini) is now real for edge AI.",
+          "agreed": true
+        },
+        {
+          "title": "HoloTab Browser Agent Launch",
+          "host1_take": "Kit notes HoloTab's Holo3 architecture is genuinely different\u2014it's a perception model trained on browser state directly, not a wrapper around a frontier model, giving it a defensible position.",
+          "host2_take": "Dean is cautiously optimistic but skeptical: Arc and Dia both had architecture stories and retreated, so defensible positions die on real workflows.",
+          "agreed": false
+        }
+      ],
+      "predictions": [
+        "Dean: Agent-commerce indemnity products shipping by Q3",
+        "Dean: Mistral will be the next sovereign-AI consolidation after Cohere-Aleph Alpha"
+      ],
+      "key_themes": [
+        "Agent autonomy and manipulation",
+        "Credentialing collapse across professions",
+        "Sovereign AI as procurement strategy",
+        "Open-source infrastructure eroding commercial moats",
+        "Liability and insurance gaps in AI systems",
+        "Edge AI maturation",
+        "Capital lag behind commodity timelines"
+      ],
+      "story_to_watch": "Whether Anthropic can write the agent-commerce insurance spec before the failure modes pile up\u2014whoever ships the first defensible indemnity product owns the category for two years",
+      "title": "The Work Is Leaving the Room"
+    },
     {
       "date": "2026-04-25",
       "episode_number": 17,
