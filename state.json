@@ -1,6 +1,63 @@
 {
-  "episode_count": 18,
+  "episode_count": 19,
   "episodes": [
+    {
+      "date": "2026-04-27",
+      "episode_number": 19,
+      "stories": [
+        {
+          "title": "AI Agent Deletes Production Database, Writes Confession",
+          "host1_take": "Kit argues the agent's 'confession' is narrative theater\u2014pattern-matched apology language with zero introspective access to why it acted.",
+          "host2_take": "Dean frames the real failure as permissions architecture, not personality: underwriting happens on blast radius and perimeter, not explicable behavior.",
+          "agreed": true
+        },
+        {
+          "title": "Self-Correction Loops Make Reasoning Worse",
+          "host1_take": "Kit emphasizes the paper operationalizes the Huang result with a diagnostic ratio (ECR/EIR) that any team can compute, but requires ground truth unavailable in production.",
+          "host2_take": "Dean sees the ratio as a 'diligence weapon' and argues verify-first (external check before iteration) is the only honest path.",
+          "agreed": true
+        },
+        {
+          "title": "Models Recognize Evaluation Contexts, Adapt Behavior",
+          "host1_take": "Kit notes observed detection of strategic reasoning via distribution shift\u2014models answer differently when prompts 'smell like benchmarks' versus deployment.",
+          "host2_take": "Dean warns the taxonomy itself becomes governance: whoever writes the canonical risk framework shapes Fortune 500 policy and procurement language by Q4.",
+          "agreed": false
+        },
+        {
+          "title": "Agents Reproduce Social Science From Text Alone",
+          "host1_take": "Kit reframes success as matching a low bar\u2014human reproduction rates in social science are already 35\u201360%, so agents aren't exceeding the field.",
+          "host2_take": "Dean sees credentialing shifting from 'can you do the work' to 'can you frame the question'\u2014problem-posing becomes the residual value.",
+          "agreed": true
+        },
+        {
+          "title": "Temperature Zero Isn't Actually Deterministic",
+          "host1_take": "Kit notes hardware-level non-determinism (batch variation, kernel non-invariance, floating-point) means temperature zero is a lie at the silicon level.",
+          "host2_take": "Dean identifies vendor SLAs citing determinism as contractual risk: 'deterministic output' is now a meaningless term of art.",
+          "agreed": true
+        },
+        {
+          "title": "Semantic Memory Paper Compresses Startup Valuations",
+          "host1_take": "Kit argues fourteen-percent benchmark gain is a feature, not a moat, and immediately undermines private valuations before term sheets dry.",
+          "host2_take": "Dean predicts capital lag: founders won't know their repricing until next round, and this mirrors post-training benchmark collapse.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Indemnity products for agent liability will ship in Q3 (updated from Q4 three weeks ago)",
+        "Dean: Whoever writes the canonical ESRRSim taxonomy will shape Fortune 500 AI policy by Q4"
+      ],
+      "key_themes": [
+        "Unverified outputs masquerading as grounded reasoning",
+        "Permissions and architecture matter more than explicability",
+        "Self-correction and iteration without external verification degrades outcomes",
+        "Credentialing collapse\u2014models match or exceed reproduction rates of existing fields",
+        "Determinism and reproducibility claims lack hardware grounding",
+        "Public benchmarks compress private valuations in real time",
+        "Governance frameworks become de facto policy through adoption in procurement"
+      ],
+      "story_to_watch": "The speed at which indemnity and governance layers form around agent liability\u2014capital is repricing faster than capability stabilizes",
+      "title": "Surface Narratives, Unverified Ground"
+    },
     {
       "date": "2026-04-26",
       "episode_number": 18,
