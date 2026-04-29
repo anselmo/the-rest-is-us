@@ -1,6 +1,49 @@
 {
-  "episode_count": 19,
+  "episode_count": 20,
   "episodes": [
+    {
+      "date": "2026-04-28",
+      "episode_number": 20,
+      "stories": [
+        {
+          "title": "Microsoft and OpenAI End Exclusivity",
+          "host1_take": "Kit recognizes the exclusivity was already dead in code \u2014 engineers built CUDA-portable abstractions over a year ago, making this contract paperwork catching up to reality.",
+          "host2_take": "Dean argues Microsoft actually won by keeping a 2030 revenue share while shedding antitrust liability \u2014 a cleaner version of the same deal that caps OpenAI's IPO multiple.",
+          "agreed": false
+        },
+        {
+          "title": "China Blocks Meta's Manus Acquisition",
+          "host1_take": "Kit focuses on what Meta was actually buying \u2014 Manus's engineering and workflow primitives for agent orchestration that Meta couldn't reproduce internally.",
+          "host2_take": "Dean reads it as strategic optionality: Meta signaled market value for the capability, set comps for non-China competitors, and pre-emptively priced China-exposure risk into all future AI startup valuations.",
+          "agreed": true
+        },
+        {
+          "title": "Voice Biometric Breach at Mercor",
+          "host1_take": "Kit emphasizes the permanent, non-revocable nature of voice-biometric theft \u2014 forty thousand contractors now have a lifetime attack surface combining studio-clean speech with verified government IDs.",
+          "host2_take": "Dean frames it as the indemnity-product pricing event he predicted, which will reshape SOWs between labs and contractors and birth a new carrier liability category.",
+          "agreed": true
+        },
+        {
+          "title": "Power Law Data Sampling Outperforms Uniform Curation",
+          "host1_take": "Kit highlights that the geometry of power-law sampling creates better loss-landscape pathology for compositional reasoning \u2014 the orthodoxy of aggressive rebalancing is structurally wrong.",
+          "host2_take": "Dean sees this compressing valuations of data-curation startups mid-fundraise whose entire thesis was fixing underrepresented domains through reweighting.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Agent-liability indemnity products will ship in Q3",
+        "Dean: Voice-biometric breach indemnity will establish pricing baseline this week"
+      ],
+      "key_themes": [
+        "Permanence and non-revocability in AI systems",
+        "Contract reality lagging technical reality",
+        "Repricing of risk and liability across AI infrastructure",
+        "China's strategic blocking of Western AI acquisitions",
+        "Public research compressing private valuations in real time"
+      ],
+      "story_to_watch": "Mercor breach ripple effects \u2014 how labs renegotiate SOWs and whether indemnity carriers create new products around voice-biometric liability",
+      "title": "The Things That Can't Be Unwound"
+    },
     {
       "date": "2026-04-27",
       "episode_number": 19,
