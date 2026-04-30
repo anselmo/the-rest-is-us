@@ -1,6 +1,61 @@
 {
-  "episode_count": 20,
+  "episode_count": 21,
   "episodes": [
+    {
+      "date": "2026-04-29",
+      "episode_number": 21,
+      "stories": [
+        {
+          "title": "AI Code Ownership and GPL Contamination",
+          "host1_take": "Kit argues retroactive AI-provenance audits are reconstruction theatre without technical mechanisms to separate human from AI authorship at write-time.",
+          "host2_take": "Dean identifies three stacked legal problems: the Thaler ruling strips copyrightability from non-human-authored code, employment contracts assign ownership to employers, and GPL-trained models create undetectable license violations with statutory damages.",
+          "agreed": true
+        },
+        {
+          "title": "LLM Judge Bias Mitigation Doesn't Transfer",
+          "host1_take": "Kit emphasizes that debiasing strategies are provider-specific, not generalizable\u2014what works on Claude fails on Gemini\u2014and style bias dominates across all judges despite being ignored.",
+          "host2_take": "Dean argues this breaks procurement assumptions entirely; vendor scorecards cite mitigation techniques as unfalsifiable claims without specifying which judge model, making contractual 'judge model independence' clauses meaningless.",
+          "agreed": true
+        },
+        {
+          "title": "Power-Law Sampling Compresses Data-Curation Startups",
+          "host1_take": "Kit notes the follow-up preprint on multimodal training confirms the geometry isn't an anomaly, so the entire category of uniform-rebalancing startups faces structural compression.",
+          "host2_take": "Dean predicts the capital repricing just happened in real-time\u2014a term sheet pulled within a week of the preprint, compressing his 18-month timeline to 18 days, showing LPs now read arXiv on Sunday and pull term sheets Monday.",
+          "agreed": true
+        },
+        {
+          "title": "Belief Graphs Only Help Weak Models",
+          "host1_take": "Kit finds that stuffing belief graphs into prompts is decorative for strong models but only scaffolds weak models\u2014the moat evaporates when customers upgrade their base model.",
+          "host2_take": "Dean identifies two Series A multi-agent reasoning startups whose entire architecture depends on this pattern; benchmarking on weak models means their real numbers become unrepresentative at production scale.",
+          "agreed": true
+        },
+        {
+          "title": "AR-LLM Social Engineering in Real Time",
+          "host1_take": "Kit highlights that AR glasses with on-device LLMs are consumer hardware now\u2014Meta Ray-Bans already shipped two million units\u2014making psychological framework attacks on the attack surface practical.",
+          "host2_take": "Dean frames the perception layer as the new vulnerability, not the LLM itself; the model is just the orchestrator and indemnity carriers lack a product line for this emerging risk.",
+          "agreed": true
+        },
+        {
+          "title": "Sentence Transformers Closes Multimodal-RAG Moat",
+          "host1_take": "Kit observes teams can now finetune their own multimodal reranker over a weekend, directly killing the proprietary multimodal-retrieval moat that vendors raised on.",
+          "host2_take": "Dean sees this as another open-source kill of a private moat in a pattern that's repeated across four episodes\u2014the commodity shape is so familiar it barely counts as news.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: A term sheet was pulled Monday after the power-law sampling preprint, compressing the data-curation startup repricing timeline from 18 months to 18 days",
+        "Dean: Capital repricing now occurs within one week of a preprint, not on a year-long lag\u2014most portfolios haven't priced this collapse in"
+      ],
+      "key_themes": [
+        "Untested technical foundations underlying production systems",
+        "Rapid capital repricing driven by public preprints",
+        "Open source commoditizing proprietary AI moats",
+        "Procurement language writing checks technical reality can't cash",
+        "Bias mitigation strategies are model-specific, not generalizable"
+      ],
+      "story_to_watch": "Doe v. GitHub Copilot case progressing through court\u2014the DMCA claims narrowed but the underlying license-laundering theory remains alive, setting precedent for GPL-contamination lawsuits with statutory damages",
+      "title": "Untested Substrates, Collapsing Capital Lags"
+    },
     {
       "date": "2026-04-28",
       "episode_number": 20,
