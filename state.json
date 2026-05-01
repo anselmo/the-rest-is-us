@@ -1,6 +1,61 @@
 {
-  "episode_count": 21,
+  "episode_count": 22,
   "episodes": [
+    {
+      "date": "2026-04-30",
+      "episode_number": 22,
+      "stories": [
+        {
+          "title": "DX Terminal Pro: Onchain Agent Markets",
+          "host1_take": "Kit argues the natural-language strategy layer is decorative theater for trust while the typed controls do the actual safety work\u2014the operator is writing insurance policy in code.",
+          "host2_take": "Dean frames this as loss-leader infrastructure designed to harvest behavioral datasets from three thousand funded agents, with the indemnity layer being the real product spec for next-generation platforms.",
+          "agreed": false
+        },
+        {
+          "title": "Cursor Camp and IDE Moats",
+          "host1_take": "Kit sees Cursor Camp as a switching-cost play\u2014building social graph lock-in where leaving the IDE means losing friendships, creating the only moat Microsoft can't replicate.",
+          "host2_take": "Dean agrees the community is the only defensible narrative as models and IDE features commoditize, and the timing against term sheets is strategic.",
+          "agreed": true
+        },
+        {
+          "title": "Multimodal Reranker Training Goes Open",
+          "host1_take": "Kit highlights that Hugging Face's post enables any team with an H100 to train competitive multimodal rerankers in under forty-eight hours, calling it the kill shot.",
+          "host2_take": "Dean sees this as part of a campaign that demonstrates the real news is the accelerating cadence\u2014moat repricing now happens before procurement cycles even begin.",
+          "agreed": true
+        },
+        {
+          "title": "BTF-2 Forecasting Benchmark",
+          "host1_take": "Kit argues the benchmark's resolution of point-zero-zero-four Brier is smaller than random seed variance, meaning all prior forecasting-agent leaderboard claims sit inside the noise floor.",
+          "host2_take": "Dean agrees and notes that at least one forecasting-agent startup's entire enterprise pitch is built on a Brier-score lead that BTF-2 just invalidated.",
+          "agreed": true
+        },
+        {
+          "title": "LLM Safety for Robotic Health Attendants",
+          "host1_take": "Kit notes that while the eval shows fifty-four percent mean violation rate, the simulation results don't transfer to deployed liability on real hardware.",
+          "host2_take": "Dean agrees the eval is ununderwritable for carriers until someone runs it on actual robots in actual wards, leaving the policy gap open.",
+          "agreed": true
+        },
+        {
+          "title": "OMEGA Automated ML Framework",
+          "host1_take": "Kit observes that beating scikit-learn baselines is the AutoML threshold from 2018, so the pipeline shape matters more than leaderboard scores.",
+          "host2_take": "Dean agrees the framework contribution is the story, not the benchmarks.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Next forecasting-agent fundraise gets repriced before it closes, following the pattern of the data-curation term sheet pulled Monday"
+      ],
+      "key_themes": [
+        "moat creation lag collapsing to days",
+        "papers repricing funded deals within hours",
+        "commoditization of model layers forcing community defensibility",
+        "benchmark ownership as governance tool",
+        "capital repricing outpacing vendor deck updates",
+        "gap between paper and product disappearing"
+      ],
+      "story_to_watch": "Forecasting-agent fundraise repricing\u2014next closeout that happens before term sheet execution completes",
+      "title": "Moats Collapse Faster Than Decks Update"
+    },
     {
       "date": "2026-04-29",
       "episode_number": 21,
