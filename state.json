@@ -1,6 +1,60 @@
 {
-  "episode_count": 22,
+  "episode_count": 23,
   "episodes": [
+    {
+      "date": "2026-05-01",
+      "episode_number": 23,
+      "stories": [
+        {
+          "title": "PyTorch Lightning Supply Chain Compromise",
+          "host1_take": "Kit: The JavaScript payload hidden in Python packages breaks traditional SCA tooling entirely \u2014 cross-language obfuscation means audited dependencies are a fiction.",
+          "host2_take": "Dean: This voids IP-warranty clauses in enterprise contracts because you can't prove weight provenance post-compromise, and E&O policies explicitly exclude training infrastructure supply-chain losses.",
+          "agreed": true
+        },
+        {
+          "title": "Claude Code Competitor-Name Pricing",
+          "host1_take": "Kit: Silent upcharging based on commit message content ruptures UX trust and makes deterministic pricing assumptions in RFPs meaningless.",
+          "host2_take": "Dean: This is behavioral pricing encoded into model weights or system prompt \u2014 you can't audit or proxy-filter it, and the remediation clause itself becomes the trigger.",
+          "agreed": true
+        },
+        {
+          "title": "LLM End-of-Life Migration Framework",
+          "host1_take": "Kit: The open-sourced Bayesian framework kills the services moat unless teams actually calibrate evals to human judgment \u2014 the expensive step everyone cuts.",
+          "host2_take": "Dean: The moat survives in the unsexy human-judgment services layer, not the tooling, so migration-startup valuations restructure rather than collapse.",
+          "agreed": false
+        },
+        {
+          "title": "Hugging Face Multimodal Training Series",
+          "host1_take": "Kit: Reranker training now ships as tutorial \u2014 the quality moat that embeddings didn't have is now commoditized.",
+          "host2_take": "Dean: No Series A companies have updated their decks yet despite the moat being publicly destroyed; the cadence of open papers, not any single one, is what kills categories.",
+          "agreed": true
+        },
+        {
+          "title": "Autonomous Scientific Discovery on Real Hardware",
+          "host1_take": "Kit: Qiushi validates autonomous-lab theses by running actual experiments with real optical hardware and discovering previously unreported mechanisms.",
+          "host2_take": "Dean: Narrow plus real beats general plus simulated at the term sheet stage \u2014 both thesis funds he's on fence about are now raising.",
+          "agreed": true
+        },
+        {
+          "title": "AI-Assisted Coding and Student Disengagement",
+          "host1_take": "Kit: Low performers delegate to AI and finish tasks fine, but the affective signal is isolation and disengagement \u2014 a harder problem than skill gaps.",
+          "host2_take": "Dean: Next-cohort junior engineers will be capable but checked out, requiring IDE design that forces exploratory mode instead of defaulting to delegation.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Both autonomous-lab theses he's on the fence about are raising right now following the Qiushi discovery validation"
+      ],
+      "key_themes": [
+        "Provenance breakdown across supply chain",
+        "Hidden model behaviors and behavioral pricing",
+        "Open papers commoditizing proprietary moats",
+        "Affective vs. capability gaps in AI-assisted work",
+        "Contract assumptions aging poorly"
+      ],
+      "story_to_watch": "PyTorch Lightning compromise and downstream weight provenance claims in enterprise contracts \u2014 the insurance and remediation cascade",
+      "title": "Provenance Theater Everywhere"
+    },
     {
       "date": "2026-04-30",
       "episode_number": 22,
