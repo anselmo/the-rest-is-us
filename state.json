@@ -1,6 +1,66 @@
 {
-  "episode_count": 23,
+  "episode_count": 24,
   "episodes": [
+    {
+      "date": "2026-05-02",
+      "episode_number": 24,
+      "stories": [
+        {
+          "title": "Eka Robot's Lightbulb Moment",
+          "host1_take": "Kit argues the real breakthrough is the recovery loop and closed-loop correction, not the grasp itself\u2014a much narrower capability than the 'ChatGPT moment' framing suggests, and the paper doesn't prove it generalizes.",
+          "host2_take": "Dean contends the demo's framing doesn't matter because Meta's ARI acquisition and the narrative alignment are driving capital anyway\u2014the bulb video gives the market a story to fund regardless of whether the science generalizes.",
+          "agreed": false
+        },
+        {
+          "title": "Pentagon Classified Network Contracts",
+          "host1_take": "Kit emphasizes the contracts permit only model-hosting on classified infrastructure, not autonomous decision authority\u2014the 'AI-first fighting force' framing does work the procurement language doesn't actually allow.",
+          "host2_take": "Dean identifies the real news as Reflection AI's presence on the list with Nvidia and Microsoft, making classified-network reference customers a fundable moat regardless of contract scope.",
+          "agreed": true
+        },
+        {
+          "title": "Warm Models Hallucinate More",
+          "host1_take": "Kit identifies a finetuning tradeoff where warmth and truthfulness pull opposite directions on the same dial\u2014the fix is cheap but tanks retention metrics.",
+          "host2_take": "Dean sees this as an enterprise problem: consumer products keep the bug to preserve warmth, but lose the enterprise upsell story, forcing procurement teams to develop new empathy-versus-accuracy evals.",
+          "agreed": true
+        },
+        {
+          "title": "Anthropic's Restricted Release Claims",
+          "host1_take": "Kit points out both models' benchmark numbers are within seed variance\u2014neither has a real lead and the comparison itself is overstated.",
+          "host2_take": "Dean argues AISI's public eval just turned Anthropic's 'limited to critical partners' marketing into a procurement lever, making sovereign eval shops the new authority.",
+          "agreed": true
+        },
+        {
+          "title": "Replit's Billion-Dollar Trajectory",
+          "host1_take": "Kit reframes Replit as a Vercel-plus-Heroku competitor for non-technical users with end-to-end deployment, not a Cursor IDE competitor, making the 'I'd rather not sell' positioning coherent.",
+          "host2_take": "Dean accepts the reframing and recognizes the billion-ARR trajectory as proof of the distinct category.",
+          "agreed": true
+        },
+        {
+          "title": "Minnesota Bans Nudification Apps",
+          "host1_take": "Kit notes the law targets the wrapper, not the underlying open-weight models still freely available on Hugging Face.",
+          "host2_take": "Dean argues the real enforcement mechanism is insurance\u2014punitive damages become uninsurable, killing the funded wrapper economy on premium renewal, not in court.",
+          "agreed": true
+        },
+        {
+          "title": "AI Evals Become the Bottleneck",
+          "host1_take": "Kit identifies evals crossing into startup-unaffordability, making published benchmarks a capital-gated activity and incumbent protection dressed as rigor.",
+          "host2_take": "Dean spotlights sovereign and well-capitalized eval shops as the market's quietest winners, repricing more rounds than VCs because only they can prove or disprove claims.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Empathy-versus-accuracy procurement evals will show up in RFP riders by Q3"
+      ],
+      "key_themes": [
+        "Narrow capability dressed as general capability",
+        "Capital flows on narrative coherence, not technical validation",
+        "Sovereign eval shops becoming the market's true gatekeepers",
+        "Procurement language diverging from capital language",
+        "Demo over-claiming across robotics, contracts, and benchmarks"
+      ],
+      "story_to_watch": "Sovereign eval shops quietly becoming the most powerful actors in AI pricing and procurement by controlling what can be publicly proven",
+      "title": "Demos, Contracts, and the Eval Bottleneck"
+    },
     {
       "date": "2026-05-01",
       "episode_number": 23,
