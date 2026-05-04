@@ -1,6 +1,56 @@
 {
-  "episode_count": 24,
+  "episode_count": 25,
   "episodes": [
+    {
+      "date": "2026-05-03",
+      "episode_number": 25,
+      "stories": [
+        {
+          "title": "Kimi K2.6 wins coding tournament against frontier models",
+          "host1_take": "Kit notes the debugging-focused win matters most to enterprise buyers paying for production codebase work, not demo-driven greenfield use.",
+          "host2_take": "Dean argues this triggers auto-reprice clauses in multi-year contracts where public leaderboard position is a renegotiation weapon, turning procurement slides into leverage.",
+          "agreed": false
+        },
+        {
+          "title": "VS Code silently adds Copilot co-author to all commits",
+          "host1_take": "Kit views this as junior PM error in defaulting a setting, but flags it violates OSS CLA requirements and retroactively invalidates contributor agreements.",
+          "host2_take": "Dean suspects timing before earnings season inflates Copilot attach-rate metrics, but Kit pushes back that the legal headache for maintainers is the real bin.",
+          "agreed": false
+        },
+        {
+          "title": "Academy rules AI-generated actors ineligible for Oscars",
+          "host1_take": "Kit argues the rule is unenforceable since studios already use AI in post-production invisibly, making the line between AI-assisted and AI-generated a negotiation, not a definition.",
+          "host2_take": "Dean frames this as protecting prestige-eligibility contract kickers that anchor A-list actor compensation multiples, signaling which AI tooling gets credited versus hidden.",
+          "agreed": true
+        },
+        {
+          "title": "Agent loop architecture debate: inside vs. outside sandbox",
+          "host1_take": "Kit argues neither architecture is free\u2014inside-sandbox is simple but unsafe for multi-user; outside-sandbox adds latency that breaks conversational UX, and the right choice depends on product shape teams haven't decided yet.",
+          "host2_take": "Dean notes this is a roadmap detonation for four funded startups who pitched inside-sandbox as a moat, forcing them to either own it publicly or quietly migrate for a quarter minimum.",
+          "agreed": true
+        },
+        {
+          "title": "DeepSeek V4 claims usable million-token context window",
+          "host1_take": "Kit distinguishes between claimed and usable context\u2014most million-token claims degrade hard past 200K, but DeepSeek's KV cache memory is two percent of standard, making it genuinely usable.",
+          "host2_take": "Dean marks this alongside Kimi K2.6 as the moment the chase narrative ends and the pitch direction reverses this quarter.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Auto-reprice clauses in incumbent contracts will fire this quarter based on open-weights coding performance",
+        "Dean: Buyers will walk into sales conversations with leverage instead of labs, driven by contract triggers from public leaderboards"
+      ],
+      "key_themes": [
+        "Attribution and authorship in AI era",
+        "Open-weights models reaching frontier parity",
+        "Contract mechanics as gatekeeping mechanisms",
+        "Narrative coherence driving procurement decisions",
+        "Architectural tradeoffs between sandbox models",
+        "Eval shops as new compute bottleneck"
+      ],
+      "story_to_watch": "Whether auto-reprice clauses actually fire on enterprise contracts following Kimi K2.6 and DeepSeek V4 releases, signaling a fundamental shift in buyer-to-lab pitch direction",
+      "title": "When Open Models Flip the Pitch"
+    },
     {
       "date": "2026-05-02",
       "episode_number": 24,
