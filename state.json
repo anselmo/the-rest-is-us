@@ -1,6 +1,57 @@
 {
-  "episode_count": 25,
+  "episode_count": 26,
   "episodes": [
+    {
+      "date": "2026-05-04",
+      "episode_number": 26,
+      "stories": [
+        {
+          "title": "Harvard ER Study: o1 vs. Triage Doctors",
+          "host1_take": "Kit argues o1 had unfair input advantage\u2014it read full nurse notes the triage doctor hadn't seen yet\u2014making this a workflow comparison, not a capability one.",
+          "host2_take": "Dean sees the deployable insight differently: insurance carriers will reprice malpractice premiums on AI-assisted triage, forcing adoption before hospitals redesign intake processes.",
+          "agreed": false
+        },
+        {
+          "title": "Hugging Face Multimodal Reranker Tutorial",
+          "host1_take": "Kit flags that hard-negative mining\u2014a six-figure consulting trade secret\u2014is now public, collapsing the moat that Series A retrieval companies are still pitching as proprietary.",
+          "host2_take": "Dean notes that pitch decks are racing the open-source publication calendar and losing by six weeks, and real moats now hide in training data contracts, not recipes.",
+          "agreed": true
+        },
+        {
+          "title": "Human-in-Loop Fusion Energy Optimization",
+          "host1_take": "Kit reads the few-shot uncertainty-aware setup as an admission the model can't extrapolate\u2014it's a fancy interpolator masquerading as software.",
+          "host2_take": "Dean sees the real moat as the twelve ICF experts on earth who can provide priors; whoever signs them to advisory owns the contact list, not the algorithm.",
+          "agreed": true
+        },
+        {
+          "title": "CRADIPOR: Crash Simulation Dispersion Predictor",
+          "host1_take": "Kit notes it admits uncertainty rather than removing it, giving confidence intervals on decisions already shipped.",
+          "host2_take": "Dean sees OEM liability lawyers post-Cybertruck now demanding simulation reproducibility certification from suppliers\u2014uncertainty becomes a compliance checkbox.",
+          "agreed": true
+        },
+        {
+          "title": "FedACT: Federated Learning Across Heterogeneous Data",
+          "host1_take": "Kit warns that fragile multi-task federated systems will be deployed in healthcare purely because EU AI Act residency rules require it, not because the architecture is ready.",
+          "host2_take": "Dean expects silent failure modes\u2014federated systems converge to wrong gradients quietly, discoverable only in quarterly audits if at all.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: One major malpractice carrier will write 'AI-assisted triage' into rate sheets by Q3, forcing hospital adoption",
+        "Dean: Early federated learning adopters in healthcare will publish press releases instead of ablations on silent convergence failures",
+        "Kit: Pitch decks claiming proprietary multimodal reranker moat will remain unchanged and unread through Q2"
+      ],
+      "key_themes": [
+        "Workflow and regulation drive deployment more than capability",
+        "Insurance and liability math precede procurement decisions",
+        "Real moats hide in human layer and data contracts, not published recipes",
+        "Open-source publication calendars are collapsing tooling differentiators",
+        "Silent failures and compliance theatrics replace actual technical readiness",
+        "Model performance is downstream of liability and regulatory forcing functions"
+      ],
+      "story_to_watch": "Whether early healthcare systems deploying federated learning under EU AI Act requirements publish honest ablations on convergence failures or only press releases",
+      "title": "Models Are Always the Last Variable"
+    },
     {
       "date": "2026-05-03",
       "episode_number": 25,

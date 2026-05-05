@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>Hidden Taxes and the Eval Shop Monopoly</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-05-0635.mp3" length="13130021" type="audio/mpeg" />
+      <itunes:duration>547</itunes:duration>
+      <pubDate>Tue, 05 May 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-05-05-0635.mp3</guid>
+    </item>
+    <item>
       <title>Models Are Always the Last Variable</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-04-0636.mp3" length="13295533" type="audio/mpeg" />
       <itunes:duration>553</itunes:duration>
