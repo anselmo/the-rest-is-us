@@ -1,6 +1,65 @@
 {
-  "episode_count": 26,
+  "episode_count": 27,
   "episodes": [
+    {
+      "date": "2026-05-05",
+      "episode_number": 27,
+      "stories": [
+        {
+          "title": "AgentFloor: Small Models Match GPT-5 on Short Tasks",
+          "host1_take": "Kit argues the engineering tax of maintaining per-model routing logic is real and recurring, but the paper proves small models can handle most agent loops without frontier calls.",
+          "host2_take": "Dean sees RFP enforcement as inevitable \u2014 buyers will demand tier-routed architectures by Q3, making 'one model for everything' a margin red flag that loses deals.",
+          "agreed": true
+        },
+        {
+          "title": "Token Arena: Energy and Endpoint-Level Pricing",
+          "host1_take": "Kit highlights that same-model variance across endpoints reaches 12 points in accuracy and an order of magnitude in tail latency, proving provider SLAs are marketing fiction.",
+          "host2_take": "Dean predicts energy-per-token enters ESG disclosures before 2027 and becomes a board metric, with sovereign eval shops selling attested joules-per-correct-answer as a parallel revenue line.",
+          "agreed": true
+        },
+        {
+          "title": "Are Tools All We Need: Tool Overhead Reduces Performance",
+          "host1_take": "Kit explains the distractor problem \u2014 attention fragmentation over heterogeneous tool returns \u2014 is structural and can't be patched, making native chain-of-thought superior when tools add semantic noise.",
+          "host2_take": "Dean frames this as a thesis-repricing event: tool count as moat is now a liability, and every agent company's deck will shift to 'tool curation' and 'intelligent routing' this quarter.",
+          "agreed": true
+        },
+        {
+          "title": "AgentReputation: Portable Reputation Is a Myth",
+          "host1_take": "Kit argues reputation is a workaround for missing evals and can't solve competence transfer across tasks \u2014 the underlying problem is capability, not reputation gaming.",
+          "host2_take": "Dean agrees that decentralized agent marketplaces are actually just sovereign eval shops in different clothes; the evaluator is still the gatekeeper, making the 'decentralized' framing marketing.",
+          "agreed": true
+        },
+        {
+          "title": "LOCA: Causal Jailbreak Patches for Known Patterns",
+          "host1_take": "Kit notes the method identifies six interpretable representation changes on average but only works for known patterns \u2014 autonomous higher-stakes models still get hit by novel jailbreaks.",
+          "host2_take": "Dean predicts red-team contracts will demand causal patches as deliverables, shifting procurement expectations beyond behavioral filters.",
+          "agreed": false
+        },
+        {
+          "title": "ARMOR 2025: Military Safety Benchmark Emerges",
+          "host1_take": "Kit warns that civilian RLHF hurts performance on doctrinal compliance \u2014 models trained to refuse based on civilian harm assumptions misfire on Law of War rules.",
+          "host2_take": "Dean sees this as the procurement benchmark that lets Reflection AI and defense-aligned labs compete on the classified Pentagon contracts beyond being on vendor lists.",
+          "agreed": false
+        }
+      ],
+      "predictions": [
+        "Dean: RFPs will specify tier-routed architectures by Q3 2025",
+        "Dean: Energy-per-token enters ESG disclosures and board metrics before 2027",
+        "Dean: Sovereign eval shops will sell attested joules-per-correct-answer as parallel revenue",
+        "Dean: Agent company decks will universally shift to 'tool curation' language this quarter",
+        "Dean: Red-team contracts will demand causal patches as deliverables, not just behavioral filters"
+      ],
+      "key_themes": [
+        "Hidden taxes in AI infrastructure finally becoming measurable",
+        "Eval shops consolidating power across centralized and decentralized markets",
+        "Frontier model as commodity for structured tasks; routing emerges as competitive moat",
+        "Energy metering becomes procurement and sustainability requirement",
+        "Tool count as moat reverses to tool curation as differentiator",
+        "Reputation frameworks fail to solve underlying competence problems"
+      ],
+      "story_to_watch": "Whether sovereign eval shops establish attested energy benchmarks as the standard for endpoint pricing and ESG compliance before 2027, creating a gatekeeper position across all AI procurement",
+      "title": "Hidden Taxes and the Eval Shop Monopoly"
+    },
     {
       "date": "2026-05-04",
       "episode_number": 26,
