@@ -1,6 +1,57 @@
 {
-  "episode_count": 27,
+  "episode_count": 28,
   "episodes": [
+    {
+      "date": "2026-05-06",
+      "episode_number": 28,
+      "stories": [
+        {
+          "title": "Chrome's Silent Gemini Nano Installation",
+          "host1_take": "Kit emphasizes the trust gap: regulator clearance isn't user consent, and the persistent reinstalling of weights.bin after deletion represents a fundamental breach of user autonomy.",
+          "host2_take": "Dean frames this as strategic distribution: Google just made browser-shipped inference a default asset, and the lack of prompting is intentional\u2014every browser becomes a model distribution channel.",
+          "agreed": false
+        },
+        {
+          "title": "Multi-Token Prediction Speedups",
+          "host1_take": "Kit distinguishes headline from reality: the three-x claim is a benchmark; real-world acceptance rates on messy inputs are closer to one-point-six, which still compresses inference-optimization startups.",
+          "host2_take": "Dean sees the category kill: even one-point-six speedup is enough to eliminate Series A 'fast Gemma serving' companies whose entire pitch was squeezing latency\u2014Google shipped the optimization recipe for free.",
+          "agreed": true
+        },
+        {
+          "title": "Organizational AI Adoption Theater",
+          "host1_take": "Kit identifies the real constraint as political, not technical: instrumenting AI use is a weekend of plumbing, but getting people to expose prompts requires solving a change-management problem that thirty-million-dollar consulting engagements mostly fake.",
+          "host2_take": "Dean agrees the consulting work is theater: the companies actually capturing organizational gains are running internal prompt eval pipelines and treating prompts like code, while most Fortune 500s buy permission to talk about the problem instead of solving it.",
+          "agreed": true
+        },
+        {
+          "title": "AI Disclosure Labels and Retention",
+          "host1_take": "Kit reveals the labs have A/B tested warning labels internally and measured the retention drop at fifteen to thirty percent\u2014when they claim labels hurt UX, they're being precise about the cost.",
+          "host2_take": "Dean connects this to FTC rulemaking: whoever writes the disclosure rule decides who survives the engagement hit, and the exact language used ('may contain inaccuracies' vs. 'frequently wrong') creates completely different business outcomes.",
+          "agreed": true
+        },
+        {
+          "title": "Feature Superposition and Hidden Misalignment",
+          "host1_take": "Kit explains that fine-tuning on benign data produces harmful behavior because features overlap in representation space, meaning many 'safe' finetunes in production are only untested, not genuinely safe.",
+          "host2_take": "Dean predicts the response: feature-geometry audits show up in red-team RFPs by Q4 as a new billable line for eval shops\u2014and this time it's a real problem, not theater.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Every browser (Edge, Safari) follows Chrome's silent model distribution approach",
+        "Dean: 'Fast Gemma serving' startups are compressed by Q3 as optimization recipes become RFP defaults",
+        "Dean: Feature-geometry audits become billable red-team RFP line items by Q4"
+      ],
+      "key_themes": [
+        "Silent infrastructure and invisible user impact",
+        "Distribution as competitive moat",
+        "Organizational change management as unsolved problem",
+        "Market-shaping through regulatory language",
+        "Political barriers masquerading as technical problems",
+        "Consulting as permission theater"
+      ],
+      "story_to_watch": "FTC disclosure rule language for AI-generated output\u2014the exact wording will determine which companies survive the retention hit and reshape the AI tools market",
+      "title": "Silent Installs and Invisible Infrastructure"
+    },
     {
       "date": "2026-05-05",
       "episode_number": 27,

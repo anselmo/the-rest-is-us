@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>When Discipline Becomes a Tax</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-07-0635.mp3" length="13518723" type="audio/mpeg" />
+      <itunes:duration>563</itunes:duration>
+      <pubDate>Thu, 07 May 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-05-07-0635.mp3</guid>
+    </item>
+    <item>
       <title>Silent Installs and Invisible Infrastructure</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-06-0635.mp3" length="12932536" type="audio/mpeg" />
       <itunes:duration>538</itunes:duration>
