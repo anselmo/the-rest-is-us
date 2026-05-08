@@ -1,6 +1,58 @@
 {
-  "episode_count": 28,
+  "episode_count": 29,
   "episodes": [
+    {
+      "date": "2026-05-07",
+      "episode_number": 29,
+      "stories": [
+        {
+          "title": "Vibe Coding Meets Production Engineering",
+          "host1_take": "Kit argues discipline was only load-bearing when tools made it effortful; once friction vanishes, even careful practitioners drift toward vibe coding",
+          "host2_take": "Dean notes that Series A coding-agent companies betting on the rigor-moat distinction have a quarter or two before procurement notices both SKUs do identical work",
+          "agreed": true
+        },
+        {
+          "title": "Terminus-4B and the Cost-Per-Task Shift",
+          "host1_take": "Kit warns that 4B models have a silent corruption vector in subagent state-isolation that the main agent cannot detect, making the token savings uninsurable",
+          "host2_take": "Dean observes RFPs have already shifted from model-tier language to cost-ceiling and SLA specs, meaning procurement is moving faster than expected",
+          "agreed": false
+        },
+        {
+          "title": "Browser Agents Without Consent Architecture",
+          "host1_take": "Kit frames cotomi's pitch as converting workers into training data without solving consent\u2014shipping surveillance with a wiki on top",
+          "host2_take": "Dean argues the behavioral data is the IP, not the agent itself, capping the exit at acqui-hire before a model lab buys the dataset",
+          "agreed": true
+        },
+        {
+          "title": "AI Peer Review Hivemind Effect",
+          "host1_take": "Kit identifies the hivemind effect as structural, not a bug\u2014review models converge because they share post-training data across labs",
+          "host2_take": "Dean reads the position paper as a regulatory ask disguised as an eval requirement, a smart moratorium that won't stop publishers anyway",
+          "agreed": true
+        },
+        {
+          "title": "Hugging Face Multimodal Reranker Recipe",
+          "host1_take": "Kit notes the complete blueprint allows anyone with an H100 to train a domain-specific reranker that beats models four times its size",
+          "host2_take": "Dean predicts Series A decks using proprietary multimodal retrieval language are dead by Q3, with best customers replicating in-house over a weekend",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: RFP language will prioritize cost-per-task over model tier within Q1-Q2",
+        "Dean: Subagent state-integrity attestation evals will become a procurement gate by Q4",
+        "Dean: Series A multimodal retrieval pipeline decks will be dead by Q3",
+        "Kit: Tool design will shift to shipping better defaults, with discipline as an uncheckable checkbox"
+      ],
+      "key_themes": [
+        "moat collapse across AI tools",
+        "friction as the only load-bearing discipline structure",
+        "procurement language shifting faster than capability",
+        "consent and surveillance in worker-trained agents",
+        "structural bias in AI-generated peer review",
+        "recipes and open-source blueprints replacing proprietary IP"
+      ],
+      "story_to_watch": "RFP language evolution\u2014shift from model names to cost-per-task SLAs signals where procurement actually stands on AI agent maturity",
+      "title": "When Discipline Becomes a Tax"
+    },
     {
       "date": "2026-05-06",
       "episode_number": 28,
