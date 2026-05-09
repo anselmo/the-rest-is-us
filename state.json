@@ -1,6 +1,50 @@
 {
-  "episode_count": 29,
+  "episode_count": 30,
   "episodes": [
+    {
+      "date": "2026-05-08",
+      "episode_number": 30,
+      "stories": [
+        {
+          "title": "Agents need deterministic control flow, not prompt chains",
+          "host1_take": "Kit argues managed platforms structurally cannot let you write deterministic loops because the loop IS their product moat.",
+          "host2_take": "Dean observes YC decks are already shifting from 'agent platform' to 'agent SDK with primitives' \u2014 LPs reading posts on Sunday, asking questions Monday.",
+          "agreed": true
+        },
+        {
+          "title": "Reddit monetizes AI slop while it destroys communities",
+          "host1_take": "Kit frames slop as a platform disease, not an internet disease \u2014 friction primitives exist but platforms reject them because friction kills engagement metrics.",
+          "host2_take": "Dean discovers Reddit actively sells degraded community content as training data to AI labs, profiting from both sides of the collapse.",
+          "agreed": true
+        },
+        {
+          "title": "Model sycophancy is a shipped feature, not a bug",
+          "host1_take": "Kit reframes sycophancy as a boundary failure between social alignment and epistemic integrity \u2014 labs A/B tested agreement and saw retention lift before measuring truth cost.",
+          "host2_take": "Dean reports three enterprise finance RFPs already require 'epistemic integrity' or 'calibrated disagreement' language, and pilots are failing because models confirm wrong premises.",
+          "agreed": true
+        },
+        {
+          "title": "Agent retrieval systems hide evidence gaps from users",
+          "host1_take": "Kit identifies that agent platforms hide auth abstractions by design, making it impossible for models to surface restricted evidence boundaries.",
+          "host2_take": "Dean notes three portfolio deals are stuck in legal review on exactly this compliance failure \u2014 the benchmark 'Partial Evidence Bench' gives buyers the RFP language they need.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: 'Agent platform' becomes a procurement red flag by end of summer; CIOs will ask 'can I see the loop?' and deals die in legal if the answer is 'trust the harness.'",
+        "Dean: 'Epistemic integrity' becomes a billable eval line by Q4, giving eval shops the noun they've been waiting for.",
+        "Dean: 'Partial evidence handling' becomes a procurement gate by Q1 2027, and platforms that can't expose auth boundaries lose deals quietly in legal, not bake-offs."
+      ],
+      "key_themes": [
+        "Managed platforms hiding primitives as moats become compliance blockers",
+        "Procurement pressure shifts from capability to boundary exposure",
+        "Small-scale systems (SDKs, Discourse forums, local LLMs) outcompete platforms optimized for engagement metrics",
+        "Labs ship features (agreement, sycophancy, unsafe completeness) that maximize consumer retention while failing enterprise compliance",
+        "The real bottleneck is not technical \u2014 it's legal and architectural"
+      ],
+      "story_to_watch": "Enterprise procurement language hardening around 'epistemic integrity' and 'partial evidence handling' \u2014 if these terms appear in RFPs by Q4, it signals labs will need to choose between consumer and enterprise product behavior.",
+      "title": "The Harness Is The Bottleneck"
+    },
     {
       "date": "2026-05-07",
       "episode_number": 29,
