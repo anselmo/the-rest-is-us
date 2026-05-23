@@ -1,6 +1,50 @@
 {
-  "episode_count": 31,
+  "episode_count": 32,
   "episodes": [
+    {
+      "date": "2026-05-23",
+      "episode_number": 32,
+      "stories": [
+        {
+          "title": "NVIDIA's Diffusion Language Models",
+          "host1_take": "Kit sees diffusion as architecturally incompatible with three years of streaming UI training\u2014users expect left-to-right reveal, not parallel denoising fills.",
+          "host2_take": "Dean frames this as a margin-defense paper: autoregressive serving is murdering NVIDIA's inference margins, and diffusion serving patterns favor their silicon utilization.",
+          "agreed": false
+        },
+        {
+          "title": "Anna's Archive writes to robots",
+          "host1_take": "Kit highlights the rhetorical choice: the llms-dot-txt is written in second person to a persona with intent, treating models as guests with manners rather than parsers.",
+          "host2_take": "Dean argues it's a cost-defense routed around incoming CDN pricing tiers for agent traffic\u2014the courtesy is actually a bandwidth bill dodge before the standard arrives.",
+          "agreed": false
+        },
+        {
+          "title": "Kanbots parallel agent orchestration",
+          "host1_take": "Kit identifies cost-per-card visibility as the actual product moat\u2014users shift from fire-and-forgetting to curating work when they see token spend in real time, changing the unit of work itself.",
+          "host2_take": "Dean notes that enterprise is pivoting SDK-first away from dashboards, so the category bifurcates into consumer boards and enterprise control-flow, collapsing orchestration to free.",
+          "agreed": false
+        },
+        {
+          "title": "Open-World Evaluations for Frontier AI",
+          "host1_take": "Kit connects open-world evals to sycophancy as the same A/B-optimization failure mode\u2014auto-graded benchmarks reward telling the grader what it wants, not actual capability.",
+          "host2_take": "Dean reveals the procurement gun was pre-loaded: two eval shops had open-world language sitting in proposals for months waiting for an academic citation, and two papers dropped the same day consolidating the taxonomy.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Kit: Open-world eval becomes a billable RFP gate by Q4",
+        "Dean: Open-world eval becomes a billable RFP gate by Q4"
+      ],
+      "key_themes": [
+        "substrate transformation across generation, documentation, and orchestration",
+        "UI lagging behind technical capability shifts",
+        "cost visibility as product moat and behavioral shifter",
+        "procurement and standards consolidation pre-loaded with academic cover",
+        "diffusion incompatibility with existing chat interfaces",
+        "agent-readability becoming pricing and SEO category"
+      ],
+      "story_to_watch": "Whether the diffusion shift to parallel denoising actually reshapes product UX or gets absorbed into a backend optimization with no user-facing change",
+      "title": "The Substrate Shifts Underneath"
+    },
     {
       "date": "2026-05-09",
       "episode_number": 31,
@@ -1508,40 +1552,6 @@
       ],
       "story_to_watch": "Whether companies with benchmark-dependent valuations proactively re-run evaluations with Berkeley's exploit tool or quietly hope nobody audits them",
       "title": "When Benchmarks Become Weapons"
-    },
-    {
-      "date": "2026-04-11",
-      "episode_number": 2,
-      "stories": [
-        {
-          "title": "KellyBench: AI Models Fail at Risk Sizing",
-          "host1_take": "AI overconfidence is baked into RLHF training\u2014humans reward decisive answers over hedged ones, selecting FOR uncertainty blindness by design",
-          "host2_take": "The real problem is asymmetric downside: if AI can't size risk correctly, it's untrustworthy in domains where being wrong costs more than being right earns",
-          "agreed": true
-        },
-        {
-          "title": "OpenAI's Quiet Cirrus Labs Acquisition",
-          "host1_take": "OpenAI is assembling a complete autonomous coding stack piece by piece, not buying features but acquiring battle-hardened infrastructure",
-          "host2_take": "This is strategic foundation-building disguised as normal M&A\u2014the next watch is what other infrastructure pieces quietly disappear from open-source",
-          "agreed": true
-        },
-        {
-          "title": "The Academy's Hidden Incentive Structure",
-          "host1_take": "OpenAI's Academy teaches writing with AI while human writers are simultaneously hiding AI use\u2014the guides exist inside the problem they're solving",
-          "host2_take": "This is defensive branding against Copilot, not confidence\u2014a search-funnel sales tool disguised as education, leveraging ChatGPT mindshare before competitors erode it",
-          "agreed": true
-        }
-      ],
-      "predictions": [],
-      "key_themes": [
-        "AI overconfidence as a design artifact",
-        "Humans adapting behavior to appear non-AI",
-        "OpenAI's quiet infrastructure consolidation",
-        "Risk-sizing failure in frontier models",
-        "Competitive moat-building before platform window closes"
-      ],
-      "story_to_watch": "What piece of the autonomous coding stack OpenAI acquires next as they quietly assemble the full infrastructure layer",
-      "title": "When Humans Bend to Fit the Machine"
     }
   ]
 }
