@@ -1,6 +1,62 @@
 {
-  "episode_count": 30,
+  "episode_count": 31,
   "episodes": [
+    {
+      "date": "2026-05-09",
+      "episode_number": 31,
+      "stories": [
+        {
+          "title": "Tim Gowers Says GPT-5.5 Produces PhD-Level Math",
+          "host1_take": "Kit: Gowers' endorsement is the signal\u2014the actual holdout skeptic revising upward matters more than the post itself.",
+          "host2_take": "Dean: Two quant shops are already paying 4x for a research tier SKU\u2014the market knows capability before the headlines.",
+          "agreed": true
+        },
+        {
+          "title": "CyberSecQwen-4B Solves What Frontier Models Refuse",
+          "host1_take": "Kit: Frontier models refuse core SOC work (IOC analysis, payload deobfuscation, malware reverse-engineering)\u2014small models aren't cheaper, they're the only thing that answers.",
+          "host2_take": "Dean: Three security portcos trained internal models for six months on this exact problem; CyberSecQwen collapsed their differentiation overnight.",
+          "agreed": true
+        },
+        {
+          "title": "OpenAI's Voice Stack Is Built on the Wrong Protocol",
+          "host1_take": "Kit: WebRTC's concurrency ceiling and packet-drop tradeoffs are architecturally wrong for voice AI\u2014the right answer is Media over QUIC.",
+          "host2_take": "Dean: Enterprise firewalls only whitelist WebRTC; MoQ doesn't ship through procurement, so the wrong choice is the only one that wins\u2014it's a sales-cycle problem, not a technical one.",
+          "agreed": true
+        },
+        {
+          "title": "Cloudflare's 11 Percent Cuts Reframed as AI Productivity",
+          "host1_take": "Kit: The cut functions were already dying from product redesigns two years ago\u2014AI didn't do this, the product team did, but the framing rewrites the labor market narrative.",
+          "host2_take": "Dean: CFOs will copy the framing as 'AI-driven optimization,' making layoffs feel permanent and visionary instead of correctional, and junior roles won't come back.",
+          "agreed": true
+        },
+        {
+          "title": "Google Adding Citations Back to AI Overviews",
+          "host1_take": "Kit: The Further Exploration section and inline citations are following disclosure rules from last week\u2014citations are becoming regulatory line items.",
+          "host2_take": "Dean: EU publisher cases are the real lever; Digital Markets Act forces Google to course-correct before litigation\u2014citation density will be shaped by whoever writes the regulatory rule.",
+          "agreed": true
+        },
+        {
+          "title": "Basata Fixing Healthcare Referrals Via EMR APIs",
+          "host1_take": "Kit: Every prior attempt died on EMR integration; the unlock is Epic's APIs, not AI\u2014the winners will be integrators with AI features, not AI companies with integrations.",
+          "host2_take": "Dean: This reprices the category entirely\u2014the DNA and exit structure are different for integrators versus AI-first companies.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: 'AI-driven workforce optimization' will be a quarterly CFO call line item by Q3",
+        "Dean: By Q3, 'specialized small model' will be a procurement category, not a thesis",
+        "Kit: Watch which vertical's refusal surface hits next\u2014legal discovery and medical coding are adjacent to harm like cyber is"
+      ],
+      "key_themes": [
+        "Procurement gravity beats technical correctness",
+        "Capability stratification by price, not access",
+        "Frontier models trained themselves out of markets through refusal",
+        "Integration moats trump pure AI features",
+        "Regulatory and firewall constraints shape the market faster than innovation"
+      ],
+      "story_to_watch": "Which vertical refusals cascade next as frontier models' safety training locks out legitimate professional work",
+      "title": "Procurement Gravity Always Wins"
+    },
     {
       "date": "2026-05-08",
       "episode_number": 30,
@@ -1486,42 +1542,6 @@
       ],
       "story_to_watch": "What piece of the autonomous coding stack OpenAI acquires next as they quietly assemble the full infrastructure layer",
       "title": "When Humans Bend to Fit the Machine"
-    },
-    {
-      "date": "2026-04-11",
-      "episode_number": 1,
-      "stories": [
-        {
-          "title": "OpenAI acquires Cirrus Labs",
-          "host1_take": "This is agent infrastructure acquisition \u2014 OpenAI needs Cirrus's proven ephemeral execution environments and sandboxed primitives that took 9 years to perfect, not talent or tooling.",
-          "host2_take": "OpenAI is assembling the full coding stack quietly, piece by piece, and Cirrus is the latest brick in that infrastructure.",
-          "agreed": true
-        },
-        {
-          "title": "Linux kernel adds AI coding assistant documentation",
-          "host1_take": "The kernel's policy is the most pragmatic AI acceptance framework written this year \u2014 tool as assistant, human as author, with zero exceptions and full accountability.",
-          "host2_take": "This conservative codebase just wrote the most pragmatic AI policy, and when Linux documents something, enterprise open source policies will cite it within a year.",
-          "agreed": true
-        },
-        {
-          "title": "OpenAI Academy launches training guides",
-          "host1_take": "This is enterprise land-and-expand strategy, and the guides are thin SEO content, but the stranger signal is brands telling copywriters to avoid em dashes and metaphors to not look AI-written.",
-          "host2_take": "OpenAI is late to this training layer that Microsoft and Google have been executing for months \u2014 free content to create organizational dependency then convert at company level.",
-          "agreed": false
-        }
-      ],
-      "predictions": [
-        "Dean: Enterprise open source policies will be citing Linux's AI documentation within a year"
-      ],
-      "key_themes": [
-        "AI infrastructure assembly by OpenAI",
-        "Human accountability vs. tool capability gap",
-        "AI reshaping human writing habits and stylistic choices",
-        "Pragmatic vs. restrictive approaches to AI integration",
-        "Enterprise land-and-expand as OpenAI strategy"
-      ],
-      "story_to_watch": "OpenAI's quiet assembly of the full autonomous coding stack and how Linux kernel standards become the template for enterprise AI adoption",
-      "title": ""
     }
   ]
 }

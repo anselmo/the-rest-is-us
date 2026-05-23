@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>The Substrate Shifts Underneath</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-23-0119.mp3" length="14612732" type="audio/mpeg" />
+      <itunes:duration>608</itunes:duration>
+      <pubDate>Sat, 23 May 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-05-23-0119.mp3</guid>
+    </item>
+    <item>
       <title>Procurement Gravity Always Wins</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-09-0635.mp3" length="13019053" type="audio/mpeg" />
       <itunes:duration>542</itunes:duration>
@@ -213,13 +220,6 @@
       <itunes:duration>418</itunes:duration>
       <pubDate>Sun, 12 Apr 2026 07:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-12.mp3</guid>
-    </item>
-    <item>
-      <title>When Humans Bend to Fit the Machine</title>
-      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-11.mp3" length="9113852" type="audio/mpeg" />
-      <itunes:duration>379</itunes:duration>
-      <pubDate>Sat, 11 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-11.mp3</guid>
     </item>
   </channel>
 </rss>
