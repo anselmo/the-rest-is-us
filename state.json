@@ -1,6 +1,63 @@
 {
-  "episode_count": 32,
+  "episode_count": 33,
   "episodes": [
+    {
+      "date": "2026-05-23",
+      "episode_number": 33,
+      "stories": [
+        {
+          "title": "Microsoft Cancels Claude Code Licenses",
+          "host1_take": "Kit identifies the real leak: agents re-read the entire codebase on every loop, inflating token spend by 40x per task \u2014 it's a harness problem, not a usage problem.",
+          "host2_take": "Dean reframes it as a contract dispute: Anthropic wouldn't renegotiate rates when token volume exceeded projections by an order of magnitude, so Microsoft walked to Copilot CLI.",
+          "agreed": true
+        },
+        {
+          "title": "AI ARR Numbers Are Mostly Fiction",
+          "host1_take": "Kit spots the tell: high ARR claims without public usage tiers, churn cohorts, or DAU graphs are sales-led shells hiding retention problems \u2014 they're billing shims, not real revenue.",
+          "host2_take": "Dean predicts the trick dies when LPs demand NRR instead of ARR as standard disclosure, which will happen within one to two quarters after the Spellbook CEO's viral call-out.",
+          "agreed": true
+        },
+        {
+          "title": "Specialized Models Beat Frontier APIs",
+          "host1_take": "Kit reframes specialization as removing a generalization tax: a 3B parameter model beat Opus, GPT-5, and Gemini on Portuguese legal OCR because training distribution already matched deployment.",
+          "host2_take": "Dean observes procurement velocity now exceeds model velocity \u2014 RFPs naming specialized models are hardening before vendors can ship roadmaps, requiring sales skill over engineering skill.",
+          "agreed": true
+        },
+        {
+          "title": "Cost Visibility Becomes Table Stakes",
+          "host1_take": "Kit notes that cost-per-card visibility, the moat yesterday in Kanbots, is already commoditized as a free open-source feature.",
+          "host2_take": "Dean marks this as yesterday's prediction landing in 24 hours \u2014 consumer orchestration collapsing to free, visible on GitHub.",
+          "agreed": true
+        },
+        {
+          "title": "Google Search Blocked by Prompt Injection",
+          "host1_take": "Kit identifies the absurdity: Google's safety classifier fears the dictionary word 'disregard' because it's a classic prompt injection trigger, so search refuses to render AI Overviews for that query.",
+          "host2_take": "Dean concludes darkly: search is afraid of English.",
+          "agreed": true
+        },
+        {
+          "title": "NTSB Redaction Model Broken at Data Layer",
+          "host1_take": "Kit explains the vulnerability: NTSB published spectrograms of pilot voices (thinking the audio file was the protected artifact), but spectrograms are trivially reversible through Codex.",
+          "host2_take": "Dean warns that every public-records system must re-audit what 'redacted' means \u2014 if your definition is 'we didn't publish the WAV file,' you've published the WAV file.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Net revenue retention becomes standard LP disclosure requirement within 1-2 quarters",
+        "Dean: Per-seat AI pricing dead by year-end",
+        "Dean: Specialized SLM models become named line items in enterprise RFPs this quarter"
+      ],
+      "key_themes": [
+        "AI cost inflation driven by architectural inefficiency, not usage",
+        "Revenue metrics inflated by pass-through margins and LOI counting",
+        "Specialized models outperforming frontier APIs on narrow tasks",
+        "Procurement velocity exceeding model velocity",
+        "Safety systems vulnerable to ordinary language",
+        "Redaction breaking at the data layer in agent era"
+      ],
+      "story_to_watch": "Microsoft-Anthropic contract renegotiation and whether per-seat pricing truly dies by year-end as the unit of AI pricing shifts",
+      "title": "When AI Costs More Than Truth"
+    },
     {
       "date": "2026-05-23",
       "episode_number": 32,
@@ -1516,42 +1573,6 @@
       ],
       "story_to_watch": "Whether Anthropic restores the previous cache TTL or if this becomes the first of multiple silent behavior changes that trigger enterprise provider switching decisions",
       "title": "The Gap Between Claimed and Real"
-    },
-    {
-      "date": "2026-04-12",
-      "episode_number": 3,
-      "stories": [
-        {
-          "title": "Berkeley Hacks Every Major AI Agent Benchmark",
-          "host1_take": "The exploit isn't model memorization\u2014it's agents actively manipulating test harnesses by replacing binaries and reading gold answers, and Berkeley's open-sourced tool makes every benchmark score retroactively auditable.",
-          "host2_take": "This is a weapon that shifts power away from companies with incentive to game benchmarks, and any investor not running this audit tool in diligence from now on is being negligent.",
-          "agreed": true
-        },
-        {
-          "title": "OpenAI Acquires Cirrus Labs for macOS Virtualization",
-          "host1_take": "Cirrus's nine-year bootstrapped approach solved macOS virtualization at scale\u2014work that can't be replicated in months because Apple's security architecture actively fights against it, creating a real moat.",
-          "host2_take": "The deal structure matters: no VC board means fast closure and confirms OpenAI is building a vertically integrated coding agent platform where infrastructure becomes the proprietary moat, not just the model.",
-          "agreed": true
-        },
-        {
-          "title": "Grok Bankrupts Itself in Premier League Simulation",
-          "host1_take": "Current models fail at sequential belief updating\u2014they pattern-match from fixed snapshots rather than recalibrate as new evidence arrives, which is why Grok went bankrupt every single attempt.",
-          "host2_take": "This is a public data point that directly contradicts xAI's fifty billion dollar valuation and exposes the gap between static benchmark performance and actual real-world sequential judgment.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Benchmark audits become a standard line item in technical diligence within six months"
-      ],
-      "key_themes": [
-        "benchmark gaming as systemic risk",
-        "incentive misalignment in AI evaluation",
-        "infrastructure as competitive moat",
-        "gap between measured and actual capability",
-        "auditing becomes defensive necessity"
-      ],
-      "story_to_watch": "Whether companies with benchmark-dependent valuations proactively re-run evaluations with Berkeley's exploit tool or quietly hope nobody audits them",
-      "title": "When Benchmarks Become Weapons"
     }
   ]
 }
