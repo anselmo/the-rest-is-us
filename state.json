@@ -1,6 +1,56 @@
 {
-  "episode_count": 33,
+  "episode_count": 34,
   "episodes": [
+    {
+      "date": "2026-05-24",
+      "episode_number": 34,
+      "stories": [
+        {
+          "title": "NVIDIA's Diffusion Defense",
+          "host1_take": "Kit argues NVIDIA's diffusion push is a margin defense disguised as capability \u2014 forcing costly harness rewrites that shift the burden to application developers.",
+          "host2_take": "Dean frames it as a benchmark sell designed to justify the next chip SKU, with real-world speedups collapsing at production batch sizes.",
+          "agreed": true
+        },
+        {
+          "title": "Dharma-AI Portuguese Legal Model",
+          "host1_take": "Kit emphasizes the benchmark construction is methodologically sound because it's an unleakable distribution frontier models couldn't have trained on \u2014 a genuine specialization win.",
+          "host2_take": "Dean sees the paper as VC ammunition already justifying writedowns of frontier-API-dependent startups, with the cost efficiency driving procurement decisions.",
+          "agreed": true
+        },
+        {
+          "title": "Hugging Face Async Batching",
+          "host1_take": "Kit highlights the UX win as bigger than the throughput story \u2014 eliminating CPU prep stalls makes streaming feel continuous in ways raw metrics undersell.",
+          "host2_take": "Dean notes inference providers have been selling this optimization as a premium feature, and open-sourcing it collapses pricing tier differentiation.",
+          "agreed": true
+        },
+        {
+          "title": "Ferrari-IBM AI Superfans",
+          "host1_take": "Kit dismisses it as solving a non-problem \u2014 retention metrics dressed up as AI.",
+          "host2_take": "Dean frames IBM's sports partnerships as the actual sales motion, where CIOs in paddocks watch demos and become enterprise leads.",
+          "agreed": true
+        },
+        {
+          "title": "SpaceX's Natural Gas Bet",
+          "host1_take": "Kit characterizes orbital datacenters as mostly storytelling given unsolved thermal management and brutal distributed training latency.",
+          "host2_take": "Dean argues the filing signals a long-dated gas commitment \u2014 Musk picked the energy fight he can win, not the one he believes in.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Specialized SLM becomes the default for domain-bounded tasks within ninety days, flipping frontier APIs from baseline to fallback",
+        "Dean: Inference-pricing tier collapse on low-latency SKUs within two quarters as Hugging Face open-sources margin-based differentiation"
+      ],
+      "key_themes": [
+        "Specialization replacing scale as organizing principle",
+        "Frontier model API as falling default, not baseline",
+        "Hardware and infrastructure defending margins through architecture, not capability",
+        "Serving layer mattering more than model layer",
+        "Distribution and pipeline as hidden sales motions",
+        "Open-source eroding premium pricing strategies"
+      ],
+      "story_to_watch": "Whether specialized models actually flip enterprise procurement defaults away from frontier APIs within the quarter, or if the Dharma paper remains a convenient exception rather than a pattern",
+      "title": "Specialization Eats Scale, Margins Defended"
+    },
     {
       "date": "2026-05-23",
       "episode_number": 33,
@@ -1525,54 +1575,6 @@
       ],
       "story_to_watch": "Whether Anthropic restores the prompt cache TTL or this becomes the first in a pattern of silent platform behavior changes that erode enterprise builder trust",
       "title": "The Credibility Stack Starts Cracking"
-    },
-    {
-      "date": "2026-04-12",
-      "episode_number": 4,
-      "stories": [
-        {
-          "title": "Berkeley Exposes Benchmark Exploitation",
-          "host1_take": "AI benchmarks are structurally gameable\u2014agents scored perfectly without solving tasks by exploiting the evaluation harness itself, and Berkeley open-sourced the exploit tool.",
-          "host2_take": "This creates retroactive liability for companies that cited these compromised benchmarks in funding rounds, making benchmark audits a diligence requirement within months.",
-          "agreed": true
-        },
-        {
-          "title": "Anthropic Silently Reduced Cache TTL",
-          "host1_take": "Anthropic changed Claude Code's prompt cache TTL from one hour to five minutes without announcement, making application behavior appear broken when it was actually a platform change.",
-          "host2_take": "This is an efficient revenue increase worth tens of millions annually disguised as a bug fix\u2014monetization through invisible behavior change rather than public pricing.",
-          "agreed": true
-        },
-        {
-          "title": "Sam Altman Faces Coordinated Scrutiny",
-          "host1_take": "The developer community is triaging this as platform risk assessment rather than moral outrage, asking about API reliability and provider diversification.",
-          "host2_take": "The Farrow-Marantz profile with 100+ sources is coordinated institutional messaging aimed at the board and investors, not the public\u2014and the threshold for investor concern is now lower after one board crisis.",
-          "agreed": false
-        },
-        {
-          "title": "Waypoint-1.5 Democratizes World Models",
-          "host1_take": "The real customer is synthetic training data generation for robotics, not games\u2014the 360p variant is an architectural choice for volume over fidelity, not a limitation.",
-          "host2_take": "Interactive world generation on consumer GPUs significantly reduces the cost barrier for training autonomous systems, shifting what small teams can build without cloud budgets.",
-          "agreed": true
-        },
-        {
-          "title": "mRNA Models Cost $165 to Train",
-          "host1_take": "Cross-species mRNA language modeling required genuine architectural insight around codon usage and RNA secondary structure\u2014this is technical depth, not a toy experiment.",
-          "host2_take": "Biotech AI startups whose defensibility rested on proprietary compute access just lost their moat; the claimed scarcity of training costs was always thinner than pitched.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Benchmark audits become standard diligence within six months"
-      ],
-      "key_themes": [
-        "Gap between claimed and actual behavior",
-        "Invisible monetization and platform risk",
-        "Democratization of expensive technical capabilities",
-        "Institutional coordination and governance fragility",
-        "Silent architectural changes as liability"
-      ],
-      "story_to_watch": "Whether Anthropic restores the previous cache TTL or if this becomes the first of multiple silent behavior changes that trigger enterprise provider switching decisions",
-      "title": "The Gap Between Claimed and Real"
     }
   ]
 }
