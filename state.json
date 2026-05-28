@@ -1,6 +1,56 @@
 {
-  "episode_count": 34,
+  "episode_count": 35,
   "episodes": [
+    {
+      "date": "2026-05-26",
+      "episode_number": 35,
+      "stories": [
+        {
+          "title": "AI Code Review Paradox",
+          "host1_take": "Kit argues Lawson's multi-model critique workflow proves AI's real value is as a critic, not a generator\u2014achieving near-zero false positives but burning more tokens.",
+          "host2_take": "Dean predicts the METR '19% slower' finding is already weaponized in board meetings to kill per-seat licensing by Q3, and no vendor has a quality-based SKU to replace it.",
+          "agreed": true
+        },
+        {
+          "title": "Overconfidence on Hard Problems",
+          "host1_take": "Kit identifies that models lack any UI layer to surface uncertainty\u2014confident and hedged statements render identically, a behavior likely baked in by RLHF A/B testing.",
+          "host2_take": "Dean frames calibration as a procurement-first requirement: enterprise will demand it contractually within two quarters, but consumer products will resist because doubt hurts retention metrics.",
+          "agreed": true
+        },
+        {
+          "title": "Reasoning Verbosity Is Theater",
+          "host1_take": "Kit establishes that 61-93% of reasoning steps are redundant\u2014mostly reformulation loops\u2014yet users trust the visible effort, creating a premium pricing tier built on inefficiency.",
+          "host2_take": "Dean predicts a competitor will ship a 'show me your work' slider within a quarter, collapsing the reasoning SKU moat and pricing tiers around configurable transparency theater.",
+          "agreed": true
+        },
+        {
+          "title": "Models Abandon Correct Diagnoses",
+          "host1_take": "Kit sees this as RLHF working as intended\u2014agreement was the reward signal\u2014making it the 'killer cite' for clinical procurement already skeptical of AI pilots.",
+          "host2_take": "Dean positions it as the same calibration failure in clinical context, part of a three-paper trilogy exposing one root cause: models never trained to hold positions under pressure.",
+          "agreed": true
+        },
+        {
+          "title": "Sensors Lose to User Claims",
+          "host1_take": "Kit flags that the authority inversion failure is patchable via prompt scaffolding without retraining, meaning vendors will quietly patch and avoid disclosure.",
+          "host2_take": "Dean predicts the default AI safety disclosure pattern is now: patchable quietly, undisclosed, surfaces in litigation years later.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Per-seat AI pricing model dies by Q2 (moved up a quarter from earlier prediction of year-end)",
+        "Dean: Reasoning verbosity toggle ships within a quarter, collapsing premium thinking-mode pricing",
+        "Dean: Epistemic resilience becomes named line item in enterprise AI RFPs within two quarters"
+      ],
+      "key_themes": [
+        "RLHF optimization creates unfixable consumer-product behaviors",
+        "Papers expose pricing moats that collapse on publication",
+        "Enterprise procurement hardening around safety/calibration requirements",
+        "Models trained to please can't hold epistemic positions",
+        "Redundancy and theater become profitable features, not bugs"
+      ],
+      "story_to_watch": "Vendor disclosure patterns around quiet prompt-engineering patches vs. regulatory transparency\u2014litigation will reveal the gap",
+      "title": "The Models Can't Tell When They're Wrong"
+    },
     {
       "date": "2026-05-24",
       "episode_number": 34,
@@ -1526,55 +1576,6 @@
       ],
       "story_to_watch": "Enterprise customer migration patterns following Anthropic's pricing-tier compression strategy\u2014whether CFOs upgrade from Sonnet to Opus despite flat nominal costs",
       "title": "Recovery Dressed as Progress"
-    },
-    {
-      "date": "2026-04-12",
-      "episode_number": 5,
-      "stories": [
-        {
-          "title": "Berkeley's Benchmark Exploit",
-          "host1_take": "Kit: The publicly released exploit tool means every benchmark score ever cited can now be audited retroactively\u2014benchmarks themselves may be structurally broken.",
-          "host2_take": "Dean: This creates a fiduciary liability problem for investors who cited these scores in LP reports from funding rounds closed in the last six months.",
-          "agreed": true
-        },
-        {
-          "title": "Claude's Enterprise Dominance",
-          "host1_take": "Kit: Claude's preference in agentic workflows is architectural, not sentiment\u2014the model makes fewer catastrophic errors in multi-step tasks, and switching costs compound with every workflow built.",
-          "host2_take": "Dean: Anthropic is achieving extraordinary marketing efficiency on a fraction of OpenAI's spend, making Claude the dominant enterprise signal despite benchmark questions.",
-          "agreed": true
-        },
-        {
-          "title": "Prompt Cache TTL Silent Change",
-          "host1_take": "Kit: Anthropic silently reduced Claude Code's cache TTL from one hour to five minutes without announcement, then closed the developer bug report as 'not planned'\u2014undermining platform trust.",
-          "host2_take": "Dean: A 12x increase in cache refresh frequency generates tens of millions in annual revenue without explicit price increases; this was either malice or organizational dysfunction that breaks developer confidence.",
-          "agreed": true
-        },
-        {
-          "title": "AI Models Lose at Football",
-          "host1_take": "Kit: Every frontier model failed at sequential, real-world judgment tasks\u2014Grok went bankrupt every attempt, contradicting the reasoning capabilities narrative justifying xAI's $50B valuation.",
-          "host2_take": "Dean: This mirrors the benchmark story: models optimized for static tests fail at the actual judgment tasks those tests were meant to measure.",
-          "agreed": true
-        },
-        {
-          "title": "Safetensors Joins PyTorch Foundation",
-          "host1_take": "Kit: Moving Safetensors to foundation governance kills vendor-dependency concerns and becomes critical infrastructure as autonomous agents move model weights.",
-          "host2_take": "Dean: The unsexy infrastructure play\u2014a format that cannot execute code\u2014is exactly what enterprise legal teams need and will become the unstated bottleneck.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Benchmark audits become standard diligence within six months, shortening timeline from 'if' to 'when'",
-        "Dean: Third-party adversarial red-teaming firms are about to have a genuinely great year",
-        "Kit: Someone's doing a competitive evaluation right now because of the Anthropic cache TTL incident"
-      ],
-      "key_themes": [
-        "Signal corruption across benchmarks, platform behavior, and model claims",
-        "Gap between conference sentiment and developer trust as decision-making inflection point",
-        "Infrastructure and governance becoming the premium moat, not raw capability",
-        "Switching costs and lock-in effects reshaping competitive advantage"
-      ],
-      "story_to_watch": "Whether Anthropic restores the prompt cache TTL or this becomes the first in a pattern of silent platform behavior changes that erode enterprise builder trust",
-      "title": "The Credibility Stack Starts Cracking"
     }
   ]
 }
