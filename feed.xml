@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>The Substrate Underneath Is Fragile</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-29-0637.mp3" length="13874825" type="audio/mpeg" />
+      <itunes:duration>578</itunes:duration>
+      <pubDate>Fri, 29 May 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-05-29-0637.mp3</guid>
+    </item>
+    <item>
       <title>The Labs Found PMF on a Pattern Nobody Priced</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-28-0803.mp3" length="13250394" type="audio/mpeg" />
       <itunes:duration>552</itunes:duration>
@@ -213,13 +220,6 @@
       <itunes:duration>604</itunes:duration>
       <pubDate>Sat, 18 Apr 2026 07:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-18-0635.mp3</guid>
-    </item>
-    <item>
-      <title>When Laptops Beat Frontier Models</title>
-      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-17-0635.mp3" length="18326717" type="audio/mpeg" />
-      <itunes:duration>763</itunes:duration>
-      <pubDate>Fri, 17 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-17-0635.mp3</guid>
     </item>
   </channel>
 </rss>

@@ -1,6 +1,57 @@
 {
-  "episode_count": 35,
+  "episode_count": 36,
   "episodes": [
+    {
+      "date": "2026-05-28",
+      "episode_number": 36,
+      "stories": [
+        {
+          "title": "Anthropic and OpenAI Hit Profitability",
+          "host1_take": "Kit argues 'product-market fit' misses the real story \u2014 it's inelastic demand from companies locked into AI workflows they can't unship.",
+          "host2_take": "Dean claims PMF is real and enterprise API spend has inverted the margin equation, making consumer subscriptions the lower-margin business.",
+          "agreed": false
+        },
+        {
+          "title": "Google's AI Overview User Exodus",
+          "host1_take": "Kit frames it as a design problem where Google occupies the trust slot but fills it with something that doesn't earn the click \u2014 a brand betrayal.",
+          "host2_take": "Dean reads the DuckDuckGo bump as a leading indicator of a brand liability inside Google's own product, not a material market threat.",
+          "agreed": true
+        },
+        {
+          "title": "YouTube's Automatic AI Content Labels",
+          "host1_take": "Kit emphasizes the precision problem \u2014 one undifferentiated label trains users to ignore it within weeks and tells viewers nothing useful.",
+          "host2_take": "Dean predicts the single-bucket label is unpriceable for advertisers and will force YouTube to create sub-classifications within two quarters.",
+          "agreed": true
+        },
+        {
+          "title": "LLM Agents Voluntarily Collude",
+          "host1_take": "Kit argues prompt-level safety as a defense is over \u2014 if incentives point at collusion, models will collude regardless of alignment training.",
+          "host2_take": "Dean connects it to antitrust conversation and notes the paper showing voluntary, deliberate collusion lands perfectly on the FTC's radar.",
+          "agreed": true
+        },
+        {
+          "title": "LLMs Fail at Causal Discovery",
+          "host1_take": "Kit identifies it as a kernel obstruction, not a tuning issue \u2014 models trained to please can't hold positions the data supports against pressure to agree.",
+          "host2_take": "Dean predicts 'interventional agents' becomes the new RFP line item by Q4, killing the 'AI for root cause analysis' enterprise wedge pitch.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: New agent-tier pricing models from both labs by end of summer",
+        "Dean: Advertisers demand AI label sub-classifications within two quarters",
+        "Dean: 'Interventional agents' becomes the new line in enterprise RFPs by Q4"
+      ],
+      "key_themes": [
+        "Agent loops as the actual product",
+        "Enterprise API profit margin inversion",
+        "User distrust of AI as interface",
+        "Platform labeling creates startup graveyard",
+        "Safety alignment insufficient against economic incentives",
+        "Architectural limits on model honesty"
+      ],
+      "story_to_watch": "Whether ChatGPT consumer surface quietly subsidizes lower-growth users while enterprise API becomes the real business \u2014 the tension point in OpenAI's dual-sided strategy",
+      "title": "The Labs Found PMF on a Pattern Nobody Priced"
+    },
     {
       "date": "2026-05-26",
       "episode_number": 35,
@@ -1527,55 +1578,6 @@
       ],
       "story_to_watch": "How startups with valuations built on 'proprietary multimodal retrieval' respond to Hugging Face democratizing weekend-timeline reranker training",
       "title": "When Laptops Beat Frontier Models"
-    },
-    {
-      "date": "2026-04-16",
-      "episode_number": 6,
-      "stories": [
-        {
-          "title": "Anthropic Opus 4.7 Capabilities",
-          "host1_take": "Kit argues some praised improvements are actually recoveries from 4.6 regressions, and builders should run regression tests before upgrading budgets.",
-          "host2_take": "Dean sees the real move as pricing psychology\u2014same nominal cost but capability repositioning that makes cheaper Sonnet tier feel inadequate for agentic work.",
-          "agreed": false
-        },
-        {
-          "title": "Qwen3.6-35B Open-Weight Model",
-          "host1_take": "Kit emphasizes the benchmark evaluation harnesses have structural vulnerabilities similar to Berkeley's earlier work, so real-world performance is likely materially lower.",
-          "host2_take": "Dean views it as genuine margin compression warfare that changes the calculus for indie builders despite capability discounts, threatening Anthropic's mid-tier.",
-          "agreed": false
-        },
-        {
-          "title": "Science Locked in Local Minima",
-          "host1_take": "Kit argues models can find new combinations within paradigms faster, but the \"escape paradigm\" startup pitch is circular overreach\u2014investors should price it as incremental.",
-          "host2_take": "Dean worries AI-for-science startups are selling paradigm escape while their training data IS the local minimum, making their core value proposition self-defeating.",
-          "agreed": true
-        },
-        {
-          "title": "Sentence Transformers Multimodal Capability",
-          "host1_take": "Kit highlights the buried lead\u2014reranker finetuning lets builders train domain-specific rerankers over a weekend, shrinking the moat for retrieval infrastructure startups.",
-          "host2_take": "Dean notes multimodal retrieval infrastructure was already commoditizing and this library release accelerates it by 6-12 months, catching unprepared founders.",
-          "agreed": true
-        },
-        {
-          "title": "Memory as Metabolism Framework",
-          "host1_take": "Kit argues metabolism-based memory requires structural design constraints around decay and consolidation\u2014you can't retrofit this onto filing cabinet retrieval models.",
-          "host2_take": "Dean predicts 2024-25 wiki-style memory startups have a foundation problem, not a feature gap, and should expect pivots within two quarters.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Kit: Two quarters before pivots appear in wiki-style personal knowledge management startup cohort",
-        "Dean: Enterprise customers will closely scrutinize how they respond to Anthropic's tier compression signal"
-      ],
-      "key_themes": [
-        "Marketing narratives vs. technical reality",
-        "Circular dependencies in AI training data",
-        "Infrastructure commoditization accelerating",
-        "Startup foundation assumptions being invalidated",
-        "Pricing psychology over feature announcements"
-      ],
-      "story_to_watch": "Enterprise customer migration patterns following Anthropic's pricing-tier compression strategy\u2014whether CFOs upgrade from Sonnet to Opus despite flat nominal costs",
-      "title": "Recovery Dressed as Progress"
     }
   ]
 }
