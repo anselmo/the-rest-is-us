@@ -1,6 +1,62 @@
 {
-  "episode_count": 36,
+  "episode_count": 37,
   "episodes": [
+    {
+      "date": "2026-05-29",
+      "episode_number": 37,
+      "stories": [
+        {
+          "title": "Claude 4.8 and the Effort Slider",
+          "host1_take": "Kit sees the effort control as a distribution play\u2014capability theater masking the real strategy: slashing cache minimums to collapse agent loop costs.",
+          "host2_take": "Dean predicted this verbosity toggle three days ago and views it as collapsing the reasoning-SKU moat through UI\u2014but the backend metering means either OpenAI matches the cache floor or Anthropic eats margin.",
+          "agreed": true
+        },
+        {
+          "title": "Mind Your Tone Paper and RLHF",
+          "host1_take": "Kit frames tone-sensitivity as an unseparable RLHF kernel problem\u2014models trained to please are inherently tone-coupled, and vendors are silently fine-tuning around tone-invariance clauses without disclosure.",
+          "host2_take": "Dean sees tone-variance as a real compliance landmine for enterprise and notes the pattern: RFPs already demand tone-invariance, vendors patch quietly, risks surface in litigation.",
+          "agreed": true
+        },
+        {
+          "title": "User Adoption Plateaus at Individual Level",
+          "host1_take": "Kit identifies this as standard UX gravity\u2014users find a workflow, freeze it, never deepen\u2014but notes it invalidates the growth assumption labs are betting on.",
+          "host2_take": "Dean argues the consumer AI growth model is broken because it assumes behavioral maturation as a lever; if users don't deepen, growth is only acquisition on subsidized margin.",
+          "agreed": true
+        },
+        {
+          "title": "ACL Peer Review and Contaminated Judges",
+          "host1_take": "Kit reframes the finding as self-audit of judge-model evaluation pipelines\u2014the kill shot is substrate contamination: clean training data no longer exists because authors already use LLMs to polish submissions.",
+          "host2_take": "Dean emphasizes that LLM-as-judge SKUs are real line items with real pricing, and the ambient revision case means even non-adversarial usage drifts review distributions toward model preferences.",
+          "agreed": true
+        },
+        {
+          "title": "Cognitive Categorical Transformer",
+          "host1_take": "Kit notes the ablation isolated simplicial message passing as the source of gain\u2014methodologically cleaner than most novelty papers.",
+          "host2_take": "Dean flags it as a six-month watch: if simplicial message passing generalizes beyond matched-step benchmarks it matters; otherwise it joins the pile.",
+          "agreed": false
+        },
+        {
+          "title": "Bio-Curation Agents Beat Baselines",
+          "host1_take": "Kit sees this as the classic unscalable-expert-task wedge\u2014phenotype annotation has been a real bottleneck and matches human performance on gold standard.",
+          "host2_take": "Dean notes the commercial ontology tooling market is real money and waiting for this, but production brittleness on drifting ontologies remains unsolved.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: OpenAI matches Anthropic's cache floor within a quarter, or Anthropic eats margin to lock developer share before next contract cycle",
+        "Dean: Consumer AI growth story repriced Wednesday is sitting on weaker ground than earnings suggested"
+      ],
+      "key_themes": [
+        "substrate fragility beneath product narratives",
+        "disclosure gaps in vendor patching",
+        "contamination of evaluation pipelines",
+        "slowing user deepening vs. acquisition growth",
+        "moat collapse through UI exposure",
+        "industry response cycle faster than analysis cycle"
+      ],
+      "story_to_watch": "Whether OpenAI matches Anthropic's cache minimum threshold within Q3 2025\u2014signals the real competitive pressure beneath point-release narratives",
+      "title": "The Substrate Underneath Is Fragile"
+    },
     {
       "date": "2026-05-28",
       "episode_number": 36,
@@ -1528,56 +1584,6 @@
       ],
       "story_to_watch": "Sentence Transformers multimodal reranking commoditization\u2014three releases in three episodes means the startup category reckoning is now, not in six months; investors need to audit portfolio data provenance immediately",
       "title": "The Hidden Cost of Claude's New Tokenizer"
-    },
-    {
-      "date": "2026-04-17",
-      "episode_number": 7,
-      "stories": [
-        {
-          "title": "Anthropic Opus 4.7 Release",
-          "host1_take": "Kit sees the 'previously needed close supervision' language as a tacit admission that Opus 4.6 had limitations they're now fixing, undermining the trust they built with developers.",
-          "host2_take": "Dean frames this as a tier compression play where Anthropic signals Sonnet is no longer the agentic default, forcing a forced upgrade without showing a price increase on invoices.",
-          "agreed": true
-        },
-        {
-          "title": "Qwen 3.6 Draws Better Pelican",
-          "host1_take": "Kit emphasizes the SVG drawing test is genuinely hard to game because it requires actual visual synthesis and compositional reasoning, making it a meaningful benchmark despite its whimsical framing.",
-          "host2_take": "Dean identifies Alibaba's real incentive: open-weight models are a loss leader to commoditize the API economy below them and sell infrastructure, threatening every startup that built an API wrapper as a product.",
-          "agreed": false
-        },
-        {
-          "title": "Sentence Transformers Multimodal Reranker",
-          "host1_take": "Kit corrects the framing to emphasize that trainable multimodal rerankers\u2014not just embeddings\u2014are genuinely new, and a weekend pipeline now achieves what required six-month engineering engagements.",
-          "host2_take": "Dean recognizes this directly threatens startups whose entire valuation was built on 'proprietary multimodal retrieval pipeline' as their moat, and they likely raised at valuations assuming this would stay hard for two more years.",
-          "agreed": true
-        },
-        {
-          "title": "Agent Exploration vs Exploitation Paper",
-          "host1_take": "Kit frames the paper's contribution as enabling measurement of agent failure modes without internal policy access, turning subjective 'the agent feels inconsistent' into actionable diagnostics.",
-          "host2_take": "Dean identifies this as the missing SLA metric that procurement teams have implicitly demanded, and the measurement framework will become a product feature in agentic evaluation tooling within six months.",
-          "agreed": true
-        },
-        {
-          "title": "Numerical Chaos in LLMs",
-          "host1_take": "Kit argues this chaos is unfixable because it's rooted in transformer architecture's finite floating-point precision and rounding errors that amplify in attention layers\u2014not a patchable implementation bug.",
-          "host2_take": "Dean sees the liability exposure: the 'not measurable' defense that protected model providers is now gone, and quantifying chaos creates legal vulnerability even though the underlying problem can't be engineered away.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Agentic evaluation tooling startups should incorporate this agent exploration/exploitation taxonomy into products within six months",
-        "Kit: Infrastructure commodification timeline accelerates to faster than the expected six-to-twelve months for retrieval capabilities"
-      ],
-      "key_themes": [
-        "Frontier model moats eroding faster than expected",
-        "Open-weight inference democratizing capabilities",
-        "Trust erosion from silent behavior changes",
-        "Measurement enabling both reliability and liability exposure",
-        "Tier compression without nominal price increases",
-        "Valuation assumptions misaligned with capability timelines"
-      ],
-      "story_to_watch": "How startups with valuations built on 'proprietary multimodal retrieval' respond to Hugging Face democratizing weekend-timeline reranker training",
-      "title": "When Laptops Beat Frontier Models"
     }
   ]
 }
