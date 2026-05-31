@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>Metering the Past Before It Expires</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-31-0635.mp3" length="13309326" type="audio/mpeg" />
+      <itunes:duration>554</itunes:duration>
+      <pubDate>Sun, 31 May 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-05-31-0635.mp3</guid>
+    </item>
+    <item>
       <title>When Outages Become Labor Law</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-05-30-0635.mp3" length="13328761" type="audio/mpeg" />
       <itunes:duration>555</itunes:duration>
@@ -213,13 +220,6 @@
       <itunes:duration>480</itunes:duration>
       <pubDate>Sun, 19 Apr 2026 07:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-19-0635.mp3</guid>
-    </item>
-    <item>
-      <title>When Collaboration Means Incomplete</title>
-      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-18-0950.mp3" length="9637972" type="audio/mpeg" />
-      <itunes:duration>401</itunes:duration>
-      <pubDate>Sat, 18 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-18-0950.mp3</guid>
     </item>
   </channel>
 </rss>

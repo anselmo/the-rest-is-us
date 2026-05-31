@@ -1,6 +1,61 @@
 {
-  "episode_count": 37,
+  "episode_count": 38,
   "episodes": [
+    {
+      "date": "2026-05-30",
+      "episode_number": 38,
+      "stories": [
+        {
+          "title": "Groq's $650M Round",
+          "host1_take": "Dean sees this as a defensive round \u2014 existing investors only, priced like a platform but with Nvidia's $20B sitting as an unchallenged ceiling.",
+          "host2_take": "Kit argues Groq's actual moat is sub-100ms first-token on short prompts, making them a workload company priced like a platform, and that memory bottlenecks compress their advantage further.",
+          "agreed": true
+        },
+        {
+          "title": "Xcena's Processing-in-Memory Bet",
+          "host1_take": "Dean interprets the $570M valuation as priced for a strategic acquirer, not an IPO \u2014 the bet is someone buys before tooling catches up.",
+          "host2_take": "Kit notes PIM is a thirty-year-old research thesis, but hyperscaler economics finally justify it \u2014 though Xcena may fall into the same acquisition trap every PIM company has for two decades.",
+          "agreed": true
+        },
+        {
+          "title": "Liquid's Edge Model Breakthrough",
+          "host1_take": "Dean points out the fatal flaw: if the model runs on the user's laptop, there's no billing surface and the technical win arrives with the business loss.",
+          "host2_take": "Kit celebrates the 38T tokens on 8B-A1B as a category shift in tool-calling agents, but concedes they have no monetization path against eighteen-month OEM cycles.",
+          "agreed": true
+        },
+        {
+          "title": "Developer Dependency on AI",
+          "host1_take": "Dean reveals enterprise contracts now list AI-tool access as a working condition, turning vendor outages into potential labor-law incidents with wage-and-hour liability flowing to the lab.",
+          "host2_take": "Kit reframes this as cognitive load avoidance and deskilling \u2014 developers have atrophied to the point they can't tolerate working without the tool, making dependency the real story, not productivity.",
+          "agreed": true
+        },
+        {
+          "title": "Cognition's $26B Valuation",
+          "host1_take": "Dean argues you can't justify $26B on augmentation math \u2014 the growth multiples require replacement revenue, not seat licenses, so the LP deck says replacement even if Wu's press release says partnership.",
+          "host2_take": "Kit notes Devin still requires constant supervision and Wu himself rated it between junior and mid-level, so the two messages \u2014 one to press, one to LPs \u2014 aren't aligned.",
+          "agreed": true
+        },
+        {
+          "title": "MCP Protocol Criticism",
+          "host1_take": "Dean observes that Anthropic's Tool Search with Deferred Loading shipped two weeks before the 'MCP is dead' essays landed, so the critiques were already obsolete.",
+          "host2_take": "Kit agrees the protocol itself is fine, but the business models around MCP wrappers were always thin \u2014 selling a wrapper for a free protocol is structurally difficult.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: The next big surprise doesn't come from a launch, it comes from an outage affecting labor-law contracts",
+        "Kit: The infrastructure layer \u2014 memory, edge, inference \u2014 will answer the substrate question that model wars are downstream of"
+      ],
+      "key_themes": [
+        "developer dependency as labor risk",
+        "infrastructure over models",
+        "misaligned pricing and architecture",
+        "commoditization speed vs. monetization cycles",
+        "vendor outages as working-condition violations"
+      ],
+      "story_to_watch": "AI-tool access in employment contracts and the legal liability that flows to labs during vendor outages",
+      "title": "When Outages Become Labor Law"
+    },
     {
       "date": "2026-05-29",
       "episode_number": 37,
@@ -1534,56 +1589,6 @@
       ],
       "story_to_watch": "Enterprise procurement teams quietly evaluating alternatives after three silent cost changes\u2014vendor relationship debt compounds into Q3 renewal cycles",
       "title": "When Collaboration Means Incomplete"
-    },
-    {
-      "date": "2026-04-18",
-      "episode_number": 8,
-      "stories": [
-        {
-          "title": "Claude Design Launch",
-          "host1_take": "Kit sees the 'collaboration' framing as liability hedging that may actually undercut user ambition and retention by keeping them in the passenger seat.",
-          "host2_take": "Dean argues the real competitive target isn't Figma or Adobe\u2014it's consolidating the mid-market agency's entire subscription stack, requiring retention metrics design tools optimize for, not chat metrics.",
-          "agreed": false
-        },
-        {
-          "title": "Opus 4.7 Tokenizer Costs",
-          "host1_take": "Kit acknowledges the technical reason for the gap\u2014creative/code inputs have denser tokenization patterns than documentation assumes\u2014but agrees the invoice impact is identical.",
-          "host2_take": "Dean treats this as a pattern of silent Anthropic cost changes (episode 5's cache TTL shift), which triggers retroactive enterprise audits and damages vendor relationships.",
-          "agreed": true
-        },
-        {
-          "title": "Sentence Transformers Multimodal",
-          "host1_take": "Kit emphasizes that fine-tuning the reranker on domain data\u2014not the embeddings\u2014just got democratized, making the weekend vs. six-month build gap dramatically smaller.",
-          "host2_take": "Dean sees this as the third release in three episodes commoditizing the 'proprietary multimodal retrieval' moat that startups raised on, with the surviving differentiator shifting to training data provenance.",
-          "agreed": true
-        },
-        {
-          "title": "Counterfactual Routing in MoE",
-          "host1_take": "Kit notes the mechanism wakes dormant specialist experts without weight changes, though inference overhead creates a priceable cost-accuracy tradeoff at scale.",
-          "host2_take": "Dean frames known overhead as deployable overhead and predicts this enters enterprise MoE deployments within a quarter.",
-          "agreed": true
-        },
-        {
-          "title": "Calibrate-Then-Delegate Safety",
-          "host1_take": "Kit identifies the failure mode: cheap probes escalate based on uncertainty, but uncertainty doesn't correlate with 'would the expert fix this,' causing misdirected escalations.",
-          "host2_take": "Dean treats this as a procurement checkbox, not research, and predicts the CTD architecture phrase appears in enterprise AI vendor RFPs within six months.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Counterfactual Routing will appear in enterprise MoE deployments within a quarter",
-        "Dean: 'Finite-sample guarantees on delegation rate' language will appear in enterprise AI vendor RFPs within six months"
-      ],
-      "key_themes": [
-        "Hidden infrastructure costs in new LLM versions",
-        "Retrieval moat commoditization accelerating",
-        "Pattern of silent Anthropic platform cost changes",
-        "Enterprise procurement risk from tokenizer audits",
-        "Consolidation thesis vs. retention metrics tension",
-        "Data provenance as differentiator replacing model architecture"
-      ],
-      "story_to_watch": "Sentence Transformers multimodal reranking commoditization\u2014three releases in three episodes means the startup category reckoning is now, not in six months; investors need to audit portfolio data provenance immediately",
-      "title": "The Hidden Cost of Claude's New Tokenizer"
     }
   ]
 }
