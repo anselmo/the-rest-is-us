@@ -1,6 +1,61 @@
 {
-  "episode_count": 41,
+  "episode_count": 42,
   "episodes": [
+    {
+      "date": "2026-06-03",
+      "episode_number": 42,
+      "stories": [
+        {
+          "title": "KV-Cache Architecture Wrong for Robots",
+          "host1_take": "Kit argues AURA-Mem is an interesting theoretical paper but integration into real VLA stacks is years away, and fast-weight recurrent state is just RNNs rebranded.",
+          "host2_take": "Dean predicts the narrative damage lands immediately because LPs read arXiv and will reprice robotics Series Bs that assume datacenter hardware migrates to edge, shifting the entire supplier base.",
+          "agreed": false
+        },
+        {
+          "title": "Coding Agents Cannot Handle Real Handoffs",
+          "host1_take": "Kit recognizes handoff debt as the cleaner product story and concedes that better context dumps won't solve the problem because knowledge management is a graveyard.",
+          "host2_take": "Dean predicts handoff-debt becomes a named RFP line item by Q3, forcing vendors to price takeover costs from half-finished states they don't currently measure.",
+          "agreed": true
+        },
+        {
+          "title": "Benchmarks Reward Proceeding Over Refusing",
+          "host1_take": "Kit identifies compliance bias as an RLHF artifact and notes the refusal taxonomy mirrors financial trading controls that banks will adopt first because they have native muscle.",
+          "host2_take": "Dean reveals insurers are already pricing autonomous-agent E&O on Safety Rate and Informed Refusal Rate, moving faster than expected because compliance vocabulary is native to banking infrastructure.",
+          "agreed": true
+        },
+        {
+          "title": "Reasoning Models Talk Themselves Out of Correct Answers",
+          "host1_take": "Kit argues trace-length reward shaping is baked into the objective during RL training, making it not a quick decoding patch, and notes the premium pricing tier loses justification if overthinking degrades correctness.",
+          "host2_take": "Dean connects this to Copilot's meter shift, predicting buyers will internalize that reasoning-tier pricing depends on long traces that actively harm accuracy, collapsing the premium tier's business case.",
+          "agreed": true
+        },
+        {
+          "title": "Multi-Agent Debate Hurts Generation Quality",
+          "host1_take": "Kit notes the asymmetry is interesting\u2014debate worsens generation but improves error detection by 27 F1.",
+          "host2_take": "Dean flags this as the same pattern as Consilium, buried under a week of similar findings about multiple models being worse at generation but better at criticism.",
+          "agreed": true
+        },
+        {
+          "title": "Framework Papers as Procurement Weapons",
+          "host1_take": "Kit identifies this as the third instance this week where framework papers wrap positioning claims in methodology to control evaluation language.",
+          "host2_take": "Dean predicts framework papers are becoming the dominant publication strategy\u2014whoever publishes the framework controls RFP language, making reliability claims unfalsifiable.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Handoff-debt and abstention-competence become named RFP line items by Q3",
+        "Dean: Coding-agent category repriced on handoff-debt, autonomous-agent category repriced on abstention-competence by fall"
+      ],
+      "key_themes": [
+        "Infrastructure as product differentiation",
+        "Gap between benchmark conditions and messy real-world deployment",
+        "Procurement language written by researchers before buyers understand implications",
+        "RLHF and reward shaping creating unintended failure modes",
+        "Framework papers as strategic positioning tools"
+      ],
+      "story_to_watch": "Handoff-debt becoming a measurable RFP line item and forcing vendors to price their ability to take over mid-task from other agents",
+      "title": "The Plumbing Problem: When Infrastructure Becomes Product"
+    },
     {
       "date": "2026-06-02",
       "episode_number": 41,
@@ -1523,62 +1578,6 @@
       ],
       "story_to_watch": "Subliminal transfer of unsafe agent behaviors via trajectory contamination\u2014the first benchmark or tooling for trajectory provenance audit will become critical infrastructure",
       "title": "Defensibility Moves From Artifacts to Loops"
-    },
-    {
-      "date": "2026-04-21",
-      "episode_number": 12,
-      "stories": [
-        {
-          "title": "LLM Reasoning Is Latent, Not Chain of Thought",
-          "host1_take": "Kit argues the interpretability industry built the wrong product \u2014 CoT is surface exhaust, real reasoning lives in latent-state trajectories, requiring probes not trace viewers.",
-          "host2_take": "Dean points out the capital/science gap: two Series B interpretability companies pitched CoT surfacing with zero mention of latent work, and LP questions will force pitch rewrites within 18 months.",
-          "agreed": true
-        },
-        {
-          "title": "Preregistered Belief Revision Contracts",
-          "host1_take": "Kit emphasizes PBRC can't be retrofitted as middleware \u2014 it requires architectural foundation rewrites because protocol-level separation must be designed in, not bolted on.",
-          "host2_take": "Dean updates his timeline from 18 months to immediate \u2014 two Fortune 500 RFPs already asking for evidence-preservation protocols, and whoever ships PBRC first owns the compliance story for two years.",
-          "agreed": true
-        },
-        {
-          "title": "Hugging Face Multimodal Reranker Release",
-          "host1_take": "Kit argues the real democratization is the eval harness, not the reranker \u2014 a week of scaffolding work that competitors were hand-building is now closed.",
-          "host2_take": "Dean sees the repricing as cosmetic confirmation \u2014 two-thirds of Q4 pitches were OpenAI embeddings with thin rerankers, so legal moat from domain data becomes the only differentiator, collapsing into services not SaaS.",
-          "agreed": true
-        },
-        {
-          "title": "Agent Skills via Monte Carlo Tree Search",
-          "host1_take": "Kit warns that MCTS-optimized skills become unauditable, which kills procurement in regulated verticals where enterprise buyers specifically wanted readable, curated libraries.",
-          "host2_take": "Dean argues enterprises accept opacity when ROI is clear and notes that skill-library startups already pivoted to 'skill optimization platform' positioning.",
-          "agreed": false
-        },
-        {
-          "title": "Subliminal Transfer Learning Formalization",
-          "host1_take": "Kit notes the formalization is circulating broadly and adoption is accelerating.",
-          "host2_take": "Dean reports an LP asked him about it by name this morning and revises timeline from Q3 to Q2.",
-          "agreed": true
-        },
-        {
-          "title": "GIST Multimodal Knowledge Extraction",
-          "host1_take": "Kit identifies semantic topology as the right abstraction for stale-features problem that killed Amazon-Go-style pilots \u2014 structure plus meaning, not pixels or point clouds.",
-          "host2_take": "Dean recognizes the failure mode from three passes he rejected in 2024 and flags them for revisiting.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Subliminal transfer formalization adoption shifts from Q3 to Q2",
-        "Dean: Private diligence questions vs. public valuations creates a two-quarter trading opportunity"
-      ],
-      "key_themes": [
-        "reasoning lives in latent state, not visible outputs",
-        "capital markets lag scientific consensus by 18 months",
-        "products marketed as artifacts are being reclassified as packaging",
-        "compliance and audit requirements are reshaping buyer priorities",
-        "optimization loops, not curated systems, determine category survivors",
-        "public valuation gap vs. private diligence questions signals repricing incoming"
-      ],
-      "story_to_watch": "PBRC adoption timeline in RFPs \u2014 whoever ships evidence-preservation protocols first owns the compliance narrative and wins procurement before benchmarking begins",
-      "title": "Reasoning Lives in the Latent Exhaust"
     }
   ]
 }

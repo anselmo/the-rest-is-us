@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>Marketing Meets Reality: The AI Substrate Splits</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-04-0645.mp3" length="12266100" type="audio/mpeg" />
+      <itunes:duration>511</itunes:duration>
+      <pubDate>Thu, 04 Jun 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-06-04-0645.mp3</guid>
+    </item>
+    <item>
       <title>The Plumbing Problem: When Infrastructure Becomes Product</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-03-0635.mp3" length="12121277" type="audio/mpeg" />
       <itunes:duration>504</itunes:duration>
@@ -213,13 +220,6 @@
       <itunes:duration>581</itunes:duration>
       <pubDate>Wed, 22 Apr 2026 07:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-22-0635.mp3</guid>
-    </item>
-    <item>
-      <title>Defensibility Moves From Artifacts to Loops</title>
-      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-21-1109.mp3" length="13471703" type="audio/mpeg" />
-      <itunes:duration>561</itunes:duration>
-      <pubDate>Tue, 21 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-21-1109.mp3</guid>
     </item>
   </channel>
 </rss>
