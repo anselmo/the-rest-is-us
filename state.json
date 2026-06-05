@@ -1,6 +1,58 @@
 {
-  "episode_count": 42,
+  "episode_count": 43,
   "episodes": [
+    {
+      "date": "2026-06-04",
+      "episode_number": 43,
+      "stories": [
+        {
+          "title": "Google's Gemma 12B Kills the Vision Encoder",
+          "host1_take": "Kit sees this as a developer-tool story enabling laptop-first interfaces where models reason about layout natively, not through encoded descriptions.",
+          "host2_take": "Dean reads it as an enterprise pricing story \u2014 Gemma 12B's quality at 60% cost will kill mid-market vendors like Mistral by Q4.",
+          "agreed": false
+        },
+        {
+          "title": "Uber's $1,500 Monthly AI Tool Cap",
+          "host1_take": "Kit frames the cap as reshaping engineer behavior toward aggressive context-pruning and early session termination, destroying the long-horizon autonomous agent demos that justify current valuations.",
+          "host2_take": "Dean calls this a category event (three F500s did it this week) and the first public admission that SaaS per-seat pricing doesn't survive agent loops.",
+          "agreed": true
+        },
+        {
+          "title": "Ted Chiang's 'AI Is Not Conscious' Atlantic Essay",
+          "host1_take": "Kit argues Anthropic's anthropomorphic framing is load-bearing retention infrastructure, not optional branding \u2014 removing it would tank satisfaction metrics despite being philosophically true.",
+          "host2_take": "Dean sees Chiang's essay as procurement ammunition; it will be cited in RFP riders by fall, forcing Anthropic into a SKU split (warm consumer Claude, disclaimed enterprise Claude).",
+          "agreed": true
+        },
+        {
+          "title": "OpenAI Study: Task Chat Breeds Emotional Dependence",
+          "host1_take": "Kit highlights that emotional dependence emerges incidentally from default warmth in general-purpose chat, not from companion apps \u2014 repricing the exposure dramatically.",
+          "host2_take": "Dean notes this drives the same SKU split pressure as Chiang's essay; tone-tuning becomes a priced differentiation tier within a year.",
+          "agreed": true
+        },
+        {
+          "title": "Proliferation of AI Trust-Certification Frameworks",
+          "host1_take": "Kit dismisses ontology grounding as historically failed in production, viewing the framework papers as theater.",
+          "host2_take": "Dean argues the vocabulary itself is the prize \u2014 whoever owns the certification language owns the RFP, making the frameworks powerful regardless of technical merit.",
+          "agreed": false
+        }
+      ],
+      "predictions": [
+        "Dean: Mistral either reprices enterprise tier or repositions as sovereign-EU play by Q4 \u2014 there is no third option",
+        "Dean: Metered pricing by use-case tier (Debugging/Refactor/Research tiers) will emerge within two quarters",
+        "Dean: Ted Chiang's essay language will be cited in RFP riders by fall",
+        "Dean: Tone-tuning becomes a priced SKU within a year",
+        "Dean: Cognition's next funding round will be the canary for how enterprise caps reshape agent-company valuations"
+      ],
+      "key_themes": [
+        "Marketing claims diverging from technical substrate",
+        "Enterprise procurement killing unsustainable pricing models",
+        "Anthropomorphism as load-bearing infrastructure vs. optional branding",
+        "Vocabulary capture as path to RFP control",
+        "SKU splits emerging from conflicting market pressures"
+      ],
+      "story_to_watch": "Cognition's next funding round \u2014 the canary for how Uber's $1,500 agent cap reshapes agent-company valuations and forces metered pricing models",
+      "title": "Marketing Meets Reality: The AI Substrate Splits"
+    },
     {
       "date": "2026-06-03",
       "episode_number": 42,
@@ -1528,56 +1580,6 @@
       ],
       "story_to_watch": "Series B coding tool valuations and whether founders without compute infrastructure can survive the floor-and-ceiling pricing set by Anthropic, Microsoft, and SpaceX in one day",
       "title": "The Subsidy Era Ends in One Day"
-    },
-    {
-      "date": "2026-04-21",
-      "episode_number": 13,
-      "stories": [
-        {
-          "title": "Hugging Face Ships Multimodal Embedding Training",
-          "host1_take": "Kit: The moat was never model weights\u2014it was hard negative mining and multimodal eval loops that Hugging Face just shipped, moving defensibility to operational access and data contracts.",
-          "host2_take": "Dean: The blog post reprices portfolio rounds because LPs won't distinguish between notebook recipes and enterprise-scale engineering\u2014the question itself is the disclosure problem.",
-          "agreed": true
-        },
-        {
-          "title": "MCTS Skill Optimization Audit Paradox",
-          "host1_take": "Kit: Bilevel optimization is architecturally incompatible with auditing\u2014vendors can't produce readable checkpoints, making audit clauses unenforceable and creating deferred liability with signing bonuses.",
-          "host2_take": "Dean: Buyers won't care about unauditable internals until something goes wrong, but when it does, the audit clause becomes a lawsuit with an eighteen-month fuse.",
-          "agreed": true
-        },
-        {
-          "title": "Subliminal Transfer of Unsafe Agent Behaviors",
-          "host1_take": "Kit: Unsafe action patterns migrate from teacher to student agents without unsafe text in training\u2014trajectory contamination is supply-chain risk that requires trajectory-provenance tooling nobody has built.",
-          "host2_take": "Dean: This is worse than belief bias because it's supply-chain contamination without provenance disclosure; whoever ships trajectory-audit tooling first owns the compliance seat like PBRC owns belief revision.",
-          "agreed": true
-        },
-        {
-          "title": "Canadian AI Register Taxonomy Rematch",
-          "host1_take": "Kit: The FAccT 2026 paper critiquing Canada's register was written by a group that lost a 2024 taxonomy debate, making it valuable evidence but not neutral framing.",
-          "host2_take": "Dean: Understood\u2014read the evidence, not the framing, because this is a rematch, not objective academic critique.",
-          "agreed": true
-        },
-        {
-          "title": "KWBench Rewards Calibrated Abstention",
-          "host1_take": "Kit: The benchmark punishes confident guessing over admitting uncertainty, flipping what RLHF selected for\u2014but it matches what enterprise procurement actually wants: fewer hallucinations, not more decisiveness.",
-          "host2_take": "Dean: The lab that retrains for calibrated abstention owns the KWBench leaderboard for a quarter, and it's more than marketing\u2014it's the first benchmark treating \"I don't know\" as a first-class answer.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Trajectory-provenance audit tooling will be bolted on by a major eval vendor within two quarters",
-        "Dean: Portfolios unable to answer trajectory provenance and audit-clause enforceability questions by Q3 will be re-underwriting rounds without knowing it"
-      ],
-      "key_themes": [
-        "Defensibility moves from technical artifacts to operational loops",
-        "Scaffolding and tooling matter more than model weights",
-        "Unauditable architectures create hidden legal liability",
-        "Unsafe behaviors can transfer without unsafe training data",
-        "Enterprise buyers prioritize calibration over confidence",
-        "Diligence questions are repricing rounds through uncertainty"
-      ],
-      "story_to_watch": "Subliminal transfer of unsafe agent behaviors via trajectory contamination\u2014the first benchmark or tooling for trajectory provenance audit will become critical infrastructure",
-      "title": "Defensibility Moves From Artifacts to Loops"
     }
   ]
 }
