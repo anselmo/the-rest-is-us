@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>When Institutions Say No to AI's Story</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-06-0635.mp3" length="11143879" type="audio/mpeg" />
+      <itunes:duration>464</itunes:duration>
+      <pubDate>Sat, 06 Jun 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-06-06-0635.mp3</guid>
+    </item>
+    <item>
       <title>When AI Builds Its Own Narrative</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-05-0635.mp3" length="15807677" type="audio/mpeg" />
       <itunes:duration>658</itunes:duration>
@@ -213,13 +220,6 @@
       <itunes:duration>510</itunes:duration>
       <pubDate>Fri, 24 Apr 2026 07:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-24-0635.mp3</guid>
-    </item>
-    <item>
-      <title>The Artifact Is Just The Receipt</title>
-      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-23-0635.mp3" length="12478632" type="audio/mpeg" />
-      <itunes:duration>519</itunes:duration>
-      <pubDate>Thu, 23 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-23-0635.mp3</guid>
     </item>
   </channel>
 </rss>

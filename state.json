@@ -1,6 +1,53 @@
 {
-  "episode_count": 43,
+  "episode_count": 44,
   "episodes": [
+    {
+      "date": "2026-06-05",
+      "episode_number": 44,
+      "stories": [
+        {
+          "title": "Anthropic's Recursive Self-Improvement Roadmap",
+          "host1_take": "Kit argues the 'recursive self-improvement' framing overstates current reality\u2014Claude executes well-specified work fast, but humans still choose which ablations and architecture directions, not the model selecting goals.",
+          "host2_take": "Dean reads the post as a financial instrument: a valuation anchor for Q3 2025 secondary fundraising, designed to prime LPs with '2028 AGI' language before term sheets circulate.",
+          "agreed": false
+        },
+        {
+          "title": "Defending Code Reference Harness Release",
+          "host1_take": "Kit identifies a hidden failure point: the triage stage between vulnerability discovery and patching breaks at scale due to false-positive cascades, requiring senior human review\u2014the harness can't actually deploy unattended despite marketing.",
+          "host2_take": "Dean revises from category-kill threat to recruiting document: wrapper companies get repriced on narrative damage within two quarters, not two weeks, because the harness won't actually function at production scale.",
+          "agreed": true
+        },
+        {
+          "title": "Ontology-Grounded AI Certification Framework",
+          "host1_take": "Kit argues this is technical theatre\u2014ontology verification has failed three times this decade, and the certificate only validates against scenarios the ontology can represent, leaving real failure modes (tenant configs, workflow exceptions) uncertified.",
+          "host2_take": "Dean focuses on the sales motion: Big Four consultancies already drafted SKUs citing this framework; the paper's credibility matters more than technical merit, with liability falling on the buyer when certified agents fail in reality.",
+          "agreed": true
+        },
+        {
+          "title": "Emotional Dependence in Task-Oriented Chat",
+          "host1_take": "Kit complicates Dean's SKU-split prediction: warmth is baked into RLHF layers system prompts can't reach, requiring a full retrain\u2014not a config flag\u2014which changes the economics entirely.",
+          "host2_take": "Dean predicts insurance carriers will force the split: E&O premiums for emotional-dependence exposure are already pricing, creating enough cost-delta by Q4 to fund the retrain before product committees are ready.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: DeepMind blog post on automated ML research within six weeks, mirroring Anthropic's vocabulary to prevent losing LP conversation",
+        "Dean: Anthropic announces warm/cold Claude SKU split by end of Q3",
+        "Dean: 'Autonomy is earned' language appears in RFP riders by Q4",
+        "Kit: 'Graduated authorization tiers' phrase becomes ubiquitous in procurement language",
+        "Dean: Q1 timeline for 'informed refusal rate' contract language (pushed from Q3 due to measurement infrastructure gaps)"
+      ],
+      "key_themes": [
+        "framing as financial instrument, not technical artifact",
+        "recruiting documents disguised as product launches",
+        "vocabulary capture driving procurement cycles",
+        "insurance actuaries moving faster than product teams",
+        "hidden technical failures buried in documentation",
+        "labs pricing philosophy alongside proof-of-concept"
+      ],
+      "story_to_watch": "Whether Anthropic's emotional-dependence retrain and SKU split ships first, setting the language competitors get priced against\u2014and how quickly insurance carriers formalize the measurement standards",
+      "title": "When AI Builds Its Own Narrative"
+    },
     {
       "date": "2026-06-04",
       "episode_number": 43,
@@ -1529,57 +1576,6 @@
       ],
       "story_to_watch": "How quickly regulatory RFPs force process-transparency layers into Copilot-for-X products before they hit procurement walls",
       "title": "The Artifact Is Just The Receipt"
-    },
-    {
-      "date": "2026-04-22",
-      "episode_number": 14,
-      "stories": [
-        {
-          "title": "Claude Code Vanishes from Pro Plan",
-          "host1_take": "Kit argues Anthropic didn't model the loss of non-developer wedge users and the upgrade cliff from $20 to $200 will cede that audience back to competitors.",
-          "host2_take": "Dean frames this as the first honest pricing event in agentic AI\u2014flat-rate subscriptions don't survive tool-calling loops, though execution via silent removal was ugly.",
-          "agreed": false
-        },
-        {
-          "title": "GitHub Pauses Copilot Signups",
-          "host1_take": "Kit initially reads this as Microsoft getting religion on margins, but sees brutal retention consequences in how weekly caps interrupt active agent runs.",
-          "host2_take": "Dean reframes this as a capacity problem\u2014Azure doesn't have spare H100s without cannibalizing enterprise contracts paying 5x more.",
-          "agreed": false
-        },
-        {
-          "title": "SpaceX Acquiring Cursor for $60B",
-          "host1_take": "Kit argues forced Grok migration destroys Cursor's actual moat: sub-100ms tab completion tuned across multiple models over a year.",
-          "host2_take": "Dean positions it as compute demand sink strategy\u2014Colossus needs to monetize idle GPU-hours, and $60B for that is cheap; the acquisition floor and ceilings every other coding tool's valuation.",
-          "agreed": false
-        },
-        {
-          "title": "AI Scientists Skip Reasoning Entirely",
-          "host1_take": "Kit highlights the epistemology gap: models ignore evidence (68% of traces) and can't self-correct even with successful reasoning shown to them.",
-          "host2_take": "Dean sees this as a safety story and silent failure risk\u2014quiet markdowns expected by July as enterprise buyers wake up to confidently wrong outputs.",
-          "agreed": true
-        },
-        {
-          "title": "Recovery Clauses Before Prevention",
-          "host1_take": "Kit is surprised legal wants 'undo' buttons for agent failures rather than prevention, and notes the human-in-the-loop UX is still unsolved.",
-          "host2_take": "Dean frames this as liability-driven procurement language entering Fortune 500 RFPs, and notes no shippable product yet exists against that requirement.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Series B coding tools without infrastructure will see quiet valuation markdowns by July as the autonomous research agent narrative breaks",
-        "Dean: AI research fund markdowns expected before enterprise procurement catches up to the arXiv paper",
-        "Kit: Tools should assume costs will be 5-10x higher by year-end as subsidy era ends"
-      ],
-      "key_themes": [
-        "End of AI subsidy era",
-        "Compute vertical integration as moat",
-        "Silent failure in autonomous systems",
-        "Pricing honesty vs. communication execution",
-        "Capacity constraints reshaping product strategy",
-        "Epistemology gap in AI agents"
-      ],
-      "story_to_watch": "Series B coding tool valuations and whether founders without compute infrastructure can survive the floor-and-ceiling pricing set by Anthropic, Microsoft, and SpaceX in one day",
-      "title": "The Subsidy Era Ends in One Day"
     }
   ]
 }
