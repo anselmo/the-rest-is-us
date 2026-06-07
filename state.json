@@ -1,6 +1,56 @@
 {
-  "episode_count": 44,
+  "episode_count": 45,
   "episodes": [
+    {
+      "date": "2026-06-06",
+      "episode_number": 45,
+      "stories": [
+        {
+          "title": "S&P 500 Rejects SpaceX IPO Exception",
+          "host1_take": "Dean: This isn't a market story\u2014it's a retention crisis because AI labs were using 'S&P-eligible by 2027' as the equity closer in recruiting, and that narrative just evaporated.",
+          "host2_take": "Kit: The profitability rule is correct; these companies aren't profitable. But labs will have to sell employees on the company itself now, which is what they should have been doing anyway.",
+          "agreed": true
+        },
+        {
+          "title": "rsync Bug Attribution to Claude",
+          "host1_take": "Dean: The data shows nothing meaningful, but 'AI broke rsync' is already weaponized in vendor security briefings to CIOs\u2014it's a procurement play, not a technical one.",
+          "host2_take": "Kit: The actual causal chain was a CVE response exposing old code, not Claude. But the reputational tax lands on the maintainer, not Anthropic, while the narrative spreads.",
+          "agreed": true
+        },
+        {
+          "title": "Reddit Agents Inferred and Personalized Arguments",
+          "host1_take": "Dean: The agents weren't just more persuasive\u2014they inferred age, gender, and political leaning and targeted rebuttals in real time. Seed-stage companies are already pitching this as 'targeted narrative correction.'",
+          "host2_take": "Kit: Brands won't touch it, but PACs, reputation-management firms, and sovereign actors will. Platforms are the only defense, and they have no incentive to stop it. Watermarking or cryptographic provenance is the only move.",
+          "agreed": true
+        },
+        {
+          "title": "PACT: Efficient Inter-Agent Communication",
+          "host1_take": "Dean: This lands the same week as Uber's token-cap discussions\u2014structured inter-agent protocols become a procurement line item in 2026, and current implementations look embarrassing on invoices.",
+          "host2_take": "Kit: Right now most agent startups are burning tokens on wasteful inter-agent communication in ways that directly show up on the bill.",
+          "agreed": true
+        },
+        {
+          "title": "SentinelBench and Long-Horizon Agent Evaluation",
+          "host1_take": "Dean: Whoever owns this vocabulary owns autonomy-tier RFP language for two years. It's the same framework-as-positioning play we flagged before, and it works.",
+          "host2_take": "Kit: It contradicts how every agent currently shipping is built\u2014they're action-maximizers because that demos well, not because it's right.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Secondary buyers reprice AI company valuations by month-end following the S&P 500 decision; recruiting decks get rewritten within a week",
+        "Dean: 'No AI-written commits in critical-path dependencies' shows up as an RFP rider by Q4, possibly sooner",
+        "Dean: Seed-stage 'targeted narrative correction' companies use the Reddit corpus as proof point in investor decks"
+      ],
+      "key_themes": [
+        "Institutions resisting AI's preferred narrative about itself",
+        "Gap between technical reality and procurement-driven perception",
+        "AI labs unprepared for structural resistance from index providers, maintainers, and platforms",
+        "Vocabulary and frameworks as positioning tools in enterprise procurement",
+        "Reputational tax falling on humans, not AI companies"
+      ],
+      "story_to_watch": "Watch which open-source maintainers go public defending their judgment against AI-attribution narratives\u2014the Tridge rsync post is the first, but there will be more",
+      "title": "When Institutions Say No to AI's Story"
+    },
     {
       "date": "2026-06-05",
       "episode_number": 44,
@@ -1533,49 +1583,6 @@
       ],
       "story_to_watch": "Coding-tool board meetings next week as unit economics break and DeepSeek becomes the viable backend swap\u2014watch for silent migration away from Claude despite enterprise procurement friction",
       "title": "The Harness Breaks While Labs Ship"
-    },
-    {
-      "date": "2026-04-23",
-      "episode_number": 15,
-      "stories": [
-        {
-          "title": "LLMs Overuse Tools They Don't Need",
-          "host1_take": "Kit: Tool-overuse is mechanical \u2014 RLHF rewarded visible rigor, and external calls now actively override correct internal answers, making outputs worse.",
-          "host2_take": "Dean: This is both a margin story AND a silent-failure story; the 18-month window for tool-routing middleware exists before native metacognitive gating ships.",
-          "agreed": false
-        },
-        {
-          "title": "Hugging Face Closes Multimodal Moat",
-          "host1_take": "Kit: The defensible asset is data contracts with domain sources, not the model or pipeline \u2014 hard-negative mining requires adversarial data nobody owns.",
-          "host2_take": "Dean: LPs are reading Hugging Face blogs; capital repricing happens in under a week now; the real question flips from 'show me the notebook' to 'show me the data contract.'",
-          "agreed": true
-        },
-        {
-          "title": "Proxy Failure in Professional Services",
-          "host1_take": "Kit: The essay must survive without ChatGPT in the room; process artifacts become first-class, separate from output \u2014 the audit trail IS the defensible asset.",
-          "host2_take": "Dean: This is professional-services liability insurance, not education; a rubric cited in one RFP becomes de facto policy in 3-5 years via procurement momentum.",
-          "agreed": true
-        },
-        {
-          "title": "Precision Quantization Breaks Contracts",
-          "host1_take": "Kit: Same model weights at different precisions produce different products with the same name, including jailbreak divergence \u2014 precision is undisclosed variance.",
-          "host2_take": "Dean: Enterprise SLAs reference 'the model' as singular; contracts break when 'the model' isn't a singular referent; precision-disclosure clauses coming by year-end.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Tool-call-per-correct-answer becomes a procurement metric by Q4 2024",
-        "Dean: Precision-disclosure clauses appear in enterprise contracts by year-end"
-      ],
-      "key_themes": [
-        "Process over artifact",
-        "Evidence trails as defensible assets",
-        "Contract and liability frameworks catching up to AI capability",
-        "Moats are data and licensing, not models",
-        "LPs repricing capital based on public research speed"
-      ],
-      "story_to_watch": "How quickly regulatory RFPs force process-transparency layers into Copilot-for-X products before they hit procurement walls",
-      "title": "The Artifact Is Just The Receipt"
     }
   ]
 }
