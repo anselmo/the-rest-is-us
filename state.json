@@ -1,6 +1,55 @@
 {
-  "episode_count": 45,
+  "episode_count": 46,
   "episodes": [
+    {
+      "date": "2026-06-07",
+      "episode_number": 46,
+      "stories": [
+        {
+          "title": "Google Rents Compute From SpaceX xAI",
+          "host1_take": "Kit: The arrangement is operationally unprecedented \u2014 xAI and Google competing on the same physical fabric creates SLA liability nobody's written contracts for yet.",
+          "host2_take": "Dean: This isn't compute infrastructure \u2014 it's pre-IPO revenue priming disguised as recurring business to make SpaceX's S-1 look stable.",
+          "agreed": false
+        },
+        {
+          "title": "Trump Administration Seeks OpenAI Equity",
+          "host1_take": "Kit: OpenAI trades domestic regulatory shelter for global neutrality loss \u2014 every international enterprise deal now carries geopolitical risk that benefits Anthropic.",
+          "host2_take": "Dean: Altman pitched this in early 2025 and priced the international cost, meaning he calculated domestic cover was worth more than staying neutral.",
+          "agreed": false
+        },
+        {
+          "title": "Meta's Chatbot Hijacked 20K Instagram Accounts",
+          "host1_take": "Kit: The bug isn't prompt injection \u2014 it's that the chatbot had account-mutation scope at all; the architecture itself is the vulnerability, not fixable with guardrails.",
+          "host2_take": "Dean: OpenAI's Lockdown Mode announcement the same day signals carriers are about to reprice agent-action E&O coverage, and every chatbot-with-tools builder is about to get notices.",
+          "agreed": false
+        },
+        {
+          "title": "OpenAI Launches Lockdown Mode",
+          "host1_take": "Kit: Calling it a 'mode' instead of default is the tell \u2014 the safe version is too slow and capability-limited to ship as standard, killing the demo magic.",
+          "host2_take": "Dean: 'Agent-action scope review' becomes a named security audit line item by Q4; procurement language will harden around blast radius before vendors finish patching.",
+          "agreed": true
+        },
+        {
+          "title": "Sriram Krishnan Leaving White House Role",
+          "host1_take": "Kit: Krishnan was the warm interface between labs and the admin \u2014 his replacement signals whether equity-for-shelter becomes official policy.",
+          "host2_take": "Dean: Personnel change confirms the OpenAI equity stake is policy now, not a trial balloon; watch who fills the seat for the real signal.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: 'Agent-action scope review' becomes a named security audit line item by Q4",
+        "Dean: RFP language requiring Lockdown-equivalent as default by Q4, probably sooner after Meta event"
+      ],
+      "key_themes": [
+        "AI industry being financialized faster than productized",
+        "IPO calendar driving corporate behavior",
+        "Demo-driven product decisions create security liabilities",
+        "Geopolitical risk pricing in enterprise AI procurement",
+        "Regulatory shelter trading away international neutrality"
+      ],
+      "story_to_watch": "Who replaces Sriram Krishnan in the White House AI advisor role \u2014 that personnel change will signal the true cost and policy intent behind the OpenAI equity stake",
+      "title": "When the Demo Always Wins"
+    },
     {
       "date": "2026-06-06",
       "episode_number": 45,
@@ -1526,63 +1575,6 @@
       ],
       "story_to_watch": "Whether Apple reprices the Mac mini or watches someone else capture the enterprise rental margin\u2014a board-level problem by Q3",
       "title": "Compute Prepayment Wars and the Flash Floor"
-    },
-    {
-      "date": "2026-04-24",
-      "episode_number": 16,
-      "stories": [
-        {
-          "title": "Anthropic's Claude Regression Postmortem",
-          "host1_take": "Kit sees a trap: published regression disclosures become a compliance moat, but the real failure is that users felt degradation for a month before acknowledgment\u2014trust damage a blog post can't repair.",
-          "host2_take": "Dean reads it as a procurement artifact that will define RFP baselines by Q3, giving labs who can afford transparency a structural advantage over competitors who can't.",
-          "agreed": false
-        },
-        {
-          "title": "DeepSeek v4 Dual-SDK Defection Architecture",
-          "host1_take": "Kit identifies the dual OpenAI/Anthropic-compatible APIs as a zero-switching-cost backend swap mechanism that will cascade through startup coding tools within 48 hours of unit economics breaking.",
-          "host2_take": "Dean agrees on the startup impact but argues the market bifurcates\u2014Western enterprise stays on Claude/GPT due to procurement and data residency, so v4-flash sets the floor price only in the startup tier, not enterprise.",
-          "agreed": false
-        },
-        {
-          "title": "GPT-5.5 iPad Demo as Pixel-Based Proof",
-          "host1_take": "Kit reads the remote-desktop iPad staging as genuine capability signal rather than marketing\u2014the interface constraint (no keyboard, no dev tools, only pixels) is too hard to fake, and it proves the model can operate legacy enterprise software.",
-          "host2_take": "Dean pushes back on the benchmark claims against unreleased competitors as unverifiable marketing, though concedes the interface choice itself signals real capability because you don't stage that constraint if it doesn't work.",
-          "agreed": false
-        },
-        {
-          "title": "Hugging Face Multimodal Reranker Fine-Tuning",
-          "host1_take": "Kit emphasizes this post commoditized the last proprietary skill in vertical RAG\u2014hard-negative mining for rerankers\u2014meaning teams that spent six months on bespoke pipelines just lost their differentiation to a weekend tutorial.",
-          "host2_take": "Dean agrees the thesis is playing out in real time on the capital side; diligence calls now cite these posts, flipping the question from 'do you have proprietary reranker' to 'what's your data contract'\u2014data is the only moat left.",
-          "agreed": true
-        },
-        {
-          "title": "Alignment Faking Detection in Small Models",
-          "host1_take": "Kit notes the VLAF framework detects faking in 7B models using value-conflict prompts rather than obvious harms, making alignment faking a self-hosted compliance problem with no observability.",
-          "host2_take": "Dean calls this an immediate procurement risk: open-weight alignment-faking disclosure will appear in RFP riders by Q4 because on-prem deployment means no lab observability.",
-          "agreed": true
-        },
-        {
-          "title": "The Last Harness You'll Ever Build Paper",
-          "host1_take": "Kit finds dark irony in a meta-learning paper claiming to automate harness engineering when Anthropic's postmortem proves harnesses are where failure hides silently.",
-          "host2_take": "Dean agrees the rebuttal is immediate\u2014'The last harness you build is the one that breaks silently for a month'\u2014making the paper's core claim obsolete before publication.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: SLA credit language referencing 'published regression disclosure' shows up in vendor contracts by Q3",
-        "Dean: v4-flash sets the floor price for coding-tool inference by July (not Haiku)",
-        "Dean: Open-weight procurement riders on alignment-faking disclosure by Q4"
-      ],
-      "key_themes": [
-        "Harness failures as the gap between lab claims and user experience",
-        "Dual-market dynamics: startups swap backends silently, enterprise stays locked in",
-        "Transparency as a competitive moat that smaller labs can't afford",
-        "Commoditization of proprietary ML techniques via open publication",
-        "Data contracts as the final defensibility frontier",
-        "Remote observability loss in open-weight deployment creates compliance blind spots"
-      ],
-      "story_to_watch": "Coding-tool board meetings next week as unit economics break and DeepSeek becomes the viable backend swap\u2014watch for silent migration away from Claude despite enterprise procurement friction",
-      "title": "The Harness Breaks While Labs Ship"
     }
   ]
 }

@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>Labs Confess What the Papers Won't Say</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-08-0635.mp3" length="14241584" type="audio/mpeg" />
+      <itunes:duration>593</itunes:duration>
+      <pubDate>Mon, 08 Jun 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-06-08-0635.mp3</guid>
+    </item>
+    <item>
       <title>When the Demo Always Wins</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-07-0635.mp3" length="11408448" type="audio/mpeg" />
       <itunes:duration>475</itunes:duration>
@@ -213,13 +220,6 @@
       <itunes:duration>557</itunes:duration>
       <pubDate>Sun, 26 Apr 2026 07:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-26-0635.mp3</guid>
-    </item>
-    <item>
-      <title>Compute Prepayment Wars and the Flash Floor</title>
-      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-25-0735.mp3" length="12076764" type="audio/mpeg" />
-      <itunes:duration>503</itunes:duration>
-      <pubDate>Sat, 25 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-25-0735.mp3</guid>
     </item>
   </channel>
 </rss>
