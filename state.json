@@ -1,6 +1,57 @@
 {
-  "episode_count": 46,
+  "episode_count": 47,
   "episodes": [
+    {
+      "date": "2026-06-08",
+      "episode_number": 47,
+      "stories": [
+        {
+          "title": "Strategic Attack Timing Breaks AI Control Evals",
+          "host1_take": "Kit argues that strategic attack timing isn't a red team edge case\u2014it's what every real misuse looks like, and eval literature has been measuring the easy case for two years while calling it safety.",
+          "host2_take": "Dean connects this to enterprise RFP riders already citing the framework, meaning carriers have priced monitor coverage using indiscriminate-attacker numbers that are materially mispriced.",
+          "agreed": true
+        },
+        {
+          "title": "Training Dynamics Teams Isolated from Capabilities",
+          "host1_take": "Kit sees treating models as static artifacts and patching symptoms post-hoc as equivalent to AI research with no CI/CD\u2014symptom debt compounds across runs and becomes unfixable.",
+          "host2_take": "Dean reveals that Anthropic and DeepMind staffed training-dynamics teams in Q1 but reporting to safety org, not capabilities, so insights don't flow back into the next training run.",
+          "agreed": true
+        },
+        {
+          "title": "Fine-Tuning Breaks Alignment by Default",
+          "host1_take": "Kit reads SafeGene's reusable safety adapters as a confession that every enterprise fine-tune sold in the past eighteen months is structurally unsafe unless customers bolt adapters on\u2014it's a workflow apology, not architecture.",
+          "host2_take": "Dean reveals carriers are quietly making safety-adapter use a coverage condition for fine-tuning E&O, so forcing adapter use reshapes the market even if it doesn't fix the underlying problem.",
+          "agreed": true
+        },
+        {
+          "title": "Self-Evolving Agents Without Supervision",
+          "host1_take": "Kit argues that agents building their own verification signals replicate the strategic attacker scenario from the control paper, except the strategic behavior emerges by design with no supervision\u2014agents become moving targets signed against SLAs.",
+          "host2_take": "Dean notes that startups are pitching continuous capability expansion as a covenant requirement for LPs seeking growth, but agents will work great until audited, when nobody can explain what they became.",
+          "agreed": true
+        },
+        {
+          "title": "Backup Reflexes Depend on Invisible Handoffs",
+          "host1_take": "Kit sees AEGIS backup reflexes as only as good as the trigger\u2014the actual product risk is whether the handoff to the stronger policy stays invisible to the system around it.",
+          "host2_take": "Dean observes robotics E&O premiums dropping where gated inference switching appears on spec sheets, making architecture itself a discount mechanism.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Adversarial timing assumption shows up as RFP language by year-end; carriers will push it before product teams catch up (same pattern as Lockdown Mode)",
+        "Dean: Safety-adapter use becomes a coverage condition in fine-tuning service contracts by Q4",
+        "Dean: Three pre-product startups are pitching open-world self-evolution for LLM agents with continuous capability expansion as a contractual covenant"
+      ],
+      "key_themes": [
+        "Insurance carriers writing architecture before labs ship it",
+        "Post-hoc safety patches as liability laundering",
+        "Strategic behavior emerging from unsupervised training",
+        "Eval frameworks becoming enterprise standard despite measuring easy cases",
+        "Symptom debt compounding across model runs",
+        "Vocabulary absorption outpacing product understanding"
+      ],
+      "story_to_watch": "How carriers' E&O language reshapes AI architecture faster than labs can innovate\u2014the market absorbing risk vocabulary before understanding the underlying problems",
+      "title": "Labs Confess What the Papers Won't Say"
+    },
     {
       "date": "2026-06-07",
       "episode_number": 46,
@@ -1532,49 +1583,6 @@
       ],
       "story_to_watch": "Whether Anthropic can write the agent-commerce insurance spec before the failure modes pile up\u2014whoever ships the first defensible indemnity product owns the category for two years",
       "title": "The Work Is Leaving the Room"
-    },
-    {
-      "date": "2026-04-25",
-      "episode_number": 17,
-      "stories": [
-        {
-          "title": "Google's $40B Anthropic Investment",
-          "host1_take": "Dean believes this is a compute prepayment with equity wrapper, not a real investment\u2014Google is selling five gigawatts of TPU capacity with performance targets Anthropic has likely already met.",
-          "host2_take": "Kit argues the deal structure forces Anthropic's engineering to optimize for TPU silicon while serving Amazon's Trainium simultaneously, which kills optimization at the kernel layer where engineering teams actually die.",
-          "agreed": false
-        },
-        {
-          "title": "DeepSeek V4's Million-Token Context",
-          "host1_take": "Dean predicts DeepSeek's floor pricing breaks coding-tool unit economics this quarter, not July, and floor prices reset valuation comps regardless of Western enterprise adoption.",
-          "host2_take": "Kit distinguishes between having million-token context and having one agents can actually use\u2014the quality degradation past 200K tokens in Western models will drive migration as an engineering decision, not just cost.",
-          "agreed": true
-        },
-        {
-          "title": "Mac Mini eBay Scalping",
-          "host1_take": "Dean calls Mac-mini-as-a-service rental layer within six months and sees this as the exact H100 scalping precursor from late 2023, triggering cloud arbitrage markets.",
-          "host2_take": "Kit identifies that the unified memory architecture makes a $599 Mac mini the cheapest serious local inference vendor on the market\u2014Apple priced it as hobbyist hardware when it ships enterprise compute.",
-          "agreed": true
-        },
-        {
-          "title": "South Korea's AI Image Prison Case",
-          "host1_take": "Dean emphasizes that first criminal conviction sets the multiplier other jurisdictions reference for years, making this case a lasting legal precedent.",
-          "host2_take": "Kit sees the watermarking provenance debate getting a real-world test case that triggers C2PA pitch deck updates across the industry next week.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Mac-mini-as-a-service rental layer within six months",
-        "Dean: DeepSeek V4-Flash resets coding-tool unit economics this quarter, not July"
-      ],
-      "key_themes": [
-        "compute as gated leverage",
-        "silicon lock-in and multi-cloud engineering debt",
-        "inference cost floor collapsing",
-        "process artifacts as first-class assets",
-        "AI image regulation and provenance"
-      ],
-      "story_to_watch": "Whether Apple reprices the Mac mini or watches someone else capture the enterprise rental margin\u2014a board-level problem by Q3",
-      "title": "Compute Prepayment Wars and the Flash Floor"
     }
   ]
 }
