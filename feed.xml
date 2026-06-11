@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>Safety Theater and the Gated Moat</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-11-0635.mp3" length="16817675" type="audio/mpeg" />
+      <itunes:duration>700</itunes:duration>
+      <pubDate>Thu, 11 Jun 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-06-11-0635.mp3</guid>
+    </item>
+    <item>
       <title>Apple Confesses: We Rent Intelligence from Google</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-09-0635.mp3" length="13471076" type="audio/mpeg" />
       <itunes:duration>561</itunes:duration>
@@ -213,13 +220,6 @@
       <itunes:duration>596</itunes:duration>
       <pubDate>Tue, 28 Apr 2026 07:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-28-0635.mp3</guid>
-    </item>
-    <item>
-      <title>Surface Narratives, Unverified Ground</title>
-      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-27-0635.mp3" length="13754452" type="audio/mpeg" />
-      <itunes:duration>573</itunes:duration>
-      <pubDate>Mon, 27 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-27-0635.mp3</guid>
     </item>
   </channel>
 </rss>
