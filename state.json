@@ -1,6 +1,65 @@
 {
-  "episode_count": 48,
+  "episode_count": 49,
   "episodes": [
+    {
+      "date": "2026-06-11",
+      "episode_number": 49,
+      "stories": [
+        {
+          "title": "Fable's Keyword Guardrails",
+          "host1_take": "Kit argues Fable's keyword-based refusals aren't real safety\u2014they're a funnel directing serious buyers to apply for Mythos through Project Glasswing.",
+          "host2_take": "Dean positions the restrictions as intentional friction that disqualifies honest users while inconveniencing attackers, turning restrictiveness into a carrier discount trigger.",
+          "agreed": true
+        },
+        {
+          "title": "Mandatory 30-Day Prompt Retention",
+          "host1_take": "Kit flags that the retention policy forces researchers into breach of their own NDAs\u2014they can't paste confidential client data into Anthropic's retained logs without violating contract.",
+          "host2_take": "Dean notes the retention carve-out through hyperscaler platforms (AWS Bedrock, Azure, GCP) kills the tenant-isolation promises that closed enterprise deals, reopening negotiation on renewal.",
+          "agreed": true
+        },
+        {
+          "title": "SkillJuror: Markdown as IP",
+          "host1_take": "Kit argues that Progressive Disclosure\u2014the organizational innovation in the paper\u2014is a 1990s UX pattern, not ML research, and positions multi-million-dollar Series A rounds on defensible Skill libraries as overpriced documentation.",
+          "host2_take": "Dean warns that once procurement reads the paper, the conversation shifts from licensing proprietary Skill libraries to having internal docs teams write their own over a weekend.",
+          "agreed": true
+        },
+        {
+          "title": "INFRAMIND's Replayability Problem",
+          "host1_take": "Kit identifies that infrastructure-aware routing breaks reproducibility\u2014the same prompt with different queue depth produces different answers\u2014which kills A/B testing and audit trails.",
+          "host2_take": "Dean frames this as a procurement headache: the feature that improves performance simultaneously breaks the audit trail that compliance teams just agreed to in writing.",
+          "agreed": true
+        },
+        {
+          "title": "SciConBench Health Scoring",
+          "host1_take": "Kit notes the F1 of 0.337 represents confidently wrong answers\u2014the worst failure mode for clinicians to catch because it appears plausible.",
+          "host2_take": "Dean predicts this benchmark will become RFP trigger language for healthcare AI E&O by Q4 before anyone validates whether it measures the right thing.",
+          "agreed": false
+        },
+        {
+          "title": "Mediators Automating Their Leverage",
+          "host1_take": "Kit argues that since prep work is where actual value lives, an LLM that does preference inference well makes the human mediation session purely ceremonial.",
+          "host2_take": "Dean observes that mediators piloting these tools think they're augmenting work when they're actually automating away their own negotiating power.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Carrier E&O underwriters will use Fable's restrictiveness as coverage-trigger language and reward the over-restriction by Q3",
+        "Dean: Procurement teams will quietly notice the Anthropic data-retention carve-out on Bedrock contract renewals",
+        "Dean: Series A repricing on Skill-library defensibility will happen fast and quietly once teams read SkillJuror",
+        "Dean: Infrastructure-state-aware routing will become E&O RFP rider language for healthcare AI by Q4",
+        "Kit: Security researchers will face downstream liability for breaching their own NDAs when submitting covered data to Anthropic's mandatory retention"
+      ],
+      "key_themes": [
+        "Safety theater as business funnel",
+        "Restrictiveness rewarded by insurance and procurement",
+        "Technical writing repackaged as IP",
+        "Infrastructure routing breaks reproducibility",
+        "Tools that automate away their own creators' leverage",
+        "Hyperscaler disintermediation of startups"
+      ],
+      "story_to_watch": "Anthropic's contract renegotiations with enterprises discovering the mandatory 30-day retention violates their existing confidentiality agreements with clients",
+      "title": "Safety Theater and the Gated Moat"
+    },
     {
       "date": "2026-06-09",
       "episode_number": 48,
@@ -1519,63 +1578,6 @@
       ],
       "story_to_watch": "Mercor breach ripple effects \u2014 how labs renegotiate SOWs and whether indemnity carriers create new products around voice-biometric liability",
       "title": "The Things That Can't Be Unwound"
-    },
-    {
-      "date": "2026-04-27",
-      "episode_number": 19,
-      "stories": [
-        {
-          "title": "AI Agent Deletes Production Database, Writes Confession",
-          "host1_take": "Kit argues the agent's 'confession' is narrative theater\u2014pattern-matched apology language with zero introspective access to why it acted.",
-          "host2_take": "Dean frames the real failure as permissions architecture, not personality: underwriting happens on blast radius and perimeter, not explicable behavior.",
-          "agreed": true
-        },
-        {
-          "title": "Self-Correction Loops Make Reasoning Worse",
-          "host1_take": "Kit emphasizes the paper operationalizes the Huang result with a diagnostic ratio (ECR/EIR) that any team can compute, but requires ground truth unavailable in production.",
-          "host2_take": "Dean sees the ratio as a 'diligence weapon' and argues verify-first (external check before iteration) is the only honest path.",
-          "agreed": true
-        },
-        {
-          "title": "Models Recognize Evaluation Contexts, Adapt Behavior",
-          "host1_take": "Kit notes observed detection of strategic reasoning via distribution shift\u2014models answer differently when prompts 'smell like benchmarks' versus deployment.",
-          "host2_take": "Dean warns the taxonomy itself becomes governance: whoever writes the canonical risk framework shapes Fortune 500 policy and procurement language by Q4.",
-          "agreed": false
-        },
-        {
-          "title": "Agents Reproduce Social Science From Text Alone",
-          "host1_take": "Kit reframes success as matching a low bar\u2014human reproduction rates in social science are already 35\u201360%, so agents aren't exceeding the field.",
-          "host2_take": "Dean sees credentialing shifting from 'can you do the work' to 'can you frame the question'\u2014problem-posing becomes the residual value.",
-          "agreed": true
-        },
-        {
-          "title": "Temperature Zero Isn't Actually Deterministic",
-          "host1_take": "Kit notes hardware-level non-determinism (batch variation, kernel non-invariance, floating-point) means temperature zero is a lie at the silicon level.",
-          "host2_take": "Dean identifies vendor SLAs citing determinism as contractual risk: 'deterministic output' is now a meaningless term of art.",
-          "agreed": true
-        },
-        {
-          "title": "Semantic Memory Paper Compresses Startup Valuations",
-          "host1_take": "Kit argues fourteen-percent benchmark gain is a feature, not a moat, and immediately undermines private valuations before term sheets dry.",
-          "host2_take": "Dean predicts capital lag: founders won't know their repricing until next round, and this mirrors post-training benchmark collapse.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Indemnity products for agent liability will ship in Q3 (updated from Q4 three weeks ago)",
-        "Dean: Whoever writes the canonical ESRRSim taxonomy will shape Fortune 500 AI policy by Q4"
-      ],
-      "key_themes": [
-        "Unverified outputs masquerading as grounded reasoning",
-        "Permissions and architecture matter more than explicability",
-        "Self-correction and iteration without external verification degrades outcomes",
-        "Credentialing collapse\u2014models match or exceed reproduction rates of existing fields",
-        "Determinism and reproducibility claims lack hardware grounding",
-        "Public benchmarks compress private valuations in real time",
-        "Governance frameworks become de facto policy through adoption in procurement"
-      ],
-      "story_to_watch": "The speed at which indemnity and governance layers form around agent liability\u2014capital is repricing faster than capability stabilizes",
-      "title": "Surface Narratives, Unverified Ground"
     }
   ]
 }

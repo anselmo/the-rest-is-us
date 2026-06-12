@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>Silent Quality Degradation and Pricing Events</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-12-0635.mp3" length="13793950" type="audio/mpeg" />
+      <itunes:duration>574</itunes:duration>
+      <pubDate>Fri, 12 Jun 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-06-12-0635.mp3</guid>
+    </item>
+    <item>
       <title>Safety Theater and the Gated Moat</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-06-11-0635.mp3" length="16817675" type="audio/mpeg" />
       <itunes:duration>700</itunes:duration>
@@ -213,13 +220,6 @@
       <itunes:duration>550</itunes:duration>
       <pubDate>Wed, 29 Apr 2026 07:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-29-0635.mp3</guid>
-    </item>
-    <item>
-      <title>The Things That Can't Be Unwound</title>
-      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-28-0635.mp3" length="14324340" type="audio/mpeg" />
-      <itunes:duration>596</itunes:duration>
-      <pubDate>Tue, 28 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-28-0635.mp3</guid>
     </item>
   </channel>
 </rss>
