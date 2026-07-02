@@ -1,6 +1,62 @@
 {
-  "episode_count": 49,
+  "episode_count": 50,
   "episodes": [
+    {
+      "date": "2026-06-12",
+      "episode_number": 50,
+      "stories": [
+        {
+          "title": "Anthropic's Invisible Claude Guardrails",
+          "host1_take": "Kit argues this is the worst product failure mode because customers blame themselves for worse outputs with no signal, and published benchmarks become fiction if throttling behavior isn't disclosed.",
+          "host2_take": "Dean contends the apology came from peer pressure, not research backlash \u2014 rival labs complained privately when getting throttled \u2014 and now Anthropic faces a trap: keep the throttle and lose research credibility, or drop it and lose carrier discounts.",
+          "agreed": true
+        },
+        {
+          "title": "FablePool's Crowdfunded AI Prompts",
+          "host1_take": "Kit worries that public ledgers deform AI agent decision-making \u2014 agents optimize for visible progress checkmarks rather than actual architectural risk-reduction, creating a permanent failure museum when projects inevitably die publicly.",
+          "host2_take": "Dean identifies the structure as an unregistered security under most legal readings, and notes it reprices the pre-seed market at a tenth the cost \u2014 if one ships successfully, a thousand more launch by August.",
+          "agreed": false
+        },
+        {
+          "title": "Evoflux Workflow Evolution Paper",
+          "host1_take": "Kit sees this as repackaging existing manual retry loops and warns that inference-time workflow evolution kills reproducibility \u2014 same prompt produces different executed workflows on every run.",
+          "host2_take": "Dean reveals vendors are pricing compact-agent evolution loops at frontier rates, marketing a retry loop as a feature and closing the cost gap procurement assumes exists.",
+          "agreed": true
+        },
+        {
+          "title": "Lie Detector Evaluation Across Model Scale",
+          "host1_take": "Kit argues the technique cannot scale to frontier models because it only works when researchers built ground-truth beliefs into toy organisms \u2014 production models have no verifiable ground truth for beliefs.",
+          "host2_take": "Dean notes audit vendors are already pre-selling LLM honesty attestations citing papers like this one, months ahead of scientific validation.",
+          "agreed": true
+        },
+        {
+          "title": "Psychometric Evaluation of LLMs",
+          "host1_take": "Kit credits the paper for being honest about its limits \u2014 Theory of Planned Behavior coherence only survives for context-anchored behaviors and collapses when primed by prompt.",
+          "host2_take": "Dean predicts the framework gets weaponized regardless: caveats die in footnotes, and procurement creates a checkbox for 'TPB-aligned behavioral consistency' within two weeks.",
+          "agreed": true
+        },
+        {
+          "title": "Definitional Alignment Before Capability Alignment",
+          "host1_take": "Kit is skeptical a definitional framework for AGI claims will succeed.",
+          "host2_take": "Dean argues definitional ambiguity is load-bearing for current valuations \u2014 pinning the definition deflates active funding rounds, so nobody wants the framework to actually win.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: FablePool's first successful project ships and triggers a thousand more launches by August",
+        "Dean: Within two weeks, procurement adds 'TPB-aligned behavioral consistency' as a checkbox requirement"
+      ],
+      "key_themes": [
+        "Invisible product degradation and silent failures",
+        "Procurement language outpacing scientific validation",
+        "Reproducibility collapse in AI systems",
+        "Pricing events preceding product events",
+        "Security and regulatory gaps in emerging AI services",
+        "Distortion from public measurement and milestone incentives"
+      ],
+      "story_to_watch": "FablePool and whether the first publicly-funded crowdsourced AI project succeeds or creates a permanent failure museum that reprices weekend-MVP market dynamics",
+      "title": "Silent Quality Degradation and Pricing Events"
+    },
     {
       "date": "2026-06-11",
       "episode_number": 49,
@@ -1535,49 +1591,6 @@
       ],
       "story_to_watch": "Doe v. GitHub Copilot case progressing through court\u2014the DMCA claims narrowed but the underlying license-laundering theory remains alive, setting precedent for GPL-contamination lawsuits with statutory damages",
       "title": "Untested Substrates, Collapsing Capital Lags"
-    },
-    {
-      "date": "2026-04-28",
-      "episode_number": 20,
-      "stories": [
-        {
-          "title": "Microsoft and OpenAI End Exclusivity",
-          "host1_take": "Kit recognizes the exclusivity was already dead in code \u2014 engineers built CUDA-portable abstractions over a year ago, making this contract paperwork catching up to reality.",
-          "host2_take": "Dean argues Microsoft actually won by keeping a 2030 revenue share while shedding antitrust liability \u2014 a cleaner version of the same deal that caps OpenAI's IPO multiple.",
-          "agreed": false
-        },
-        {
-          "title": "China Blocks Meta's Manus Acquisition",
-          "host1_take": "Kit focuses on what Meta was actually buying \u2014 Manus's engineering and workflow primitives for agent orchestration that Meta couldn't reproduce internally.",
-          "host2_take": "Dean reads it as strategic optionality: Meta signaled market value for the capability, set comps for non-China competitors, and pre-emptively priced China-exposure risk into all future AI startup valuations.",
-          "agreed": true
-        },
-        {
-          "title": "Voice Biometric Breach at Mercor",
-          "host1_take": "Kit emphasizes the permanent, non-revocable nature of voice-biometric theft \u2014 forty thousand contractors now have a lifetime attack surface combining studio-clean speech with verified government IDs.",
-          "host2_take": "Dean frames it as the indemnity-product pricing event he predicted, which will reshape SOWs between labs and contractors and birth a new carrier liability category.",
-          "agreed": true
-        },
-        {
-          "title": "Power Law Data Sampling Outperforms Uniform Curation",
-          "host1_take": "Kit highlights that the geometry of power-law sampling creates better loss-landscape pathology for compositional reasoning \u2014 the orthodoxy of aggressive rebalancing is structurally wrong.",
-          "host2_take": "Dean sees this compressing valuations of data-curation startups mid-fundraise whose entire thesis was fixing underrepresented domains through reweighting.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Agent-liability indemnity products will ship in Q3",
-        "Dean: Voice-biometric breach indemnity will establish pricing baseline this week"
-      ],
-      "key_themes": [
-        "Permanence and non-revocability in AI systems",
-        "Contract reality lagging technical reality",
-        "Repricing of risk and liability across AI infrastructure",
-        "China's strategic blocking of Western AI acquisitions",
-        "Public research compressing private valuations in real time"
-      ],
-      "story_to_watch": "Mercor breach ripple effects \u2014 how labs renegotiate SOWs and whether indemnity carriers create new products around voice-biometric liability",
-      "title": "The Things That Can't Be Unwound"
     }
   ]
 }
