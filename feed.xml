@@ -12,6 +12,13 @@
       <itunes:category text="Tech News" />
     </itunes:category>
     <item>
+      <title>Papers as Pricing Events, Not Truth</title>
+      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-07-03-0941.mp3" length="13632826" type="audio/mpeg" />
+      <itunes:duration>567</itunes:duration>
+      <pubDate>Fri, 03 Jul 2026 07:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-07-03-0941.mp3</guid>
+    </item>
+    <item>
       <title>Papers as Procurement Ammunition</title>
       <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-07-02-0635.mp3" length="13931876" type="audio/mpeg" />
       <itunes:duration>580</itunes:duration>
@@ -213,13 +220,6 @@
       <itunes:duration>572</itunes:duration>
       <pubDate>Fri, 01 May 2026 07:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-05-01-0635.mp3</guid>
-    </item>
-    <item>
-      <title>Moats Collapse Faster Than Decks Update</title>
-      <enclosure url="https://anselmo.github.io/the-rest-is-us/episodes/2026-04-30-0651.mp3" length="12722511" type="audio/mpeg" />
-      <itunes:duration>530</itunes:duration>
-      <pubDate>Thu, 30 Apr 2026 07:00:00 +0100</pubDate>
-      <guid isPermaLink="true">https://anselmo.github.io/the-rest-is-us/episodes/2026-04-30-0651.mp3</guid>
     </item>
   </channel>
 </rss>

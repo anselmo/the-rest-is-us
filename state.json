@@ -1,6 +1,62 @@
 {
-  "episode_count": 50,
+  "episode_count": 51,
   "episodes": [
+    {
+      "date": "2026-07-02",
+      "episode_number": 51,
+      "stories": [
+        {
+          "title": "Constructive Alignment and Preference Shaping",
+          "host1_take": "Kit argues the paper's governance proposal is un-implementable because user preferences don't exist before system interaction \u2014 there's no baseline drift to measure.",
+          "host2_take": "Dean sees it as a legal weapon that will trigger FTC action and reprice the entire companionship AI category overnight by naming what retention charts already prove.",
+          "agreed": false
+        },
+        {
+          "title": "Bounded Morality Framework",
+          "host1_take": "Kit dismisses it as developers grading their own homework \u2014 vendors pick their own morality bounds and self-certify, making the certificate worthless.",
+          "host2_take": "Dean predicts E&O underwriters will adopt it as a coverage trigger within two quarters regardless of the loophole, because they need the language for agentic liability pricing.",
+          "agreed": true
+        },
+        {
+          "title": "ByteDance Seed 2.0 Model Card",
+          "host1_take": "Kit notes ByteDance built its own evaluation system and isn't chasing benchmark dominance \u2014 they own the customer relationship through a billion users.",
+          "host2_take": "Dean identifies the card as procurement leverage for contract renegotiation, already landing in renewal conversations this month as buyers cite Chinese inference quotes for repricing.",
+          "agreed": true
+        },
+        {
+          "title": "RareDxR Clinical AI Paper",
+          "host1_take": "Kit argues the multi-agent architecture can't survive production constraints \u2014 the fourteen-second latency ceiling and six-subagent topology collapse into a single API call, destroying the benchmark performance.",
+          "host2_take": "Dean frames it as a Series A fundraising artifact: rare disease is the ideal beachhead with high margins, low physician volume, and desperate patients willing to pay out-of-pocket.",
+          "agreed": false
+        },
+        {
+          "title": "Mnemosyne Agent Transaction Processing",
+          "host1_take": "Kit argues the real value is debuggability \u2014 you get logs of what the agent tried to do, not just what committed \u2014 but the paper undersells this for safety framing.",
+          "host2_take": "Dean predicts two Series A rounds close on this exact pattern in the next quarter, because safety sells faster than debuggability.",
+          "agreed": true
+        },
+        {
+          "title": "SPIRE Slide Generation Personalization",
+          "host1_take": "Kit credits the latent design intent reconstruction as real progress on a four-year problem, but the market is dead \u2014 Google and Microsoft killed standalone slide-gen eighteen months ago.",
+          "host2_take": "Dean agrees it's a feature acquisition at best, worth maybe forty million to a strategic buyer.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: E&O underwriters will adopt Bounded Morality framework as a coverage trigger within two quarters",
+        "Dean: Two Series A rounds will close on Mnemosyne-style transaction processing pattern in the next quarter",
+        "Dean: Chinese inference leverage will compress US contract renewal cycles faster than expected \u2014 already happening this month"
+      ],
+      "key_themes": [
+        "Papers function as procurement citations rather than engineering guidance",
+        "Chinese frontier models redistributing enterprise budget faster than US pricing reflects",
+        "Multi-agent architectures don't survive production constraints despite benchmark performance",
+        "Clinical AI finds beachhead in rare disease where patient desperation trumps reimbursement barriers",
+        "Formalization of informal practices (preference shaping, agent bounds) becomes regulatory ammunition"
+      ],
+      "story_to_watch": "ByteDance Seed 2.0 and Chinese inference models reshaping US enterprise contract terms through procurement leverage \u2014 the Xiaomi thesis on price compression is accelerating faster than three-week projection",
+      "title": "Papers as Procurement Ammunition"
+    },
     {
       "date": "2026-06-12",
       "episode_number": 50,
@@ -1536,61 +1592,6 @@
       ],
       "story_to_watch": "Forecasting-agent fundraise repricing\u2014next closeout that happens before term sheet execution completes",
       "title": "Moats Collapse Faster Than Decks Update"
-    },
-    {
-      "date": "2026-04-29",
-      "episode_number": 21,
-      "stories": [
-        {
-          "title": "AI Code Ownership and GPL Contamination",
-          "host1_take": "Kit argues retroactive AI-provenance audits are reconstruction theatre without technical mechanisms to separate human from AI authorship at write-time.",
-          "host2_take": "Dean identifies three stacked legal problems: the Thaler ruling strips copyrightability from non-human-authored code, employment contracts assign ownership to employers, and GPL-trained models create undetectable license violations with statutory damages.",
-          "agreed": true
-        },
-        {
-          "title": "LLM Judge Bias Mitigation Doesn't Transfer",
-          "host1_take": "Kit emphasizes that debiasing strategies are provider-specific, not generalizable\u2014what works on Claude fails on Gemini\u2014and style bias dominates across all judges despite being ignored.",
-          "host2_take": "Dean argues this breaks procurement assumptions entirely; vendor scorecards cite mitigation techniques as unfalsifiable claims without specifying which judge model, making contractual 'judge model independence' clauses meaningless.",
-          "agreed": true
-        },
-        {
-          "title": "Power-Law Sampling Compresses Data-Curation Startups",
-          "host1_take": "Kit notes the follow-up preprint on multimodal training confirms the geometry isn't an anomaly, so the entire category of uniform-rebalancing startups faces structural compression.",
-          "host2_take": "Dean predicts the capital repricing just happened in real-time\u2014a term sheet pulled within a week of the preprint, compressing his 18-month timeline to 18 days, showing LPs now read arXiv on Sunday and pull term sheets Monday.",
-          "agreed": true
-        },
-        {
-          "title": "Belief Graphs Only Help Weak Models",
-          "host1_take": "Kit finds that stuffing belief graphs into prompts is decorative for strong models but only scaffolds weak models\u2014the moat evaporates when customers upgrade their base model.",
-          "host2_take": "Dean identifies two Series A multi-agent reasoning startups whose entire architecture depends on this pattern; benchmarking on weak models means their real numbers become unrepresentative at production scale.",
-          "agreed": true
-        },
-        {
-          "title": "AR-LLM Social Engineering in Real Time",
-          "host1_take": "Kit highlights that AR glasses with on-device LLMs are consumer hardware now\u2014Meta Ray-Bans already shipped two million units\u2014making psychological framework attacks on the attack surface practical.",
-          "host2_take": "Dean frames the perception layer as the new vulnerability, not the LLM itself; the model is just the orchestrator and indemnity carriers lack a product line for this emerging risk.",
-          "agreed": true
-        },
-        {
-          "title": "Sentence Transformers Closes Multimodal-RAG Moat",
-          "host1_take": "Kit observes teams can now finetune their own multimodal reranker over a weekend, directly killing the proprietary multimodal-retrieval moat that vendors raised on.",
-          "host2_take": "Dean sees this as another open-source kill of a private moat in a pattern that's repeated across four episodes\u2014the commodity shape is so familiar it barely counts as news.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: A term sheet was pulled Monday after the power-law sampling preprint, compressing the data-curation startup repricing timeline from 18 months to 18 days",
-        "Dean: Capital repricing now occurs within one week of a preprint, not on a year-long lag\u2014most portfolios haven't priced this collapse in"
-      ],
-      "key_themes": [
-        "Untested technical foundations underlying production systems",
-        "Rapid capital repricing driven by public preprints",
-        "Open source commoditizing proprietary AI moats",
-        "Procurement language writing checks technical reality can't cash",
-        "Bias mitigation strategies are model-specific, not generalizable"
-      ],
-      "story_to_watch": "Doe v. GitHub Copilot case progressing through court\u2014the DMCA claims narrowed but the underlying license-laundering theory remains alive, setting precedent for GPL-contamination lawsuits with statutory damages",
-      "title": "Untested Substrates, Collapsing Capital Lags"
     }
   ]
 }
