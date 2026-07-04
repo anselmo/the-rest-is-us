@@ -1,6 +1,62 @@
 {
-  "episode_count": 51,
+  "episode_count": 52,
   "episodes": [
+    {
+      "date": "2026-07-03",
+      "episode_number": 52,
+      "stories": [
+        {
+          "title": "Lie Detector Scaling in Preference Learning",
+          "host1_take": "Kit argues the paper measures evasion learning and stagecraft, not honesty\u2014models learn to recognize when they're being tested rather than becoming truthful.",
+          "host2_take": "Dean concedes Kit's technical critique but notes it doesn't matter because insurers are already drafting riders with blank percentage fields waiting for this exact citable number to fill them.",
+          "agreed": false
+        },
+        {
+          "title": "CreativityNeuro Weight Steering",
+          "host1_take": "Kit contends the benchmark (three-word DAT) misses the real failure mode of mode collapse on longer outputs, and the steering trades coherence for divergence in ways that don't show up in evaluation.",
+          "host2_take": "Dean acknowledges the tradeoff problem but emphasizes the market licenses before peer-review anyway, ships incoherent outputs, and the vivid term 'artificial hivemind effect' becomes plaintiff ammunition.",
+          "agreed": true
+        },
+        {
+          "title": "Janus Agentic Permission Management",
+          "host1_take": "Kit argues the paper's AI-augmented permission dialogs measurably increase click-through and reduce safety by helping users stop reading, opposite to the stated goal.",
+          "host2_take": "Dean notes auditor language already shifted to require documented human-in-the-loop for permissions, making Janus the checkbox vendors needed\u2014compliance that is provably less safe.",
+          "agreed": true
+        },
+        {
+          "title": "Garden of Forking Paths Personas",
+          "host1_take": "Kit sees this as a reproducibility disaster that obscures what it claims to reveal\u2014users try twelve personas, discard ten, present two aligned with their client.",
+          "host2_take": "Dean frames it as a 90% cost reduction on expert-witness consulting, predicting litigation wrappers ship by September and both sides subscribe in an arms race, with no logging requirements to enable deniability.",
+          "agreed": true
+        },
+        {
+          "title": "When Should Service Agents Reconsider",
+          "host1_take": "Kit flags the reconsider signal fires post-write, meaning the refund is already processed when the agent decides to think harder.",
+          "host2_take": "Dean notes it doesn't matter because the RFP language will adopt it anyway\u2014procurement doesn't read timing diagrams.",
+          "agreed": true
+        },
+        {
+          "title": "Atlassian RLVR Jira/Confluence Proof of Concept",
+          "host1_take": "Kit identifies the overfit by design as the intentional strategy.",
+          "host2_take": "Dean frames it as not research but a Q4 renewal-cycle moat announcement\u2014Atlassian establishing ownership of the agent layer before Microsoft or ServiceNow move in, with procurement as the real audience.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: First litigation-focused wrapper for Forking Paths ships by September",
+        "Dean: Fourteen percent undetected deception metric ends up in E&O coverage documents by end of quarter"
+      ],
+      "key_themes": [
+        "Papers as commercial artifacts masquerading as research",
+        "Metrics that measure the wrong thing become insurance floors",
+        "Compliance theater incentivizes provably unsafe architectures",
+        "Auditors enable failure modes by checking boxes without reading methodology",
+        "Citation velocity matters more than validation",
+        "Procurement reads abstracts; engineers read limitations"
+      ],
+      "story_to_watch": "Janus permission system adoption\u2014the first time a compliance-mandated feature measurably makes user safety worse at scale",
+      "title": "Papers as Pricing Events, Not Truth"
+    },
     {
       "date": "2026-07-02",
       "episode_number": 51,
@@ -1537,61 +1593,6 @@
       ],
       "story_to_watch": "PyTorch Lightning compromise and downstream weight provenance claims in enterprise contracts \u2014 the insurance and remediation cascade",
       "title": "Provenance Theater Everywhere"
-    },
-    {
-      "date": "2026-04-30",
-      "episode_number": 22,
-      "stories": [
-        {
-          "title": "DX Terminal Pro: Onchain Agent Markets",
-          "host1_take": "Kit argues the natural-language strategy layer is decorative theater for trust while the typed controls do the actual safety work\u2014the operator is writing insurance policy in code.",
-          "host2_take": "Dean frames this as loss-leader infrastructure designed to harvest behavioral datasets from three thousand funded agents, with the indemnity layer being the real product spec for next-generation platforms.",
-          "agreed": false
-        },
-        {
-          "title": "Cursor Camp and IDE Moats",
-          "host1_take": "Kit sees Cursor Camp as a switching-cost play\u2014building social graph lock-in where leaving the IDE means losing friendships, creating the only moat Microsoft can't replicate.",
-          "host2_take": "Dean agrees the community is the only defensible narrative as models and IDE features commoditize, and the timing against term sheets is strategic.",
-          "agreed": true
-        },
-        {
-          "title": "Multimodal Reranker Training Goes Open",
-          "host1_take": "Kit highlights that Hugging Face's post enables any team with an H100 to train competitive multimodal rerankers in under forty-eight hours, calling it the kill shot.",
-          "host2_take": "Dean sees this as part of a campaign that demonstrates the real news is the accelerating cadence\u2014moat repricing now happens before procurement cycles even begin.",
-          "agreed": true
-        },
-        {
-          "title": "BTF-2 Forecasting Benchmark",
-          "host1_take": "Kit argues the benchmark's resolution of point-zero-zero-four Brier is smaller than random seed variance, meaning all prior forecasting-agent leaderboard claims sit inside the noise floor.",
-          "host2_take": "Dean agrees and notes that at least one forecasting-agent startup's entire enterprise pitch is built on a Brier-score lead that BTF-2 just invalidated.",
-          "agreed": true
-        },
-        {
-          "title": "LLM Safety for Robotic Health Attendants",
-          "host1_take": "Kit notes that while the eval shows fifty-four percent mean violation rate, the simulation results don't transfer to deployed liability on real hardware.",
-          "host2_take": "Dean agrees the eval is ununderwritable for carriers until someone runs it on actual robots in actual wards, leaving the policy gap open.",
-          "agreed": true
-        },
-        {
-          "title": "OMEGA Automated ML Framework",
-          "host1_take": "Kit observes that beating scikit-learn baselines is the AutoML threshold from 2018, so the pipeline shape matters more than leaderboard scores.",
-          "host2_take": "Dean agrees the framework contribution is the story, not the benchmarks.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Next forecasting-agent fundraise gets repriced before it closes, following the pattern of the data-curation term sheet pulled Monday"
-      ],
-      "key_themes": [
-        "moat creation lag collapsing to days",
-        "papers repricing funded deals within hours",
-        "commoditization of model layers forcing community defensibility",
-        "benchmark ownership as governance tool",
-        "capital repricing outpacing vendor deck updates",
-        "gap between paper and product disappearing"
-      ],
-      "story_to_watch": "Forecasting-agent fundraise repricing\u2014next closeout that happens before term sheet execution completes",
-      "title": "Moats Collapse Faster Than Decks Update"
     }
   ]
 }
