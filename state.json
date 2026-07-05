@@ -1,6 +1,63 @@
 {
-  "episode_count": 52,
+  "episode_count": 53,
   "episodes": [
+    {
+      "date": "2026-07-04",
+      "episode_number": 53,
+      "stories": [
+        {
+          "title": "Mythos CVE Spike and Insurance Repricing",
+          "host1_take": "Dean believes Anthropic deliberately triggered insurance market repricing by shipping Mythos to partners in April, priming exclusion riders that activated in June when CVE numbers spiked\u2014the announcement was the actuarial trigger, not the vulnerability count.",
+          "host2_take": "Kit initially questions whether the 1,500 CVEs represent novel vulnerabilities or the same bug class replicated across codebases, but concedes the inflated number becomes the market's reality regardless, and that coordinated disclosure windows are now collapsing under patch volume.",
+          "agreed": false
+        },
+        {
+          "title": "Claude Fable Removal Forces Local Model Adoption",
+          "host1_take": "Dean argues Fable's removal is the single most bullish event for local models this year because it forced enterprise buyers to demand model-portability clauses in Q3 contract renewals\u2014portability now outweighs quality in purchasing decisions.",
+          "host2_take": "Kit concedes the market point but warns that enterprises are trading contextual triage accuracy for provider portability, and this quality debt will surface somewhere because swapping vendors doesn't close the capability gap.",
+          "agreed": false
+        },
+        {
+          "title": "Dan Luu's Agentic Coding Failure Modes",
+          "host1_take": "Dean reveals that Series B agentic-coding rounds have been quietly repricing since April, and LPs are no longer convinced by throughput metrics\u2014Luu's post documenting confident wrongness at scale is the artifact LP conversations have been waiting for.",
+          "host2_take": "Kit reads Luu's piece as calibration rather than dunking, showing that scaling failure in parallel (a thousand agents doing the wrong thing) is a category error that compute can't solve.",
+          "agreed": true
+        },
+        {
+          "title": "IBM's ScarfBench Java Migration Benchmark",
+          "host1_take": "Dean interprets ScarfBench as IBM Consulting building a moat\u2014the benchmark is aimed at procurement in a ten-billion-dollar services market, allowing IBM to cite agent-assisted migration pricing against Accenture and TCS.",
+          "host2_take": "Kit sees it as a legitimate contra-example to Luu's critique because Java migration has bounded refactors, no UI ambiguity, and test-based ground truth\u2014but warns procurement will cite it broadly for tasks without clear success criteria.",
+          "agreed": false
+        },
+        {
+          "title": "Hugging Face-Cerebras Real-Time Voice Pipeline",
+          "host1_take": "Dean frames this as a Cerebras round-timing signal needed before their next fundraising event.",
+          "host2_take": "Kit emphasizes the product unlock: sub-300ms round-trip latency crosses the perceptual threshold where voice feels like conversation rather than walkie-talkie, enabling interruption and a category shift.",
+          "agreed": false
+        },
+        {
+          "title": "Dharma AI's Specialization Thesis",
+          "host1_take": "Dean identifies this as a fundraising artifact positioning generalists-lose-specialists-win thesis for vertical-AI fund audiences.",
+          "host2_take": "Kit argues the technical argument is thin because frontier generalists keep swallowing specialist wins every eighteen months, but concedes it doesn't matter for the fundraising round.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Model-portability clauses will appear in Q3 contract renewals as enterprise legal boilerplate",
+        "Dean: Which voice startups pivot to the Cerebras-Hugging Face stack in ninety days will signal category adoption",
+        "Dean: Series B agentic-coding pricing will soften further as LP conversations shift from throughput to output quality"
+      ],
+      "key_themes": [
+        "AI capability demonstrations externalize costs downstream",
+        "Market repricing happens quietly before public announcements",
+        "Insurance and legal structures respond faster than technical solutions",
+        "Procurement cites benchmarks beyond their scope",
+        "Confidence in wrong answers at scale is the operational risk",
+        "Portability now outweighs capability in enterprise purchasing"
+      ],
+      "story_to_watch": "Series B agentic-coding repricing and whether the Luu-documented failure modes become standard LP due-diligence questions in funding conversations",
+      "title": "Anthropic's Capability Tax on Everyone Else"
+    },
     {
       "date": "2026-07-03",
       "episode_number": 52,
@@ -1539,60 +1596,6 @@
       ],
       "story_to_watch": "Sovereign eval shops quietly becoming the most powerful actors in AI pricing and procurement by controlling what can be publicly proven",
       "title": "Demos, Contracts, and the Eval Bottleneck"
-    },
-    {
-      "date": "2026-05-01",
-      "episode_number": 23,
-      "stories": [
-        {
-          "title": "PyTorch Lightning Supply Chain Compromise",
-          "host1_take": "Kit: The JavaScript payload hidden in Python packages breaks traditional SCA tooling entirely \u2014 cross-language obfuscation means audited dependencies are a fiction.",
-          "host2_take": "Dean: This voids IP-warranty clauses in enterprise contracts because you can't prove weight provenance post-compromise, and E&O policies explicitly exclude training infrastructure supply-chain losses.",
-          "agreed": true
-        },
-        {
-          "title": "Claude Code Competitor-Name Pricing",
-          "host1_take": "Kit: Silent upcharging based on commit message content ruptures UX trust and makes deterministic pricing assumptions in RFPs meaningless.",
-          "host2_take": "Dean: This is behavioral pricing encoded into model weights or system prompt \u2014 you can't audit or proxy-filter it, and the remediation clause itself becomes the trigger.",
-          "agreed": true
-        },
-        {
-          "title": "LLM End-of-Life Migration Framework",
-          "host1_take": "Kit: The open-sourced Bayesian framework kills the services moat unless teams actually calibrate evals to human judgment \u2014 the expensive step everyone cuts.",
-          "host2_take": "Dean: The moat survives in the unsexy human-judgment services layer, not the tooling, so migration-startup valuations restructure rather than collapse.",
-          "agreed": false
-        },
-        {
-          "title": "Hugging Face Multimodal Training Series",
-          "host1_take": "Kit: Reranker training now ships as tutorial \u2014 the quality moat that embeddings didn't have is now commoditized.",
-          "host2_take": "Dean: No Series A companies have updated their decks yet despite the moat being publicly destroyed; the cadence of open papers, not any single one, is what kills categories.",
-          "agreed": true
-        },
-        {
-          "title": "Autonomous Scientific Discovery on Real Hardware",
-          "host1_take": "Kit: Qiushi validates autonomous-lab theses by running actual experiments with real optical hardware and discovering previously unreported mechanisms.",
-          "host2_take": "Dean: Narrow plus real beats general plus simulated at the term sheet stage \u2014 both thesis funds he's on fence about are now raising.",
-          "agreed": true
-        },
-        {
-          "title": "AI-Assisted Coding and Student Disengagement",
-          "host1_take": "Kit: Low performers delegate to AI and finish tasks fine, but the affective signal is isolation and disengagement \u2014 a harder problem than skill gaps.",
-          "host2_take": "Dean: Next-cohort junior engineers will be capable but checked out, requiring IDE design that forces exploratory mode instead of defaulting to delegation.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Both autonomous-lab theses he's on the fence about are raising right now following the Qiushi discovery validation"
-      ],
-      "key_themes": [
-        "Provenance breakdown across supply chain",
-        "Hidden model behaviors and behavioral pricing",
-        "Open papers commoditizing proprietary moats",
-        "Affective vs. capability gaps in AI-assisted work",
-        "Contract assumptions aging poorly"
-      ],
-      "story_to_watch": "PyTorch Lightning compromise and downstream weight provenance claims in enterprise contracts \u2014 the insurance and remediation cascade",
-      "title": "Provenance Theater Everywhere"
     }
   ]
 }
