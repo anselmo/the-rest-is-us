@@ -1,6 +1,50 @@
 {
-  "episode_count": 54,
+  "episode_count": 55,
   "episodes": [
+    {
+      "date": "2026-07-06",
+      "episode_number": 55,
+      "stories": [
+        {
+          "title": "OpenAI's Ultra Tier in Codex",
+          "host1_take": "Kit: Ultra isn't expansion\u2014it's repair, priced to restore multi-file refactor quality that was degraded in June, making it a premium charge for un-breaking what broke.",
+          "host2_take": "Dean: Enterprise procurement signs any invoice labeled Ultra regardless, but this move puts the coding loop upstairs and kills the mid-market wrapper thesis by Q4.",
+          "agreed": true
+        },
+        {
+          "title": "Hugging Face Kernel Distribution Wars",
+          "host1_take": "Kit: Hub-native, versioned kernels evaporate the proprietary kernel optimization moat that fine-tuning shops built their Series A decks around.",
+          "host2_take": "Dean: The kernel distribution layer becomes a platform war between Hugging Face and NVIDIA, with independent kernel shops getting acqui-hired by winners on an 18-month horizon.",
+          "agreed": true
+        },
+        {
+          "title": "Local Models for PR Triage",
+          "host1_take": "Kit: PR triage is the perfect bounded task where local models can match frontier models\u2014the technical substitution was always possible, Fable removal just triggered permission to notice.",
+          "host2_take": "Dean: The OpenClaw post is grief processing, not technical announcement\u2014dropped one week after Claude Fable removal, framing 'free' as emotional permission to abandon closed models.",
+          "agreed": true
+        },
+        {
+          "title": "SonarSource Code Cleanliness Study",
+          "host1_take": "Kit: The minimal-pair design can't actually isolate style from naming and comments\u2014the methodology conflates confounds with methodology, inflating the claim beyond scope.",
+          "host2_take": "Dean: SonarSource's paper is sales collateral with an arXiv wrapper\u2014procurement cites it beyond its scope while engineers read limitations, same pattern as ScarfBench.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Cerebras Hugging Face voice pipeline announcement within 60 days",
+        "Dean: If GPT-5.6 Sol swallows a specialist domain, the specialization thesis contracts in weeks, not quarters"
+      ],
+      "key_themes": [
+        "Pricing premium over repair",
+        "Platform wars for infrastructure layers",
+        "Moats as taxes, not defensible advantages",
+        "Local model substitution in bounded tasks",
+        "Procurement citation inflation",
+        "Specialist AI funds hedging with small Q3 allocations"
+      ],
+      "story_to_watch": "Whether GPT-5.6 Sol actually delivers multi-file refactor improvements or if the Ultra tier becomes pure margin capture\u2014this determines if standalone coding-agent startups survive 2025",
+      "title": "The Moats Hidden in Packaging Pain"
+    },
     {
       "date": "2026-07-05",
       "episode_number": 54,
@@ -1542,56 +1586,6 @@
       ],
       "story_to_watch": "Whether early healthcare systems deploying federated learning under EU AI Act requirements publish honest ablations on convergence failures or only press releases",
       "title": "Models Are Always the Last Variable"
-    },
-    {
-      "date": "2026-05-03",
-      "episode_number": 25,
-      "stories": [
-        {
-          "title": "Kimi K2.6 wins coding tournament against frontier models",
-          "host1_take": "Kit notes the debugging-focused win matters most to enterprise buyers paying for production codebase work, not demo-driven greenfield use.",
-          "host2_take": "Dean argues this triggers auto-reprice clauses in multi-year contracts where public leaderboard position is a renegotiation weapon, turning procurement slides into leverage.",
-          "agreed": false
-        },
-        {
-          "title": "VS Code silently adds Copilot co-author to all commits",
-          "host1_take": "Kit views this as junior PM error in defaulting a setting, but flags it violates OSS CLA requirements and retroactively invalidates contributor agreements.",
-          "host2_take": "Dean suspects timing before earnings season inflates Copilot attach-rate metrics, but Kit pushes back that the legal headache for maintainers is the real bin.",
-          "agreed": false
-        },
-        {
-          "title": "Academy rules AI-generated actors ineligible for Oscars",
-          "host1_take": "Kit argues the rule is unenforceable since studios already use AI in post-production invisibly, making the line between AI-assisted and AI-generated a negotiation, not a definition.",
-          "host2_take": "Dean frames this as protecting prestige-eligibility contract kickers that anchor A-list actor compensation multiples, signaling which AI tooling gets credited versus hidden.",
-          "agreed": true
-        },
-        {
-          "title": "Agent loop architecture debate: inside vs. outside sandbox",
-          "host1_take": "Kit argues neither architecture is free\u2014inside-sandbox is simple but unsafe for multi-user; outside-sandbox adds latency that breaks conversational UX, and the right choice depends on product shape teams haven't decided yet.",
-          "host2_take": "Dean notes this is a roadmap detonation for four funded startups who pitched inside-sandbox as a moat, forcing them to either own it publicly or quietly migrate for a quarter minimum.",
-          "agreed": true
-        },
-        {
-          "title": "DeepSeek V4 claims usable million-token context window",
-          "host1_take": "Kit distinguishes between claimed and usable context\u2014most million-token claims degrade hard past 200K, but DeepSeek's KV cache memory is two percent of standard, making it genuinely usable.",
-          "host2_take": "Dean marks this alongside Kimi K2.6 as the moment the chase narrative ends and the pitch direction reverses this quarter.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: Auto-reprice clauses in incumbent contracts will fire this quarter based on open-weights coding performance",
-        "Dean: Buyers will walk into sales conversations with leverage instead of labs, driven by contract triggers from public leaderboards"
-      ],
-      "key_themes": [
-        "Attribution and authorship in AI era",
-        "Open-weights models reaching frontier parity",
-        "Contract mechanics as gatekeeping mechanisms",
-        "Narrative coherence driving procurement decisions",
-        "Architectural tradeoffs between sandbox models",
-        "Eval shops as new compute bottleneck"
-      ],
-      "story_to_watch": "Whether auto-reprice clauses actually fire on enterprise contracts following Kimi K2.6 and DeepSeek V4 releases, signaling a fundamental shift in buyer-to-lab pitch direction",
-      "title": "When Open Models Flip the Pitch"
     }
   ]
 }
