@@ -1,6 +1,63 @@
 {
-  "episode_count": 55,
+  "episode_count": 56,
   "episodes": [
+    {
+      "date": "2026-07-08",
+      "episode_number": 56,
+      "stories": [
+        {
+          "title": "Kokoro CPU-based TTS",
+          "host1_take": "Kit: Bounded-domain voice output is now solved \u2014 CPU-viable local models eliminate the hosted TTS margin advantage that was quietly funding voice-agent Series As.",
+          "host2_take": "Dean: The switching cost collapses to a config change (base URL dropdown), which means procurement doesn't approve \u2014 someone just changes it on a Friday.",
+          "agreed": true
+        },
+        {
+          "title": "Memory in the Agent Loop",
+          "host1_take": "Kit: In-loop memory dissolves the concept of turns entirely, which creates a UX problem \u2014 users need turns to interrupt, and streaming responses break the interaction model.",
+          "host2_take": "Dean: Three separate memory papers dropping simultaneously signals a frameworks moment; the Series A window for memory infrastructure opens now and closes in twelve months.",
+          "agreed": false
+        },
+        {
+          "title": "Beyond the Leaderboard Taxonomy",
+          "host1_take": "Kit: Half of the agent failure modes dissolve with better prompting; the other half are architectural \u2014 but procurement won't split the difference.",
+          "host2_take": "Dean: This paper accelerates Series B repricing for agentic-coding; founders who survive can articulate which failure cluster their product doesn't have.",
+          "agreed": true
+        },
+        {
+          "title": "ArtisanCAD and Industrial CAD Agents",
+          "host1_take": "Kit: Editability is the moat, not fidelity \u2014 engineers need parametric trees they can modify, not static geometry, and the paper doesn't demonstrate this at Autodesk's level.",
+          "host2_take": "Dean: Autodesk owns the workflow end-to-end and is already running; distribution wins unless the startup's editing primitives are 10x better.",
+          "agreed": true
+        },
+        {
+          "title": "Synthetic Consumer Research",
+          "host1_take": "Kit: LLMs can't capture unconscious associations \u2014 they only generate averages \u2014 so projective techniques become methodologically invalid.",
+          "host2_take": "Dean: Market research procurement will buy synthetic alternatives anyway because they're cheaper, so we get worse consumer research faster.",
+          "agreed": true
+        },
+        {
+          "title": "Prompt-to-Paper Bioinformatics",
+          "host1_take": "Kit: Citation grounding fails on paraphrase \u2014 the link between claim and source frays the moment the model summarizes instead of quoting verbatim.",
+          "host2_take": "Dean: Bioinformatics accepts it because throughput matters more than provenance; there's a backlog of experimental data, but this creates a citation crisis in 12-18 months.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: Memory infrastructure Series A window closes in twelve months",
+        "Kit: Citation crisis in bioinformatics emerges in eighteen months",
+        "Dean: Citation crisis in bioinformatics emerges in twelve months"
+      ],
+      "key_themes": [
+        "Infrastructure commoditization",
+        "Series A/B repricing windows",
+        "Local-first model deployment",
+        "Agent interaction design gaps",
+        "Procurement vs. engineering incentive misalignment",
+        "Quality vs. throughput tradeoffs"
+      ],
+      "story_to_watch": "Memory infrastructure category \u2014 three papers converge on in-loop retrieval latency; Series A window timing is critical (twelve-month window)",
+      "title": "Voice Goes Local, Memory Moves In-Loop"
+    },
     {
       "date": "2026-07-06",
       "episode_number": 55,
@@ -1535,57 +1592,6 @@
       ],
       "story_to_watch": "Whether sovereign eval shops establish attested energy benchmarks as the standard for endpoint pricing and ESG compliance before 2027, creating a gatekeeper position across all AI procurement",
       "title": "Hidden Taxes and the Eval Shop Monopoly"
-    },
-    {
-      "date": "2026-05-04",
-      "episode_number": 26,
-      "stories": [
-        {
-          "title": "Harvard ER Study: o1 vs. Triage Doctors",
-          "host1_take": "Kit argues o1 had unfair input advantage\u2014it read full nurse notes the triage doctor hadn't seen yet\u2014making this a workflow comparison, not a capability one.",
-          "host2_take": "Dean sees the deployable insight differently: insurance carriers will reprice malpractice premiums on AI-assisted triage, forcing adoption before hospitals redesign intake processes.",
-          "agreed": false
-        },
-        {
-          "title": "Hugging Face Multimodal Reranker Tutorial",
-          "host1_take": "Kit flags that hard-negative mining\u2014a six-figure consulting trade secret\u2014is now public, collapsing the moat that Series A retrieval companies are still pitching as proprietary.",
-          "host2_take": "Dean notes that pitch decks are racing the open-source publication calendar and losing by six weeks, and real moats now hide in training data contracts, not recipes.",
-          "agreed": true
-        },
-        {
-          "title": "Human-in-Loop Fusion Energy Optimization",
-          "host1_take": "Kit reads the few-shot uncertainty-aware setup as an admission the model can't extrapolate\u2014it's a fancy interpolator masquerading as software.",
-          "host2_take": "Dean sees the real moat as the twelve ICF experts on earth who can provide priors; whoever signs them to advisory owns the contact list, not the algorithm.",
-          "agreed": true
-        },
-        {
-          "title": "CRADIPOR: Crash Simulation Dispersion Predictor",
-          "host1_take": "Kit notes it admits uncertainty rather than removing it, giving confidence intervals on decisions already shipped.",
-          "host2_take": "Dean sees OEM liability lawyers post-Cybertruck now demanding simulation reproducibility certification from suppliers\u2014uncertainty becomes a compliance checkbox.",
-          "agreed": true
-        },
-        {
-          "title": "FedACT: Federated Learning Across Heterogeneous Data",
-          "host1_take": "Kit warns that fragile multi-task federated systems will be deployed in healthcare purely because EU AI Act residency rules require it, not because the architecture is ready.",
-          "host2_take": "Dean expects silent failure modes\u2014federated systems converge to wrong gradients quietly, discoverable only in quarterly audits if at all.",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: One major malpractice carrier will write 'AI-assisted triage' into rate sheets by Q3, forcing hospital adoption",
-        "Dean: Early federated learning adopters in healthcare will publish press releases instead of ablations on silent convergence failures",
-        "Kit: Pitch decks claiming proprietary multimodal reranker moat will remain unchanged and unread through Q2"
-      ],
-      "key_themes": [
-        "Workflow and regulation drive deployment more than capability",
-        "Insurance and liability math precede procurement decisions",
-        "Real moats hide in human layer and data contracts, not published recipes",
-        "Open-source publication calendars are collapsing tooling differentiators",
-        "Silent failures and compliance theatrics replace actual technical readiness",
-        "Model performance is downstream of liability and regulatory forcing functions"
-      ],
-      "story_to_watch": "Whether early healthcare systems deploying federated learning under EU AI Act requirements publish honest ablations on convergence failures or only press releases",
-      "title": "Models Are Always the Last Variable"
     }
   ]
 }
