@@ -1,6 +1,61 @@
 {
-  "episode_count": 58,
+  "episode_count": 59,
   "episodes": [
+    {
+      "date": "2026-07-12",
+      "episode_number": 59,
+      "stories": [
+        {
+          "title": "Nvidia's GPU Financing Loop",
+          "host1_take": "Dean sees demand fundamentals as real today, but the scale is unsustainable \u2014 CoreWeave's $12.6B FY26 estimate against $145B committed is a bet, not a business.",
+          "host2_take": "Kit emphasizes switching costs are zero \u2014 customers are one config change away from leaving, so there's no margin cushion if demand softens even slightly.",
+          "agreed": true
+        },
+        {
+          "title": "Mesh LLM and P2P Model Distribution",
+          "host1_take": "Dean predicts this follows the CDN playbook \u2014 once peer-to-peer primitives are cheap, hosted inference re-prices from moat to convenience tax, devastating neocloud demand assumptions.",
+          "host2_take": "Kit pushes back that CDN didn't disappear, it re-priced \u2014 hosted inference survives but stops being a growth business, creating a middle ground.",
+          "agreed": false
+        },
+        {
+          "title": "xAI's Grok Build Data Exfiltration",
+          "host1_take": "Dean theorizes xAI is pricing for training-data acquisition, not usage \u2014 the product is a data-collection pipeline at 15x competitor pricing.",
+          "host2_take": "Kit argues the enterprise gate kills it immediately \u2014 regulated industries can't legally approve a tool that exfiltrates full repos by default, making it a solo-dev product priced like enterprise.",
+          "agreed": true
+        },
+        {
+          "title": "Agent-in-100-Lines Lisp Challenge",
+          "host1_take": "Dean sees this as catastrophic for agent-framework Series As \u2014 if the orchestration loop collapses to 100 lines, then LangChain and competitors are selling ceremony, not moat.",
+          "host2_take": "Kit concedes the loop is smaller than marketed but argues frameworks provide distribution and integrations, though acknowledges this is the third week flagging that the primitive is tinier than the marketing.",
+          "agreed": true
+        },
+        {
+          "title": "OpenAI's Families Product Hire",
+          "host1_take": "Dean frames it as classic post-saturation strategy \u2014 individual DAU flattening, so expand to households.",
+          "host2_take": "Kit warns the memory architecture breaks in shared households without consent surfaces, and OpenAI's defensive posture due to parent lawsuits means re-architecture is a year away.",
+          "agreed": true
+        },
+        {
+          "title": "LeRobot World-Model Policies",
+          "host1_take": "Dean connects it to the broader pattern \u2014 Hugging Face commoditization from the same address making closed-source stacks look overpriced, like Kokoro and vLLM before it.",
+          "host2_take": "Kit highlights the unit economics shift \u2014 world-model supervision baked in for free at runtime, transforming edge robotics where compute is fixed.",
+          "agreed": true
+        }
+      ],
+      "predictions": [
+        "Dean: First hyperscaler to publicly trim GPU commitments by even 5% will signal the loop is circular, not clever",
+        "Dean: Nvidia will write down one of its equity stakes, ending the illusion"
+      ],
+      "key_themes": [
+        "Circular financing at the top of the stack masking demand uncertainty",
+        "Commoditization from open-source primitives eroding closed-source moats",
+        "Trust violations in developer tools are irreversible",
+        "Middle of the market being hollowed out by extremes",
+        "Pricing models misaligned with actual use cases and regulations"
+      ],
+      "story_to_watch": "First public GPU commitment trim by a hyperscaler or Nvidia equity write-down \u2014 signals whether neocloud demand is real or laundered capex",
+      "title": "The Loop Stops Looking Clever"
+    },
     {
       "date": "2026-07-11",
       "episode_number": 58,
@@ -1524,58 +1579,6 @@
       ],
       "story_to_watch": "Enterprise procurement language hardening around 'epistemic integrity' and 'partial evidence handling' \u2014 if these terms appear in RFPs by Q4, it signals labs will need to choose between consumer and enterprise product behavior.",
       "title": "The Harness Is The Bottleneck"
-    },
-    {
-      "date": "2026-05-07",
-      "episode_number": 29,
-      "stories": [
-        {
-          "title": "Vibe Coding Meets Production Engineering",
-          "host1_take": "Kit argues discipline was only load-bearing when tools made it effortful; once friction vanishes, even careful practitioners drift toward vibe coding",
-          "host2_take": "Dean notes that Series A coding-agent companies betting on the rigor-moat distinction have a quarter or two before procurement notices both SKUs do identical work",
-          "agreed": true
-        },
-        {
-          "title": "Terminus-4B and the Cost-Per-Task Shift",
-          "host1_take": "Kit warns that 4B models have a silent corruption vector in subagent state-isolation that the main agent cannot detect, making the token savings uninsurable",
-          "host2_take": "Dean observes RFPs have already shifted from model-tier language to cost-ceiling and SLA specs, meaning procurement is moving faster than expected",
-          "agreed": false
-        },
-        {
-          "title": "Browser Agents Without Consent Architecture",
-          "host1_take": "Kit frames cotomi's pitch as converting workers into training data without solving consent\u2014shipping surveillance with a wiki on top",
-          "host2_take": "Dean argues the behavioral data is the IP, not the agent itself, capping the exit at acqui-hire before a model lab buys the dataset",
-          "agreed": true
-        },
-        {
-          "title": "AI Peer Review Hivemind Effect",
-          "host1_take": "Kit identifies the hivemind effect as structural, not a bug\u2014review models converge because they share post-training data across labs",
-          "host2_take": "Dean reads the position paper as a regulatory ask disguised as an eval requirement, a smart moratorium that won't stop publishers anyway",
-          "agreed": true
-        },
-        {
-          "title": "Hugging Face Multimodal Reranker Recipe",
-          "host1_take": "Kit notes the complete blueprint allows anyone with an H100 to train a domain-specific reranker that beats models four times its size",
-          "host2_take": "Dean predicts Series A decks using proprietary multimodal retrieval language are dead by Q3, with best customers replicating in-house over a weekend",
-          "agreed": true
-        }
-      ],
-      "predictions": [
-        "Dean: RFP language will prioritize cost-per-task over model tier within Q1-Q2",
-        "Dean: Subagent state-integrity attestation evals will become a procurement gate by Q4",
-        "Dean: Series A multimodal retrieval pipeline decks will be dead by Q3",
-        "Kit: Tool design will shift to shipping better defaults, with discipline as an uncheckable checkbox"
-      ],
-      "key_themes": [
-        "moat collapse across AI tools",
-        "friction as the only load-bearing discipline structure",
-        "procurement language shifting faster than capability",
-        "consent and surveillance in worker-trained agents",
-        "structural bias in AI-generated peer review",
-        "recipes and open-source blueprints replacing proprietary IP"
-      ],
-      "story_to_watch": "RFP language evolution\u2014shift from model names to cost-per-task SLAs signals where procurement actually stands on AI agent maturity",
-      "title": "When Discipline Becomes a Tax"
     }
   ]
 }

@@ -1,0 +1,15 @@
+KIT: April twelfth. Two quick stories and a test of our audio transitions. Welcome to The Rest of Us.
+DEAN: Let's get into it.
+[BREAK]
+KIT: So first up — OpenAI just released a new model.
+DEAN: Right, and the benchmarks look interesting. But here's what gets me — the pricing.
+KIT: Yeah the pricing is aggressive. Almost TOO aggressive.
+DEAN: Look — when you're burning that much cash, aggressive pricing is just another word for desperate.
+[BREAK]
+DEAN: Okay, second story. Google dropped a new open-source tool yesterday.
+KIT: I actually tried it. The developer experience is... surprisingly good.
+DEAN: Wait, really? From Google?
+KIT: I know. I was shocked too.
+[BREAK]
+DEAN: Alright — another one in the bin. See you tomorrow.
+KIT: See you tomorrow.
